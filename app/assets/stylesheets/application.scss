@@ -1,0 +1,125 @@
+//= require bootstrap_and_overrides
+//= require animate/animate.css
+//= require angular-ng-dialog
+//= require angular-ng-dialog-theme-default
+//= require font-awesome
+//= require redactor/redactor
+//= require angular-range-slider
+//= require slick/slick.css
+//= require slick/slick-theme.css
+//= require selectize
+//= require selectize.default
+//= require angular-bootstrap-lightbox
+//= require country_select/css/msdropdown/dd
+//= require country_select/css/msdropdown/flags
+//= require inspinia
+//= require bootstrap/bootstrap-tooltip
+//= require toastr
+//= require ladda
+//= require sweetalert/dist/sweetalert
+//= require angular-ui-bootstrap/dist/ui-bootstrap-csp
+//= require_tree .
+
+form{
+  margin-bottom: 0;
+}
+
+a{
+  cursor: pointer;
+}
+
+.error{
+  color: red;
+}
+
+.dropdown-menu{
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ibox .open > .dropdown-menu{
+  right: auto;
+}
+
+.droppable-area{
+  border: 2px dashed transparent;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px;
+  &.file-hover{
+    border: 2px dashed lightgray;
+  }
+  ul.images-list{
+    margin: 0;
+    padding: 0;
+    li{
+      position: relative;
+      margin-right: 4px;
+      margin-bottom: 4px;
+      display: inline-block;
+      border: 1px solid lightgray;
+      width: 130px;
+      height: 130px;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      &:hover{
+        border-color: #000000;
+      }
+      &.plus{
+        label{
+          &:hover{
+            cursor: pointer;
+            i.fa.fa-plus{
+              color: #000000;
+            }
+          }
+          position: relative;
+          width: 130px;
+          height: 130px;
+          input[type=file]{
+            display: none;
+          }
+          i.fa.fa-plus{
+            color: lightgray;
+            position: absolute;
+            margin: auto auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      i.fa.fa-close{
+        color: lightgray;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        font-size: 15px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.media-body {
+  width: 100% !important;
+}
+
+.ladda-spinner{
+  height: 0 !important;
+  display: block  !important;
+}
+
+.pagination{
+  margin-top: 0 !important;
+}

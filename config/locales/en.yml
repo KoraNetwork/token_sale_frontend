@@ -31,3 +31,37 @@
 
 en:
   hello: "Hello world"
+  languages:
+    english: 'English'
+    ukrainian: 'Ukrainian'
+
+  profile:
+    edit_profile: 'Edit profile'
+    labels:
+      login: 'Login'
+      password: 'Password'
+      password_confirmation: 'Password Confirmation'
+      leave_blank: "Leave blank if you don't want to change it"
+      current_password: 'Current Password'
+    messages:
+      wrong_current_password: 'Wrong current password.'
+      profile_updated: 'Profile successfully updated.'
+
+  validations:
+    cant_be_blank: "Can't be blank."
+
+  headers:
+
+  datetime:
+    ago: 'ago'
+    at: 'at'
+  validations:
+    cant_be_blank: "Can't be blank."
+
+  actions:
+    submit: "Submit"
+    confirm: "Confirm"
+    cancel: "Cancel"
+    edit: 'Edit'
+    delete: 'Delete'
+    view: 'View'

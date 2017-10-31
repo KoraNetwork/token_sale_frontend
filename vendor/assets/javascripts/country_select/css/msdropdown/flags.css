@@ -1,0 +1,254 @@
+.flag{
+    display: inline-block;
+    /*background-size: contain;*/
+    padding:0 !important;
+    vertical-align: middle;
+    margin:0px 10px 0 0;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    /*background:url(/images/country_select/flagssprite_small.png) no-repeat;*/
+}
+
+.flag.kz{ background-image: url('/images/country_select/Flag of Kazahstan.png'); }
+.flag.portugal{ background-image: url('/images/country_select/Flag of Portugal.png'); }
+.flag.republicofthe_congo{ background-image: url('/images/country_select/Flag of Republic of the Congo.png'); }
+.flag.aruba{ background-image: url('/images/country_select/Flag of Aruba.png'); }
+.flag.macedonia{ background-image: url('/images/country_select/Flag of Macedonia.png'); }
+.flag.gibraltar{ background-image: url('/images/country_select/Flag of Gibraltar.png'); }
+.flag.croatia{ background-image: url('/images/country_select/Flag of Croatia.png'); }
+.flag.latvia{ background-image: url('/images/country_select/Flag of Latvia.png'); }
+.flag.djibouti{ background-image: url('/images/country_select/Flag of Djibouti.png'); }
+.flag.falkland_islands{ background-image: url('/images/country_select/Flag of Falkland Islands (Islas Malvinas).png'); }
+.flag.austria{ background-image: url('/images/country_select/Flag of Austria.png'); }
+.flag.british_indian_ocean_territory{ background-image: url('/images/country_select/Flag of British Indian Ocean Territory.png'); }
+.flag.finland{ background-image: url('/images/country_select/Flag of Finland.png'); }
+.flag.bostswana{ background-image: url('/images/country_select/Flag of Bostswana.png'); }
+.flag.colombia{ background-image: url('/images/country_select/Flag of Colombia.png'); }
+.flag.norfolk_island{ background-image: url('/images/country_select/Flag of Norfolk Island.png'); }
+.flag.central_african_republic{ background-image: url('/images/country_select/Flag of Central African Republic.png'); }
+.flag.equatorial_guinea{ background-image: url('/images/country_select/Flag of Equatorial Guinea.png'); }
+.flag.timor_leste{ background-image: url('/images/country_select/Flag of Timor Leste.png'); }
+.flag.czech_republic{ background-image: url('/images/country_select/Flag of Czech Republic.png'); }
+.flag.antiguaand_barbuda{ background-image: url('/images/country_select/Flag of Antigua and Barbuda.png'); }
+.flag.south_korea{ background-image: url('/images/country_select/Flag of South Korea.png'); }
+.flag.bosniaand_herzegovina{ background-image: url('/images/country_select/Flag of Bosnia and Herzegovina.png'); }
+.flag.india{ background-image: url('/images/country_select/Flag of India.png'); }
+.flag.china{ background-image: url('/images/country_select/Flag of China.png'); }
+.flag.nauru{ background-image: url('/images/country_select/Flag of Nauru.png'); }
+.flag.bangladesh{ background-image: url('/images/country_select/Flag of Bangladesh.png'); }
+.flag.vanuatu{ background-image: url('/images/country_select/Flag of Vanuatu.png'); }
+.flag.iceland{ background-image: url('/images/country_select/Flag of Iceland.png'); }
+.flag.cambodia{ background-image: url('/images/country_select/Flag of Cambodia.png'); }
+.flag.taiwan{ background-image: url('/images/country_select/Flag of Taiwan.png'); }
+.flag.ghana{ background-image: url('/images/country_select/Flag of Ghana.png'); }
+.flag.barbados{ background-image: url('/images/country_select/Flag of Barbados.png'); }
+.flag.philippines{ background-image: url('/images/country_select/Flag of Philippines.png'); }
+.flag.chad{ background-image: url('/images/country_select/Flag of Chad.png'); }
+.flag.estonia{ background-image: url('/images/country_select/Flag of Estonia.png'); }
+.flag.eritrea{ background-image: url('/images/country_select/Flag of Eritrea.png'); }
+.flag.coted_ivoire{ background-image: url('/images/country_select/Flag of Cote dIvoire.png'); }
+.flag.ukraine{ background-image: url('/images/country_select/Flag of Ukraine.png'); }
+.flag.tamil_nation{ background-image: url('/images/country_select/Flag of Tamil Nation.png'); }
+.flag.hong_kong{ background-image: url('/images/country_select/Flag of Hong Kong.png'); }
+.flag.norway{ background-image: url('/images/country_select/Flag of Norway.png'); }
+.flag.oman{ background-image: url('/images/country_select/Flag of Oman.png'); }
+.flag.kyrgyzstan{ background-image: url('/images/country_select/Flag of Kyrgyzstan.png'); }
+.flag.syria{ background-image: url('/images/country_select/Flag of Syria.png'); }
+.flag.tuvalu{ background-image: url('/images/country_select/Flag of Tuvalu.png'); }
+.flag.guatemala{ background-image: url('/images/country_select/Flag of Guatemala.png'); }
+.flag.cape_verde{ background-image: url('/images/country_select/Flag of Cape Verde.png'); }
+.flag.sweden{ background-image: url('/images/country_select/Flag of Sweden.png'); }
+.flag.brunei{ background-image: url('/images/country_select/Flag of Brunei.png'); }
+.flag.lithuania{ background-image: url('/images/country_select/Flag of Lithuania.png'); }
+.flag.bahrain{ background-image: url('/images/country_select/Flag of Bahrain.png'); }
+.flag.hungary{ background-image: url('/images/country_select/Flag of Hungary.png'); }
+.flag.micronesia{ background-image: url('/images/country_select/Flag of Micronesia.png'); }
+.flag.bermuda{ background-image: url('/images/country_select/Flag of Bermuda.png'); }
+.flag.lesotho{ background-image: url('/images/country_select/Flag of Lesotho.png'); }
+.flag.european_union{ background-image: url('/images/country_select/Flag of European Union.png'); }
+.flag.flagssprite_small{ background-image: url('/images/country_select/flagssprite_small.png'); }
+.flag.romania{ background-image: url('/images/country_select/Flag of Romania.png'); }
+.flag.mali{ background-image: url('/images/country_select/Flag of Mali.png'); }
+.flag.mayotte{ background-image: url('/images/country_select/Flag of Mayotte.png'); }
+.flag.sri_lanka{ background-image: url('/images/country_select/Flag of Sri Lanka.png'); }
+.flag.cyprus{ background-image: url('/images/country_select/Flag of Cyprus.png'); }
+.flag.democratic_republicofthe_congo{ background-image: url('/images/country_select/Flag of Democratic Republic of the Congo.png'); }
+.flag.japan{ background-image: url('/images/country_select/Flag of Japan.png'); }
+.flag.moldavia{ background-image: url('/images/country_select/Flag of Moldavia.png'); }
+.flag.togo{ background-image: url('/images/country_select/Flag of Togo.png'); }
+.flag.brazil{ background-image: url('/images/country_select/Flag of Brazil.png'); }
+.flag.kenya{ background-image: url('/images/country_select/Flag of Kenya.png'); }
+.flag.belgium{ background-image: url('/images/country_select/Flag of Belgium.png'); }
+.flag.liberia{ background-image: url('/images/country_select/Flag of Liberia.png'); }
+.flag.montserrat{ background-image: url('/images/country_select/Flag of Montserrat.png'); }
+.flag.saudi_arabia{ background-image: url('/images/country_select/Flag of Saudi Arabia.png'); }
+.flag.wales{ background-image: url('/images/country_select/Flag of Wales.png'); }
+.flag.russia{ background-image: url('/images/country_select/Flag of Russia.png'); }
+.flag.ireland{ background-image: url('/images/country_select/Flag of Ireland.png'); }
+.flag.tunisia{ background-image: url('/images/country_select/Flag of Tunisia.png'); }
+.flag.kazahstan{ background-image: url('/images/country_select/Flag of Kazahstan.png'); }
+.flag.zambia{ background-image: url('/images/country_select/Flag of Zambia.png'); }
+.flag.egypt{ background-image: url('/images/country_select/Flag of Egypt.png'); }
+.flag.germany{ background-image: url('/images/country_select/Flag of Germany.png'); }
+.flag.ecuador{ background-image: url('/images/country_select/Flag of Ecuador.png'); }
+.flag.mongolia{ background-image: url('/images/country_select/Flag of Mongolia.png'); }
+.flag.saint_kittsand_nevis{ background-image: url('/images/country_select/Flag of Saint Kitts and Nevis.png'); }
+.flag.saint_pierreand_miquelon{ background-image: url('/images/country_select/Flag of Saint Pierre and Miquelon.png'); }
+.flag.palau{ background-image: url('/images/country_select/Flag of Palau.png'); }
+.flag.rwanda{ background-image: url('/images/country_select/Flag of Rwanda.png'); }
+.flag.thailand{ background-image: url('/images/country_select/Flag of Thailand.png'); }
+.flag.mauritius{ background-image: url('/images/country_select/Flag of Mauritius.png'); }
+.flag.south_georgiaandthe_south_sandwitch_islands{ background-image: url('/images/country_select/Flag of South Georgia and the South Sandwitch Islands.png'); }
+.flag.palestine{ background-image: url('/images/country_select/Flag of Palestine.png'); }
+.flag.cameroon{ background-image: url('/images/country_select/Flag of Cameroon.png'); }
+.flag.spain{ background-image: url('/images/country_select/Flag of Spain.png'); }
+.flag.canada{ background-image: url('/images/country_select/Flag of Canada.png'); }
+.flag.the_gambia{ background-image: url('/images/country_select/Flag of the Gambia.png'); }
+.flag.luxembourg{ background-image: url('/images/country_select/Flag of Luxembourg.png'); }
+.flag.pitcairn_islands{ background-image: url('/images/country_select/Flag of Pitcairn Islands.png'); }
+.flag.gabon{ background-image: url('/images/country_select/Flag of Gabon.png'); }
+.flag.saint_vincent{ background-image: url('/images/country_select/Flag of Saint Vincent.png'); }
+.flag.the_bahamas{ background-image: url('/images/country_select/Flag of the Bahamas.png'); }
+.flag.turkmenistan{ background-image: url('/images/country_select/Flag of Turkmenistan.png'); }
+.flag.france{ background-image: url('/images/country_select/Flag of France.png'); }
+.flag.afghanistan{ background-image: url('/images/country_select/Flag of Afghanistan.png'); }
+.flag.new_zealand{ background-image: url('/images/country_select/Flag of New Zealand.png'); }
+.flag.dominica{ background-image: url('/images/country_select/Flag of Dominica.png'); }
+.flag.poland{ background-image: url('/images/country_select/Flag of Poland.png'); }
+.flag.cuba{ background-image: url('/images/country_select/Flag of Cuba.png'); }
+.flag.mexico{ background-image: url('/images/country_select/Flag of Mexico.png'); }
+.flag.blank.gif{ background-image: url('/images/country_select/blank.gif'); }
+.flag.guernsey{ background-image: url('/images/country_select/Flag of Guernsey.png'); }
+.flag.montenegro{ background-image: url('/images/country_select/Flag of Montenegro.png'); }
+.flag.pakistan{ background-image: url('/images/country_select/Flag of Pakistan.png'); }
+.flag.mauritania{ background-image: url('/images/country_select/Flag of Mauritania.png'); }
+.flag.monaco{ background-image: url('/images/country_select/Flag of Monaco.png'); }
+.flag.virgin_islands{ background-image: url('/images/country_select/Flag of Virgin Islands.png'); }
+.flag.tanzania{ background-image: url('/images/country_select/Flag of Tanzania.png'); }
+.flag.tibet{ background-image: url('/images/country_select/Flag of Tibet.png'); }
+.flag.armenia{ background-image: url('/images/country_select/Flag of Armenia.png'); }
+.flag.netherlands{ background-image: url('/images/country_select/Flag of Netherlands.png'); }
+.flag.malta{ background-image: url('/images/country_select/Flag of Malta.png'); }
+.flag.niger{ background-image: url('/images/country_select/Flag of Niger.png'); }
+.flag.albania{ background-image: url('/images/country_select/Flag of Albania.png'); }
+.flag.paraguay{ background-image: url('/images/country_select/Flag of Paraguay.png'); }
+.flag.burma{ background-image: url('/images/country_select/Flag of Burma (Myanmar).png'); }
+.flag.guyana{ background-image: url('/images/country_select/Flag of Guyana.png'); }
+.flag.iraq{ background-image: url('/images/country_select/Flag of Iraq.png'); }
+.flag.holy_see{ background-image: url('/images/country_select/Flag of Holy See (Vatican City).png'); }
+.flag.libya{ background-image: url('/images/country_select/Flag of Libya.png'); }
+.flag.el_salvador{ background-image: url('/images/country_select/Flag of El Salvador.png'); }
+.flag.uzbekistan{ background-image: url('/images/country_select/Flag of Uzbekistan.png'); }
+.flag.tonga{ background-image: url('/images/country_select/Flag of Tonga.png'); }
+.flag.marschal_islands{ background-image: url('/images/country_select/Flag of Marschal Islands.png'); }
+.flag.netherlands_anthilles{ background-image: url('/images/country_select/Flag of Netherlands Anthilles.png'); }
+.flag.suriname{ background-image: url('/images/country_select/Flag of Suriname.png'); }
+.flag.sao_tomeand_principe{ background-image: url('/images/country_select/Flag of Sao Tome and Principe.png'); }
+.flag.chile{ background-image: url('/images/country_select/Flag of Chile.png'); }
+.flag.kuwait{ background-image: url('/images/country_select/Flag of Kuwait.png'); }
+.flag.georgia{ background-image: url('/images/country_select/Flag of Georgia.png'); }
+.flag.malaysia{ background-image: url('/images/country_select/Flag of Malaysia.png'); }
+.flag.zimbabwe{ background-image: url('/images/country_select/Flag of Zimbabwe.png'); }
+.flag.burkina_faso{ background-image: url('/images/country_select/Flag of Burkina Faso.png'); }
+.flag.madagascar{ background-image: url('/images/country_select/Flag of Madagascar.png'); }
+.flag.isleof_man{ background-image: url('/images/country_select/Flag of Isle of Man.png'); }
+.flag.puerto_rico{ background-image: url('/images/country_select/Flag of Puerto Rico.png'); }
+.flag.south_africa{ background-image: url('/images/country_select/Flag of South Africa.png'); }
+.flag.trinidadand_tobago{ background-image: url('/images/country_select/Flag of Trinidad and Tobago.png'); }
+.flag.belarus{ background-image: url('/images/country_select/Flag of Belarus.png'); }
+.flag.iran{ background-image: url('/images/country_select/Flag of Iran.png'); }
+.flag.comoros{ background-image: url('/images/country_select/Flag of Comoros.png'); }
+.flag.northern_mariana_islands{ background-image: url('/images/country_select/Flag of Northern Mariana Islands.png'); }
+.flag.north_korea{ background-image: url('/images/country_select/Flag of North Korea.png'); }
+.flag.jamaica{ background-image: url('/images/country_select/Flag of Jamaica.png'); }
+.flag.guam{ background-image: url('/images/country_select/Flag of Guam.png'); }
+.flag.somalia{ background-image: url('/images/country_select/Flag of Somalia.png'); }
+.flag.angola{ background-image: url('/images/country_select/Flag of Angola.png'); }
+.flag.vietnam{ background-image: url('/images/country_select/Flag of Vietnam.png'); }
+.flag.namibia{ background-image: url('/images/country_select/Flag of Namibia.png'); }
+.flag.saint_helena{ background-image: url('/images/country_select/Flag of Saint Helena.png'); }
+.flag.fiji{ background-image: url('/images/country_select/Flag of Fiji.png'); }
+.flag.bulgaria{ background-image: url('/images/country_select/Flag of Bulgaria.png'); }
+.flag.honduras{ background-image: url('/images/country_select/Flag of Honduras.png'); }
+.flag.andorra{ background-image: url('/images/country_select/Flag of Andorra.png'); }
+.flag.haiti{ background-image: url('/images/country_select/Flag of Haiti.png'); }
+.flag.kosovo{ background-image: url('/images/country_select/Flag of Kosovo.png'); }
+.flag.singapore{ background-image: url('/images/country_select/Flag of Singapore.png'); }
+.flag.malawi{ background-image: url('/images/country_select/Flag of Malawi.png'); }
+.flag.french_poynesia{ background-image: url('/images/country_select/Flag of French Poynesia.png'); }
+.flag.greenland{ background-image: url('/images/country_select/Flag of Greenland.png'); }
+.flag.cayman_islands{ background-image: url('/images/country_select/Flag of Cayman Islands.png'); }
+.flag.anguilla{ background-image: url('/images/country_select/Flag of Anguilla.png'); }
+.flag.panama{ background-image: url('/images/country_select/Flag of Panama.png'); }
+.flag.switzerland{ background-image: url('/images/country_select/Flag of Switzerland.png'); }
+.flag.laos{ background-image: url('/images/country_select/Flag of Laos.png'); }
+.flag.kurdistan_nation{ background-image: url('/images/country_select/Flag of Kurdistan Nation.png'); }
+.flag.azerbaijan{ background-image: url('/images/country_select/Flag of Azerbaijan.png'); }
+.flag.american_samoa{ background-image: url('/images/country_select/Flag of American Samoa.png'); }
+.flag.bolivia{ background-image: url('/images/country_select/Flag of Bolivia.png'); }
+.flag.senegal{ background-image: url('/images/country_select/Flag of Senegal.png'); }
+.flag.scotland{ background-image: url('/images/country_select/Flag of Scotland.png'); }
+.flag.indonesia{ background-image: url('/images/country_select/Flag of Indonesia.png'); }
+.flag.nepal{ background-image: url('/images/country_select/Flag of Nepal.png'); }
+.flag.uganda{ background-image: url('/images/country_select/Flag of Uganda.png'); }
+.flag.venezuela{ background-image: url('/images/country_select/Flag of Venezuela.png'); }
+.flag.sierra_leone{ background-image: url('/images/country_select/Flag of Sierra Leone.png'); }
+.flag.yemen{ background-image: url('/images/country_select/Flag of Yemen.png'); }
+.flag.jordan{ background-image: url('/images/country_select/Flag of Jordan.png'); }
+.flag.seychelles{ background-image: url('/images/country_select/Flag of Seychelles.png'); }
+.flag.benin{ background-image: url('/images/country_select/Flag of Benin.png'); }
+.flag.australia{ background-image: url('/images/country_select/Flag of Australia.png'); }
+.flag.turksand_caicos_islands{ background-image: url('/images/country_select/Flag of Turks and Caicos Islands.png'); }
+.flag.slovenia{ background-image: url('/images/country_select/Flag of Slovenia.png'); }
+.flag.lebanon{ background-image: url('/images/country_select/Flag of Lebanon.png'); }
+.flag.burundi{ background-image: url('/images/country_select/Flag of Burundi.png'); }
+.flag.slovakia{ background-image: url('/images/country_select/Flag of Slovakia.png'); }
+.flag.samoa{ background-image: url('/images/country_select/Flag of Samoa.png'); }
+.flag.israel{ background-image: url('/images/country_select/Flag of Israel.png'); }
+.flag.algeria{ background-image: url('/images/country_select/Flag of Algeria.png'); }
+.flag.guinea{ background-image: url('/images/country_select/Flag of Guinea.png'); }
+.flag.maldives{ background-image: url('/images/country_select/Flag of Maldives.png'); }
+.flag.mozambique{ background-image: url('/images/country_select/Flag of Mozambique.png'); }
+.flag.peru{ background-image: url('/images/country_select/Flag of Peru.png'); }
+.flag.costa_rica{ background-image: url('/images/country_select/Flag of Costa Rica.png'); }
+.flag.tajikistan{ background-image: url('/images/country_select/Flag of Tajikistan.png'); }
+.flag.macau{ background-image: url('/images/country_select/Flag of Macau.png'); }
+.flag.cook_islands{ background-image: url('/images/country_select/Flag of Cook Islands.png'); }
+.flag.swaziland{ background-image: url('/images/country_select/Flag of Swaziland.png'); }
+.flag.argentina{ background-image: url('/images/country_select/Flag of Argentina.png'); }
+.flag.guinea_blissau{ background-image: url('/images/country_select/Flag of Guinea Blissau.png'); }
+.flag.belize{ background-image: url('/images/country_select/Flag of Belize.png'); }
+.flag.italy{ background-image: url('/images/country_select/Flag of Italy.png'); }
+.flag.denmark{ background-image: url('/images/country_select/Flag of Denmark.png'); }
+.flag.ethiopia{ background-image: url('/images/country_select/Flag of Ethiopia.png'); }
+.flag.saint_lucia{ background-image: url('/images/country_select/Flag of Saint Lucia.png'); }
+.flag.wallisand_futuna{ background-image: url('/images/country_select/Flag of Wallis and Futuna.png'); }
+.flag.solomon_islands{ background-image: url('/images/country_select/Flag of Solomon Islands.png'); }
+.flag.san_marino{ background-image: url('/images/country_select/Flag of San Marino.png'); }
+.flag.sudan{ background-image: url('/images/country_select/Flag of Sudan.png'); }
+.flag.uruguay{ background-image: url('/images/country_select/Flag of Uruguay.png'); }
+.flag.turkey{ background-image: url('/images/country_select/Flag of Turkey.png'); }
+.flag.nicaragua{ background-image: url('/images/country_select/Flag of Nicaragua.png'); }
+.flag.united_states{ background-image: url('/images/country_select/Flag of United States.png'); }
+.flag.united_kingdom{ background-image: url('/images/country_select/Flag of United Kingdom.png'); }
+.flag.papua_new_guinea{ background-image: url('/images/country_select/Flag of Papua New Guinea.png'); }
+.flag.nigeria{ background-image: url('/images/country_select/Flag of Nigeria.png'); }
+.flag.morocco{ background-image: url('/images/country_select/Flag of Morocco.png'); }
+.flag.faroe_islands{ background-image: url('/images/country_select/Flag of Faroe Islands.png'); }
+.flag.quatar{ background-image: url('/images/country_select/Flag of Quatar.png'); }
+.flag.grenada{ background-image: url('/images/country_select/Flag of Grenada.png'); }
+.flag.liechtenstein{ background-image: url('/images/country_select/Flag of Liechtenstein.png'); }
+.flag.bouvet_island{ background-image: url('/images/country_select/Flag of Bouvet Island.png'); }
+.flag.dominican_republic{ background-image: url('/images/country_select/Flag of Dominican Republic.png'); }
+.flag.kiribati{ background-image: url('/images/country_select/Flag of Kiribati.png'); }
+.flag.serbia{ background-image: url('/images/country_select/Flag of Serbia.png'); }
+.flag.united_arab_emirates{ background-image: url('/images/country_select/Flag of United Arab Emirates.png'); }
+.flag.england{ background-image: url('/images/country_select/Flag of England.png'); }
+.flag.niue{ background-image: url('/images/country_select/Flag of Niue.png'); }
+.flag.christmas_islands{ background-image: url('/images/country_select/Flag of Christmas Islands.png'); }
+.flag.greece{ background-image: url('/images/country_select/Flag of Greece.png'); }
+.flag.cocos{ background-image: url('/images/country_select/Flag of Cocos (Keeling) Islands.png'); }
+.flag.bhutan{ background-image: url('/images/country_select/Flag of Bhutan.png'); }
+.flag.british_virgin_islands{ background-image: url('/images/country_select/Flag of British Virgin Islands.png'); }
