@@ -1,12 +1,9 @@
-class PagesController < ApplicationController
-    skip_before_filter :authenticate_user
+class PagesController < ActionController::Base
+  def index
+      render layout: 'landing'
+  end
 
+  def app
 
-    def index
-        render layout: 'landing'
-    end
-
-    def app
-
-    end
+  end
 end
