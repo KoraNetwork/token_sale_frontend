@@ -1,0 +1,37 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  div
+    h3 Register to Koraicofrontend
+    p Create account to see it in action.
+    form.m-t novalidate=true role="form" ng-submit="submit()"name="registrationForm"
+      .form-group
+        input.form-control placeholder="Name" required=true type="text" ng-model="user.login" name="login"
+        .error ng-show="registrationForm.login.$error.required && registrationForm.$submitted"
+          | {{ I18n.t('validations.cant_be_blank') }}
+
+      .form-group
+        input.form-control placeholder="Email" required=true ng-model="user.email" name="email" emailvalidate=true
+        .error ng-show="registrationForm.email.$error.required && registrationForm.$submitted"
+          | Can't be blank
+        .error ng-show="registrationForm.email.$error.emailValid && registrationForm.$submitted"
+          | Not valid email
+        .error ng-show="registrationForm.email.$error.emailAvailable && registrationForm.$submitted"
+          | Not available
+      .form-group ng-class=""
+        input.form-control placeholder="Password" required=true type="password" ng-model="user.password" name="password"
+        .error ng-show="registrationForm.password.$error.required && registrationForm.$submitted"
+          | Can't be blank
+      .form-group
+        .checkbox.i-checks
+          label
+            input type="checkbox" class='icheck-me' data-skin="square" data-color="blue"
+            | &nbsp;Agree the terms and policy
+      input.btn.btn-primary.block.full-width.m-b type="submit" value="Register"
+      p.text-muted.text-center
+        small Already have an account?
+      a.btn.btn-sm.btn-white.btn-block href="#login"  Login
+    p.m-t
+      small © GARAGE 2015
+  javascript:
+    $(document).ready(function () {
+      $('.i-checks').iCheck({checkboxClass: 'icheckbox_square-green', radioClass: 'iradio_square-green' });
+    })

@@ -1,0 +1,11 @@
+form novalidate=true ng-submit="submitLoginCredentials()" style="text-align:center"
+  h3
+    i.fa.fa-exclamation-triangle
+    | Login required
+    input.form-control type="text" style="margin: 1em auto; text-align:center; width: 100%;" ng-model="session.email" placeholder='Email' name='email'
+    input.form-control type="password" style="margin:1em auto; text-align:center; width: 100%;" ng-model="session.password" placeholder='Password' name='password'
+    hr
+    span style="color: red"
+      | {{ errors }}
+	button.btn.btn-success type="submit"
+	  | Submit

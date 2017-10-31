@@ -1,0 +1,19 @@
+.passwordBox.animated.fadeInDown
+  .row
+    .col-md-12
+      .ibox-content
+        h2.font-bold Forgot password
+        p
+          | Enter your email address and your password will be reset and emailed to you.
+        .row
+          .col-lg-12
+            form.m-t role="form" novalidate=true ng-submit="submit()"
+              .form-group
+                input.form-control placeholder=("Email address") required="" type="email" /
+              button.btn.btn-primary.block.full-width.m-b type="submit"  Send new password
+  hr
+  .row
+    .col-md-6
+      | Copyright GARAGE
+    .col-md-6.text-right
+      small © 2014-2015

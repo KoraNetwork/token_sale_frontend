@@ -1,0 +1,50 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5
+            | {{ I18n.t('profile.edit_profile') }}
+        .ibox-content
+          form.form-horizontal ng-submit="submit()" name="currentUserForm" novalidate=true
+            .form-group
+              label.col-lg-2.control-label Email:
+              .col-lg-10
+                p.form-control-static
+                  | {{ current_user.email }}
+            .hr-line-dashed
+
+            .form-group
+              label.col-sm-2.control-label
+                | {{ I18n.t('profile.labels.login') }}
+              .col-sm-10
+                input.form-control type="text" ng-model="user.login" required=true name="login"
+                .error ng-show="currentUserForm.login.$error.required && currentUserForm.$submitted"
+                  | {{ I18n.t('validations.cant_be_blank') }}
+
+            .hr-line-dashed
+
+            .form-group
+              label.col-sm-2.control-label
+                | {{ I18n.t('profile.labels.password') }}
+              .col-sm-10
+                input.form-control type="password" name="password" ng-model="current_user.password"
+                span.help-block.m-b-none
+                  | {{ I18n.t('profile.labels.leave_blank') }}
+            .hr-line-dashed
+            .form-group
+              label.col-sm-2.control-label
+                | {{ I18n.t('profile.labels.password_confirmation') }}
+              .col-sm-10
+                input.form-control name="password_confirmation" type="password" ng-model="current_user.password_confirmation"
+            .hr-line-dashed
+            .form-group
+              label.col-sm-2.control-label
+                | {{ I18n.t('profile.labels.current_password') }}
+              .col-sm-10
+                input.form-control type="password" ng-model="current_user.current_password"
+            .hr-line-dashed
+            .form-group
+              .col-sm-4.col-sm-offset-2
+                button.btn.btn-primary type="submit"
+                  | {{ I18n.t('actions.update') }}
