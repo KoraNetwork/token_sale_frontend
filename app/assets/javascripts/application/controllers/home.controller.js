@@ -9,6 +9,29 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
 
+            $timeout(function(){
+                if($scope.flash.error.length > 0){
+                    toaster.pop('error', "", $scope.flash.error);
+                }
+                if($scope.flash.message.length > 0){
+                    toaster.pop('success', "", $scope.flash.message);
+                }
+            }, 1000);
+
+            $scope.errors = function(data) {
+                if(data.errors){
+                    for(var i = 0; i < data.errors.length; ++i) {
+                        toaster.pop('error', "", data.errors[i]);
+                    }
+                }
+            };
+
+            $scope.message = function(data) {
+                if(data.message){
+                    toaster.pop('success', "", data.message);
+                }
+            };
+
             $scope.checkSession = function(){
                 session.check()
                         .success(function(data){
@@ -30,15 +53,6 @@
                     window.location = '/'
                 })
             };
-
-            $timeout(function(){
-                if($scope.flash.error.length > 0){
-                    toaster.pop('error', "", $scope.flash.error);
-                }
-                if($scope.flash.message.length > 0){
-                    toaster.pop('success', "", $scope.flash.message);
-                }
-            }, 1000);
 
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;

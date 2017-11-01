@@ -14,7 +14,6 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
                 return this;
             },
             request: function (method, url, data) {
-                url = I18n.locale + '/' + url
                 var self = this;
 
                 var success = function(data, status, headers, config){

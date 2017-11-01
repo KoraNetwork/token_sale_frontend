@@ -42,6 +42,11 @@
                     url: '/login',
                     templateUrl: 'application/templates/sessions/login.html',
                     controller: 'SessionsController'
+                })
+                .state('forgot_password',{
+                    url: '/forgot_password',
+                    templateUrl: 'application/templates/passwords/new.html',
+                    controller: 'PasswordsController'
                 });
     }]);
 

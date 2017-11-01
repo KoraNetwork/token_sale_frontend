@@ -32,9 +32,10 @@
                                 $scope.$parent.checkSession();
                                 $state.go('home');
                             })
-                            .error(function(data){
+                            .error(function(data, status){
                                 $scope.validation_errors = data.errors;
                                 $scope.processing = false;
+                                $scope.$parent.errors({ errors: [status.toString()] });
                             })
                     };
                 }
