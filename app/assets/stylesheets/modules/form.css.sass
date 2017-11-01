@@ -1,0 +1,215 @@
+@import "variables"
+
+.form-control
+  border-radius: 8px
+  padding: 0 15px
+  color: darkgrey
+  &:focus
+    border-color: lightgray !important
+    color: black
+.form-control.title
+  float: left
+  margin-left: 2%
+  margin-top: 15px
+  width: 30%
+  background-color: $light
+  border-color: $light !important
+  border-radius: 8px 0px 0px 8px
+.form-control.title::-webkit-input-placeholder
+  color: $dark !important
+  font-weight: 700
+.form-control.title::-moz-placeholder
+  color: $dark !important
+  font-weight: 700
+.form-control.text
+  margin-top: 15px
+  width: 65%
+  border-radius: 0px 8px 8px 0px
+
+.p-tb-10px
+  padding: 20px 15px !important
+.placeholder
+  background: #eee
+  &::-webkit-input-placeholder
+    color: darkgrey
+    font-style: italic
+  &::-moz-placeholder
+    color: darkgrey
+    font-style: italic
+  &:-moz-placeholder
+    color: darkgrey
+    font-style: italic
+  &:-ms-input-placeholder
+    color: darkgrey
+    font-style: italic
+
+textarea.form-control
+  padding: 10px 15px
+  min-height: 100px
+
+.onoffswitch
+  height: 25px
+  .onoffswitch-label
+    border: none
+    border-radius: 25px
+    height: 25px
+    .onoffswitch-switch
+      box-sizing: border-box
+      border: 5px solid $light-gray
+      background-color: white
+      border-radius: 100%
+      width: 25px
+    .onoffswitch-inner
+      &:before, &:after
+        padding: 0 9px
+        height: 25px
+        font-size: 12px
+        line-height: 22px
+        font-weight: 600
+        font-family: "FontAwesome"
+      &:before
+        background-color: $dark-blue
+        border: 1px solid $dark-blue
+        content: "\f00c"
+      &:after
+        background-color: $light-gray
+        border: 1px solid $light-gray
+        color: darkgrey
+        font-size: 14px
+        font-weight: 100 !important
+        content: "\f00d"
+  &.active
+    .onoffswitch-label, .onoffswitch-switch
+      border-color: $dark-blue
+
+h1, h2
+  color: $dark
+  font-weight: 500
+
+.description
+  font-size: 16px
+  margin: 10px
+  
+.black
+  color: black !important
+
+.pointer
+  cursor: pointer
+
+.btn-circle
+  border-radius: 100%
+  padding: 15px
+  z-index: 777
+  display: inline
+  cursor: pointer
+  &:hover
+    background-color: $light
+    .fa
+      color: $dark-blue
+  .fa
+    font-size: 20px
+    color: $dark
+
+.border-gray
+  border: 1px solid lightgray
+
+.circle
+  border-radius: 100%
+
+.full-width
+  width: 100%
+
+.inline-block
+  display: inline-block
+
+.middle
+  vertical-align: middle
+
+.top
+  vertical-align: top
+
+.bottom
+  vertical-align: bottom
+
+.m-lr-5
+  margin-right: 5px
+  margin-left: 5px
+
+.m-b-0
+  margin-bottom: 0 !important
+
+.p-lr-20px
+  padding-left: 20px
+  padding-right: 20px
+
+.p-tb-10-5px
+  padding-top: 15px
+  padding-bottom: 5px
+
+.btn-primary, .btn-confirm
+  color: white !important
+  background-color: $dark-blue !important
+  border-color: $dark-blue !important
+  &:hover, &:active, &:focus
+    background-color: $dark-blue !important
+    border-color: $dark-blue !important
+  i.fa.fa-check
+    margin-left: -20px
+.btn-primary-small
+  color: white !important
+  background-color: $dark-blue !important
+  border-color: $dark-blue !important
+
+.btn-cancel
+  border: 1px solid $light-blue
+  color: $light-blue
+  &:hover
+    background-color: $light
+    color: $dark-blue
+    border-color: $dark-blue
+
+.uppercase
+  text-transform: uppercase
+
+.btn
+  border-radius: 25px !important
+  padding: 5px 20px !important
+  font-size: 13px
+  font-weight: 100
+  letter-spacing: 1px !important
+  min-width: 120px
+  margin: 5px
+  .fa
+    margin-right: 10px
+
+.form-group
+  label.control-label
+    color: darkgrey
+    font-weight: 500 !important
+    margin-left: 10px
+  label.control-label-dark
+    color: black
+
+.checkbox
+  display: inline-block
+  input[type="checkbox"], input[type="radio"]
+    display: none
+  input[type="checkbox"] + label span, input[type="radio"] + label span
+    display: inline-block
+    margin: -1px 4px 0 0
+    vertical-align: middle
+    cursor: pointer
+    width: 15px
+    height: 15px
+    border-radius: 4px
+    border: solid 1px darkgrey
+  input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span
+    border-radius: 4px
+    border: solid 1px $dark-blue
+    position: relative
+    &:before
+      font-family: FontAwesome
+      content: "\f00c"
+      color: $dark-blue
+      font-size: 10px
+      margin-left: 1px

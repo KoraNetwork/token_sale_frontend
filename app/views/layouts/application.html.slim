@@ -1,35 +1,17 @@
 html(lang="en")
-    head
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        = csrf_meta_tags
-    body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
-        /.pace.pace-inactive
-        /    .pace-progress.progress.ng-isolate-scope data-progress="99" data-progress-text="100%" ng-transclude="" style="transform: translate3d(100%), 0px, 0px);"
-        /        .pace-progress-inner.ng-scope
-        /    .pace-activity
-        /! Main view
-        /! uiView:
-        div
-            /! Wrapper
-            #wrapper.ng-scope
-                /! Navigation
-                /! ngInclude: 'views/common/navigation.html'
-                div ng-include="'application/templates/common/navigation.html'"
-                /! Page wraper
-                /! ng-class with current state name give you the ability to extended customization your view
-                #page-wrapper.gray-bg class="dashboards.dashboard_1" style=("min-height: 184px;")
-                    /! Page wrapper
-                    /! ngInclude: 'views/common/topnavbar.html'
-                    div ng-include="'application/templates/common/topnavbar.html'"
-                    /! Main view
-                    /! uiView:
-                    div ui-view=""
-                    /! Footer
-                    /! ngInclude: 'views/common/footer.html'
-                    div ng-include="'application/templates/common/footer.html'"
-                /! End page wrapper
-                /! Right Sidebar
-                /! ngInclude: 'views/common/right_sidebar.html'
-                div ng-include="'application/templates/common/right_sidebar.html'"
-        div toaster-container='' toaster-options="{'close-button': true}"
+  head
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
+    .app ng-if="current_user"
+      #wrapper.ng-scope
+        div ng-include="'application/templates/common/navigation.html'"
+        #page-wrapper.gray-bg class="dashboards dashboard_1" style=("min-height: 184px;")
+          div ng-include="'application/templates/common/topnavbar.html'"
+          div ui-view=""
+          div ng-include="'application/templates/common/footer.html'"
+    .landing ng-if="!current_user"
+      div ui-view=true
+    div toaster-container='' toaster-options="{'close-button': true}"

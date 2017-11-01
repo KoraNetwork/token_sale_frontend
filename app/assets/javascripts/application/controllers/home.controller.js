@@ -16,6 +16,7 @@
                         })
                         .error(function(){
                             $scope.current_user = false;
+                            $state.go('login');
                         });
             };
             if($state.current.name != 'login'){

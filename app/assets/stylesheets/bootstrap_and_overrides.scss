@@ -3,3 +3,45 @@
 
 @import 'icheck/square/blue';
 @import 'icheck/square/green';
+
+@import "modules/variables";
+
+.count-picker > .btn-inc, .count-picker > .btn-dec{
+  font-size: 20px;
+  color: $light-gray;
+  font-weight: 500;
+}
+
+.count-picker > .btn-inc:hover, .count-picker > .btn-dec:hover{
+  color: $dark-blue;
+}
+
+.count-picker > .count-value{
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #555555;
+  width: 25px;
+  margin: 0 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.count-picker{
+  border-radius: 10px;
+  border: solid 1px #e6e6e6;
+  padding: 5px 20px;
+  display: inline-block;
+}
+
+.count-picker > *::selection{
+  background: transparent;
+}
+
+.trial-picker .count-picker{
+  border-left: 0;
+  border-radius: 0px 10px 10px 0px !important;
+}

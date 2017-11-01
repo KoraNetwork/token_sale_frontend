@@ -1,11 +1,26 @@
-form novalidate=true ng-submit="submitLoginCredentials()" style="text-align:center"
-  h3
-    i.fa.fa-exclamation-triangle
-    | Login required
-    input.form-control type="text" style="margin: 1em auto; text-align:center; width: 100%;" ng-model="session.email" placeholder='Email' name='email'
-    input.form-control type="password" style="margin:1em auto; text-align:center; width: 100%;" ng-model="session.password" placeholder='Password' name='password'
-    hr
-    span style="color: red"
-      | {{ errors }}
-	button.btn.btn-success type="submit"
-	  | Submit
+.form-page
+  .login-alert.animated.fadeInDown
+    .logo-container
+      h2.site-title
+        | Kora
+    .form-block
+      form role="form" novalidate=true ng-submit="login()"
+        .form-group
+          label.control-label.black
+            | Email
+          input.form-control required="" type="email" ng-model="session.email"
+        .form-group
+          label.control-label.black
+            | Password
+          input.form-control required="" type="password" ng-model="session.password"
+          div ng-show="validation_errors"
+            .error ng-repeat="error in validation_errors"
+              | {{ error }}
+        .form-group.text-center
+          button.btn.btn-primary.ladda-button.uppercase type="submit" data-style="expand-left" ladda="processing"
+            i.fa.fa-check
+            | Login
+          br
+          br
+          a href="#forgot_password"
+            | Forgotten Password?

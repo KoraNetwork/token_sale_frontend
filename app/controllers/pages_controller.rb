@@ -1,6 +1,6 @@
 class PagesController < ActionController::Base
   def index
-      render layout: 'landing'
+      render layout: 'application'
   end
 
   def app

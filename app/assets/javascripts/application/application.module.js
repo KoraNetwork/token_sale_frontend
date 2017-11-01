@@ -37,8 +37,12 @@
                     url: '/profile',
                     templateUrl: 'application/templates/users/edit.html',
                     controller: 'UsersController'
+                })
+                .state('login',{
+                    url: '/login',
+                    templateUrl: 'application/templates/sessions/login.html',
+                    controller: 'SessionsController'
                 });
-            // generated routes:
     }]);
 
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){

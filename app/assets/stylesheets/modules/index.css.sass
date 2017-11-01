@@ -1,0 +1,196 @@
+@import "variables"
+
+.filters-container.collapse
+  .row
+    padding-top: 10px
+
+.filter-dropdown
+  display: inline-block
+  vertical-align: middle
+  *::selection
+    background: transparent
+  a.dropdown-toggle
+    font-size: 13px
+    line-height: 19px
+    color: $dark-blue
+    padding: 5px 10px
+    border-radius: 4px
+    font-weight: 100
+    letter-spacing: 1px
+    margin: 5px
+    border: 1px solid $light
+    &:hover
+      background-color: $dark-blue
+      color: white
+    .caret
+      display: inline-block
+      margin-left: 5px
+  &.open
+    a.dropdown-toggle
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25)
+      background-color: $dark-blue
+      color: white
+      border-color: $dark-blue
+  .dropdown-menu
+    border-radius: 4px
+    background-color: white
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25)
+    margin-top: 10px
+    width: 60px !important
+    min-width: 60px !important
+    padding: 0 !important
+    li
+      padding: 0 !important
+      border-bottom: dotted 1px $light
+    a
+      padding: 0 !important
+      font-size: 16px
+      color: gray
+      text-align: center
+      &:hover, &:active
+        background-color: $dark-blue
+        color: white
+
+.pagination
+  margin: 0
+  a
+    border: none !important
+    border-radius: 15px
+    color: $dark-blue !important
+    margin: auto 3px
+  a:hover
+    background-color: $light !important
+    color: $dark-blue !important
+  .page.active
+    a
+      background-color: $dark-blue !important
+      color: white !important
+  .ibox .open > .dropdown-menu
+    top: -120
+
+
+.errors
+  text-align: center
+  color: red
+  font-size: 13px
+
+.color-red
+  color: red
+
+td.index-image
+  width: 50px
+  text-align: center
+  img
+    width: 40px
+    height: 40px
+    background-size: cover
+    background-position: center
+td.reports
+  width: 40px !important
+  min-width: 40px !important
+
+table.table-responsive
+  margin-top: 20px
+  border-collapse: collapse
+  border: 1px solid $gray
+  box-shadow: 0 0 15px rgba(0,0,0,0.2)
+  .mw-50px
+    max-width: 50px
+    min-width: 50px
+  .mw-80px
+    max-width: 80px
+    min-width: 80px
+  .mw-100px
+    max-width: 80px
+    min-width: 80px
+  .mw-100px
+    max-width: 100px
+    min-width: 100px
+  .mw-150px
+    max-width: 150px
+    min-width: 150px
+  .mw-200px
+    max-width: 200px
+    min-width: 200px
+  .mw-300px
+    max-width: 300px
+    min-width: 300px
+  thead
+    z-index: 1000
+    tr
+      background-color: $light
+      th
+        position: relative
+        padding: 10px
+        padding-right: 20px
+        font-size: 14px
+        font-weight: 500
+        color: $dark-blue
+        min-width: 0
+        .sort
+          position: absolute
+          top: 25%
+          padding-left: 10px
+          display: inline
+          i.fa
+            cursor: pointer
+            color: $light-blue
+        .mw-30px
+          max-width: 30px!important
+          min-width: 30px!important
+
+  tbody
+    tr:hover
+      *
+        color: $dark-blue
+    tr.padding-10
+      td
+        padding: 15px
+    td
+      max-width: 100px
+      min-width: 100px
+      white-space: pre-wrap
+      word-wrap: break-word
+      vertical-align: middle !important
+      font-size: 14px
+    .td-photo
+      text-align: center
+      max-width: 50px
+      img
+        width: 50px
+        height: 50px
+        border-radius: 100%
+        display: inline-block
+    .col-actions
+      max-width: 50px
+
+.active-inactive
+  .onoffswitch
+    width: 100px !important
+    .onoffswitch-inner
+      &:before
+        width: 100px
+        content: "Active" !important
+        color: white
+        font-size: 15px
+        padding-left: 25px
+      &:after
+        width: 100px
+        content: "Inactive" !important
+        padding-right: 25px
+    .onoffswitch-switch
+      right: 80px
+    .onoffswitch-checkbox:checked + .onoffswitch-label
+      .onoffswitch-switch
+        right: 0px
+
+.btn-filter-category
+  min-width: 80px
+  height: 30px
+  border-radius: 100%
+  background-color: $dark-blue
+  color: white
+  font-size: 10px
+  font-weight: 700
+.reports-icon
+  color: #7902ac !important

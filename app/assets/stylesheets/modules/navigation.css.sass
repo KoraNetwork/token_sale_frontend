@@ -1,0 +1,72 @@
+@import "variables"
+
+.slimScrollDiv
+  border-right: 1px solid #ededed
+
+ul#side-menu.nav.metismenu
+  li
+    border: 0
+    color: white
+    border-bottom: 1px solid $light-gray
+    .logo
+      height: 120px
+      padding-top: 20px
+      text-align: center
+      &:focus, &:hover
+        background-color: white
+      img
+        max-width: 60px
+        margin: auto
+        display: block
+
+    &.active
+      border-color: $dark-blue
+      background-color: white
+      border-bottom: 2px solid $dark-blue
+      *, i.fa::before
+        color: $dark-blue
+      a:hover
+        background-color: white
+    a
+      padding: 20px 15px
+      color: $light-gray
+      text-transform: uppercase
+      i.fa::before
+
+      &:hover
+        background-color: white
+        *
+          color: $dark-blue
+      &:focus
+        background-color: white
+        *, i.fa::before
+          color: $dark-blue
+      i.fa
+        font-size: 20px
+      *
+        color: darkgrey
+
+.navbar-fixed-top, .navbar-static-top
+  background: linear-gradient(to bottom, $light-blue, $dark-blue 50%)
+  background: -webkit-linear-gradient(to bottom, r$light-blue, $dark-blue  50%)
+  background: -o-linear-gradient(to bottom, $light-blue, $dark-blue  50%)
+  background: -moz-linear-gradient(to bottom, $light-blue, $dark-blue  50%)
+
+nav.navbar.navbar-fixed-top
+  ul.nav.navbar-top-links.navbar-right
+    float: right !important
+    li, li *
+      font-size: 14px
+      color: white
+      font-weight: 500
+    form.navbar-form-custom
+      margin: auto 25px
+
+.nav-icon
+  width: 25px
+  height: 25px
+  background-position: center
+  background-size: contain
+  background-repeat: no-repeat
+  margin: auto
+  margin-bottom: 5px

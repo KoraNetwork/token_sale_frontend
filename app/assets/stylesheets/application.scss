@@ -17,8 +17,11 @@
 //= require toastr
 //= require ladda
 //= require sweetalert/dist/sweetalert
-//= require angular-ui-bootstrap/dist/ui-bootstrap-csp
+//= require angular-ui-bootstrap/dist/ui-bootstrap-csp.css
 //= require_tree .
+//= require_tree ./modules
+
+@import "modules/variables";
 
 form{
   margin-bottom: 0;
@@ -26,6 +29,16 @@ form{
 
 a{
   cursor: pointer;
+  outline: none;
+  color: $light-blue;
+}
+
+a:hover{
+  color: $light-blue;
+}
+
+.btn{
+  outline: none !important;
 }
 
 .error{

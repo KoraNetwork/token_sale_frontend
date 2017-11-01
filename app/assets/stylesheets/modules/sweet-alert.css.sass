@@ -1,0 +1,81 @@
+@import "variables"
+
+.sweet-alert
+  font-style: normal
+  font-stretch: normal
+  font-weight: normal
+  color: darkgrey
+  text-align: center
+  padding: 30px
+  //width: 500px
+  margin-left: 0
+  left: calc(50vw - 200px)
+  word-wrap: break-word
+  @media (max-width: 400px)
+    width: 100vw
+    left: 0
+    right: 0
+    margin: 0
+    padding: 30px 15px
+  .sa-icon.sa-custom
+    background-image:  url(/images/logo.png)
+    background-position: center
+    background-size: 70px
+    background-repeat: no-repeat
+    width: 150px
+    height: 150px
+    display: block !important
+    margin: auto
+  h2
+    font-size: 28px
+    font-weight: 500
+    line-height: 1.29
+    letter-spacing: 1.8px
+    margin-top: 10px
+  p
+    font-size: 16px
+    line-height: 1.5
+    letter-spacing: 1.5px
+
+  .sa-button-container
+    margin-top: 30px
+    .sa-confirm-button-container
+      float: right
+      .confirm
+        background-color: $dark-blue !important
+        color: white
+        border: 1px solid $dark-blue
+        &::before
+          content: "\f00c"
+    .cancel, .confirm
+      border-radius: 25px
+      margin-top: 0
+      padding: 5px 20px
+      min-width: 120px
+      font-size: 13px
+      &::before
+        font-family: FontAwesome
+        margin-right: 10px
+        font-size: 14px
+    .cancel
+      &::before
+        content: "\f00d"
+        font-size: 16px
+      border: 1px solid $light-blue
+      color: $light-blue
+      background-color: white
+      float: left
+      &:hover
+        border: 1px solid $dark-blue
+        color: $dark-blue
+        background-color: $light
+
+.sweet-alert.confirm-only
+  .sa-button-container
+    margin-top: 20px
+    .sa-confirm-button-container
+      float: none !important
+      .confirm
+        min-width: 120px
+  h2
+    margin-bottom: 20px

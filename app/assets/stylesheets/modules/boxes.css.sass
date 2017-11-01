@@ -1,0 +1,112 @@
+@import "variables"
+
+.ngdialog-theme-default
+
+  .ngdialog-content
+    width: 450px !important
+    padding: 0 !important
+    background-color: white !important
+    border-radius: 10px
+    .header
+      padding-top: 20px
+      border-radius: 7px 7px 0 0
+      .title
+        font-size: 20px
+        padding: 12px
+        color: $dark
+    .ng-dialog-page
+      border-radius: 0 0 7px 7px
+    .ngdialog-close::before
+      color: $light-gray
+    .ngdialog-close:hover::before
+      color: $dark-blue
+  .ngdialog-overlay
+    pointer-events: none
+
+.ngdialog-theme-default.ng-dialog-category
+  .ngdialog-content
+    width: 700px !important
+.ngdialog-theme-default.ng-dialog-reports
+  .ngdialog-content
+    width: 320px !important
+
+.login-alert
+  margin: 0 auto
+  margin-top: 70px
+  background-color: transparent
+  position: relative
+  max-width: 400px
+  width: 400px
+  border-radius: 10px
+  .logo-container
+    padding-top: 40px
+    text-align: center
+    position: relative
+    background-color: transparent
+    .circle-logo
+      width: 75px
+      position: absolute
+      top: -40px
+      left: 150px
+    .site-title
+      color: $dark-blue
+      font-size: 35px
+  .form-block
+    max-width: 400px
+    width: 400px
+    background-color: white
+    padding: 20px
+    border-radius: 10px
+
+body .landing
+  min-width: 400px
+  width: 100%
+  height: 100%
+  overflow: scroll
+  background-color: white
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  background-image: url(/images/word_map.png)
+
+body .app
+  background-color: white
+  min-width: 800px
+  overflow: scroll
+  .nav.metismenu#side-menu
+    background-color: white
+  .gray-bg.dashboards.dashboard_1
+    background-color: #efefef
+
+.form-page
+  padding-top: calc(45vh - 250px)
+
+.col
+  display: inline-block
+  margin: 5px
+
+.col-half
+  width: calc(50% - 10px) !important
+
+.col-third
+  width: calc(33% - 10px) !important
+
+.col-quarter
+  width: calc(25% - 10px) !important
+
+.col-650px
+  width: 650px
+
+.col-150px
+  width: 150px
+
+.col-calc-360px
+  width: calc(100% - 360px)
+
+.col-calc-650px
+  @media (max-width: 1200px)
+    display: block
+    width: 650px
+  @media (min-width: 1200px)
+    width: calc(100% - 680px)
+    text-align: right

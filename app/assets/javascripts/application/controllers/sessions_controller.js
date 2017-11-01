@@ -22,7 +22,7 @@
 
                     $scope.session = {};
 
-                    $scope.submitLoginCredentials = function(){
+                    $scope.login = function(){
                         $scope.submitted = true;
 
                         $scope.processing = true;
