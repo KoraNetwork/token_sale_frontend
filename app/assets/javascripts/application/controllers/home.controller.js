@@ -33,15 +33,16 @@
             };
 
             $scope.checkSession = function(){
-                session.check()
-                        .success(function(data){
-                            $scope.current_user = data.current_user;
+                session.profile()
+                        .success(function(data, status){
+
                         })
-                        .error(function(){
+                        .error(function(data){
                             $scope.current_user = false;
                             $state.go('login');
                         });
             };
+
             if($state.current.name != 'login'){
                 $scope.checkSession();
             }

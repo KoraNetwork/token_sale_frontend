@@ -27,15 +27,15 @@
 
                         $scope.processing = true;
                         sessions.login($scope.session)
-                            .success(function(){
+                            .success(function(data){
                                 $scope.processing = false;
                                 $scope.$parent.checkSession();
+                                $scope.$parent.errors({ errors: [data.message] });
                                 $state.go('home');
                             })
                             .error(function(data, status){
-                                $scope.validation_errors = data.errors;
                                 $scope.processing = false;
-                                $scope.$parent.errors({ errors: [status.toString()] });
+                                $scope.$parent.errors({ errors: [data.message] });
                             })
                     };
                 }

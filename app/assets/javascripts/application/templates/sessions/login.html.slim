@@ -7,15 +7,16 @@
       form role="form" novalidate=true ng-submit="login()"
         .form-group
           label.control-label.black
-            | Email
-          input.form-control required="" type="email" ng-model="session.email"
+            | Username
+          input.form-control required="" type="userName" ng-model="session.userName"
         .form-group
           label.control-label.black
             | Password
           input.form-control required="" type="password" ng-model="session.password"
-          div ng-show="validation_errors"
-            .error ng-repeat="error in validation_errors"
-              | {{ error }}
+        .form-group
+          label.control-label.black
+            | Google Authenticator Code
+          input.form-control required="" type="token" ng-model="session.token"
         .form-group.text-center
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             i.fa.fa-check

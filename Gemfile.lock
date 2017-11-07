@@ -138,6 +138,8 @@ GEM
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
+    rack-proxy (0.6.2)
+      rack
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
@@ -157,6 +159,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-reverse-proxy (0.9.1)
+      addressable
+      rack
+      rack-proxy
+      rails
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -251,6 +258,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rails-reverse-proxy
   sass-rails (~> 5.0)
   selectize-rails
   selenium-webdriver
@@ -266,4 +274,4 @@ DEPENDENCIES
   wow-rails
 
 BUNDLED WITH
-   1.14.6
+   1.15.4

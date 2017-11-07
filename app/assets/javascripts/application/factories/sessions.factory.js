@@ -1,18 +1,17 @@
 (function () {
     'use strict';
-    angular.module('KoraICOFrontendApp').factory('SessionsFactory', ['AuthHttp', function($http){
+    angular.module('KoraICOFrontendApp').factory('SessionsFactory', ['$http', function($http){
         return {
-            check: function(){
-                return $http.get('/sessions/check');
+            profile: function(){
+                return $http.get('/api/profile');
             },
+
             login: function(session){
-                return $http.post('/sessions', {
-                    email: session.email,
-                    password: session.password
-                })
+                return $http.post('/api/auth/login', session || {})
             },
+
             logout: function(){
-                return $http.delete('/sessions')
+                return $http.delete('/api/auth/logout')
             }
         }
     }])

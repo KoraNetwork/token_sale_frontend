@@ -24,6 +24,7 @@
         function ($urlRouterProvider, $stateProvider, $httpProvider) {
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
+            $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
             $urlRouterProvider.otherwise('home');
 
@@ -53,6 +54,7 @@
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
+        $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     }]);
 
 }());
