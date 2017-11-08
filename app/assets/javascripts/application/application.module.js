@@ -48,6 +48,11 @@
                     url: '/forgot_password',
                     templateUrl: 'application/templates/passwords/new.html',
                     controller: 'PasswordsController'
+                })
+                .state('register',{
+                    url: '/register',
+                    templateUrl: 'application/templates/users/new.html',
+                    controller: 'UsersController'
                 });
     }]);
 

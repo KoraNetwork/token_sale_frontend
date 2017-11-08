@@ -1,0 +1,87 @@
+div style="height: calc(45vh - {{ (slideHeight('div.slide.slide-' + slide) + 100) / 2 }}px)"
+.text-center.register-title
+  | Registration
+#register-carousel uib-carousel=true interval="0" active="slide" no-wrap="false"
+  .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
+    .text-center.step
+      | Step 1: User Information
+    form role="form" novalidate=true ng-submit="register()"
+      table.step-1 style="margin: auto;"
+        tr
+          td.form-group
+            label.control-label.black
+              | First Name
+            input.form-control required="" type="text" ng-model="user.firstName"
+          td.form-group
+            label.control-label.black
+              | Last Name
+            input.form-control required="" type="text" ng-model="user.lastName"
+        tr
+          td.form-group
+            label.control-label.black
+              | Username
+            input.form-control required="" type="text" ng-model="user.userName"
+          td.form-group
+            label.control-label.black
+              | Email
+            input.form-control required="" type="text" ng-model="user.email"
+        tr
+          td.form-group
+            label.control-label.black
+              | Password
+            input.form-control required="" type="password" ng-model="user.password"
+          td.form-group
+            label.control-label.black
+              | Password Confirmation
+            input.form-control required="" type="password" ng-model="user.passwordConfirmation"
+        tr
+          td.form-group.text-center colspan="2" style="padding-top: 30px"
+            button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
+              | Continue
+
+  .slide.slide-1 uib-slide=true index="1"
+    .text-center.step
+      | Step 2: Agreement
+    .step-2.text-left
+      | Test Data
+    .checkbox style="padding-top: 12px"
+      input type="checkbox" name="agree" id="agree" ng-model="user.agree"
+      label.black for="agree" style="font-size: 14px"
+        span
+        | I Accept This Agreement
+    div style="padding-top: 30px"
+      a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+        | Back
+      a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="user.agree? next() : false" style="margin-left: 30px"
+        | Continue
+  .slide.slide-2 uib-slide=true index="2"
+    div.text-center.step
+      | Step 3: Ethereum Wallet Address
+    .step-3 style="width: 600px; margin: auto"
+      .text-center
+        | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
+      .form-group.text-left style="margin-top: 30px"
+        label.control-label.black
+          | Ethereum Address
+        input.form-control required="" type="text" ng-model="user.ethereumAddress"
+      div style="padding-top: 30px"
+        a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+          | Back
+        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="ethereum()" style="margin-left: 30px"
+          | Continue
+  div.slide.slide-3 uib-slide=true index="3"
+    div.text-center.step
+      | Step 4: 2-Factor Confirmation
+    .step-4 style="width: 400px; margin: auto"
+      .text-center
+        | Please scan QR code into Google Authenticator App
+      img style="margin-top: 20px" ng-src="{{ user.qr.qrcode }}"
+      .form-group.text-left style="margin-top: 30px"
+        label.control-label.black
+          | Your Verification Pin
+        input.form-control required="" type="text" ng-model="user.token"
+      div style="padding-top: 30px"
+        a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+          | Back
+        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirmQR()" style="margin-left: 30px"
+          | Complete

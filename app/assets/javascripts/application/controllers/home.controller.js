@@ -39,7 +39,9 @@
                         })
                         .error(function(data){
                             $scope.current_user = false;
-                            $state.go('login');
+                            if(['login', 'register', 'forgot_password'].indexOf($state.current.name) < 0){
+                                $state.go('login');
+                            }
                         });
             };
 

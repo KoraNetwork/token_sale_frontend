@@ -8,7 +8,7 @@
         .form-group
           label.control-label.black
             | Username
-          input.form-control required="" type="userName" ng-model="session.userName"
+          input.form-control required="" type="text" ng-model="session.userName"
         .form-group
           label.control-label.black
             | Password
@@ -16,7 +16,7 @@
         .form-group
           label.control-label.black
             | Google Authenticator Code
-          input.form-control required="" type="token" ng-model="session.token"
+          input.form-control required="" type="text" ng-model="session.token"
         .form-group.text-center
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             i.fa.fa-check
@@ -25,3 +25,5 @@
           br
           a href="#forgot_password"
             | Forgotten Password?
+          a href="#register" style="margin-left: 20px"
+            | Registration

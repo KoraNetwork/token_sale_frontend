@@ -30,8 +30,7 @@
                             .success(function(data){
                                 $scope.processing = false;
                                 $scope.$parent.checkSession();
-                                $scope.$parent.errors({ errors: [data.message] });
-                                $state.go('home');
+                                $scope.$parent.message({ message: data.message });
                             })
                             .error(function(data, status){
                                 $scope.processing = false;
