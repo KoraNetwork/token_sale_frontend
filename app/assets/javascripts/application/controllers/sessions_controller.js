@@ -16,6 +16,7 @@
                 };
 
                 $scope.$parent.checkSession();
+
                 if($scope.$parent.user){
                     $state.go('home');
                 }

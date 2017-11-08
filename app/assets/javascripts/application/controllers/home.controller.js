@@ -35,7 +35,8 @@
             $scope.checkSession = function(){
                 session.profile()
                         .success(function(data, status){
-
+                            $scope.current_user = data;
+                            $state.go('home');
                         })
                         .error(function(data){
                             $scope.current_user = false;

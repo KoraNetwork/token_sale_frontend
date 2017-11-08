@@ -37,6 +37,9 @@
                                 });
                             });
                         }
+                        if(data.message && !data.invalidAttributes){
+                            $scope.$parent.errors({ errors: [data.message] });
+                        }
                     })
             };
 
@@ -84,6 +87,7 @@
                 users.confirmQR($scope.user.token)
                     .success(function(data){
                         $scope.$parent.message({ message: data.message });
+                        $state.go('home');
                     })
                     .error(function(data){
                         $scope.$parent.errors({ errors: [data.message] });

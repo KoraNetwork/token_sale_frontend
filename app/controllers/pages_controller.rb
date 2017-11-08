@@ -13,8 +13,8 @@ class PagesController < ActionController::Base
   def proxy
     reverse_proxy "http://localhost:1337" do |config|
 
-      config.on_success do |code, response|
-        render json: response['body_stream'], status: code and return
+      config.on_complete do |code, response|
+        render json: response.body, status: code
       end
 
       # There's also other callbacks:
