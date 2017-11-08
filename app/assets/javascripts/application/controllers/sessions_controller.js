@@ -9,6 +9,8 @@
                 $scope._ = _;
                 $scope.$state = $state;
 
+                $('body').css({ minWidth: "400px" });
+
                 $scope.getHtml = function(html){
                     return $sce.trustAsHtml(html);
                 };

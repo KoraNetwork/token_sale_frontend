@@ -10,6 +10,8 @@
             $scope._ = _;
             $scope.$state = $state;
 
+            $('body').css({ minWidth: "800px" });
+
             $scope.user = {};
             $scope.slide = 0;
 
@@ -26,11 +28,31 @@
                     })
                     .error(function(data){
                         $scope.processing = false;
-                        $scope.$parent.errors({ errors: [data.message] });
+                        if(data.invalidAttributes){
+                            _.each(_.keys(data.invalidAttributes), function(key) {
+                                $scope.$parent.errors({
+                                    errors: _.map(data.invalidAttributes[key], function(i) {
+                                        return i.message;
+                                    })
+                                });
+                            });
+                        }
                     })
             };
 
+            $scope.agree = function() {
+                if(!$scope.user.agree) {
+                    $scope.$parent.errors({ errors: ["Please Agree"] });
+                } else {
+                    $scope.next();
+                }
+            };
+
             $scope.ethereum = function(){
+                if(!$scope.user.ethereumAddress) {
+                    $scope.$parent.errors({ errors: ["Ethereum Address must be present!"] });
+                    return;
+                }
                 $scope.processing = true;
                 users.ethereum($scope.user.ethereumAddress)
                     .success(function(data){

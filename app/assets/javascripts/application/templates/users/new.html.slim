@@ -1,4 +1,6 @@
 div style="height: calc(45vh - {{ (slideHeight('div.slide.slide-' + slide) + 100) / 2 }}px)"
+a.kora-logo ng-click="$state.go('home')"
+  | Kora
 .text-center.register-title
   | Registration
 #register-carousel uib-carousel=true interval="0" active="slide" no-wrap="false"
@@ -52,7 +54,7 @@ div style="height: calc(45vh - {{ (slideHeight('div.slide.slide-' + slide) + 100
     div style="padding-top: 30px"
       a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
         | Back
-      a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="user.agree? next() : false" style="margin-left: 30px"
+      a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
         | Continue
   .slide.slide-2 uib-slide=true index="2"
     div.text-center.step

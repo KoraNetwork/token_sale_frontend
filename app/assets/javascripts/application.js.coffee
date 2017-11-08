@@ -37,7 +37,7 @@
 #= require angular-ladda
 #= require angular-auth-http.service
 #= require sweetalert/dist/sweetalert.min
-#= require angular-sweetAlert/SweetAlert
+#= require angular-sweetalert/SweetAlert
 # load angular modules
 #= require ./application/application.module.js
 #= require_tree ./application/factories
