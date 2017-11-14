@@ -44,7 +44,7 @@
             };
 
             $scope.agree = function() {
-                if(!$scope.user.agree) {
+                if(!$scope.user.agree1 || !$scope.user.agree2) {
                     $scope.$parent.errors({ errors: ["Please Agree"] });
                 } else {
                     $scope.next();

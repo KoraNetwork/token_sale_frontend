@@ -22,22 +22,64 @@ a.kora-logo.kora-logo-top ng-click="$state.go('home')"
       .form-group.text-center colspan="2" style="padding-top: 10px"
         button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
           | Continue
-
+      .tmp
   .slide.slide-1 uib-slide=true index="1"
     .text-center.step
       | Step 2: Agreement
     .step-2.text-left
-      | Test Data
-    .checkbox style="padding-top: 12px"
-      input type="checkbox" name="agree" id="agree" ng-model="user.agree"
-      label for="agree" style="font-size: 14px"
-        span
-        | I Accept This Agreement
+      span.font-bold
+        | To be able to participate in our ICO
+      span
+        | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
+      span.font-bold<
+        | you’ll be required to make proof of your nationality during the KYC process and you will
+      span.font-bold<
+        | NOT be able to withdraw your tokens if the KYC isn’t successful.
+    .form-group
+      input.form-control required="" type="text" ng-model="user.phoneNumber" placeholder="Phone Number"
+    .form-group
+      input.form-control required="" type="text" ng-model="user.phoneNumber" placeholder="Select your nationality"
+    .form-group
+      input.form-control required="" type="text" ng-model="user.phoneNumber" placeholder="Select your country of residence"
+    .form-group.text-left
+      .checkbox
+        input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
+        label for="agree1"
+          span.check
+          | I have read and agree with the
+          a< href=""
+            | Whitepaper
+          span
+            | , the
+          a< href=""
+            | Acceptable Use Policy
+          span
+            | , the
+          a< href=""
+            | Terms and Conditions for Participants
+          span
+            | , and the
+          a< href=""
+            | Privacy Policy
+          span<
+            | documents.
+    .form-group.text-left
+      .checkbox
+        input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2"
+        label for="agree2"
+          span.check
+          | I declare that I am not a US citizen
+    .form-group.text-left
+      .description
+        | Are you a US-based Accredited Investor interested in our ICO?
+      a< href=""
+        | Click here
     div style="padding-top: 30px"
       a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
         | Back
       a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
         | Continue
+    .tmp
   .slide.slide-2 uib-slide=true index="2"
     div.text-center.step
       | Step 3: Ethereum Wallet Address

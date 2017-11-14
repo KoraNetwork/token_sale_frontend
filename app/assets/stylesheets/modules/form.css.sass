@@ -187,12 +187,13 @@ h1, h2
 
 .checkbox
   display: inline-block
+  padding-left: 35px
   label
     color: $dark-blue
     font-size: 16px
   input[type="checkbox"], input[type="radio"]
     display: none
-  input[type="checkbox"] + label span, input[type="radio"] + label span
+  input[type="checkbox"] + label span.check, input[type="radio"] + label span.check
     display: inline-block
     margin: -1px 4px 0 0
     vertical-align: middle
@@ -201,13 +202,13 @@ h1, h2
     height: 25px
     border-radius: 5px
     border: solid 1px $dark-blue
-  input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span
-    border-radius: 5px
+    position: absolute
+    margin-left: -35px
+  input[type="checkbox"]:checked + label span.check, input[type="radio"]:checked + label span.check
     border: solid 1px $green
-    position: relative
+    text-align: center !important
     &:before
       font-family: FontAwesome
       content: "\f00c"
       color: $green
       font-size: 17px
-      margin-left: 1px

@@ -14,7 +14,7 @@
 #= require angular-image.directive
 #= require angular-table-sort.directive
 #= require toastr
-#= require underscore
+#= require underscore/underscore-min.js
 #= require i18n
 #= require i18n/translations
 #= require angular-range-slider
