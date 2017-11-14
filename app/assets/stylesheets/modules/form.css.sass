@@ -1,47 +1,22 @@
 @import "variables"
 
 .form-control
-  border-radius: 8px
-  padding: 0 15px
+  border-radius: 25px
+  padding: 25px
   color: darkgrey
+  font-size: 18px
+  &:focus, &:hover
+    border-color: $green !important
+    &::-webkit-input-placeholder
+      color: $green !important
+    &::-moz-placeholder
+      color: $green !important
+    &:-moz-placeholder
+      color: $green !important
+    &:-ms-input-placeholder
+      color: $green !important
   &:focus
-    border-color: lightgray !important
-    color: black
-.form-control.title
-  float: left
-  margin-left: 2%
-  margin-top: 15px
-  width: 30%
-  background-color: $light
-  border-color: $light !important
-  border-radius: 8px 0px 0px 8px
-.form-control.title::-webkit-input-placeholder
-  color: $dark !important
-  font-weight: 700
-.form-control.title::-moz-placeholder
-  color: $dark !important
-  font-weight: 700
-.form-control.text
-  margin-top: 15px
-  width: 65%
-  border-radius: 0px 8px 8px 0px
-
-.p-tb-10px
-  padding: 20px 15px !important
-.placeholder
-  background: #eee
-  &::-webkit-input-placeholder
-    color: darkgrey
-    font-style: italic
-  &::-moz-placeholder
-    color: darkgrey
-    font-style: italic
-  &:-moz-placeholder
-    color: darkgrey
-    font-style: italic
-  &:-ms-input-placeholder
-    color: darkgrey
-    font-style: italic
+    color: $dark-blue
 
 textarea.form-control
   padding: 10px 15px
@@ -82,19 +57,45 @@ textarea.form-control
     .onoffswitch-label, .onoffswitch-switch
       border-color: $dark-blue
 
+.active-inactive
+  .onoffswitch
+    width: 100px !important
+    .onoffswitch-inner
+      &:before
+        width: 100px
+        content: "Active" !important
+        color: white
+        font-size: 15px
+        padding-left: 25px
+      &:after
+        width: 100px
+        content: "Inactive" !important
+        padding-right: 25px
+    .onoffswitch-switch
+      right: 80px
+    .onoffswitch-checkbox:checked + .onoffswitch-label
+      .onoffswitch-switch
+        right: 0px
+
 h1, h2
   color: $dark
   font-weight: 500
 
 .description
   font-size: 16px
-  margin: 10px
-  
+  color: $dark-blue
+
 .black
   color: black !important
 
+.dark-blue
+  color: $dark-blue
+
 .pointer
   cursor: pointer
+
+.invisible
+  display: none !important
 
 .btn-circle
   border-radius: 100%
@@ -161,42 +162,34 @@ h1, h2
   border-color: $dark-blue !important
 
 .btn-cancel
-  border: 1px solid $light-blue
-  color: $light-blue
+  border: 1px solid $dark-blue
+  color: $dark-blue
   &:hover
-    background-color: $light
-    color: $dark-blue
-    border-color: $dark-blue
+    color: $green
+    border-color: $green
 
 .uppercase
   text-transform: uppercase
 
 .btn
-  border-radius: 5px !important
-  padding: 5px 20px !important
+  border-radius: 25px !important
+  padding: 10px 25px !important
   font-size: 13px
   font-weight: 100
   letter-spacing: 1px !important
-  min-width: 120px
+  min-width: 150px
   margin: 5px
   .fa
     margin-right: 10px
 
 .form-group
-  label.control-label
-    color: darkgrey
-    font-weight: 500 !important
-    margin-left: 10px
-    font-size: 13px
-  label.control-label-dark
-    color: black
-
-td.form-group
-  padding: 10px
-  width: 300px
+  margin: 25px auto
 
 .checkbox
   display: inline-block
+  label
+    color: $dark-blue
+    font-size: 16px
   input[type="checkbox"], input[type="radio"]
     display: none
   input[type="checkbox"] + label span, input[type="radio"] + label span
@@ -204,17 +197,17 @@ td.form-group
     margin: -1px 4px 0 0
     vertical-align: middle
     cursor: pointer
-    width: 15px
-    height: 15px
-    border-radius: 4px
-    border: solid 1px darkgrey
-  input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span
-    border-radius: 4px
+    width: 25px
+    height: 25px
+    border-radius: 5px
     border: solid 1px $dark-blue
+  input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span
+    border-radius: 5px
+    border: solid 1px $green
     position: relative
     &:before
       font-family: FontAwesome
       content: "\f00c"
-      color: $dark-blue
-      font-size: 10px
+      color: $green
+      font-size: 17px
       margin-left: 1px

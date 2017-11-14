@@ -15,7 +15,6 @@
         'formInput.image',
         'toaster',
         'angular-ladda',
-        'AuthHttp',
         'oitozero.ngSweetAlert',
         'tablesort'
     ]);

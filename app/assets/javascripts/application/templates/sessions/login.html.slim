@@ -1,25 +1,17 @@
 .form-page
   .login-alert.animated.fadeInDown
     .logo-container
-      h2.site-title
-        | Kora
+      .kora-logo
     .form-block
       form role="form" novalidate=true ng-submit="login()"
         .form-group
-          label.control-label.black
-            | Username
-          input.form-control required="" type="text" ng-model="session.userName"
+          input.form-control required="" type="text" ng-model="session.userName" placeholder="Username"
         .form-group
-          label.control-label.black
-            | Password
-          input.form-control required="" type="password" ng-model="session.password"
+          input.form-control required="" type="password" ng-model="session.password" placeholder="Password"
         .form-group
-          label.control-label.black
-            | Google Authenticator Code
-          input.form-control required="" type="text" ng-model="session.token"
+          input.form-control required="" type="text" ng-model="session.token" placeholder="Google Authenticator Code"
         .form-group.text-center
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
-            i.fa.fa-check
             | Login
           br
           br

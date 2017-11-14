@@ -1,9 +1,9 @@
 @import "variables"
 
 .register-title
-  font-size: 25px
+  font-size: 35px
   font-weight: 600
-  color: black
+  color: $dark-blue
   //margin-top: 50px
   margin-bottom: 20px
 
@@ -18,9 +18,9 @@
   //min-height: 700px
   background-color: transparent !important
   .step
-    font-size: 14px
-    color: black
-    margin: 30px auto
+    font-size: 18px
+    color: $dark-blue
+    margin: 25px auto
     font-weight: 500
   .step-2
     height: 300px
@@ -31,12 +31,24 @@
     overflow: scroll
     white-space: pre-wrap
     word-wrap: break-word
+  .step-1
+    width: 500px
+    margin: auto
 
 .kora-logo
-  position: absolute
-  font-size: 35px
-  top: 20px
-  left: 20px
+  display: inline-block
+  width: 120px
+  height: 50px
+  background-color: transparent
+  background-position: center
+  background-size: contain
+  background-repeat: no-repeat
+  background-image: url(/images/kora_logo.svg)
+  &.kora-logo-top
+    position: absolute
+    top: 20px
+    left: 20px
+
 
 .ngdialog-theme-default
   .ngdialog-content
@@ -67,13 +79,36 @@
   .ngdialog-content
     width: 320px !important
 
+.gallery-dialog
+  .ngdialog-close
+    position: absolute
+    top: 10px
+    right: 20px
+    &::before
+      font-size: 40px
+  .ngdialog-content
+    padding: 0 !important
+    background-color: rgba(32, 32, 32, 0.81) !important
+    width: 100% !important
+    height: 100% !important
+    .gallery
+      text-align: center
+      .gallery-item
+        padding-top: 100px
+        margin: 0 auto
+        background-size: cover
+        background-repeat: no-repeat
+        max-width: 97vw
+        max-height: 97vh
+        display: block
+
 .login-alert
   margin: 0 auto
   margin-top: 70px
   background-color: transparent
   position: relative
-  max-width: 400px
-  width: 400px
+  max-width: 600px
+  width: 100%
   border-radius: 10px
   .logo-container
     padding-top: 40px
@@ -89,9 +124,8 @@
       color: $dark-blue
       font-size: 35px
   .form-block
-    max-width: 400px
-    width: 400px
-    background-color: white
+    max-width: 100%
+    width: 100%
     padding: 20px
     border-radius: 10px
 

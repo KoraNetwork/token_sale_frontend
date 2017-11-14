@@ -1,11 +1,10 @@
 .form-page
   .login-alert.animated.fadeInDown
     .logo-container
-      h2.site-title
-        | Kora
+      a.kora-logo href="/"
     .form-block
       form.m-t role="form" novalidate=true ng-submit="submitForgotPassword()"
-        .form-group.text-center.welcome-text
+        .form-group.text-center.description
           | Please enter your email below and we'll send you your password
         .form-group
           input.form-control placeholder="Your Email" required="" type="email" ng-model="email"
