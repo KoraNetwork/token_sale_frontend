@@ -6,7 +6,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('home')"
   .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
     .text-center.step
       | Step 1: User Information
-    form.step-1 role="form" novalidate=true ng-submit="register()"
+    form.step-1 role="form" novalidate=true ng-submit="validate()"
       .form-group
         input.form-control required="" type="text" ng-model="user.firstName" placeholder="First Name"
       .form-group
@@ -36,11 +36,11 @@ a.kora-logo.kora-logo-top ng-click="$state.go('home')"
       span.font-bold<
         | NOT be able to withdraw your tokens if the KYC isn’t successful.
     .form-group
-      input.form-control required="" type="text" ng-model="user.phoneNumber" placeholder="Phone Number"
+      input.form-control required="" type="tel" ng-model="user.phone" placeholder="Phone Number"
     .form-group
-      input.form-control required="" type="text" ng-model="user.phoneNumber" placeholder="Select your nationality"
+      input.form-control required="" type="text" ng-model="user.nationality" placeholder="Select your nationality"
     .form-group
-      input.form-control required="" type="text" ng-model="user.phoneNumber" placeholder="Select your country of residence"
+      input.form-control required="" type="text" ng-model="user.country" placeholder="Select your country of residence"
     .form-group.text-left
       .checkbox
         input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
@@ -97,15 +97,13 @@ a.kora-logo.kora-logo-top ng-click="$state.go('home')"
     div.text-center.step
       | Step 4: 2-Factor Confirmation
     .step-4 style="width: 400px; margin: auto"
-      .text-center
+      .description.text-center
         | Please scan QR code into Google Authenticator App
-      img style="margin-top: 20px" ng-src="{{ user.qr.qrcode }}"
+      img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
       .form-group.text-left style="margin-top: 30px"
-        label.control-label.black
-          | Your Verification Pin
-        input.form-control required="" type="text" ng-model="user.token"
+        input.form-control required="" type="text" ng-model="user.token" placeholder="Your Verification Pin"
       div style="padding-top: 30px"
         a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
           | Back
-        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirmQR()" style="margin-left: 30px"
+        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirm()" style="margin-left: 30px"
           | Complete

@@ -15,30 +15,27 @@
             $scope.user = {};
             $scope.slide = 0;
 
-            $scope.register = function(){
+            $scope.validate = function() {
+
+                var validation = users.validate($scope.user);
+                if (validation) {
+                    $scope.$parent.errors({ errors: validation.messages });
+                    return;
+                }
                 $scope.processing = true;
-                users.register($scope.user)
-                    .success(function(data){
+                $scope.checkUserInfo(_.pick($scope.user, 'userName', 'email'));
+            };
+
+            $scope.checkUserInfo = function (user) {
+                users.checkUserInfo(user)
+                    .success(function(){
                         $scope.processing = false;
-                        if(!data) {
-                            data = { message: 'Ok' }
-                        }
-                        $scope.$parent.message({ message: data.message });
                         $scope.next();
                     })
-                    .error(function(data){
+                    .error(function (data) {
                         $scope.processing = false;
-                        if(data.invalidAttributes){
-                            _.each(_.keys(data.invalidAttributes), function(key) {
-                                $scope.$parent.errors({
-                                    errors: _.map(data.invalidAttributes[key], function(i) {
-                                        return i.message;
-                                    })
-                                });
-                            });
-                        }
-                        if(data.message && !data.invalidAttributes){
-                            $scope.$parent.errors({ errors: [data.message] });
+                        if (data.Errors) {
+                            $scope.$parent.errors({ errors: users.parseErrors(data.Errors) });
                         }
                     })
             };
@@ -46,45 +43,38 @@
             $scope.agree = function() {
                 if(!$scope.user.agree1 || !$scope.user.agree2) {
                     $scope.$parent.errors({ errors: ["Please Agree"] });
-                } else {
-                    $scope.next();
+                    return;
                 }
+                if (!$scope.user.phone) {
+                    $scope.$parent.errors({ errors: ["Please enter Phone Number"] });
+                    return;
+                }
+                $scope.checkUserInfo(_.pick($scope.user, 'phone'))
             };
 
             $scope.ethereum = function(){
-                if(!$scope.user.ethereumAddress) {
+                $scope.processing = true;
+                if (!$scope.user.ethereumAddress) {
                     $scope.$parent.errors({ errors: ["Ethereum Address must be present!"] });
                     return;
                 }
-                $scope.processing = true;
-                users.ethereum($scope.user.ethereumAddress)
-                    .success(function(data){
-                        $scope.processing = false;
-                        if(!data) {
-                            data = { message: 'Ok' }
-                        }
-                        $scope.$parent.message({ message: data.message });
-                        $scope.getQR();
-                        $scope.next();
-                    })
-                    .error(function(data){
-                        $scope.processing = false;
-                        $scope.$parent.errors({ errors: [data.message] });
-                    })
+                $scope.getQR();
+                $scope.processing = false;
+                $scope.next();
             };
 
             $scope.getQR = function(){
                 users.getQR()
                     .success(function(data){
-                        $scope.user.qr = data;
+                        $scope.qr = data;
                     })
                     .error(function(data){
 
                     })
             };
 
-            $scope.confirmQR = function(){
-                users.confirmQR($scope.user.token)
+            $scope.confirm = function(){
+                users.confirm($scope.user)
                     .success(function(data){
                         $scope.$parent.message({ message: data.message });
                         $state.go('home');
