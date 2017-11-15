@@ -14,11 +14,13 @@
 
             $scope.user = {};
             $scope.slide = 0;
+            $scope.invalid_fields = [];
 
             $scope.validate = function() {
 
                 var validation = users.validate($scope.user);
                 if (validation) {
+                    $scope.invalid_fields = validation.invalidFields;
                     $scope.$parent.errors({ errors: validation.messages });
                     return;
                 }
@@ -30,12 +32,15 @@
                 users.checkUserInfo(user)
                     .success(function(){
                         $scope.processing = false;
+                        $scope.invalid_fields = [];
                         $scope.next();
                     })
                     .error(function (data) {
                         $scope.processing = false;
                         if (data.Errors) {
-                            $scope.$parent.errors({ errors: users.parseErrors(data.Errors) });
+                            var errors = users.parseErrors(data.Errors);
+                            $scope.$parent.errors({ errors: errors.messages });
+                            $scope.invalid_fields = errors.invalidFields;
                         }
                     })
             };
@@ -47,6 +52,7 @@
                 }
                 if (!$scope.user.phone) {
                     $scope.$parent.errors({ errors: ["Please enter Phone Number"] });
+                    $scope.invalid_fields.push('phone');
                     return;
                 }
                 $scope.checkUserInfo(_.pick($scope.user, 'phone'))
@@ -94,6 +100,13 @@
 
             $scope.prev = function() {
                 if($scope.slide) $scope.slide -= 1;
+            };
+
+            $scope.removeError = function (key) {
+                var i = $scope.invalid_fields.indexOf(key);
+                if (i > -1) {
+                    $scope.invalid_fields.splice(i, 1);
+                }
             }
         }])
 }());

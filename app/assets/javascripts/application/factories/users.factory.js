@@ -51,14 +51,17 @@
             },
 
             parseErrors: function (errors) {
-                var errorMessages = [];
+                var errorMessages = [], keys = [];
                 _.each(_.keys(errors), function (key) {
+                    keys.push(key);
                     errorMessages = errorMessages.concat(_.map(errors[key], function (i) {
                         return i.message;
                     }))
                 });
-                console.log(errorMessages)
-                return errorMessages;
+                return {
+                    messages: errorMessages,
+                    invalidFields: keys
+                };
             }
         }
     }])

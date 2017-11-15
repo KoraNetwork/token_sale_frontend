@@ -8,17 +8,17 @@ a.kora-logo.kora-logo-top ng-click="$state.go('home')"
       | Step 1: User Information
     form.step-1 role="form" novalidate=true ng-submit="validate()"
       .form-group
-        input.form-control required="" type="text" ng-model="user.firstName" placeholder="First Name"
+        input.form-control required="" type="text" ng-model="user.firstName" placeholder="First Name" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
       .form-group
-        input.form-control required="" type="text" ng-model="user.lastName" placeholder="Last Name"
+        input.form-control required="" type="text" ng-model="user.lastName" placeholder="Last Name" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
       .form-group
-        input.form-control required="" type="text" ng-model="user.userName" placeholder="Username"
+        input.form-control required="" type="text" ng-model="user.userName" placeholder="Username" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
       .form-group
-        input.form-control required="" type="text" ng-model="user.email" placeholder="Email"
+        input.form-control required="" type="text" ng-model="user.email" placeholder="Email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
       .form-group
-        input.form-control required="" type="password" ng-model="user.password" placeholder="Password"
+        input.form-control required="" type="password" ng-model="user.password" placeholder="Password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
       .form-group
-        input.form-control required="" type="password" ng-model="user.passwordConfirmation" placeholder="Password Confirmation"
+        input.form-control required="" type="password" ng-model="user.passwordConfirmation" placeholder="Password Confirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
       .form-group.text-center colspan="2" style="padding-top: 10px"
         button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
           | Continue
@@ -36,7 +36,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('home')"
       span.font-bold<
         | NOT be able to withdraw your tokens if the KYC isn’t successful.
     .form-group
-      input.form-control required="" type="tel" ng-model="user.phone" placeholder="Phone Number"
+      input.form-control required="" type="tel" ng-model="user.phone" placeholder="Phone Number" class="{{ _.contains(invalid_fields, 'phone') ? 'error' : '' }}" ng-change="removeError('phone')"
     .form-group
       input.form-control required="" type="text" ng-model="user.nationality" placeholder="Select your nationality"
     .form-group
