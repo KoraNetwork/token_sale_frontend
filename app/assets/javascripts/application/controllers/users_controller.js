@@ -10,7 +10,7 @@
             $scope._ = _;
             $scope.$state = $state;
 
-            $('body').css({ minWidth: "800px" });
+            $('body').css({ minWidth: "400px" });
 
             $scope.user = {};
             $scope.slide = 0;

@@ -18,6 +18,7 @@
   max-width: 500px
   margin: auto
   background-color: transparent !important
+  padding: 0 20px
   .tmp
     height: 50px
   .step
@@ -37,10 +38,15 @@
   background-size: contain
   background-repeat: no-repeat
   background-image: url(/images/kora_logo.svg)
-  &.kora-logo-top
-    position: absolute
-    top: 20px
-    left: 20px
+  @media all and (min-width: 800px)
+    &.kora-logo-top
+      position: absolute
+      top: 20px
+      left: 20px
+  @media all and (max-width: 800px)
+    &.kora-logo-top
+      margin: 20px auto
+      display: block
 
 
 .ngdialog-theme-default
