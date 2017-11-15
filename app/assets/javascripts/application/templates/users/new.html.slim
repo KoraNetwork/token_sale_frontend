@@ -1,109 +1,110 @@
 div style="height: calc(45vh - {{ (slideHeight('div.slide.slide-' + slide) + 100) / 2 }}px)"
 a.kora-logo.kora-logo-top ng-click="$state.go('home')"
-.text-center.register-title
-  | Registration
-#register-carousel uib-carousel=true interval="0" active="slide" no-wrap="false"
-  .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
-    .text-center.step
-      | Step 1: User Information
-    form.step-1 role="form" novalidate=true ng-submit="validate()"
+.animated.fadeInDown
+  .text-center.register-title
+    | Registration
+  #register-carousel uib-carousel=true interval="0" active="slide" no-wrap="false"
+    .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
+      .text-center.step
+        | Step 1: User Information
+      form.step-1 role="form" novalidate=true ng-submit="validate()"
+        .form-group
+          input.form-control required="" type="text" ng-model="user.firstName" placeholder="First Name" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
+        .form-group
+          input.form-control required="" type="text" ng-model="user.lastName" placeholder="Last Name" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
+        .form-group
+          input.form-control required="" type="text" ng-model="user.userName" placeholder="Username" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+        .form-group
+          input.form-control required="" type="text" ng-model="user.email" placeholder="Email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
+        .form-group
+          input.form-control required="" type="password" ng-model="user.password" placeholder="Password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
+        .form-group
+          input.form-control required="" type="password" ng-model="user.passwordConfirmation" placeholder="Password Confirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
+        .form-group.text-center colspan="2" style="padding-top: 10px"
+          button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
+            | Continue
+        .tmp
+    .slide.slide-1.animated.fadeInRight uib-slide=true index="1"
+      .text-center.step
+        | Step 2: Agreement
+      .step-2.text-left
+        span.font-bold
+          | To be able to participate in our ICO
+        span
+          | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
+        span.font-bold<
+          | you’ll be required to make proof of your nationality during the KYC process and you will
+        span.font-bold<
+          | NOT be able to withdraw your tokens if the KYC isn’t successful.
       .form-group
-        input.form-control required="" type="text" ng-model="user.firstName" placeholder="First Name" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
+        input.form-control required="" type="tel" ng-model="user.phone" placeholder="Phone Number" class="{{ _.contains(invalid_fields, 'phone') ? 'error' : '' }}" ng-change="removeError('phone')"
       .form-group
-        input.form-control required="" type="text" ng-model="user.lastName" placeholder="Last Name" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
+        input.form-control required="" type="text" ng-model="user.nationality" placeholder="Select your nationality"
       .form-group
-        input.form-control required="" type="text" ng-model="user.userName" placeholder="Username" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
-      .form-group
-        input.form-control required="" type="text" ng-model="user.email" placeholder="Email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
-      .form-group
-        input.form-control required="" type="password" ng-model="user.password" placeholder="Password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
-      .form-group
-        input.form-control required="" type="password" ng-model="user.passwordConfirmation" placeholder="Password Confirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
-      .form-group.text-center colspan="2" style="padding-top: 10px"
-        button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
+        input.form-control required="" type="text" ng-model="user.country" placeholder="Select your country of residence"
+      .form-group.text-left
+        .checkbox
+          input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
+          label for="agree1"
+            span.check
+            | I have read and agree with the
+            a< href=""
+              | Whitepaper
+            span
+              | , the
+            a< href=""
+              | Acceptable Use Policy
+            span
+              | , the
+            a< href=""
+              | Terms and Conditions for Participants
+            span
+              | , and the
+            a< href=""
+              | Privacy Policy
+            span<
+              | documents.
+      .form-group.text-left
+        .checkbox
+          input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2"
+          label for="agree2"
+            span.check
+            | I declare that I am not a US citizen
+      .form-group.text-left
+        .description
+          | Are you a US-based Accredited Investor interested in our ICO?
+        a< href=""
+          | Click here
+      div style="padding-top: 30px"
+        a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+          | Back
+        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
           | Continue
       .tmp
-  .slide.slide-1 uib-slide=true index="1"
-    .text-center.step
-      | Step 2: Agreement
-    .step-2.text-left
-      span.font-bold
-        | To be able to participate in our ICO
-      span
-        | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
-      span.font-bold<
-        | you’ll be required to make proof of your nationality during the KYC process and you will
-      span.font-bold<
-        | NOT be able to withdraw your tokens if the KYC isn’t successful.
-    .form-group
-      input.form-control required="" type="tel" ng-model="user.phone" placeholder="Phone Number" class="{{ _.contains(invalid_fields, 'phone') ? 'error' : '' }}" ng-change="removeError('phone')"
-    .form-group
-      input.form-control required="" type="text" ng-model="user.nationality" placeholder="Select your nationality"
-    .form-group
-      input.form-control required="" type="text" ng-model="user.country" placeholder="Select your country of residence"
-    .form-group.text-left
-      .checkbox
-        input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
-        label for="agree1"
-          span.check
-          | I have read and agree with the
-          a< href=""
-            | Whitepaper
-          span
-            | , the
-          a< href=""
-            | Acceptable Use Policy
-          span
-            | , the
-          a< href=""
-            | Terms and Conditions for Participants
-          span
-            | , and the
-          a< href=""
-            | Privacy Policy
-          span<
-            | documents.
-    .form-group.text-left
-      .checkbox
-        input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2"
-        label for="agree2"
-          span.check
-          | I declare that I am not a US citizen
-    .form-group.text-left
-      .description
-        | Are you a US-based Accredited Investor interested in our ICO?
-      a< href=""
-        | Click here
-    div style="padding-top: 30px"
-      a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
-        | Back
-      a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
-        | Continue
-    .tmp
-  .slide.slide-2 uib-slide=true index="2"
-    div.text-center.step
-      | Step 3: Ethereum Wallet Address
-    .step-3 style="margin: auto"
-      .text-center.description
-        | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
-      .form-group.text-left style="margin-top: 30px"
-        input.form-control required="" type="text" ng-model="user.ethereumAddress" placeholder="Ethereum Address"
-      div style="padding-top: 30px"
-        a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
-          | Back
-        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="ethereum()" style="margin-left: 30px"
-          | Continue
-  div.slide.slide-3 uib-slide=true index="3"
-    div.text-center.step
-      | Step 4: 2-Factor Confirmation
-    .step-4 style="width: 400px; margin: auto"
-      .description.text-center
-        | Please scan QR code into Google Authenticator App
-      img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
-      .form-group.text-left style="margin-top: 30px"
-        input.form-control required="" type="text" ng-model="user.token" placeholder="Your Verification Pin"
-      div style="padding-top: 30px"
-        a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
-          | Back
-        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirm()" style="margin-left: 30px"
-          | Complete
+    .slide.slide-2.animated.fadeInRight uib-slide=true index="2"
+      div.text-center.step
+        | Step 3: Ethereum Wallet Address
+      .step-3 style="margin: auto"
+        .text-center.description
+          | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
+        .form-group.text-left style="margin-top: 30px"
+          input.form-control required="" type="text" ng-model="user.ethereumAddress" placeholder="Ethereum Address"
+        div style="padding-top: 30px"
+          a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+            | Back
+          a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="ethereum()" style="margin-left: 30px"
+            | Continue
+    div.slide.slide-3.animated.fadeInRight uib-slide=true index="3"
+      div.text-center.step
+        | Step 4: 2-Factor Confirmation
+      .step-4 style="width: 400px; margin: auto"
+        .description.text-center
+          | Please scan QR code into Google Authenticator App
+        img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
+        .form-group.text-left style="margin-top: 30px"
+          input.form-control required="" type="text" ng-model="user.token" placeholder="Your Verification Pin"
+        div style="padding-top: 30px"
+          a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+            | Back
+          a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirm()" style="margin-left: 30px"
+            | Complete
