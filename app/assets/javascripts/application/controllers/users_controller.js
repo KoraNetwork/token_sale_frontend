@@ -17,7 +17,6 @@
             $scope.invalid_fields = [];
 
             $scope.validate = function() {
-
                 var validation = users.validate($scope.user);
                 if (validation) {
                     $scope.invalid_fields = validation.invalidFields;

@@ -35,7 +35,7 @@
                 })
                 .state('profile',{
                     url: '/profile',
-                    templateUrl: 'application/templates/users/edit.html',
+                    templateUrl: 'application/templates/users/profile.html',
                     controller: 'UsersController'
                 })
                 .state('login',{
