@@ -4,12 +4,18 @@
       .kora-logo
     .form-block
       form role="form" novalidate=true ng-submit="login()"
-        .form-group
-          input.form-control required="" type="text" ng-model="session.userName" placeholder="Username"
-        .form-group
-          input.form-control required="" type="password" ng-model="session.password" placeholder="Password"
-        .form-group
-          input.form-control required="" type="text" ng-model="session.token" placeholder="Google Authenticator Code"
+        .form-group.text-center
+          span.placeholder
+            | Username
+          input.form-control required="" type="text" ng-model="session.userName"
+        .form-group.text-center
+          span.placeholder
+            | Password
+          input.form-control required="" type="password" ng-model="session.password"
+        .form-group.text-center
+          span.placeholder
+            | Google Authenticator Code
+          input.form-control required="" type="text" ng-model="session.token"
         .form-group.text-center
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             | Login

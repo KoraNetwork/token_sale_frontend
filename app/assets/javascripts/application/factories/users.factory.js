@@ -11,7 +11,20 @@
             },
 
             confirm: function (user) {
+                if(user.nationalityObj){
+                  user.nationality = user.nationalityObj.countryCode
+                }
+              if(user.countryObj){
+                user.country = user.countryObj.countryCode
+              }
                 return $http.put('/api/registration/confirm', user || {});
+            },
+
+            getCountry: function () {
+              return $http.get('/api/countries')
+            },
+            verifyReCaptcha: function (value) {
+              return $http.post('/api/registration/validateCaptcha?response=' + value );
             },
 
             validate: function (user) {
@@ -22,7 +35,6 @@
                 _.each([
                     'firstName',
                     'lastName',
-                    'userName',
                     'email',
                     'password',
                     'passwordConfirmation'

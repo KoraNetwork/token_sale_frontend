@@ -2,24 +2,33 @@ div style="height: calc(45vh - {{ (slideHeight('div.slide.slide-' + slide) + 100
 a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
 .animated.fadeInDown
   .text-center.register-title
-    | Registration
+    | Welcome to the Kora token sale
   #register-carousel uib-carousel=true interval="0" active="slide" no-wrap="false"
     .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
       .text-center.step
         | Step 1: User Information
       form.step-1 role="form" novalidate=true ng-submit="validate()"
         .form-group
-          input.form-control required="" type="text" ng-model="user.firstName" placeholder="First Name" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
+          span.placeholder
+            | First Name
+          input.form-control required="" type="text" ng-model="user.firstName" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
         .form-group
-          input.form-control required="" type="text" ng-model="user.lastName" placeholder="Last Name" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
+          span.placeholder
+            | Last Name
+          input.form-control required="" type="text" ng-model="user.lastName" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
+
         .form-group
-          input.form-control required="" type="text" ng-model="user.userName" placeholder="Username" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+          span.placeholder
+            | Email
+          input.form-control required="" type="text" ng-model="user.email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
         .form-group
-          input.form-control required="" type="text" ng-model="user.email" placeholder="Email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
+          span.placeholder
+            | Password
+          input.form-control required="" type="password" ng-model="user.password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
         .form-group
-          input.form-control required="" type="password" ng-model="user.password" placeholder="Password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
-        .form-group
-          input.form-control required="" type="password" ng-model="user.passwordConfirmation" placeholder="Password Confirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
+          span.placeholder
+            | Password Confirmation
+          input.form-control required="" type="password" ng-model="user.passwordConfirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
         .form-group.text-center colspan="2" style="padding-top: 10px"
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             | Continue
@@ -27,21 +36,53 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
     .slide.slide-1.animated.fadeInRight uib-slide=true index="1"
       .text-center.step
         | Step 2: Agreement
+      .text-center.step
+        span.step
+          | Download the Kora app, register your username and link it with the token sale to receive a 5% bonus.
       .step-2.text-left
         span.font-bold
-          | To be able to participate in our ICO
+          | To be able to contribute to the token sale
         span
           | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
         span.font-bold<
           | you’ll be required to make proof of your nationality during the KYC process and you will
         span.font-bold<
           | NOT be able to withdraw your tokens if the KYC isn’t successful.
+      div.checking
+        span.checking-text Are you registered with the Kora app?
+        .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
+          input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="checked"
+          label.onoffswitch-label for="username-on-off-switch"
+            span.onoffswitch-inner
+            span.onoffswitch-switch
       .form-group
-        input.form-control required="" type="tel" ng-model="user.phone" placeholder="Phone Number" class="{{ _.contains(invalid_fields, 'phone') ? 'error' : '' }}" ng-change="removeError('phone')"
+        span.placeholder
+          | Kora Username
+        input.form-control ng-disabled="!checked" required="" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+      /.form-group
+      /  span.placeholder
+      /    | Phone Number
+      /  input.form-control required="" type="tel" ng-model="user.phone" class="{{ _.contains(invalid_fields, 'phone') ? 'error' : '' }}" ng-change="removeError('phone')"
       .form-group
-        input.form-control required="" type="text" ng-model="user.nationality" placeholder="Select your nationality"
+        span.placeholder
+          | Select your nationality
+        ui-select ng-model="user.nationalityObj"
+          ui-select-match
+            img.country-img src="{{$select.selected.flag}}"
+            span.selected ng-bind="$select.selected.name"
+          ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+            img.country-img src="{{country.flag}}"
+            span.choices ng-bind="country.name"
       .form-group
-        input.form-control required="" type="text" ng-model="user.country" placeholder="Select your country of residence"
+        span.placeholder
+          | Select your country of residence
+        ui-select ng-model="user.countryObj"
+          ui-select-match
+            img.country-img src="{{apiURL + $select.selected.flag}}"
+            span.selected ng-bind="$select.selected.name"
+          ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+            img.country-img src="{{apiURL + country.flag}}"
+            span.choices ng-bind="country.name"
       .form-group.text-left
         .checkbox
           input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
@@ -75,6 +116,8 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           | Are you a US-based Accredited Investor interested in our ICO?
         a< href=""
           | Click here
+      .form-group.center
+        div#reCaptcha
       div style="padding-top: 30px"
         a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
           | Back
@@ -87,8 +130,10 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
       .step-3 style="margin: auto"
         .text-center.description
           | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
-        .form-group.text-left style="margin-top: 30px"
-          input.form-control required="" type="text" ng-model="user.ethereumAddress" placeholder="Ethereum Address"
+        .form-group style="margin-top: 30px"
+          span.placeholder
+            | Ethereum Address
+          input.form-control required="" type="text" ng-model="user.ethereumAddress"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back
@@ -101,8 +146,10 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         .description.text-center
           | Please scan QR code into Google Authenticator App
         img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
-        .form-group.text-left style="margin-top: 30px"
-          input.form-control required="" type="text" ng-model="user.token" placeholder="Your Verification Pin"
+        .form-group style="margin-top: 30px"
+          span.placeholder
+            | Your Verification Pin
+          input.form-control required="" type="text" ng-model="user.token"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back

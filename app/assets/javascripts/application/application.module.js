@@ -16,7 +16,8 @@
         'toaster',
         'angular-ladda',
         'oitozero.ngSweetAlert',
-        'tablesort'
+        'tablesort',
+        'ui.select'
     ]);
 
     KoraICOFrontendApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

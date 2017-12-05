@@ -9,6 +9,7 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
 
+
             $timeout(function(){
                 if($scope.flash.error.length > 0){
                     toaster.pop('error', "", $scope.flash.error);

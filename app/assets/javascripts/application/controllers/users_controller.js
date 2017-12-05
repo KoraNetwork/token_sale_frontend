@@ -15,6 +15,7 @@
             $scope.user = {};
             $scope.slide = 0;
             $scope.invalid_fields = [];
+            $scope.countries  = [];
 
             $scope.validate = function() {
                 var validation = users.validate($scope.user);
@@ -24,7 +25,7 @@
                     return;
                 }
                 $scope.processing = true;
-                $scope.checkUserInfo(_.pick($scope.user, 'userName', 'email'));
+                $scope.checkUserInfo(_.pick($scope.user, 'email'));
             };
 
             $scope.checkUserInfo = function (user) {
@@ -44,17 +45,54 @@
                     })
             };
 
+            $scope.checkCaptcha = function (capchaResult) {
+              users.verifyReCaptcha(capchaResult)
+                .success(function(data, status){
+                  if (status >= 300) {
+                    $scope.$parent.errors({ errors: ["Please confirm reCaptcha"] });
+                    $scope.invalid_fields.push('captcha');
+                  }
+                })
+                .error(function () {
+
+                })
+            };
+
+            $scope.renderCaptcha = function () {
+              grecaptcha.render('reCaptcha', {
+                sitekey: "6Lf9ozsUAAAAABxute4OEizhn-8OHMDa258b15W-",
+                callback: function (response) {
+                  $scope.checkCaptcha(response)
+                }
+              })
+            };
+            $timeout(function () {
+              $scope.renderCaptcha();
+            }, 500);
+
             $scope.agree = function() {
+                var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
+
                 if(!$scope.user.agree1 || !$scope.user.agree2) {
                     $scope.$parent.errors({ errors: ["Please Agree"] });
                     return;
                 }
-                if (!$scope.user.phone) {
-                    $scope.$parent.errors({ errors: ["Please enter Phone Number"] });
-                    $scope.invalid_fields.push('phone');
-                    return;
+                if(!$scope.user.nationalityObj) {
+                  $scope.$parent.errors({ errors: ["Please select Your Nationality"] });
+                  $scope.invalid_fields.push('nationality');
+                  return;
                 }
-                $scope.checkUserInfo(_.pick($scope.user, 'phone'))
+                if(!$scope.user.countryObj) {
+                  $scope.$parent.errors({ errors: ["Please select Your Country"] });
+                  $scope.invalid_fields.push('country');
+                  return;
+                }
+                if(!isCaptchaChecked) {
+                  $scope.$parent.errors({ errors: ["You have to check the reCaptcha"] });
+                  $scope.invalid_fields.push('captcha');
+                  return;
+                }
+                $scope.next();
             };
 
             $scope.ethereum = function(){
@@ -62,6 +100,9 @@
                 if (!$scope.user.ethereumAddress) {
                     $scope.$parent.errors({ errors: ["Ethereum Address must be present!"] });
                     return;
+                }
+                else{
+                  users.checkUserInfo(_.pick($scope.user, 'ethereumAddress'))
                 }
                 $scope.getQR();
                 $scope.processing = false;
@@ -88,6 +129,17 @@
                         $scope.$parent.errors({ errors: [data.message] });
                     })
             };
+
+            $scope.filterCountries = function (q) {
+              $scope.filteredCountries = $scope.countries.filter(function (item) {
+                return item.name.toLocaleLowerCase().includes((q || '').toLocaleLowerCase())
+              })
+            };
+
+            users.getCountry()
+              .success(function (data) {
+                $scope.countries = data;
+              });
 
             $scope.slideHeight = function(selector) {
                 return $(selector).height();
