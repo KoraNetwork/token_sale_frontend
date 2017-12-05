@@ -1,17 +1,21 @@
 .row.border-bottom.ng-scope
   nav.navbar.navbar-fixed-top role="navigation" style=("margin-bottom: 0")
-    .navbar-header
-    ul.nav.navbar-top-links.navbar-right
-      li style="vertical-align: middle"
-        form.navbar-form-custom.ng-pristine.ng-valid action="views/search_results.html" method="post" role="search" style="margin-top: -10px"
-          .form-group
-            i.fa.fa-search
-            input#top-search.form-control name="top-search" placeholder="Search" type="text" /
-      li
-        span
-          | Welcome
-          a ng-click="openEditProfileDialog()"
-            | {{ current_user.full_name }}
-      li
-        a ng-click="logout()" href="#"
-          | LOGOUT
+    .div.container
+      .navbar-header.col-md-4
+        a.kora-logo ng-click="$state.go('home')"
+      ul.main_nav.nav.nav-display.col-md-8
+        li
+          a.nav-menu-text href="#/dashboard"
+            | Dashboard
+        li
+          a.nav-menu-text href="#/profile"
+            | Profile
+        li
+          a.nav-menu-text href="#/referral_program"
+            | Referral Program
+        li
+          a.nav-menu-text href="#/kora_vision_paper"
+            | Kora Vision Paper
+        li.sign-out-position
+          a.nav-menu-text ng-click="logout()" href="#"
+            | Sign Out

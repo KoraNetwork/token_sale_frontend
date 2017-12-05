@@ -5,13 +5,14 @@ html(lang="en")
     = javascript_include_tag "application"
     = csrf_meta_tags
   body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done class="{{ !current_user || current_user.role == 'user' ? 'landing-page' : 'admin-page' }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
-    .app ng-if="current_user && currentuser.role == 'admin'"
-      #wrapper.ng-scope
-        div ng-include="'application/templates/common/navigation.html'"
-        #page-wrapper.gray-bg class="dashboards dashboard_1" style=("min-height: 184px;")
-          div ng-include="'application/templates/common/topnavbar.html'"
-          div ui-view=""
-          div ng-include="'application/templates/common/footer.html'"
+    /.app ng-if="current_user && currentuser.role == 'admin'"
+      /#wrapper.ng-scope
+      /  div ng-include="'application/templates/common/navigation.html'"
+      /  #page-wrapper.gray-bg class="dashboards dashboard_1" style=("min-height: 184px;")
+      /    div ng-include="'application/templates/common/topnavbar.html'"
+      /    div ui-view=""
+      /    div ng-include="'application/templates/common/footer.html'"
     .landing ng-if="!current_user || current_user.role == 'user'"
-      div ui-view=true
-    div toaster-container='' toaster-options="{'close-button': true}"
+      #wrapper
+    div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/topnavbar.html'"
+    div ui-view=""
