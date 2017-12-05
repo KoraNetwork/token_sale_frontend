@@ -14,5 +14,7 @@ html(lang="en")
       /    div ng-include="'application/templates/common/footer.html'"
     .landing ng-if="!current_user || current_user.role == 'user'"
       #wrapper
-    div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/topnavbar.html'"
-    div ui-view=""
+    .row
+      div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/topnavbar.html'"
+      div ui-view=""
+        div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/left_sidebar.html'"

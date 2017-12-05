@@ -1,0 +1,38 @@
+.div.container
+  .col-md-3.left-nav-block
+    ul
+      li.left-nav-username
+        | {{current_user.userName}}
+      li.align-center-nav-text
+        i.fa.fa-times-circle-o.left-nav-icon.fa-lg
+        span.left-nav-unverified-id
+          | Unverified ID
+      li.align-center-nav-text.left-nav-balance-position
+        span.left-nav-unverified-id-knt
+          | My KNT Balance
+      li.align-center-nav-text
+        span.left-nav-balance
+          | 100
+      li.align-center-nav-text.left-nav-price-position
+        span.left-nav-unverified-id-knt
+          | KNT Price: 50,00
+    hr
+
+    div.left-bottom-nav
+      ul
+        li
+          a href="/"
+            span
+              | Reset Authenticator
+        li
+          a href="/"
+            span
+              | Change Password
+        li
+          a href="/"
+            span
+              | Update Profile
+        li
+          a href="/"
+            span
+              | Terms

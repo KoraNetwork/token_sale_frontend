@@ -1,5 +1,65 @@
 @import "variables"
 
+.align-center-nav-text
+  text-align: center
+.left-bottom-nav
+  list-style: none
+  text-align: center
+  color: white
+  font-size: 14px
+  line-height: 35px
+  span
+    font-weight: 500
+.left-bottom-nav > ul > li > a
+  color: white
+  border-bottom: solid 0.7px rgba(255,255,255,0.3)
+  border-bottom-width: 2px
+  opacity: 0.7
+  &:focus, &:hover
+    border-bottom: none
+
+.left-nav
+  &-block
+    margin-top: 75px
+    height: 395px
+    width: 240px
+    background-color: #3285bd
+    ul
+      list-style: none
+      padding-left: 0px
+  &-username
+    font-size: 18px
+    text-align: center
+    color: #ffffff
+    padding-top: 17px
+  &-unverified-id
+    opacity: 0.75
+    font-size: 14px
+    text-align: center
+    color: #ffffff
+    margin-left: 10px
+    border-bottom: 2px solid
+    &-knt
+      opacity: 0.75
+      font-size: 14px
+      text-align: center
+      color: #ffffff
+      border-bottom: none
+  &-icon
+    color: white
+    opacity: 0.54
+  &-balance
+    font-size: 18px
+    font-weight: 600
+    text-align: left
+    color: #ffffff
+    border: solid 0.5px
+    padding: 10px 30px
+    &-position
+      margin: 25px 0px 10px 0px
+  &-price-position
+    margin: 30px 0px 0px 0px
+
 .nav-menu-text
   opacity: 0.6
   font-size: 18px
