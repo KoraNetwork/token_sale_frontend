@@ -82,7 +82,7 @@
                 users.confirm($scope.user)
                     .success(function(data){
                         $scope.$parent.message({ message: data.message });
-                        $state.go('home');
+                        $state.go('dashboard');
                     })
                     .error(function(data){
                         $scope.$parent.errors({ errors: [data.message] });

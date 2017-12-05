@@ -39,7 +39,7 @@
   background-position: center
   background-size: contain
   background-repeat: no-repeat
-  background-image: url(/images/kora_logo_white.svg)
+  background-image: url(/images/kora_logo.svg)
   margin: 18px 123px 20px 67px
   @media all and (min-width: 800px)
     &.kora-logo-top
@@ -50,7 +50,8 @@
     &.kora-logo-top
       margin: 20px auto
       display: block
-
+  &.white
+    background-image: url(/images/kora_logo_white.svg)
 
 .ngdialog-theme-default
   .ngdialog-content
@@ -131,8 +132,8 @@
     padding: 20px
     border-radius: 10px
 
-body.landing-page
-  width: 100%
+body
+  width: calc(100% - 30px)
   height: 98%
   overflow: auto
   background-color: white
@@ -141,15 +142,15 @@ body.landing-page
   background-repeat: no-repeat
   background-image: url(/images/word_map.png)
 
-body
-  .app
-    background-color: white
-    min-width: 800px
-    overflow: scroll
-    .nav.metismenu#side-menu
-      background-color: white
-    .gray-bg.dashboards.dashboard_1
-      background-color: #efefef
+body.user-page
+  .content-container
+    width: 100%
+    max-width: 1100px
+    margin: auto
+    padding-left: 250px
+    margin-top: 75px
+    .left-navbar
+      margin-left: -250px
 
 .form-page
   padding-top: calc(45vh - 300px)

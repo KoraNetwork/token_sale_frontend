@@ -4,7 +4,7 @@ html(lang="en")
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done class="{{ !current_user || current_user.role == 'user' ? 'landing-page' : 'admin-page' }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
+  body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done class="{{ !current_user ? 'landing-page' : (current_user.role == 'user' ? 'user-page' : 'admin-page') }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
     /.app ng-if="current_user && currentuser.role == 'admin'"
       /#wrapper.ng-scope
       /  div ng-include="'application/templates/common/navigation.html'"
@@ -16,5 +16,6 @@ html(lang="en")
       #wrapper
     .row
       div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/topnavbar.html'"
-      div ui-view=""
-        div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/left_sidebar.html'"
+      .content-container
+        .left-navbar ng-if="current_user.role == 'user'" ng-include="'application/templates/common/left_sidebar.html'"
+        .page-container ui-view=""

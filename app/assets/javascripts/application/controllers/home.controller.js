@@ -36,7 +36,7 @@
                 session.profile()
                         .success(function(data, status){
                             $scope.current_user = data;
-                            $state.go('home');
+                            $state.go('dashboard');
                         })
                         .error(function(data){
                             $scope.current_user = false;

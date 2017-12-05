@@ -25,12 +25,12 @@
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
             $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
-            $urlRouterProvider.otherwise('home');
+            $urlRouterProvider.otherwise('/');
 
             $stateProvider
-                .state('home',{
-                  url: '',
-                  templateUrl: 'application/templates/home/index.html',
+                .state('dashboard',{
+                  url: '/',
+                  templateUrl: 'application/templates/dashboard/index.html',
                   controller: 'HomeController'
                 })
                 .state('profile',{
