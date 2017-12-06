@@ -66,6 +66,7 @@
                 }
               })
             };
+
             $timeout(function () {
               $scope.renderCaptcha();
             }, 500);
