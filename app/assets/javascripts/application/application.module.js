@@ -31,7 +31,7 @@
             $stateProvider
                 .state('dashboard',{
                   url: '/',
-                  templateUrl: 'application/templates/dashboard/index.html',
+                  templateUrl: 'application/templates/home/index.html',
                   controller: 'HomeController'
                 })
                 .state('profile',{

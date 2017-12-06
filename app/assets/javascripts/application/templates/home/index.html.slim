@@ -1,0 +1,46 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-purchase-knt.svg"
+              span
+                | Purchase KNT
+            .dashboard-body
+              table
+                tr
+                  td.title
+                    | Purchase KNT with:
+                  td.bay
+                    a
+                      .blue-img
+                        img ng-src="/images/shopping-cart-1.svg"
+                      .text
+                        .bay-with-ethereum
+                          | Buy with Ethereum
+                        .price
+                          | 1 KNT = $250
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+              span
+                | Transaction history
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th ng-model="" tablesort=true tablesort-name="" tablesort-title="Data Recevied"
+                th ng-model="" tablesort=true tablesort-name="" tablesort-title="Type"
+                th ng-model="" tablesort=true tablesort-name="" tablesort-title="Amount (Crypto)"
+                th ng-model="" tablesort=true tablesort-name="" tablesort-title="Amount (USD)"
+                th ng-model="" tablesort=true tablesort-name="" tablesort-title="Amount (SALT)"
+                th ng-model="" tablesort=true tablesort-name="" tablesort-title="Status"
+            tbody
+              tr ng-show="!count"
+                td.text-center colspan="6"
+                  | No results found
+              tr
