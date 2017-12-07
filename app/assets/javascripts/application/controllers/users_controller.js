@@ -195,6 +195,18 @@
                 if (i > -1) {
                     $scope.invalid_fields.splice(i, 1);
                 }
-            }
+            };
+
+          $scope.profileUpdate = function(){
+            $scope.processing = true;
+            users.upsert($scope.current_user)
+              .success(function(){
+                $scope.processing = false;
+              })
+              .error(function(data){
+                $scope.processing = false;
+                $scope.validation_errors = data.validation_errors
+              })
+          };
         }])
 }());

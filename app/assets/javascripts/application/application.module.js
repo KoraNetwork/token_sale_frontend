@@ -58,7 +58,12 @@
                   url: '/profile/change_password',
                   templateUrl: 'application/templates/users/change_password.html',
                   controller: 'UsersController'
-                });
+                })
+                .state('update_profile',{
+                    url: '/profile/update_profile',
+                    templateUrl: 'application/templates/users/update_profile.html',
+                    controller: 'UsersController'
+                  });
     }]);
 
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){

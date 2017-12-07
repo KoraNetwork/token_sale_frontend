@@ -77,7 +77,12 @@
                     messages: errorMessages,
                     invalidFields: keys
                 };
-            }
+            },
+
+
+          upsert: function (user) {
+            return $http.put('/api/profile', user);
+          }
         }
     }])
 }());

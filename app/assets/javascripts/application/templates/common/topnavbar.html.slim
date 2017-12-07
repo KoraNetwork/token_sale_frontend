@@ -8,7 +8,7 @@
           a.nav-menu-text href="#/"
             | Dashboard
         li
-          a.nav-menu-text href="#/profile"
+          a.nav-menu-text href="#/profile" ng-class=("{active: ['change_password', 'update_profile'].includes($state.current.name)}")
             | Profile
         li
           a.nav-menu-text href="#/referral_program"

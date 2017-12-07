@@ -1,3 +1,29 @@
+.droppable-area ul.images-list li
+  width: 229px !important
+  height: 301px !important
+  margin-top: 37px
+  border-radius: 0 !important
+  .fa-plus:before
+    content: "Drag Image or click here to select"
+  i.fa.fa-plus
+    width: 50% !important
+    text-align: center !important
+    height: 67px !important
+    font-size: 14px !important
+    font-family: sans-serif
+    color: #2e2e2e !important
+    line-height: 19px
+li.plus label
+  width: 100% !important
+  height: 100% !important
+label.star::after
+  content: '*'
+  width: 9px
+  height: 21px
+  text-align: left
+  color: #2e2e2e
+  margin-left: 5px
+
 .form-group_profile_button
   margin: 5px auto
 .btn_profile_style
@@ -15,8 +41,30 @@
   border-radius: 0
   width: 229px
   height: 36px
-  color: #979797
+  color: #2e2e2e
   opacity: 0.47
+  padding-left: 10px
+  &-small
+    border-radius: 0
+    width: 151px
+    height: 36px
+    color: #2e2e2e
+    padding-left: 10px
+    opacity: 0.47
+  &-large
+    border-radius: 0
+    width: 473px
+    height: 36px
+    color: #2e2e2e
+    padding-left: 10px
+    opacity: 0.47
+  &-mid
+    border-radius: 0
+    width: 309px
+    height: 36px
+    color: #2e2e2e
+    padding-left: 10px
+    opacity: 0.47
 .nav-link
   &:hover, &:focus
     color: #6a6a6a !important
@@ -40,6 +88,10 @@
     border-bottom: 2px solid #979797
     i.fa.fa-lock
       padding: 20px
+    i.fa.fa-user-o
+      padding: 20px
   &-input_form
     background-color: #ffffff
     height: 285px
+  &-update_form
+    background-color: #ffffff
