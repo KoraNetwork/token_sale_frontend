@@ -3,9 +3,9 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout',
+        .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', 'SweetAlert',
             '$sce', 'UsersFactory',
-        function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, users) {
+        function ($scope, $state, ngDialog, $stateParams, $timeout, SweetAlert, $sce, users) {
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
@@ -69,7 +69,7 @@
 
             $timeout(function () {
               $scope.renderCaptcha();
-            }, 500);
+            }, 1000);
 
             $scope.agree = function() {
                 var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
@@ -98,12 +98,19 @@
 
             $scope.ethereum = function(){
                 $scope.processing = true;
-                if (!$scope.user.ethereumAddress) {
-                    $scope.$parent.errors({ errors: ["Ethereum Address must be present!"] });
+                if (!$scope.user.sendingEthereumAddress) {
+                    $scope.$parent.errors({ errors: ["Sending Ethereum Address must be present!"] });
                     return;
                 }
                 else{
-                  users.checkUserInfo(_.pick($scope.user, 'ethereumAddress'))
+                  users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress'))
+                }
+                if (!$scope.user.receivingEthereumAddress) {
+                  $scope.$parent.errors({ errors: ["Receiving Ethereum Address must be present!"] });
+                  return;
+                }
+                else{
+                  users.checkUserInfo(_.pick($scope.user, 'receivingEthereumAddress'))
                 }
                 $scope.getQR();
                 $scope.processing = false;
@@ -118,6 +125,32 @@
                     .error(function(data){
 
                     })
+            };
+
+            $scope.isUsaIp = function (response) {
+              users.verifyIp(response)
+                .success(function (data) {
+                  if(data.hasUSIP === true){
+                    $scope.openDialog();
+                  }
+                });
+            };
+
+            $scope.openDialog = function () {
+                SweetAlert.swal({
+                    title: "You are used ip from USA",
+                    text: "We have detected you have a US IP, Can you confirm you're not a US citizen?",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
+                    cancelButtonText: "Cancel!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true },
+                  function(confirm){
+                    if (!confirm) {
+                      $state.go('login')
+                    }
+                  }
+                );
             };
 
             $scope.confirm = function(){

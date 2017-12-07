@@ -26,6 +26,9 @@
             verifyReCaptcha: function (value) {
               return $http.post('/api/registration/validateCaptcha?response=' + value );
             },
+            verifyIp: function () {
+              return $http.get('/api/registration/checkIp')
+            },
 
             validate: function (user) {
                 var invalidFields = [],

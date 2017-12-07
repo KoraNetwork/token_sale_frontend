@@ -107,7 +107,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
               | documents.
       .form-group.text-left
         .checkbox
-          input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2"
+          input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
           label for="agree2"
             span.check
             | I declare that I am not a US citizen
@@ -132,8 +132,12 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
         .form-group style="margin-top: 30px"
           span.placeholder
-            | Ethereum Address
-          input.form-control required="" type="text" ng-model="user.ethereumAddress"
+            | Sending Ethereum Address
+          input.form-control required="" type="text" ng-model="user.sendingEthereumAddress"
+        .form-group style="margin-top: 30px"
+          span.placeholder
+            | Receiving Ethereum Address
+          input.form-control required="" type="text" ng-model="user.receivingEthereumAddress"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back
