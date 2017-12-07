@@ -7,7 +7,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
     .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
       .text-center.step
         | Step 1: User Information
-      form.step-1 role="form" novalidate=true ng-submit="validate()"
+      form.step-1 role="form" novalidate=true ng-submit="validate()" name="registrationForm"
         .form-group
           span.placeholder
             | First Name
@@ -24,7 +24,9 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         .form-group
           span.placeholder
             | Password
-          input.form-control required="" type="password" ng-model="user.password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
+          input.form-control required="" name="password" type="password" ng-pattern="passwordStrength" ng-model="user.password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
+            span ng-show="registrationForm.password.$error.pattern"
+              | Password must be over 8 characters, have at least 1 uppercase English letter, 1 lowercase English letter and 1 number
         .form-group
           span.placeholder
             | Password Confirmation
@@ -59,10 +61,6 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         span.placeholder
           | Kora Username
         input.form-control ng-disabled="!checked" required="" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
-      /.form-group
-      /  span.placeholder
-      /    | Phone Number
-      /  input.form-control required="" type="tel" ng-model="user.phone" class="{{ _.contains(invalid_fields, 'phone') ? 'error' : '' }}" ng-change="removeError('phone')"
       .form-group
         span.placeholder
           | Select your nationality

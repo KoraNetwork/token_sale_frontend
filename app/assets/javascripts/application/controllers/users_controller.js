@@ -16,6 +16,7 @@
             $scope.slide = 0;
             $scope.invalid_fields = [];
             $scope.countries  = [];
+            $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{9,}$/;
 
             $scope.validate = function() {
                 var validation = users.validate($scope.user);
