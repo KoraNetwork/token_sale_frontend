@@ -114,7 +114,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           | Are you a US-based Accredited Investor interested in our ICO?
         a< href=""
           | Click here
-      .form-group.center
+      .form-group.center ng-if="!$parent.current_user"
         div#reCaptcha
       div style="padding-top: 30px"
         a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"

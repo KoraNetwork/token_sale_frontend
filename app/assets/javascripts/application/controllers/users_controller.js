@@ -69,7 +69,9 @@
             };
 
             $timeout(function () {
-              $scope.renderCaptcha();
+              if ($scope.$parent && !$scope.$parent.current_user) {
+                  $scope.renderCaptcha();
+              }
             }, 1000);
 
             $scope.agree = function() {
