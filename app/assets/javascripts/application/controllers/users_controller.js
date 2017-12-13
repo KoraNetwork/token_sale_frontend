@@ -91,6 +91,11 @@
                   $scope.invalid_fields.push('country');
                   return;
                 }
+                if(!$scope.user.userName) {
+                  $scope.$parent.errors({ errors: ["Please enter User Name"] });
+                  $scope.invalid_fields.push('userName');
+                  return;
+                }
                 if(!isCaptchaChecked) {
                   $scope.$parent.errors({ errors: ["You have to check the reCaptcha"] });
                   $scope.invalid_fields.push('captcha');
@@ -108,13 +113,13 @@
                 else{
                   users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress'))
                 }
-                if (!$scope.user.receivingEthereumAddress) {
-                  $scope.$parent.errors({ errors: ["Receiving Ethereum Address must be present!"] });
-                  return;
-                }
-                else{
-                  users.checkUserInfo(_.pick($scope.user, 'receivingEthereumAddress'))
-                }
+                // if (!$scope.user.receivingEthereumAddress) {
+                //   $scope.$parent.errors({ errors: ["Receiving Ethereum Address must be present!"] });
+                //   return;
+                // }
+                // else{
+                //   users.checkUserInfo(_.pick($scope.user, 'receivingEthereumAddress'))
+                // }
                 $scope.getQR();
                 $scope.processing = false;
                 $scope.next();

@@ -60,7 +60,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
       .form-group
         span.placeholder
           | Kora Username
-        input.form-control ng-disabled="!checked" required="" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+        input.form-control required="" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
       .form-group
         span.placeholder
           | Select your nationality
@@ -126,16 +126,16 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
       div.text-center.step
         | Step 3: Ethereum Wallet Address
       .step-3 style="margin: auto"
-        .text-center.description
-          | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
+        /.text-center.description
+        /  | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
         .form-group style="margin-top: 30px"
           span.placeholder
             | Sending Ethereum Address
           input.form-control required="" type="text" ng-model="user.sendingEthereumAddress"
-        .form-group style="margin-top: 30px"
-          span.placeholder
-            | Receiving Ethereum Address
-          input.form-control required="" type="text" ng-model="user.receivingEthereumAddress"
+        /.form-group style="margin-top: 30px"
+        /  span.placeholder
+        /    | Receiving Ethereum Address
+        /  input.form-control required="" type="text" ng-model="user.receivingEthereumAddress"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back
