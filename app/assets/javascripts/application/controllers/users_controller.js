@@ -178,7 +178,7 @@
                 $scope.confirm = function(){
                     users.confirm($scope.user)
                         .success(function(data){
-                            $scope.message({ message: data.message });
+                            $scope.$parent.current_user = data;
                             $state.go('dashboard');
                         })
                         .error(function(data){
