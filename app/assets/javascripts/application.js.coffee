@@ -38,6 +38,7 @@
 #= require angular-ladda
 #= require sweetalert/dist/sweetalert.min
 #= require angular-sweetalert/SweetAlert
+#= require moment/min/moment.min.js
 # load angular modules
 #= require ./application/application.module.js
 #= require_tree ./application/factories

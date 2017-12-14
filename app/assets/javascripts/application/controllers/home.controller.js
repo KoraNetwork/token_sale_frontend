@@ -61,6 +61,6 @@
 
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;
-            }
+            };
         }])
 }());

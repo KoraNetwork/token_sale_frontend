@@ -18,9 +18,9 @@ function match ($http) {
         },
         template: '{{ title }}' +
         '<div class="sort">' +
-        '<i class="fa fa-sort" ng-show="filters.sort_column != name" ng-click="filters.sort_column = name; filters.sort_type = \'asc\'" ></i>' +
-        '<i class="fa fa-sort-asc" ng-show="filters.sort_column == name && filters.sort_type == \'asc\'" ng-click="filters.sort_column = name; filters.sort_type = \'desc\'"></i>' +
-        '<i class="fa fa-sort-desc" ng-show="filters.sort_column == name && filters.sort_type == \'desc\'" ng-click="filters.sort_column = null; filters.sort_type = null"></i>' +
+        '<i class="fa fa-sort" ng-show="filters.sort != name + \' ASC\' && filters.sort != name + \' DESC\'" ng-click="filters.sort = name + \' ASC\'" ></i>' +
+        '<i class="fa fa-sort-asc" ng-show="filters.sort == name + \' ASC\'" ng-click="filters.sort = name + \' DESC\'"></i>' +
+        '<i class="fa fa-sort-desc" ng-show="filters.sort == name + \' DESC\'" ng-click="filters.sort = null"></i>' +
         '</div>'
     };
 }

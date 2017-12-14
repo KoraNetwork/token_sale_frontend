@@ -32,7 +32,7 @@
                 .state('dashboard',{
                   url: '/',
                   templateUrl: 'application/templates/home/index.html',
-                  controller: 'HomeController'
+                  controller: 'DashboardController'
                 })
                 .state('profile',{
                     url: '/profile',

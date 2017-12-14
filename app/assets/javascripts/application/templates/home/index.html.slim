@@ -30,17 +30,49 @@
               img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
               span
                 | Transaction history
+
+          .row style="margin-top: 10px; padding-left: 15px"
+            .pagination#transactions-pagination.inline-block.middle
+            .dropdown.filter-dropdown[uib-dropdown]
+              a.dropdown-toggle [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                | {{ transactions_filters.limit }}
+                .caret
+              ul.dropdown-menu[uib-dropdown-menu]
+                li
+                  a ng-click="transactions_filters.limit = 10"
+                    | 10
+                li
+                  a ng-click="transactions_filters.limit = 20"
+                    | 20
+                li
+                  a ng-click="transactions_filters.limit = 50"
+                    | 50
+                li
+                  a ng-click="transactions_filters.limit = 100"
+                    | 100
           table.table.table-striped.table-responsive
             thead
               tr
-                th tablesort=true tablesort-name="" tablesort-title="Data Recevied"
-                th tablesort=true tablesort-name="" tablesort-title="Type"
-                th tablesort=true tablesort-name="" tablesort-title="Amount (Crypto)"
-                th tablesort=true tablesort-name="" tablesort-title="Amount (USD)"
-                th tablesort=true tablesort-name="" tablesort-title="Amount (SALT)"
-                th tablesort=true tablesort-name="" tablesort-title="Status"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="date"   tablesort-title="Data Recevied"
+                th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Type"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="value"  tablesort-title="Amount (Crypto)"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="USD"    tablesort-title="Amount (USD)"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="KTN"    tablesort-title="KTN"
+                th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Status"
             tbody
               tr ng-show="!count"
                 td.text-center colspan="6"
                   | No results found
-              tr
+              tr ng-repeat="transaction in transactions"
+                td
+                  | {{ moment(transaction.date).format("lll") }}
+                td
+                  | -
+                td
+                  | {{ transaction.value }}
+                td
+                  | {{ transaction.USD }}
+                td
+                  | {{ transaction.KTN }}
+                td
+                  | -
