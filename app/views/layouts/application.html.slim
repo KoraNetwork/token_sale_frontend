@@ -20,3 +20,5 @@ html(lang="en")
       .content-container
         .left-navbar ng-if="current_user.role == 'user'" ng-include="'application/templates/common/left_sidebar.html'"
         .page-container ui-view=""
+
+    div toaster-container='' toaster-options="{'close-button': true}"

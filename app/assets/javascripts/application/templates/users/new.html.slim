@@ -66,20 +66,20 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           | Select your nationality
         ui-select ng-model="user.nationalityObj"
           ui-select-match
-            img.country-img src="{{$select.selected.flag}}"
+            img.country-img ng-src="{{ $select.selected.flag }}"
             span.selected ng-bind="$select.selected.name"
           ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
-            img.country-img src="{{country.flag}}"
+            img.country-img ng-src="{{ country.flag }}"
             span.choices ng-bind="country.name"
       .form-group
         span.placeholder
           | Select your country of residence
         ui-select ng-model="user.countryObj"
           ui-select-match
-            img.country-img src="{{apiURL + $select.selected.flag}}"
+            img.country-img ng-src="{{ $select.selected.flag }}"
             span.selected ng-bind="$select.selected.name"
           ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
-            img.country-img src="{{apiURL + country.flag}}"
+            img.country-img ng-src="{{ country.flag }}"
             span.choices ng-bind="country.name"
       .form-group.text-left
         .checkbox
