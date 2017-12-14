@@ -11,26 +11,26 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         .form-group
           span.placeholder
             | First Name
-          input.form-control required="" type="text" ng-model="user.firstName" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
+          input.form-control type="text" ng-model="user.firstName" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
         .form-group
           span.placeholder
             | Last Name
-          input.form-control required="" type="text" ng-model="user.lastName" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
+          input.form-control type="text" ng-model="user.lastName" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
 
         .form-group
           span.placeholder
             | Email
-          input.form-control required="" type="text" ng-model="user.email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
+          input.form-control type="text" ng-model="user.email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
         .form-group
           span.placeholder
             | Password
-          input.form-control required="" name="password" type="password" ng-pattern="passwordStrength" ng-model="user.password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
+          input.form-control name="password" type="password" ng-pattern="passwordStrength" ng-model="user.password" class="{{ _.contains(invalid_fields, 'password') ? 'error' : '' }}" ng-change="removeError('password')"
             span ng-show="registrationForm.password.$error.pattern"
               | Password must be over 8 characters, have at least 1 uppercase English letter, 1 lowercase English letter and 1 number
         .form-group
           span.placeholder
             | Password Confirmation
-          input.form-control required="" type="password" ng-model="user.passwordConfirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
+          input.form-control type="password" ng-model="user.passwordConfirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
         .form-group.text-center colspan="2" style="padding-top: 10px"
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             | Continue
@@ -60,7 +60,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
       .form-group
         span.placeholder
           | Kora Username
-        input.form-control required="" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+        input.form-control ng-disabled="!checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
       .form-group
         span.placeholder
           | Select your nationality
@@ -131,11 +131,11 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         .form-group style="margin-top: 30px"
           span.placeholder
             | Sending Ethereum Address
-          input.form-control required="" type="text" ng-model="user.sendingEthereumAddress"
-        /.form-group style="margin-top: 30px"
-        /  span.placeholder
-        /    | Receiving Ethereum Address
-        /  input.form-control required="" type="text" ng-model="user.receivingEthereumAddress"
+          input.form-control type="text" ng-model="user.sendingEthereumAddress"
+        .form-group style="margin-top: 30px"
+          span.placeholder
+            | Bitcoin address
+          input.form-control type="text" ng-model="user.bitcoinAddress"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back
@@ -151,7 +151,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         .form-group style="margin-top: 30px"
           span.placeholder
             | Your Verification Pin
-          input.form-control required="" type="text" ng-model="user.token"
+          input.form-control type="text" ng-model="user.token"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back

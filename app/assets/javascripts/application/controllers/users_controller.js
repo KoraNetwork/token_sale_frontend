@@ -91,11 +91,6 @@
                   $scope.invalid_fields.push('country');
                   return;
                 }
-                if(!$scope.user.userName) {
-                  $scope.$parent.errors({ errors: ["Please enter User Name"] });
-                  $scope.invalid_fields.push('userName');
-                  return;
-                }
                 if(!isCaptchaChecked) {
                   $scope.$parent.errors({ errors: ["You have to check the reCaptcha"] });
                   $scope.invalid_fields.push('captcha');
