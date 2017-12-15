@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster',
-            function ($scope, $state, ngDialog, session, $timeout, toaster) {
+        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster','TransactionsFactory',
+            function ($scope, $state, ngDialog, session, $timeout, toaster, transactions) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -58,6 +58,14 @@
                     window.location = '/'
                 })
             };
+
+            transactions.getValues()
+              .success(function (data) {
+                $scope.balance = data;
+              })
+              .error(function (data) {
+
+              });
 
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;

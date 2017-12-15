@@ -62,21 +62,14 @@
             }
 
                 $scope.buyWithEth = function () {
-                  transactions.getValues()
-                    .success(function (data) {
-                      $scope.ethWallet = data.ETHWallet;
-                      $scope.ethDialog();
-                    })
-                    .error(function (data) {
-
-                    })
+                  $scope.ethDialog();
                 };
 
                 $scope.ethDialog = function () {
                   SweetAlert.swal({
                       title: "",
-                      text: "Address: " + $scope.ethWallet.address,
-                      imageUrl: $scope.ethWallet.qrcode,
+                      text: "Address: " + $scope.balance.ETHWallet.address,
+                      imageUrl: $scope.balance.ETHWallet.qrcode,
                       imageSize: "130x130",
                       confirmButtonColor: "#DD6B55",
                       confirmButtonText: "Close",
