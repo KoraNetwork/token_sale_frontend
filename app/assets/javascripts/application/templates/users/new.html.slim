@@ -155,5 +155,5 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back
-          a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirm()" style="margin-left: 30px"
+          a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-disabled="formPending" ng-click="confirm()" style="margin-left: 30px"
             | Complete

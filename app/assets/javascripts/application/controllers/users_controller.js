@@ -176,12 +176,16 @@
                 };
 
                 $scope.confirm = function(){
+                    $scope.submitted = true;
+                    $scope.formPending = true;
                     users.confirm($scope.user)
                         .success(function(data){
+                            $scope.formPending = false;
                             $scope.$parent.current_user = data;
                             $state.go('dashboard');
                         })
                         .error(function(data){
+                            $scope.formPending = true;
                             $scope.errors({ errors: [data.message] });
                         })
                 };
