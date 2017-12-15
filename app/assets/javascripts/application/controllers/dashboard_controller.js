@@ -3,9 +3,9 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('DashboardController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster',
+        .controller('DashboardController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'SweetAlert', 'toaster',
             'TransactionsFactory',
-            function ($scope, $state, ngDialog, session, $timeout, toaster, transactions) {
+            function ($scope, $state, ngDialog, session, $timeout, SweetAlert, toaster, transactions) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -59,6 +59,29 @@
                 };
 
                 $scope.retrieveTransactions();
-            };
+            }
+
+                $scope.buyWithEth = function () {
+                  transactions.getValues()
+                    .success(function (data) {
+                      $scope.ethWallet = data.ETHWallet;
+                      $scope.ethDialog();
+                    })
+                    .error(function (data) {
+
+                    })
+                };
+
+                $scope.ethDialog = function () {
+                  SweetAlert.swal({
+                      title: "",
+                      text: "Address: " + $scope.ethWallet.address,
+                      imageUrl: $scope.ethWallet.qrcode,
+                      imageSize: "130x130",
+                      confirmButtonColor: "#DD6B55",
+                      confirmButtonText: "Close",
+                      closeOnConfirm: true}
+                  );
+                };
         }])
 }());
