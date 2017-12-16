@@ -1,0 +1,14 @@
+.header
+  .title.text-center
+    | Purchase Kora with Ethereum
+  hr
+.ng-dialog-page.p-lr-20px.p-tb-10-5px
+  div.text-center.direction
+    | To purchase Kora, please send ETH to the following address:
+  div.text-center.warning
+    | Please note: Sending anything other than Ethereum to this address may result in a loss of funds
+  div.text-center
+    img src="{{ balance.ETHWallet.qrcode }}"
+  div.text-center.address
+    | {{ balance.ETHWallet.address }}
+  hr

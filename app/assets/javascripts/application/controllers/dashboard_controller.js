@@ -65,16 +65,13 @@
                   $scope.ethDialog();
                 };
 
-                $scope.ethDialog = function () {
-                  SweetAlert.swal({
-                      title: "",
-                      text: "Address: " + $scope.balance.ETHWallet.address,
-                      imageUrl: $scope.balance.ETHWallet.qrcode,
-                      imageSize: "130x130",
-                      confirmButtonColor: "#DD6B55",
-                      confirmButtonText: "Close",
-                      closeOnConfirm: true}
-                  );
-                };
+              $scope.ethDialog = function () {
+                ngDialog.open({
+                  templateUrl: 'application/templates/home/eth_dialog.html',
+                  className: 'ngdialog-theme-default',
+                  scope: $scope,
+                  controller: 'DashboardController'
+                });
+              };
         }])
 }());
