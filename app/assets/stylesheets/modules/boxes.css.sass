@@ -78,8 +78,9 @@
       padding: 15px 60px 15px 23px
       vertical-align: middle
       min-width: 220px
-    .bay
+    .buy
       min-width: 220px
+      padding: 5px
       a
         display: inline-block
         .blue-img
@@ -89,18 +90,28 @@
           border-radius: 3px
           background-color: rgb(179, 216, 236)
           vertical-align: middle
-          img
+          .eth
             object-fit: contain
             padding-left: 17px
             padding-top: 7px
             width: 38px
+          .btc
+            object-fit: contain
+            padding-left: 9px
+            padding-top: 7px
+            width: 45px
         .text
           display: inline-block
           background-color: rgb(247, 247, 247)
           width: 154px
           height: 52px
           vertical-align: middle
-          .bay-with-ethereum
+          .buy-with-ethereum
+            font-size: 14px
+            text-align: left
+            color: #2b74a5
+            margin: 8px 0 5px 13px
+          .buy-with-ethereum
             font-size: 14px
             text-align: left
             color: #2b74a5
@@ -110,6 +121,13 @@
             font-weight: 600
             color: rgba(2, 2, 2, 0.61)
             margin-left: 13px
+  .buy-area-left
+    display: flex
+    flex-direction: row
+    align-items: center
+  .buy-area-right
+    display: flex
+    flex-direction: column
   .dialogSubmit
     width: 100px
 

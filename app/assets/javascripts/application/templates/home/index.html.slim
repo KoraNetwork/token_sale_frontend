@@ -9,19 +9,28 @@
               span
                 | Purchase KNT
             .dashboard-body
-              table
-                tr
-                  td.title
-                    | Purchase KNT with:
-                  td.bay
+              div.buy-area-left
+                div.title
+                  | Purchase KNT with:
+                div.buy-area-right
+                  span.buy
                     a ng-click="buyWithEth()"
                       .blue-img
-                        img ng-src="/images/ic-ethereum.svg"
+                        img.eth ng-src="/images/ic-ethereum.svg"
                       .text
-                        .bay-with-ethereum
+                        .buy-with-ethereum
                           | Buy with Ethereum
                         .price
                           | 1 ETH = ${{ balance.ETH_USD }}
+                  span.buy
+                    a ng-click="buyWithBtc()"
+                      .blue-img
+                        img.btc ng-src="/images/ic-bitcoin.svg"
+                      .text
+                        .buy-with-ethereum
+                          | Buy with Bitcoin
+                        .price
+                          | 1 ETH = ${{ balance.BTC_USD }}
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
@@ -29,35 +38,15 @@
             .dashboard-header
               img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
               span
-                | Transaction history
-
-          .row style="margin-top: 10px; padding-left: 15px"
-            .pagination#transactions-pagination.inline-block.middle
-            .dropdown.filter-dropdown[uib-dropdown]
-              a.dropdown-toggle [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
-                | {{ transactions_filters.limit }}
-                .caret
-              ul.dropdown-menu[uib-dropdown-menu]
-                li
-                  a ng-click="transactions_filters.limit = 10"
-                    | 10
-                li
-                  a ng-click="transactions_filters.limit = 20"
-                    | 20
-                li
-                  a ng-click="transactions_filters.limit = 50"
-                    | 50
-                li
-                  a ng-click="transactions_filters.limit = 100"
-                    | 100
+                | Transaction History
           table.table.table-striped.table-responsive
             thead
               tr
-                th tablesort=true ng-model="transactions_filters" tablesort-name="date"   tablesort-title="Data Recevied"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="date"   tablesort-title="Data Received"
                 th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Type"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="value"  tablesort-title="Amount (Crypto)"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="USD"    tablesort-title="Amount (USD)"
-                th tablesort=true ng-model="transactions_filters" tablesort-name="KTN"    tablesort-title="KTN"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="KNT"    tablesort-title="KNT"
                 th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Status"
             tbody
               tr ng-show="!count"
@@ -76,3 +65,6 @@
                   | {{ transaction.KTN }}
                 td
                   | -
+          br
+          .row style="margin-top: 10px; padding-left: 15px"
+            .pagination#transactions-pagination.inline-block.middle.pull-right
