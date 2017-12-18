@@ -124,17 +124,17 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
       .tmp
     .slide.slide-2.animated.fadeInRight uib-slide=true index="2"
       div.text-center.step
-        | Step 3: Ethereum Wallet Address
+        | Step 3: Sending Wallet Address
       .step-3 style="margin: auto"
-        /.text-center.description
-        /  | DO NOT USE the Ethereum Address that comes from the exchange. You wil not be able to receive KORA tokens.
+        .text-center.description
+          | Please add the address you will be sending funds from. We will not be able to credit you with tokens if the address is missing. Exchange addresses are acceptable.
         .form-group style="margin-top: 30px"
           span.placeholder
             | Sending Ethereum Address
           input.form-control type="text" ng-model="user.sendingEthereumAddress"
         .form-group style="margin-top: 30px"
           span.placeholder
-            | Bitcoin address
+            | Sending Bitcoin Address
           input.form-control type="text" ng-model="user.bitcoinAddress"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
