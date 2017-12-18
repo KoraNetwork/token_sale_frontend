@@ -1,14 +1,14 @@
 .row.border-bottom.ng-scope
   nav.navbar.navbar-fixed-top role="navigation" style=("margin-bottom: 0")
     .div.container
-      .navbar-header.col-md-4
+      .navbar-header
         a.kora-logo.white ng-click="$state.go('dashboard')"
       ul.main_nav.nav.nav-display.col-md-8
         li
           a.nav-menu-text href="#/" ng-class=("{customactive: $state.current.name.includes('dashboard')}")
             | Dashboard
         li ng-class=("{customactive: $state.current.name.includes('profile')}")
-          a.nav-menu-text href="#/profile" ng-class=("{active: ['change_password', 'update_profile'].includes($state.current.name)}")
+          a.nav-menu-text href="#/profile" ng-class=("{active: ['profile', 'change_password', 'update_profile'].includes($state.current.name)}")
             | Profile
         /li
         /  a.nav-menu-text href="#/referral_program"

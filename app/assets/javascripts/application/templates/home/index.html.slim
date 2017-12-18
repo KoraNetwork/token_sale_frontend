@@ -30,7 +30,7 @@
                         .buy-with-ethereum
                           | Buy with Bitcoin
                         .price
-                          | 1 ETH = ${{ balance.BTC_USD }}
+                          | 1 BTC = ${{ balance.BTC_USD }}
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
@@ -46,7 +46,7 @@
                 th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Type"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="value"  tablesort-title="Amount (Crypto)"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="USD"    tablesort-title="Amount (USD)"
-                th tablesort=true ng-model="transactions_filters" tablesort-name="KNT"    tablesort-title="KNT"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="KNT"    tablesort-title="Amount (KNT)"
                 th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Status"
             tbody
               tr ng-show="!count"
