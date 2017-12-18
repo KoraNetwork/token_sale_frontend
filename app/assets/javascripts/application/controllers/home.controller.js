@@ -33,18 +33,29 @@
                 }
             };
 
+            $scope.checkValues = function () {
+              transactions.getValues()
+                .success(function (data) {
+                  $scope.balance = data;
+                })
+                .error(function (data) {
+
+                });
+            };
+
             $scope.checkSession = function(){
                 session.profile()
-                        .success(function(data, status){
-                            $scope.current_user = data;
-                            $state.go('dashboard');
-                        })
-                        .error(function(data){
-                            $scope.current_user = false;
-                            if(['login', 'register', 'forgot_password'].indexOf($state.current.name) < 0){
-                                $state.go('login');
-                            }
-                        });
+                  .success(function(data, status){
+                      $scope.current_user = data;
+                      $scope.checkValues();
+                      $state.go('dashboard');
+                  })
+                  .error(function(data){
+                      $scope.current_user = false;
+                      if(['login', 'register', 'forgot_password'].indexOf($state.current.name) < 0){
+                          $state.go('login');
+                      }
+                  });
             };
 
             if($state.current.name != 'login'){
@@ -58,14 +69,6 @@
                     window.location = '/'
                 })
             };
-
-            transactions.getValues()
-              .success(function (data) {
-                $scope.balance = data;
-              })
-              .error(function (data) {
-
-              });
 
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;
