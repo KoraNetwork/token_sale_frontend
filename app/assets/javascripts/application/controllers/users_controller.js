@@ -126,6 +126,20 @@
                     }
                     else{
                         users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress'))
+                          .success(function(){
+                            $scope.getQR();
+                            $scope.next();
+                          })
+                          .error(function(data){
+                            $scope.resp = data;
+                            $scope.errors({errors: _.flatten(
+                              _.map($scope.resp.Errors, function (errs) {
+                                return _.map(errs, function (err) {
+                                  return err.message;
+                                })
+                              })
+                            )})
+                          })
                     }
                     // if (!$scope.user.receivingEthereumAddress) {
                     //   $scope.$parent.errors({ errors: ["Receiving Ethereum Address must be present!"] });
@@ -134,9 +148,7 @@
                     // else{
                     //   users.checkUserInfo(_.pick($scope.user, 'receivingEthereumAddress'))
                     // }
-                    $scope.getQR();
                     $scope.processing = false;
-                    $scope.next();
                 };
 
                 $scope.getQR = function(){
@@ -177,15 +189,16 @@
 
                 $scope.confirm = function(){
                     $scope.submitted = true;
-                    $scope.formPending = true;
+                    $scope.formPending = false;
                     users.confirm($scope.user)
                         .success(function(data){
-                            $scope.formPending = false;
+                            $scope.formPending = true;
                             $scope.$parent.current_user = data;
+                            $scope.checkValues();
                             $state.go('dashboard');
                         })
                         .error(function(data){
-                            $scope.formPending = true;
+                            $scope.formPending = false;
                             $scope.errors({ errors: [data.message] });
                         })
                 };
