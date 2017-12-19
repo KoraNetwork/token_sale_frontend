@@ -17,6 +17,9 @@
               if(user.countryObj){
                 user.country = user.countryObj.countryCode
               }
+              if(user.token){
+                user.token = user.token.replace(/\s/g,'');
+              }
                 return $http.put('/api/registration/confirm', user || {});
             },
 
