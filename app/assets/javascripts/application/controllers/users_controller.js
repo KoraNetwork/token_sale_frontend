@@ -44,6 +44,57 @@
                     $scope.checkUserInfo(_.pick($scope.user, 'email'));
                 };
 
+                $scope.disableUserName = function () {
+                  users.disableMVPCode()
+                };
+
+                $scope.checkUserName = function () {
+                  $scope.formPending = true;
+                  users.sendMVPCode($scope.user.userName)
+                    .success(function (resp) {
+                      $scope.message({ message: [resp.message] });
+                      $scope.formPending = false;
+                    })
+                    .error(function (err) {
+                      $scope.errors({ errors: [err.message] });
+                      $scope.formPending = false;
+                    })
+                };
+
+                $scope.verifyCode = function () {
+                  $scope.formPending = true;
+                  users.verifyMVPCode($scope.user.code)
+                    .success(function (resp) {
+                      $scope.message({ message: [resp.message] });
+                      $scope.formPending = false;
+                    })
+                    .error(function (err) {
+                      $scope.errors({ errors: [err.message] });
+                      $scope.formPending = false;
+                    })
+                };
+
+                // $scope.verifyCodeDialog = function () {
+                //   SweetAlert.swal({
+                //       title: "",
+                //       text: $scope.smsMessage,
+                //       type: "input",
+                //       animation: "slide-from-top",
+                //       confirmButtonColor: "#DD6B55",confirmButtonText: "Send",
+                //       closeOnConfirm: false},
+                //     function(confirm, inputValue){
+                //       if (!inputValue) {
+                //         $scope.verifyCode();
+                //         swal.showInputError($scope.verifyError);
+                //         return false
+                //       }
+                //       else {
+                //         $scope.verifyCode()
+                //       }
+                //     }
+                //   );
+                // };
+
                 $scope.checkUserInfo = function (user) {
                     users.checkUserInfo(user)
                         .success(function(){

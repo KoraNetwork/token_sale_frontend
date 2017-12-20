@@ -32,6 +32,15 @@
             verifyIp: function () {
               return $http.get('/api/registration/checkIp')
             },
+            disableMVPCode: function () {
+              return $http.get('/api/registration/disableMVPCode')
+            },
+            sendMVPCode: function (value) {
+              return $http.get('/api/registration/sendMVPCode?userName=' + value)
+            },
+            verifyMVPCode: function (value) {
+              return $http.get('/api/registration/verifyMVPCode?code=' + value)
+            },
 
             validate: function (user) {
                 var invalidFields = [],

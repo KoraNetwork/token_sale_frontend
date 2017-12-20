@@ -51,16 +51,27 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         span.font-bold<
           | NOT be able to withdraw your tokens if the KYC isn’t successful.
       div.checking
-        span.checking-text Are you registered with the Kora app?
+        span.checking-text
+          | Are you registered with the Kora app?
         .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
           input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="checked"
-          label.onoffswitch-label for="username-on-off-switch"
+          label.onoffswitch-label for="username-on-off-switch" ng-click="disableUserName()"
             span.onoffswitch-inner
             span.onoffswitch-switch
       .form-group
         span.placeholder
           | Kora Username
-        input.form-control ng-disabled="!checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+        div.hiddenBtn
+          input.form-control ng-disabled="!checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+            a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkUserName()" ng-show="checked" ng-disabled="formPending"
+              | Send
+      .form-group ng-show="checked"
+        span.placeholder
+          | Code
+        div.hiddenBtn
+          input.form-control ng-model="user.code" type="text"
+            a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="verifyCode()" ng-disabled="formPending"
+              | Verify
       .form-group
         span.placeholder
           | Select your nationality
