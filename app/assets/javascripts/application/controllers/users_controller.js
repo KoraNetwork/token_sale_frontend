@@ -120,12 +120,12 @@
 
                 $scope.ethereum = function(){
                     $scope.processing = true;
-                    if (!$scope.user.sendingEthereumAddress) {
-                        $scope.errors({ errors: ["Sending Ethereum Address must be present!"] });
+                    if (!$scope.user.sendingEthereumAddress && !$scope.user.bitcoinAddress) {
+                        $scope.errors({ errors: ["Sending Ethereum or Bitcoin Address must be present!"] });
                         return;
                     }
                     else{
-                        users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress'))
+                        users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress' || $scope.user, 'bitcoinAddress'))
                           .success(function(){
                             $scope.getQR();
                             $scope.next();
