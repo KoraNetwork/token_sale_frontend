@@ -52,8 +52,10 @@
                   $scope.formPending = true;
                   users.sendMVPCode($scope.user.userName)
                     .success(function (resp) {
-                      $scope.message({ message: [resp.message] });
+                      $scope.resp = resp.message;
+                      $scope.message({ message: [$scope.resp] });
                       $scope.formPending = false;
+                      $scope.verifyCodeDialog();
                     })
                     .error(function (err) {
                       $scope.errors({ errors: [err.message] });
@@ -67,6 +69,7 @@
                     .success(function (resp) {
                       $scope.message({ message: [resp.message] });
                       $scope.formPending = false;
+                      $scope.closeVerifyDialog();
                     })
                     .error(function (err) {
                       $scope.errors({ errors: [err.message] });
@@ -74,26 +77,20 @@
                     })
                 };
 
-                // $scope.verifyCodeDialog = function () {
-                //   SweetAlert.swal({
-                //       title: "",
-                //       text: $scope.smsMessage,
-                //       type: "input",
-                //       animation: "slide-from-top",
-                //       confirmButtonColor: "#DD6B55",confirmButtonText: "Send",
-                //       closeOnConfirm: false},
-                //     function(confirm, inputValue){
-                //       if (!inputValue) {
-                //         $scope.verifyCode();
-                //         swal.showInputError($scope.verifyError);
-                //         return false
-                //       }
-                //       else {
-                //         $scope.verifyCode()
-                //       }
-                //     }
-                //   );
-                // };
+                $scope.verifyCodeDialog = function () {
+                  ngDialog.open({
+                    templateUrl: 'application/templates/users/verify_dialog.html',
+                    className: 'ngdialog-theme-default',
+                    animation: "slide-from-top",
+                    closeOnConfirm: true,
+                    scope: $scope,
+                    controller: 'UsersController'
+                  });
+                };
+
+                $scope.closeVerifyDialog = function () {
+                  ngDialog.closeAll();
+                };
 
                 $scope.checkUserInfo = function (user) {
                     users.checkUserInfo(user)
@@ -246,7 +243,7 @@
                             $scope.formPending = true;
                             $scope.$parent.current_user = data;
                             $scope.checkValues();
-                            $state.go('dashboard');
+                            location.replace('#/')
                         })
                         .error(function(data){
                             $scope.formPending = false;

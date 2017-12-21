@@ -1,0 +1,13 @@
+.header
+  .title.text-center
+    | Kora Username verification
+  hr style="margin: 10px 0 10px"
+.ng-dialog-page.p-lr-20px.p-tb-10-5px
+  div.text-center.direction
+    | Please enter the code you received in the message here.
+  div.text-center style="padding: 10px 0 15px"
+    input.form-control ng-model="user.code"
+  div.text-center
+    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="verifyCode()" ng-disabled="formPending"
+      | Verify
+  hr
