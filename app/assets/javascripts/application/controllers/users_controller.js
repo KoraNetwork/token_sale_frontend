@@ -141,9 +141,13 @@
                     var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
                     var error = false;
 
-                    if(!$scope.user.agree1 || !$scope.user.agree2) {
-                        $scope.errors({ errors: ["Please Agree"] });
+                    if(!$scope.user.agree1) {
+                        $scope.errors({ errors: ["Please click I have read and agree with the Whitepaper"] });
                         error = true;
+                    }
+                    if(!$scope.user.agree2) {
+                      $scope.errors({ errors: ["Please click I am not a US citizen"] });
+                      error = true;
                     }
                     if(!$scope.user.nationalityObj) {
                         $scope.errors({ errors: ["Please select Your Nationality"] });
