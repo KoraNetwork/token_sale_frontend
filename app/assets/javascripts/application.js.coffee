@@ -41,9 +41,9 @@
 #= require moment/min/moment.min.js
 # load angular modules
 #= require ./application/application.module.js
-#= require_tree ./application/factories
-#= require_tree ./application/controllers
-#= require_tree ./application/templates
+#= require_tree ./application/client/factories
+#= require_tree ./application/client/controllers
+#= require_tree ./application/client/templates
 #= require_tree .
 
 $(document).ready ->

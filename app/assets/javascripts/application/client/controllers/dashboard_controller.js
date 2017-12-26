@@ -75,7 +75,7 @@
 
               $scope.ethDialog = function () {
                 ngDialog.open({
-                  templateUrl: 'application/templates/home/eth_dialog.html',
+                  templateUrl: 'application/client/templates/home/eth_dialog.html',
                   className: 'ngdialog-theme-default',
                   scope: $scope,
                   controller: 'DashboardController'
@@ -84,7 +84,7 @@
 
               $scope.btcDialog = function () {
                 ngDialog.open({
-                  templateUrl: 'application/templates/home/btc_dialog.html',
+                  templateUrl: 'application/client/templates/home/btc_dialog.html',
                   className: 'ngdialog-theme-default',
                   scope: $scope,
                   controller: 'DashboardController'

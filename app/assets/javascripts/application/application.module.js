@@ -31,37 +31,37 @@
             $stateProvider
                 .state('dashboard',{
                   url: '/',
-                  templateUrl: 'application/templates/home/index.html',
+                  templateUrl: 'application/client/templates/home/index.html',
                   controller: 'DashboardController'
                 })
                 .state('profile',{
                     url: '/profile',
-                    templateUrl: 'application/templates/users/profile.html',
+                    templateUrl: 'application/client/templates/users/profile.html',
                     controller: 'UsersController'
                 })
                 .state('login',{
                     url: '/login',
-                    templateUrl: 'application/templates/sessions/login.html',
+                    templateUrl: 'application/client/templates/sessions/login.html',
                     controller: 'SessionsController'
                 })
                 .state('forgot_password',{
                     url: '/forgot_password',
-                    templateUrl: 'application/templates/passwords/new.html',
+                    templateUrl: 'application/client/templates/passwords/new.html',
                     controller: 'PasswordsController'
                 })
                 .state('register',{
                     url: '/register',
-                    templateUrl: 'application/templates/users/new.html',
+                    templateUrl: 'application/client/templates/users/new.html',
                     controller: 'UsersController'
                 })
                 .state('change_password',{
                   url: '/profile/change_password',
-                  templateUrl: 'application/templates/users/change_password.html',
+                  templateUrl: 'application/client/templates/users/change_password.html',
                   controller: 'UsersController'
                 })
                 .state('update_profile',{
                     url: '/profile/update_profile',
-                    templateUrl: 'application/templates/users/update_profile.html',
+                    templateUrl: 'application/client/templates/users/update_profile.html',
                     controller: 'UsersController'
                   });
     }]);

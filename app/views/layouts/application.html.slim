@@ -17,9 +17,9 @@ html(lang="en")
     .landing ng-if="!current_user || current_user.role == 'user'"
       #wrapper
     .row
-      div ng-if="current_user.role == 'user'" ng-include="'application/templates/common/topnavbar.html'"
+      div ng-if="current_user.role == 'user'" ng-include="'application/client/templates/common/topnavbar.html'"
       .content-container
-        .left-navbar ng-if="current_user.role == 'user'" ng-include="'application/templates/common/left_sidebar.html'"
+        .left-navbar ng-if="current_user.role == 'user'" ng-include="'application/client/templates/common/left_sidebar.html'"
         .page-container ui-view=""
 
     div toaster-container='' toaster-options="{'close-button': true}"

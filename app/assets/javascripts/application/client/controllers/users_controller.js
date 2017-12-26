@@ -79,7 +79,7 @@
 
                 $scope.verifyCodeDialog = function () {
                   ngDialog.open({
-                    templateUrl: 'application/templates/users/verify_dialog.html',
+                    templateUrl: 'application/client/templates/users/verify_dialog.html',
                     className: 'ngdialog-theme-default',
                     animation: "slide-from-top",
                     closeOnConfirm: true,

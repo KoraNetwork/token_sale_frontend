@@ -56,13 +56,13 @@
                 td
                   | {{ moment(transaction.date).format("lll") }}
                 td
-                  | -
+                  | {{ transaction.type }}
                 td
                   | {{ transaction.value }}
                 td
                   | {{ transaction.USD }}
                 td
-                  | {{ transaction.KTN }}
+                  | {{ (transaction.KNT).toFixed(3) }}
                 td
                   | -
           br
