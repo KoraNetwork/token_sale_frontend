@@ -6,7 +6,7 @@
                 var request = '/api/transactions?';
 
                 if (options.page) {
-                    request += 'page=' + options.page;
+                    request += 'page=' + options.page + '&';
                 }
 
                 _.each(Object.keys(options.query), function(key){
