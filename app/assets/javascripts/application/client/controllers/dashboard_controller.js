@@ -73,6 +73,12 @@
                   $scope.btcDialog();
                 };
 
+                $scope.refreshValues = function () {
+                  // $scope.retrieveTransactions();
+                  $scope.checkValues();
+                  $state.reload();
+                };
+
               $scope.ethDialog = function () {
                 ngDialog.open({
                   templateUrl: 'application/client/templates/home/eth_dialog.html',

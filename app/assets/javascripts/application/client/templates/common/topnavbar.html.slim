@@ -1,8 +1,12 @@
 .row.border-bottom.ng-scope
   nav.navbar.navbar-fixed-top role="navigation" style=("margin-bottom: 0")
     .div.container
-      .navbar-header
+      .navbar-header.position
         a.kora-logo.white ng-click="$state.go('dashboard')"
+        a.refresh ng-controller="DashboardController" ng-click="refreshValues()"
+          img.refresh-icon src="/images/ic-reload@2x.png"
+          span.refresh-text
+            | Refresh
       ul.main_nav.nav.nav-display.col-md-8
         li
           a.nav-menu-text href="#/" ng-class=("{customactive: $state.current.name.includes('dashboard')}")
