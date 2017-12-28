@@ -74,9 +74,9 @@
                 };
 
                 $scope.refreshValues = function () {
-                  // $scope.retrieveTransactions();
+                  $scope.retrieveTransactions();
                   $scope.checkValues();
-                  $state.reload();
+                  // $state.reload();
                 };
 
               $scope.ethDialog = function () {
