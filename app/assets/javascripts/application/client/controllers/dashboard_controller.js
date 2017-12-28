@@ -11,9 +11,20 @@
             $scope.$state = $state;
             $scope.moment = moment;
 
-            if ($state.current.name == 'dashboard') {
+            var timer = false;
 
-            }
+              $scope.$watch('transactions_filters', function () {
+                if (timer) {
+                  $scope.page = 1;
+                  $timeout.cancel(timer)
+                }
+                timer = $timeout(function () {
+                  $scope.$parent.retrieveTransactions();
+                }, 500)
+              }, true);
+
+
+              $scope.$parent.retrieveTransactions();
 
                 $scope.buyWithEth = function () {
                   $scope.ethDialog();
