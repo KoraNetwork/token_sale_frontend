@@ -7,7 +7,7 @@
             },
 
             getQR: function () {
-                return $http.get('/api/registration/generateQRCode');
+                return $http.put('/api/registration/generateQRCode');
             },
 
             confirm: function (user) {
@@ -20,26 +20,26 @@
               if(user.token){
                 user.token = user.token.replace(/\s/g,'');
               }
-                return $http.put('/api/registration/confirm', user || {});
+                return $http.post('/api/registration/confirm', user || {});
             },
 
             getCountry: function () {
               return $http.get('/api/countries')
             },
             verifyReCaptcha: function (value) {
-              return $http.post('/api/registration/validateCaptcha?response=' + value );
+              return $http.put('/api/registration/validateCaptcha?response=' + value );
             },
             verifyIp: function () {
-              return $http.get('/api/registration/checkIp')
+              return $http.put('/api/registration/checkIp')
             },
             disableMVPCode: function () {
-              return $http.get('/api/registration/disableMVPCode')
+              return $http.put('/api/registration/disableMVPCode')
             },
             sendMVPCode: function (value) {
-              return $http.get('/api/registration/sendMVPCode?userName=' + value)
+              return $http.put('/api/registration/sendMVPCode?userName=' + value)
             },
             verifyMVPCode: function (value) {
-              return $http.get('/api/registration/verifyMVPCode?code=' + value)
+              return $http.put('/api/registration/verifyMVPCode?code=' + value)
             },
 
             validate: function (user) {
