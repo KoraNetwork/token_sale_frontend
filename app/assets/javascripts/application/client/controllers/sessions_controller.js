@@ -40,6 +40,21 @@
                                 $scope.$parent.errors({ errors: [data.message] });
                             })
                     };
+
+                    $scope.openRegDialog = function () {
+                      $scope.regenerateDialog()
+                    };
+
+                    $scope.regenerateDialog = function () {
+                      ngDialog.open({
+                        templateUrl: 'application/client/templates/sessions/regenerate_dialog.html',
+                        className: 'ngdialog-theme-default',
+                        animation: "slide-from-top",
+                        closeOnConfirm: true,
+                        scope: $scope,
+                        controller: 'SessionsController'
+                      });
+                    };
                 }
             }])
 }());

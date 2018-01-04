@@ -6,7 +6,7 @@
       form role="form" novalidate=true ng-submit="login()"
         .form-group.text-center
           span.placeholder
-            | Username/Email
+            | Email
           input.form-control required="" type="text" ng-model="session.userName"
         .form-group.text-center
           span.placeholder
@@ -16,6 +16,10 @@
           span.placeholder
             | Google Authenticator Code
           input.form-control required="" type="text" ng-model="session.token"
+        /.form-group.text-center ng-click="openRegDialog()"
+        /  span.placeholder
+        /    | Unable to submit a one-time code?
+        /    hr.text-center style="background-color: #2b748f; height: 2px; width: 50%; margin: 0px 113px 0px;"
         .form-group.text-center
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             | Login
