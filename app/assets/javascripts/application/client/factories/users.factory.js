@@ -3,7 +3,7 @@
     angular.module('KoraICOFrontendApp').factory('UsersFactory', ['$http', function($http){
         return {
             checkUserInfo: function (user) {
-                return $http.post('/api/registration/checkUserInfo', user || {});
+                return $http.get('/api/registration/checkUserInfo', user || {});
             },
 
             getQR: function () {
