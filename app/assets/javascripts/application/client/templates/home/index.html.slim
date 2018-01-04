@@ -64,7 +64,7 @@
                 td
                   | {{ (transaction.KNT).toFixed(3) }}
                 td
-                  | -
+                  | {{ (transaction.status) }}
           br
           .row style="margin-top: 10px; padding-left: 15px"
             .pagination#transactions-pagination.inline-block.middle.pull-right
