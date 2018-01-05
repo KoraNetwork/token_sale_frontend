@@ -41,6 +41,9 @@
             verifyMVPCode: function (value) {
               return $http.put('/api/registration/verifyMVPCode?code=' + value)
             },
+            regenerate: function (value) {
+              return $http.put('/api/authenticator/regenerate' + value)
+            },
 
             validate: function (user) {
                 var invalidFields = [],

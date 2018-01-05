@@ -5,10 +5,15 @@
 .ng-dialog-page.p-lr-20px.p-tb-10-5px
   div.text-center.placeholder
     | Secret seed
-  input.form-control required="" type="password" ng-model="session.password"
+  div.text-center.address
+    span
+      | {{ user.key }}
+  div.text-center
+    img src="{{ user.qr }}"
+
 hr
   .form-group
-    div
+    div.dialogText
       | This 20-character secret seed to generate one-time login codes and should be stored offline. Please consider the following when storing it:
       ul
         li

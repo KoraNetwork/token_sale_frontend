@@ -12,6 +12,13 @@
 
             logout: function(){
                 return $http.delete('/api/auth/logout')
+            },
+
+            authRecovery: function (data) {
+              if(data.email) {
+                data.email = data.email.replace(/\s/g,'');
+              }
+              return $http.post('/api/authenticator/recovery', data || {})
             }
         }
     }])
