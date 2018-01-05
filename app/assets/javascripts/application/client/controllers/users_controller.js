@@ -286,16 +286,41 @@
                 };
             }
 
-           $scope.regenerateAuth = function () {
-             user.regenerate()
-               .success(function(resp) {
-                 $scope.key = resp.key;
-                 $scope.qr = resp.qrcode;
-               })
-           };
-
           $scope.openRegDialog = function () {
             $scope.regenerateDialog()
+          };
+
+          $scope.sendToken = function () {
+            users.getRegenerate($scope.user.token)
+              .success(function(data) {
+                $scope.regenerate = data;
+                $scope.reenableDialog()
+              })
+              .error(function(resp) {
+                $scope.errors({ errors: [resp.message] })
+              })
+          };
+
+          $scope.checkReEnable = function () {
+            users.getRegenable($scope.user.reToken)
+              .success(function(resp) {
+                $scope.message({ message: [resp.message] });
+                ngDialog.closeAll();
+              })
+              .error(function(resp) {
+                $scope.errors({ errors: [resp.message] })
+              })
+          };
+
+          $scope.reenableDialog = function () {
+            ngDialog.open({
+              templateUrl: 'application/client/templates/common/reenable_dialog.html',
+              className: 'ngdialog-theme-default',
+              animation: "slide-from-top",
+              closeOnConfirm: true,
+              scope: $scope,
+              controller: 'UsersController'
+            });
           };
 
           $scope.regenerateDialog = function () {

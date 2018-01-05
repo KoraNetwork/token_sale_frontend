@@ -1,0 +1,35 @@
+.header
+  .title.text-center
+    | Regenerate Authenticator Secret Key
+  hr style="margin: 10px 0 10px"
+.ng-dialog-page.p-lr-20px.p-tb-10-5px
+  div.text-center.placeholder
+    | Secret seed
+  div.text-center.address
+    span
+      | {{ regenerate.key }}
+  div.text-center
+    img src="{{ regenerate.qrcode }}"
+
+hr
+  .form-group
+    div.dialogText
+      | This 20-character secret seed to generate one-time login codes and should be stored offline. Please consider the following when storing it:
+      ul
+        li
+          | Write it down or save it to a USB drive and keep it somewhere safe
+        li
+          | Do not save it to a password manager
+        li
+          | Do not store it on your computer
+        li
+          | Do not share it with anyone. Be aware of phishing scams. We will never ask you for this key
+      div
+        | If your mobile devise gets lost, stolen or erased, you will need this secret seed to restore your ability to generate the one-time login codes for your Coinbase account.
+        span
+          | Once the secret seed is safe, click ‘Next’ to proceed.
+  input.form-control required="" type="text" ng-model="user.reToken"
+  .form-group.text-center
+    button.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkReEnable()"
+      | Re-Enable
+  hr

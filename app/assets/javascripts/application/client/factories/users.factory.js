@@ -41,8 +41,11 @@
             verifyMVPCode: function (value) {
               return $http.put('/api/registration/verifyMVPCode?code=' + value)
             },
-            regenerate: function (value) {
-              return $http.put('/api/authenticator/regenerate' + value)
+            getRegenerate: function (value) {
+              return $http.put('/api/authenticator/regenerate?token=' + value)
+            },
+            getRegenable: function (value) {
+              return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 
             validate: function (user) {
