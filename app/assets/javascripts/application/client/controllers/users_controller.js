@@ -315,7 +315,7 @@
           $scope.reenableDialog = function () {
             ngDialog.open({
               templateUrl: 'application/client/templates/common/reenable_dialog.html',
-              className: 'ngdialog-theme-default',
+              className: 'ngdialog-theme-default reenable-width',
               animation: "slide-from-top",
               closeOnConfirm: true,
               scope: $scope,
@@ -326,7 +326,7 @@
           $scope.regenerateDialog = function () {
             ngDialog.open({
               templateUrl: 'application/client/templates/common/regenerate_dialog.html',
-              className: 'ngdialog-theme-default',
+              className: 'ngdialog-theme-default regenerate-width',
               animation: "slide-from-top",
               closeOnConfirm: true,
               scope: $scope,

@@ -75,7 +75,7 @@
                     $scope.GARDialog = function () {
                       ngDialog.open({
                         templateUrl: 'application/client/templates/sessions/gar_dialog.html',
-                        className: 'ngdialog-theme-default',
+                        className: 'ngdialog-theme-default GAR-width',
                         animation: "slide-from-top",
                         closeOnConfirm: true,
                         scope: $scope,
