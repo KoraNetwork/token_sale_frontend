@@ -51,8 +51,9 @@
                 $scope.checkUserName = function () {
                   $scope.formPending = true;
                   users.sendMVPCode($scope.user.userName)
-                    .success(function (resp) {
+                    .success(function (resp, status) {
                       $scope.resp = resp.message;
+                      $scope.status = status;
                       $scope.message({ message: [$scope.resp] });
                       $scope.formPending = false;
                       $scope.verifyCodeDialog();

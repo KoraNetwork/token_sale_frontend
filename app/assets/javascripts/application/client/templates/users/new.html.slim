@@ -65,6 +65,8 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           input.form-control ng-disabled="!checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
             a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkUserName()" ng-show="checked" ng-disabled="formPending"
               | Send
+        span ng-show="status < 300"
+          | Verified
       /.form-group ng-show="checked"
       /  span.placeholder
       /    | Code
@@ -118,9 +120,9 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             | I declare that I am not a US citizen
       .form-group.text-left
         .description
-          | Are you a US-based Accredited Investor interested in our ICO?
-        a< href=""
-          | Click here
+          | Are you a US-based Accredited Investor interested in our Token Sale?
+        a< href="mailto:vlad@htmlbook.ru"
+          | Contact us at investors@kora.network.
       .form-group.center ng-if="!$parent.current_user"
         div#reCaptcha
       div style="padding-top: 30px"
