@@ -67,8 +67,12 @@
     }]);
 
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){
-        var csrf_token = $('meta[name="csrf-token"]').attr('content');
-        $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
+        $(document).ready(function () {
+            $http.get('/csrfToken')
+                .success(function (data) {
+                    $http.defaults.headers.common['X-CSRF-Token'] = data ? data._csrf : null;
+                });
+        });
         $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     }]);
 

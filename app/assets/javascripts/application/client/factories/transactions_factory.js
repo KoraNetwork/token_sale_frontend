@@ -16,6 +16,7 @@
 
                 return $http.get(request);
             },
+
             getValues: function () {
               return $http.get('/api/values')
             }
