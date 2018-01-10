@@ -4,6 +4,6 @@ ul.nav.activ_li_profile.nav-pills
   li.nav-item.activ_link_profile ng-class=("{active: $state.current.name.includes('change_password')}")
     a.nav-link href = "#/profile/change_password"  Change Password
   li.nav-item
-    a.nav-link href="#"  Reset Authenticator
+    a.nav-link ng-click="openRegDialog()"  Reset Authenticator
   li.nav-item
     a.nav-link href="#"  Verify ID
