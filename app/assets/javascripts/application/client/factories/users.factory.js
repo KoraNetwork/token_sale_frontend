@@ -52,6 +52,9 @@
             },
 
             getRegenable: function (value) {
+                if(value.reToken){
+                    user.reToken = user.reToken.replace(/\s/g,'');
+                }
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 

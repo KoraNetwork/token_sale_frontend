@@ -121,8 +121,8 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
       .form-group.text-left
         .description
           | Are you a US-based Accredited Investor interested in our Token Sale?
-        a< href="mailto:vlad@htmlbook.ru"
-          | Contact us at investors@kora.network.
+        span.description Contact us at
+        a< href="mailto:vlad@htmlbook.ru" investors@kora.network.
       .form-group.center ng-if="!$parent.current_user"
         div#reCaptcha
       div style="padding-top: 30px"

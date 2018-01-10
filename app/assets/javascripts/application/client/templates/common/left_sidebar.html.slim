@@ -1,7 +1,7 @@
 .col-md-3.left-nav-block
   ul
     li.left-nav-username
-      | {{ !current_user.userName ? current_user.firstName : current_user.userName }}
+      | {{ !current_user.userName ? current_user.firstName + ' ' +  current_user.lastName : current_user.userName }}
     li.align-center-nav-text
       i.fa.fa-times-circle-o.left-nav-icon.fa-lg
       span.left-nav-unverified-id
