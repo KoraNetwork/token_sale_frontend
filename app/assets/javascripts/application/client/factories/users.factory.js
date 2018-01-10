@@ -26,24 +26,31 @@
             getCountry: function () {
               return $http.get('/api/countries')
             },
+
             verifyReCaptcha: function (value) {
               return $http.put('/api/registration/validateCaptcha?response=' + value );
             },
+
             verifyIp: function () {
               return $http.put('/api/registration/checkIp')
             },
+
             disableMVPCode: function () {
               return $http.put('/api/registration/disableMVPCode')
             },
+
             sendMVPCode: function (value) {
               return $http.put('/api/registration/sendMVPCode?userName=' + value)
             },
+
             verifyMVPCode: function (value) {
               return $http.put('/api/registration/verifyMVPCode?code=' + value)
             },
+
             getRegenerate: function (value) {
               return $http.put('/api/authenticator/regenerate?token=' + value)
             },
+
             getRegenable: function (value) {
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
