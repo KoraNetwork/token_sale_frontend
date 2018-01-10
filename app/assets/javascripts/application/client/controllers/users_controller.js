@@ -165,6 +165,12 @@
                         $scope.invalid_fields.push('captcha');
                         error = true;
                     }
+                    if($scope.user.nationalityObj.countryCode === 'USA') {
+                        $scope.openUsaIpDialog()
+                    }
+                    if($scope.user.countryObj.countryCode === 'USA') {
+                        $scope.openUsaIpDialog()
+                    }
 
                     if (error) return;
 
@@ -218,12 +224,12 @@
                     users.verifyIp(response)
                         .success(function (data) {
                             if(data.hasUSIP === true){
-                                $scope.openDialog();
+                                $scope.openUsaIpDialog();
                             }
                         });
                 };
 
-                $scope.openDialog = function () {
+                $scope.openUsaIpDialog = function () {
                     SweetAlert.swal({
                             title: "You are used ip from USA",
                             text: "We have detected you have a US IP, Can you confirm you're not a US citizen?",
@@ -238,6 +244,17 @@
                             }
                         }
                     );
+                };
+
+                $scope.usaCountryDialog = function () {
+                    ngDialog.open({
+                        templateUrl: 'application/client/templates/common/usa_country.html',
+                        className: 'ngdialog-theme-default regenerate-width',
+                        animation: "slide-from-top",
+                        closeOnConfirm: true,
+                        scope: $scope,
+                        controller: 'UsersController'
+                    });
                 };
 
                 $scope.confirm = function(){
