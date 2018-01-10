@@ -3,6 +3,10 @@
     | Kora
   hr style="margin: 10px 0 10px"
 .ng-dialog-page.p-lr-20px.p-tb-10-5px
-  div.text-center.direction
-    | Please contact us at
-    a< href="mailto:investors@kora.network."
+  div.text-center
+    a href="mailto:investors@kora.network."
+      |  Please contact us at investors@kora.network.
+  hr
+  div.text-center
+    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" href="/#/login" ng-click="closeVerifyDialog()"
+      | Ok

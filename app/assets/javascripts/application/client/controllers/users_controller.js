@@ -138,6 +138,17 @@
                     }
                 }, 1000);
 
+                $scope.usaCountryDialog = function () {
+                    ngDialog.open({
+                        templateUrl: 'application/client/templates/users/usa_country.html',
+                        className: 'ngdialog-theme-default regenerate-width',
+                        animation: "slide-from-top",
+                        closeOnConfirm: true,
+                        scope: $scope,
+                        controller: 'UsersController'
+                    });
+                };
+
                 $scope.agree = function() {
                     var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
                     var error = false;
@@ -166,10 +177,12 @@
                         error = true;
                     }
                     if($scope.user.nationalityObj.countryCode === 'USA') {
-                        $scope.openUsaIpDialog()
+                        $scope.usaCountryDialog();
+                        error = true;
                     }
                     if($scope.user.countryObj.countryCode === 'USA') {
-                        $scope.openUsaIpDialog()
+                        $scope.usaCountryDialog();
+                        error = true
                     }
 
                     if (error) return;
@@ -225,36 +238,24 @@
                         .success(function (data) {
                             if(data.hasUSIP === true){
                                 $scope.openUsaIpDialog();
+                                return false
                             }
                         });
                 };
 
                 $scope.openUsaIpDialog = function () {
                     SweetAlert.swal({
-                            title: "You are used ip from USA",
-                            text: "We have detected you have a US IP, Can you confirm you're not a US citizen?",
-                            showCancelButton: true,
+                            title: "<span>You are used ip from USA</span>",
+                            text: "<span>We have detected you have a US IP, Please contact us at <a href='mailto:investors@kora.network'> investors@kora.network <a>.</span>",
+                            html: true,
                             confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
-                            cancelButtonText: "Cancel!",
-                            closeOnConfirm: true,
-                            closeOnCancel: true },
+                            closeOnConfirm: true},
                         function(confirm){
-                            if (!confirm) {
+                            if (confirm) {
                                 $state.go('login')
                             }
                         }
                     );
-                };
-
-                $scope.usaCountryDialog = function () {
-                    ngDialog.open({
-                        templateUrl: 'application/client/templates/common/usa_country.html',
-                        className: 'ngdialog-theme-default regenerate-width',
-                        animation: "slide-from-top",
-                        closeOnConfirm: true,
-                        scope: $scope,
-                        controller: 'UsersController'
-                    });
                 };
 
                 $scope.confirm = function(){
