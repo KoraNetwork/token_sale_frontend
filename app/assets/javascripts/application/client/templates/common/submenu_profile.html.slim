@@ -6,4 +6,5 @@ ul.nav.activ_li_profile.nav-pills
   li.nav-item
     a.nav-link ng-click="openRegDialog()"  Reset Authenticator
   li.nav-item
-    a.nav-link href="#"  Verify ID
+    a.nav-link href="#/profile/verify_id"
+      | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}
