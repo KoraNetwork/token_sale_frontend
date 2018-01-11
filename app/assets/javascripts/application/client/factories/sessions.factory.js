@@ -19,6 +19,17 @@
                 data.email = data.email.replace(/\s/g,'');
               }
               return $http.post('/api/authenticator/recovery', data || {})
+            },
+
+            sendImage: function (data) {
+
+                var body = new FormData();
+
+                if(data.image && data.image.file) {
+                    body.append('photo', data.image.file);
+                }
+
+              return $http.put('http://ec2-13-59-231-138.us-east-2.compute.amazonaws.com:82/api/authenticator/recovery/' + data.id, body)
             }
         }
     }])

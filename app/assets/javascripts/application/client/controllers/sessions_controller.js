@@ -43,13 +43,25 @@
 
                     $scope.sendEmail = function () {
                       sessions.authRecovery($scope.session)
-                        .success(function() {
-                          $scope.recomendAlert();
-                          ngDialog.closeAll();
+                        .success(function(resp) {
+                          $scope.session.id = resp.id;
+                          $scope.uploadImageDialog();
                         })
                         .error(function(resp) {
                           $scope.errors({ errors: [resp.message] });
                         })
+                    };
+
+                    $scope.sendImage = function () {
+                        console.log($scope.session);
+                        sessions.sendImage($scope.session)
+                            .success(function() {
+                                $scope.recomendAlert();
+                                ngDialog.closeAll();
+                            })
+                            .error(function(resp){
+                                $scope.errors({ errors: [resp.message] });
+                            })
                     };
 
                     $scope.recomendAlert = function () {
@@ -78,9 +90,18 @@
                         className: 'ngdialog-theme-default GAR-width',
                         animation: "slide-from-top",
                         closeOnConfirm: true,
-                        scope: $scope,
-                        controller: 'SessionsController'
+                        scope: $scope
                       });
+                    };
+
+                    $scope.uploadImageDialog = function () {
+                        ngDialog.open({
+                            templateUrl: 'application/client/templates/sessions/upload_image.html',
+                            className: 'ngdialog-theme-default GAR-width',
+                            animation: "slide-from-top",
+                            closeOnConfirm: true,
+                            scope: $scope
+                        });
                     };
                 }
             }])
