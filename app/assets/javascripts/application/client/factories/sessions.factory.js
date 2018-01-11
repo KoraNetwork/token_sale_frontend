@@ -29,7 +29,9 @@
                     body.append('photo', data.image.file);
                 }
 
-              return $http.put('http://ec2-13-59-231-138.us-east-2.compute.amazonaws.com:82/api/authenticator/recovery/' + data.id, body)
+                return $http.put('/api/authenticator/recovery/' + data.id, body, {
+                    headers: { 'Content-Type': undefined }
+                })
             }
         }
     }])
