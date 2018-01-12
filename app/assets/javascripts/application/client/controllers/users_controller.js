@@ -353,9 +353,50 @@
             });
           };
 
+          $scope.openAuthAlert = function () {
+              var error = false;
+
+              if(!$scope.current_user.oldPassword) {
+                  $scope.errors({errors: ["Old password required"]});
+                  error = true
+              }
+              if(!$scope.current_user.newPassword) {
+                  $scope.errors({errors: ["New Password cannot be empty"]});
+                  error = true
+              }
+              if(!$scope.current_user.newPasswordConfirm) {
+                  $scope.errors({errors: ["New Password Confirm cannot be empty"]});
+                  error = true
+              }
+
+              if (error) return;
+
+              $scope.googleAuthAlert();
+
+          };
+
+          $scope.googleAuthAlert = function () {
+              SweetAlert.swal({
+                      title: "Google Authenticator Code can not be empty",
+                      text: "Please enter your Google Authenticator Code:",
+                      type: "input",
+                      showCancelButton: true,
+                      inputPlaceholder: "Google Authenticator",
+                      confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
+                      closeOnConfirm: false,
+                      closeOnCancel: true},
+                  function(inputValue) {
+                      if (inputValue) {
+                          $scope.current_user.token = inputValue;
+                          $scope.changePassword();
+                          SweetAlert.close();
+                      }
+                  })
+          };
+
           $scope.changePassword = function () {
               $scope.processing = true;
-              users.updatePassword($scope.user)
+              users.updatePassword($scope.current_user)
                 .success(function(resp) {
                   $scope.processing = false;
                   $scope.message({ message: [resp.message] });
