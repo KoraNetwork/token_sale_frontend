@@ -3,6 +3,11 @@
   .col-md-12.change_password-text
     i.fa.fa-user-o
     | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}
+  .col-md-12.textBox
+    ul
+      li - To contribute to Kora Token Sale and withdraw KNT, upload a valid, government issued photo ID.
+      li - Your ID will not be verified immediately upon upload.
+      li - All IDs will be reviewed and verified before contribution.
   form novalidate=true ng-submit="verifyID()" name="verifyIDForm"
     .col-md-12.change_password-update_form
       .col-md-12

@@ -352,7 +352,7 @@
                   controller: 'UsersController'
                 });
             };
-            
+
           $scope.openAuthAlert = function () {
               var error = false;
 
