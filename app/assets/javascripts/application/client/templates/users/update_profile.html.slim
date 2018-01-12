@@ -3,75 +3,24 @@
   .col-md-12.change_password-text
     i.fa.fa-user-o
     | Update Profile
-  form novalidate=true ng-submit="profileUpdate()" name="ProfileForm"
+  form novalidate=true ng-submit="updateProfile()" name="ProfileForm"
     .col-md-12.change_password-update_form
       .col-md-12
-        .col-md-3
-          .form-group
-            label.star for="fn"  First Name
-            input#fn.form-control-profile_style_input-small type="text" ng-model="current_user.firstName"
-        .col-md-3
-          .form-group
-            label.star for="lstn"  Last Name
-            input#lstn.form-control-profile_style_input-small type="text" ng-model="current_user.lastName"
-        .col-md-3
-          .form-group
-            label for="idnt"  Identification Type
-            select#idnt.form-control-profile_style_input-small title="Select"
-      .col-md-12
-        .col-md-4
-          .form-group
-            label.star for="phn"  Phone Number
-            input#phn.form-control-profile_style_input type="text" ng-model="current_user.phone"
-        .col-md-4
-          .form-group
-            label.star for="email"  Email
-            input#email.form-control-profile_style_input type="text" ng-model="current_user.email"
-        .col-md-4
-          .form-group
-            label for="docc"  Document Country
-            select#docc.form-control-profile_style_input title="Select"
-      .col-md-8
-        .col-md-4
-          .form-group
-            label.star for="birthm"  Birth Month
-            input#birthm.form-control-profile_style_input-small type="text" ng-model="birth_month"
-        .col-md-4
-          .form-group
-            label.star for="bd"  Birth Day
-            input#bd.form-control-profile_style_input-small type="text" ng-model="birth_day"
-        .col-md-4
-          .form-group
-            label.star for="by"  Birth Year
-            input#by.form-control-profile_style_input-small type="text" ng-model="birth_year"
-      .col-md-8
-        .col-md-12
-          .form-group style="display: grid"
-            label.star for="country"  Country
-            input#country.form-control-profile_style_input-large type="text" ng-model="current_user.countryName"
-      .col-md-8
-        .col-md-8
-          .form-group
-            label.star for="street"  Street Address
-            input#street.form-control-profile_style_input-mid type="text"
-        .col-md-4
-          .form-group
-            label for="apt"  Apt/Ste
-            input#apt.form-control-profile_style_input-small type="text"
-      .col-md-8
-        .col-md-4
-          .form-group
-            label.star for="city"  City
-            input#city.form-control-profile_style_input-small type="text"
-        .col-md-4
-          .form-group
-            label.star for="state"  State
-            input#state.form-control-profile_style_input-small type="text"
-        .col-md-4
-          .form-group
-            label.star for="zip"  ZIP
-            input#zip.form-control-profile_style_input-small type="text"
-      div image=true ng-model="image"
+        .row
+          .col-md-3
+            .form-group
+              label  Change ethereum sending address
+              input.form-control-profile_style_input-large type="text" ng-model="current_user.sendingEthereumAddress"
+        .row
+          .col-md-3
+            .form-group
+              label  Change bitcoin sending address
+              input.form-control-profile_style_input-large type="text" ng-model="current_user.bitcoinAddress"
+        .row
+          .col-md-3
+            .form-group
+              label  Change email
+              input.form-control-profile_style_input-large type="text" ng-model="current_user.email"
       .col-md-12
         .form-group_profile_button.text-left
           button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit"

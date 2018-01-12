@@ -305,55 +305,55 @@
                 };
             }
 
-          $scope.openRegDialog = function () {
-            $scope.regenerateDialog()
-          };
+            $scope.openRegDialog = function () {
+                $scope.regenerateDialog()
+            };
 
-          $scope.sendToken = function () {
-            users.getRegenerate($scope.user.token)
-              .success(function(data) {
-                $scope.regenerate = data;
-                $scope.reenableDialog()
-              })
-              .error(function(resp) {
-                $scope.errors({ errors: [resp.message] })
-              })
-          };
+            $scope.sendToken = function () {
+                users.getRegenerate($scope.user.token)
+                  .success(function(data) {
+                    $scope.regenerate = data;
+                    $scope.reenableDialog()
+                  })
+                  .error(function(resp) {
+                    $scope.errors({ errors: [resp.message] })
+                  })
+            };
 
-          $scope.checkReEnable = function () {
-            users.getRegenable($scope.user.reToken)
-              .success(function(resp) {
-                $scope.message({ message: [resp.message] });
-                ngDialog.closeAll();
-              })
-              .error(function(resp) {
-                $scope.errors({ errors: [resp.message] })
-              })
-          };
+            $scope.checkReEnable = function () {
+                users.getRegenable($scope.user.reToken)
+                  .success(function(resp) {
+                    $scope.message({ message: [resp.message] });
+                    ngDialog.closeAll();
+                  })
+                  .error(function(resp) {
+                    $scope.errors({ errors: [resp.message] })
+                  })
+            };
 
-          $scope.reenableDialog = function () {
-            ngDialog.open({
-              templateUrl: 'application/client/templates/common/reenable_dialog.html',
-              className: 'ngdialog-theme-default reenable-width',
-              animation: "slide-from-top",
-              closeOnConfirm: true,
-              scope: $scope,
-              controller: 'UsersController'
-            });
-          };
+            $scope.reenableDialog = function () {
+                ngDialog.open({
+                  templateUrl: 'application/client/templates/common/reenable_dialog.html',
+                  className: 'ngdialog-theme-default reenable-width',
+                  animation: "slide-from-top",
+                  closeOnConfirm: true,
+                  scope: $scope,
+                  controller: 'UsersController'
+                });
+            };
 
-          $scope.regenerateDialog = function () {
-            ngDialog.open({
-              templateUrl: 'application/client/templates/common/regenerate_dialog.html',
-              className: 'ngdialog-theme-default regenerate-width',
-              animation: "slide-from-top",
-              closeOnConfirm: true,
-              scope: $scope,
-              controller: 'UsersController'
-            });
-          };
+            $scope.regenerateDialog = function () {
+                ngDialog.open({
+                  templateUrl: 'application/client/templates/common/regenerate_dialog.html',
+                  className: 'ngdialog-theme-default regenerate-width',
+                  animation: "slide-from-top",
+                  closeOnConfirm: true,
+                  scope: $scope,
+                  controller: 'UsersController'
+                });
+            };
 
-          $scope.changePassword = function () {
+            $scope.changePassword = function () {
               $scope.processing = true;
               users.updatePassword($scope.user)
                 .success(function(resp) {
@@ -364,18 +364,31 @@
                 .error(function(resp) {
                     $scope.errors({ errors: [resp.message] });
                 })
-          };
-          
-          $scope.profileUpdate = function(){
-            $scope.processing = true;
-            users.upsert($scope.current_user)
-              .success(function(){
-                $scope.processing = false;
-              })
-              .error(function(data){
-                $scope.processing = false;
-                $scope.validation_errors = data.validation_errors
-              })
-          };
+            };
+
+            $scope.verifyID = function(){
+                $scope.processing = true;
+                verifyID.upsert($scope.current_user)
+                  .success(function(){
+                    $scope.processing = false;
+                  })
+                  .error(function(data){
+                    $scope.processing = false;
+                    $scope.validation_errors = data.validation_errors
+                  })
+            };
+
+            $scope.updateProfile = function(){
+                $scope.processing = true;
+                users.upsert(_.pick($scope.current_user, 'email', 'sendingEthereumAddress', 'bitcoinAddress'))
+                  .success(function(){
+                    $scope.processing = false;
+                  })
+                  .error(function(data){
+                    $scope.processing = false;
+                    $scope.validation_errors = data.validation_errors
+                  })
+            };
+
         }])
 }());

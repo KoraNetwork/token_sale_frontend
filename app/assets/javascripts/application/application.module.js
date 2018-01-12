@@ -63,7 +63,12 @@
                     url: '/profile/update_profile',
                     templateUrl: 'application/client/templates/users/update_profile.html',
                     controller: 'UsersController'
-                  });
+                })
+                .state('verify_id',{
+                    url: '/profile/verify_id',
+                    templateUrl: 'application/client/templates/users/verify_id.html',
+                    controller: 'UsersController'
+                });
     }]);
 
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){

@@ -111,10 +111,13 @@
                 };
             },
 
+            verifyID: function (user) {
+                return $http.put('/api/profile/verify', user || {});
+            },
 
-          upsert: function (user) {
-            return $http.put('/api/profile', user);
-          }
+            upsert: function (user) {
+                return $http.put('/api/profile', user || {});
+            }
         }
     }])
 }());
