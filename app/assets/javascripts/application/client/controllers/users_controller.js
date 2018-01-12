@@ -353,6 +353,19 @@
             });
           };
 
+          $scope.changePassword = function () {
+              $scope.processing = true;
+              users.updatePassword($scope.user)
+                .success(function(resp) {
+                  $scope.processing = false;
+                  $scope.message({ message: [resp.message] });
+                  $state.go('dashboard');
+                })
+                .error(function(resp) {
+                    $scope.errors({ errors: [resp.message] });
+                })
+          };
+          
           $scope.profileUpdate = function(){
             $scope.processing = true;
             users.upsert($scope.current_user)

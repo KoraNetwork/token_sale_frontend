@@ -58,6 +58,10 @@
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 
+            updatePassword: function (value) {
+              return $http.put('/api/password/change', value)
+            },
+
             validate: function (user) {
                 var invalidFields = [],
                     messages = [],
