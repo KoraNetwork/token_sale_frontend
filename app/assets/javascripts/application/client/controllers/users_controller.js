@@ -310,7 +310,7 @@
             };
 
             $scope.sendToken = function () {
-                users.getRegenerate($scope.user.token)
+                users.getRegenerate($scope.user)
                   .success(function(data) {
                     $scope.regenerate = data;
                     $scope.reenableDialog()

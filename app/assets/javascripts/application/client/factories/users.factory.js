@@ -48,7 +48,7 @@
             },
 
             getRegenerate: function (value) {
-              return $http.put('/api/authenticator/regenerate?token=' + value)
+              return $http.put('/api/authenticator/regenerate', value)
             },
 
             getRegenable: function (value) {
