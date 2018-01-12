@@ -71,7 +71,8 @@
                           confirmButtonColor: "#DD6B55",confirmButtonText: "OK",
                           width: 600,
                           padding: 100,
-                          closeOnConfirm: true,},
+                          closeOnConfirm: true
+                        },
                         function(confirm){
                           if (!confirm) {
                             $state.go('login')

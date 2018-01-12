@@ -26,30 +26,48 @@
 
               $scope.$parent.retrieveTransactions();
 
-                $scope.buyWithEth = function () {
-                  $scope.ethDialog();
-                };
-
-                $scope.buyWithBtc = function () {
-                  $scope.btcDialog();
-                };
-
               $scope.ethDialog = function () {
-                ngDialog.open({
-                  templateUrl: 'application/client/templates/home/eth_dialog.html',
-                  className: 'ngdialog-theme-default buy-width',
-                  scope: $scope,
-                  controller: 'DashboardController'
-                });
+                  if ($scope.$parent.current_user.verified) {
+                      ngDialog.open({
+                          templateUrl: 'application/client/templates/home/eth_dialog.html',
+                          className: 'ngdialog-theme-default buy-width',
+                          scope: $scope,
+                          controller: 'DashboardController'
+                      });
+                  } else {
+                      SweetAlert.swal({
+                              title: "Verify your ID",
+                              text: "Please verify your ID firstly.",
+                              confirmButtonColor: "#DD6B55",
+                              confirmButtonText: "OK",
+                              width: 600,
+                              padding: 100,
+                              closeOnConfirm: true
+                          }
+                      );
+                  }
               };
 
               $scope.btcDialog = function () {
-                ngDialog.open({
-                  templateUrl: 'application/client/templates/home/btc_dialog.html',
-                  className: 'ngdialog-theme-default buy-width',
-                  scope: $scope,
-                  controller: 'DashboardController'
-                });
+                  if ($scope.$parent.current_user.verified) {
+                      ngDialog.open({
+                          templateUrl: 'application/client/templates/home/btc_dialog.html',
+                          className: 'ngdialog-theme-default buy-width',
+                          scope: $scope,
+                          controller: 'DashboardController'
+                      });
+                  } else {
+                      SweetAlert.swal({
+                              title: "Verify your ID",
+                              text: "Please verify your ID firstly.",
+                              confirmButtonColor: "#DD6B55",
+                              confirmButtonText: "OK",
+                              width: 600,
+                              padding: 100,
+                              closeOnConfirm: true
+                          }
+                      );
+                  }
               };
         }])
 }());
