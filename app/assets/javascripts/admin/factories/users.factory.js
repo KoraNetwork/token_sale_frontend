@@ -14,6 +14,21 @@
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 
+            getUsers: function (options) {
+                var request = '/api/users?';
+
+                if (options.page) {
+                    request += 'page=' + options.page + '&';
+                }
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key])
+                        request += key + '=' + options.query[key] + '&';
+                });
+
+                return $http.get(request);
+            },
+
             parseErrors: function (errors) {
                 var errorMessages = [], keys = [];
                 _.each(_.keys(errors), function (key) {

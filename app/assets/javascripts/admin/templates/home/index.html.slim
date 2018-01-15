@@ -3,3 +3,37 @@
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+              span
+                | Users
+            table.table.table-striped.table-responsive
+              thead
+                tr
+                  th tablesort=true ng-model="users_filters" tablesort-name="firstName" tablesort-title="First Name"
+                  th tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
+                  th tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
+                  th tablesort=true ng-model="users_filters" tablesort-name="verified" tablesort-title="Verified"
+                  th tablesort=true ng-model="users_filters" tablesort-name="countryName" tablesort-title="Country Name"
+                  th Country
+              tbody
+                tr ng-show="!count"
+                  td.text-center colspan="6"
+                    | No results found
+                tr ng-repeat="user in users"
+                  td
+                    | {{ user.firstName }}
+                  td
+                    | {{ user.lastName }}
+                  td
+                    | {{ user.email }}
+                  td
+                    | {{ user.verified }}
+                  td
+                    | {{ user.countryName }}
+                  td
+                    img src="{{ user.countryFlag }}" style="width: 30px; height: 30px; border-radius: 50px"
+            br
+            .row style="margin-top: 10px; padding-left: 15px"
+              .pagination#users-pagination.inline-block.middle.pull-right

@@ -29,10 +29,10 @@
             $urlRouterProvider.otherwise('/login');
 
             $stateProvider
-                .state('dashboard', {
+                .state('users', {
                   url: '/',
                   templateUrl: 'admin/templates/home/index.html',
-                  controller: 'HomeController'
+                  controller: 'UsersController'
                 })
                 .state('login', {
                     url: '/login',

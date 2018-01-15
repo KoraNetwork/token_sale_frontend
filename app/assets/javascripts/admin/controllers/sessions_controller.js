@@ -83,7 +83,7 @@
 
                     $scope.openGAR = function () {
                         ngDialog.open({
-                            templateUrl: 'application/client/templates/sessions/gar_dialog.html',
+                            templateUrl: 'admin/templates/sessions/gar_dialog.html',
                             className: 'ngdialog-theme-default GAR-width',
                             animation: "slide-from-top",
                             closeOnConfirm: true,
@@ -93,7 +93,7 @@
 
                     $scope.uploadImageDialog = function () {
                         ngDialog.open({
-                            templateUrl: 'application/client/templates/sessions/upload_image.html',
+                            templateUrl: 'admin/templates/sessions/upload_image.html',
                             className: 'ngdialog-theme-default GAR-width',
                             animation: "slide-from-top",
                             closeOnConfirm: true,

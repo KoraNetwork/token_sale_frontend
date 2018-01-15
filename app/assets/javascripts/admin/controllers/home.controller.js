@@ -35,8 +35,14 @@
             $scope.checkSession = function(){
                 session.profile()
                   .success(function(data, status){
-                      $scope.current_user = data;
-                      $state.go('dashboard');
+                      if (data.role != 'admin') {
+                          $scope.errors({ errors: ["You are not admin!"] });
+                          $scope.logout();
+                      }
+                      else {
+                          $scope.current_user = data;
+                          $state.go('users');
+                      }
                   })
                   .error(function(data){
                       $scope.current_user = false;
