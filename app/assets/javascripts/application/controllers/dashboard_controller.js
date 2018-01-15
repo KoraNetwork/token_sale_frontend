@@ -29,7 +29,7 @@
               $scope.ethDialog = function () {
                   if ($scope.$parent.current_user.verified) {
                       ngDialog.open({
-                          templateUrl: 'application/client/templates/home/eth_dialog.html',
+                          templateUrl: 'application/templates/home/eth_dialog.html',
                           className: 'ngdialog-theme-default buy-width',
                           scope: $scope,
                           controller: 'DashboardController'
@@ -51,7 +51,7 @@
               $scope.btcDialog = function () {
                   if ($scope.$parent.current_user.verified) {
                       ngDialog.open({
-                          templateUrl: 'application/client/templates/home/btc_dialog.html',
+                          templateUrl: 'application/templates/home/btc_dialog.html',
                           className: 'ngdialog-theme-default buy-width',
                           scope: $scope,
                           controller: 'DashboardController'
