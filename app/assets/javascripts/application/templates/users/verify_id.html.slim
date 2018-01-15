@@ -39,16 +39,9 @@
       .col-md-8
         .col-md-4
           .form-group
-            label.star for="birthm"  Birth Month
-            input#birthm.form-control-profile_style_input-small type="text" ng-model="birth_month"
-        .col-md-4
-          .form-group
-            label.star for="bd"  Birth Day
-            input#bd.form-control-profile_style_input-small type="text" ng-model="birth_day"
-        .col-md-4
-          .form-group
-            label.star for="by"  Birth Year
-            input#by.form-control-profile_style_input-small type="text" ng-model="birth_year"
+            label for="bd" Birth Day *
+            div ng-click="date_opened = true"
+              input#bd.form-control-profile_style_input type="text" uib-datepicker-popup="{{ 'dd MMM yyyy' }}" ng-model="current_user.dateOfBirth" is-open="date_opened" close-text="Close" readonly="readonly" datepicker-options="options" show-button-bar="false"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"

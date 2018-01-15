@@ -423,7 +423,7 @@
 
             $scope.verifyID = function(){
                 $scope.processing = true;
-                verifyID.upsert($scope.current_user)
+                users.verifyID($scope.current_user)
                   .success(function(){
                     $scope.processing = false;
                     $scope.verifiedID();
@@ -459,6 +459,14 @@
                     $scope.processing = false;
                     $scope.validation_errors = data.validation_errors
                   })
+            };
+
+            $scope.options = {
+                showWeeks: false,
+                formatMonth: 'MMM',
+                show_button_bar: false,
+                maxDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000),
+                initDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000)
             };
 
         }])
