@@ -6,9 +6,5 @@ ul.nav.activ_li_profile.nav-pills
   li.nav-item
     a.nav-link ng-click="openRegDialog()"  Reset Authenticator
   li.nav-item.activ_link_profile ng-class=("{active: $state.current.name.includes('verify_id')}")
-<<<<<<< Updated upstream:app/assets/javascripts/application/templates/common/submenu_profile.html.slim
     a.nav-link href="#/profile/verify_id" style="{{ current_user.verified ? '' : 'color: #2b74a5; font-weight: 600' }}"
-=======
-    a.nav-link href="#/profile/verify_id"
->>>>>>> Stashed changes:app/assets/javascripts/application/client/templates/common/submenu_profile.html.slim
       | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}
