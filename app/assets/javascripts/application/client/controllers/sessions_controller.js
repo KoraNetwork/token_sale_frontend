@@ -32,12 +32,14 @@
                         sessions.login($scope.session)
                             .success(function(data){
                                 $scope.processing = false;
-                                $scope.$parent.checkSession();
-                                $scope.$parent.message({ message: data.message });
+                                if ($scope.$parent) {
+                                    $scope.$parent.checkSession();
+                                    $scope.$parent.message({ message: data.message });
+                                }
                             })
                             .error(function(data, status){
                                 $scope.processing = false;
-                                $scope.$parent.errors({ errors: [data.message] });
+                                if ($scope.$parent) $scope.$parent.errors({ errors: [data.message] });
                             })
                     };
 
