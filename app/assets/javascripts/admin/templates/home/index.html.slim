@@ -14,9 +14,8 @@
                   th tablesort=true ng-model="users_filters" tablesort-name="firstName" tablesort-title="First Name"
                   th tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
                   th tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
-                  th tablesort=true ng-model="users_filters" tablesort-name="verified" tablesort-title="Verified"
                   th tablesort=true ng-model="users_filters" tablesort-name="countryName" tablesort-title="Country Name"
-                  th Country
+                  th tablesort=true ng-model="users_filters" tablesort-name="verified" tablesort-title="Verified"
               tbody
                 tr ng-show="!count"
                   td.text-center colspan="6"
@@ -29,11 +28,9 @@
                   td
                     | {{ user.email }}
                   td
-                    | {{ user.verified }}
-                  td
                     | {{ user.countryName }}
                   td
-                    img src="{{ user.countryFlag }}" style="width: 30px; height: 30px; border-radius: 50px"
+                    | {{ user.verified }}
             br
             .row style="margin-top: 10px; padding-left: 15px"
               .pagination#users-pagination.inline-block.middle.pull-right
