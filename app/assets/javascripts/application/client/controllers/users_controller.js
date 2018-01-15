@@ -31,7 +31,7 @@
                 $scope.slide = 0;
                 $scope.invalid_fields = [];
                 $scope.countries  = [];
-                $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{9,}$/;
+                $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
                 $scope.validate = function() {
                     var validation = users.validate($scope.user);
@@ -399,12 +399,26 @@
               users.updatePassword($scope.current_user)
                 .success(function(resp) {
                   $scope.processing = false;
-                  $scope.message({ message: [resp.message] });
-                  $state.go('dashboard');
+                  $scope.passwordChanged();
                 })
                 .error(function(resp) {
                     $scope.errors({ errors: [resp.message] });
                 })
+            };
+
+            $scope.passwordChanged = function () {
+                SweetAlert.swal({
+                        title: "Change of password",
+                        text: "Your password was changed successfully!",
+                        confirmButtonColor: "#DD6B55",confirmButtonText: "Close",
+                        closeOnConfirm: true},
+                    function(confirm){
+                        if (confirm) {
+                            $state.go('dashboard');
+                            SweetAlert.close();
+                        }
+                    }
+                );
             };
 
             $scope.verifyID = function(){
@@ -412,11 +426,27 @@
                 verifyID.upsert($scope.current_user)
                   .success(function(){
                     $scope.processing = false;
+                    $scope.verifiedID();
                   })
                   .error(function(data){
                     $scope.processing = false;
                     $scope.validation_errors = data.validation_errors
                   })
+            };
+
+            $scope.verifiedID = function () {
+                SweetAlert.swal({
+                        title: "Thank you for verifying your ID",
+                        text: "After admins approval, you will see your status in the side bar.",
+                        confirmButtonColor: "#DD6B55",confirmButtonText: "Close",
+                        closeOnConfirm: true},
+                    function(confirm){
+                        if (confirm) {
+                            $state.go('dashboard');
+                            SweetAlert.close();
+                        }
+                    }
+                );
             };
 
             $scope.updateProfile = function(){
