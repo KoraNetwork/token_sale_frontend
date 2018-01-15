@@ -1,0 +1,19 @@
+html(lang="en")
+  head
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli"
+    script src='https://www.google.com/recaptcha/api.js'
+  body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done class="{{ !current_user ? 'landing-page' : 'admin-page' }}" landing-scrollspy="" ng-app="KoraICOAdminApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
+    div ng-if="!current_user"
+      div ui-view=""
+    div ng-if="current_user"
+      #wrapper.ng-scope
+        div ng-include="'admin/templates/common/navigation.html'"
+        #page-wrapper.gray-bg class="dashboards dashboard_1" style=("min-height: 184px;")
+          div ng-include="'admin/templates/common/topnavbar.html'"
+          div ui-view=""
+          div ng-include="'admin/templates/common/footer.html'"
+      div toaster-container='' toaster-options="{'close-button': true}"

@@ -1,0 +1,12 @@
+nav.navbar-default.navbar-static-side.ng-scope role="navigation"
+  .slimScrollDiv style=("position: relative; width: auto; height: 100%;")
+    .sidebar-collapse style=("width: auto; height: 100%;")
+      ul#side-menu.nav.metismenu side-navigation=""
+        li
+          .logo
+            img ng-src="/images/kora_logo.svg"
+        li ng-class=("{active: $state.current.name.includes('user')}")
+          a href="#/users"
+            i.fa.fa-users
+            span.nav-label.ng-binding
+              | Users

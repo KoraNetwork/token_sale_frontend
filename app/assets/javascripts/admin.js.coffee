@@ -40,10 +40,10 @@
 #= require angular-sweetalert/SweetAlert
 #= require moment/min/moment.min.js
 # load angular modules
-#= require ./application/application.module.js
-#= require_tree ./application/factories
-#= require_tree ./application/controllers
-#= require_tree ./application/templates
+#= require ./admin/application.module.js
+#= require_tree ./admin/factories
+#= require_tree ./admin/controllers
+#= require_tree ./admin/templates
 #= require_tree .
 
 $(document).ready ->

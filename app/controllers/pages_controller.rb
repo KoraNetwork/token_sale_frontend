@@ -6,8 +6,8 @@ class PagesController < ActionController::Base
       render layout: 'application'
   end
 
-  def app
-
+  def admin
+    render layout: 'admin'
   end
 
   def proxy

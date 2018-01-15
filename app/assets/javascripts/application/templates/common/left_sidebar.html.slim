@@ -4,7 +4,7 @@
       | {{ !current_user.userName ? current_user.firstName + ' ' +  current_user.lastName : current_user.userName }}
     li.align-center-nav-text
       i.fa.fa-times-circle-o.left-nav-icon.fa-lg
-      a.left-nav-unverified-id href="/#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}"
+      a.left-nav-unverified-id href="/public#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}"
         | {{ current_user.verified ? 'Verified ID' : 'Unverified ID' }}
     hr
     li.align-center-nav-text.left-nav-balance-position
@@ -33,15 +33,15 @@
   .left-bottom-nav
     ul
       li
-        a href="/" ng-click="openRegDialog()" ng-controller="UsersController"
+        a href="/public" ng-click="openRegDialog()" ng-controller="UsersController"
           span
             | Reset Authenticator
       li
-        a href="/#/profile/change_password"
+        a href="/public#/profile/change_password"
           span
             | Change Password
       li
-        a href="/#/profile/update_profile"
+        a href="/public#/profile/update_profile"
           span
             | Update Profile
       li

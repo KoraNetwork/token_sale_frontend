@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   match '/api/*path' => 'pages#proxy', via: [:get, :post, :put, :patch, :delete]
   match '/countries/*path' => 'pages#proxy', via: [:get]
   match '/csrfToken' => 'pages#proxy', via: [:get]
+  get '/admin', to: 'pages#admin'
 end

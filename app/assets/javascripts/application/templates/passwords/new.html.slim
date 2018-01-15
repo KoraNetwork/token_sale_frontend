@@ -1,0 +1,19 @@
+.form-page
+  .login-alert.animated.fadeInDown
+    .logo-container
+      a.kora-logo href="/public"
+    .form-block
+      form.m-t role="form" novalidate=true ng-submit="submitForgotPassword()"
+        .form-group.text-center.description
+          | Please enter your email below and we'll send you your password
+        .form-group
+          input.form-control placeholder="Your Email" required="" type="email" ng-model="email"
+
+        .form-group.text-center
+          button.btn.btn-primary.ladda-button.m-b data-style="expand-left" ladda="formPending" type="submit"
+            /i.fa.fa-check
+            | Send Instructions
+
+        .form-group.text-center
+          a href="#login"
+            | Back to login

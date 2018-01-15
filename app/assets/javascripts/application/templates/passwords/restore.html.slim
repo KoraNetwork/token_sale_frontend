@@ -1,0 +1,26 @@
+.form-page
+  .login-alert.animated.fadeInDown
+    .logo-container
+      h2.site-title
+        | Kora
+    .form-block
+      form role="form" novalidate=true ng-submit="submitResetPassword()"
+        .form-group.text-center.welcome-text
+          h3
+            | Please enter your new password
+        .form-group
+          input.form-control placeholder="Password" type="password" ng-model="password" name='password'
+          i.fa.password-icon
+
+        .form-group
+          input.form-control placeholder="Password Confirmation" type="password" ng-model="password_confirmation" name='password_confirmation'
+          i.fa.password-icon
+
+        .form-group.text-center
+          button.btn.btn-primary.ladda-button.m-b data-style="expand-left" ladda="formPending" type="submit"
+            i.fa.fa-check
+            | Save
+
+        .form-group.text-center
+          a href="#login"
+            | Back to login

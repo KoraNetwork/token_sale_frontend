@@ -1,0 +1,24 @@
+.header
+  div
+  .title.text-center
+    | Kora Google Authenticator Recovery
+  div.text-center
+    span.text-center style="padding: 10px"
+      | Complete the following steps to recover your Google Authenticator secret code.
+  hr style="margin: 10px 0 10px"
+  div.text-center style="padding: 20px"
+    span.e-mail
+      | E-MAIL
+    span.dash
+      | &mdash;&mdash;&mdash;
+    span.idVerification
+      | ID VERIFICATION
+.ng-dialog-page.p-lr-20px.p-tb-10-5px
+  div.text-center.placeholder style="padding: 10px"
+    | Enter your e-mail verified with Kora
+  input.form-control required="" type="text" ng-model="session.email"
+hr
+  .form-group.text-center
+    button.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="sendEmail()"
+      | Next
+    hr

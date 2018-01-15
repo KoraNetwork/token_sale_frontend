@@ -6,20 +6,13 @@ html(lang="en")
     = csrf_meta_tags
     link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli"
     script src='https://www.google.com/recaptcha/api.js'
-  body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done class="{{ !current_user ? 'landing-page' : (current_user.role == 'user' ? 'user-page' : 'admin-page') }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
-    /.app ng-if="current_user && currentuser.role == 'admin'"
-      /#wrapper.ng-scope
-      /  div ng-include="'application/templates/common/navigation.html'"
-      /  #page-wrapper.gray-bg class="dashboards dashboard_1" style=("min-height: 184px;")
-      /    div ng-include="'application/templates/common/topnavbar.html'"
-      /    div ui-view=""
-      /    div ng-include="'application/templates/common/footer.html'"
-    .landing ng-if="!current_user || current_user.role == 'user'"
-      #wrapper
-    .row
-      div ng-if="current_user.role == 'user'" ng-include="'application/client/templates/common/topnavbar.html'"
+  body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done class="{{ !current_user ? 'landing-page' : 'user-page' }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
+    .landing ng-if="!current_user"
+      div ui-view=""
+    .row ng-if="current_user"
+      div  ng-include="'application/templates/common/topnavbar.html'"
       .content-container
-        .left-navbar ng-if="current_user.role == 'user'" ng-include="'application/client/templates/common/left_sidebar.html'"
+        .left-navbar ng-include="'application/templates/common/left_sidebar.html'"
         .page-container ui-view=""
 
     div toaster-container='' toaster-options="{'close-button': true}"
