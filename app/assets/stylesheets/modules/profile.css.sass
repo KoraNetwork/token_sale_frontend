@@ -3,6 +3,7 @@
   height: 301px !important
   margin-top: 37px
   border-radius: 0 !important
+  margin-left: 10px !important
   .fa-plus:before
     content: "Drag Image or click here to select"
   i.fa.fa-plus
@@ -42,7 +43,6 @@ label.star::after
   width: 229px
   height: 36px
   color: #2e2e2e
-  opacity: 0.47
   padding-left: 10px
   &-small
     border-radius: 0
@@ -50,21 +50,50 @@ label.star::after
     height: 36px
     color: #2e2e2e
     padding-left: 10px
-    opacity: 0.47
   &-large
     border-radius: 0
-    width: 473px
+    width: 483px
     height: 36px
     color: #2e2e2e
     padding-left: 10px
-    opacity: 0.47
   &-mid
     border-radius: 0
     width: 309px
     height: 36px
     color: #2e2e2e
     padding-left: 10px
-    opacity: 0.47
+  &-dd
+    span, input
+      margin: 0px
+      border-radius: 0 !important
+      border-color: rgb(169, 169, 169)
+      width: 229px !important
+      height: 36px !important
+      color: #2e2e2e !important
+      font-size: 13px
+      letter-spacing: 0px !important
+    span.ui-select-match
+      padding: 0px 10px !important
+    span.ui-select-toggle
+      padding: 0px 0px !important
+    span.ui-select-match-text
+      padding: 7px 0px
+    #docc
+      span
+        padding: 1px 10px !important
+    span:focus, span:hover, input:focus, input:hover
+      border-color: rgb(169, 169, 169) !important
+      &::-webkit-input-placeholder
+        color: rgb(169, 169, 169) !important
+      &::-moz-placeholder
+        color: rgb(169, 169, 169) !important
+      &:-moz-placeholder
+        color: rgb(169, 169, 169) !important
+      &:-ms-input-placeholder
+        color: rgb(169, 169, 169) !important
+    ul
+      border-radius: 0px
+      top: 40px
 .nav-link
   &:hover, &:focus
     color: #6a6a6a !important

@@ -419,6 +419,7 @@
 
             $scope.verifyID = function(){
                 $scope.processing = true;
+                $scope.current_user.documentCountry = $scope.current_user.documentCountry.countryCode;
                 users.verifyID($scope.current_user)
                   .success(function(){
                     $scope.processing = false;
@@ -445,6 +446,17 @@
                 );
             };
 
+            $scope.filterCountries = function (q) {
+                $scope.filteredCountries = $scope.countries.filter(function (item) {
+                    return item.name.toLocaleLowerCase().includes((q || '').toLocaleLowerCase())
+                })
+            };
+
+            users.getCountry()
+                .success(function (data) {
+                    $scope.countries = data;
+                });
+
             $scope.updateProfile = function(){
                 $scope.processing = true;
                 users.upsert(_.pick($scope.current_user, 'email', 'sendingEthereumAddress', 'bitcoinAddress'))
@@ -464,6 +476,16 @@
                 maxDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000),
                 initDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000)
             };
+
+            // $scope.identificationTypes = [ {identification: 'Driver\'s License'},
+            //     {identification: 'Non-driver Government ID'},
+            //     {identification: 'Passport'},
+            //     {identification: 'Other'}];
+
+            $scope.identificationTypes = [ 'Driver\'s License',
+                'Non-driver Government ID',
+                'Passport',
+                'Other'];
 
         }])
 }());
