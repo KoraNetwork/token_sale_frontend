@@ -14,6 +14,14 @@
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 
+            verify: function (id) {
+              return $http.put('/api/users/verify/' + id);
+            },
+
+            blockChange: function (id) {
+              return $http.put('api/users/blockChange/' + id);
+            },
+
             getUsers: function (options) {
                 var request = '/api/users?';
 

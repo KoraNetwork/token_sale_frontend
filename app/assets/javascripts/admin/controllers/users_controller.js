@@ -28,6 +28,26 @@
                 }
             };
 
+            $scope.verifyUser = function (id) {
+                users.verify(id)
+                    .success(function () {
+                        $state.reload();
+                    })
+                    .error(function (resp) {
+                        $scope.errors({ errors: [resp.message] });
+                    })
+            };
+
+            $scope.blockedUser = function (id, index) {
+              users.blockChange(id)
+                  .success(function (resp) {
+                      $scope.users[index] = resp[0]
+                  })
+                  .error(function (err) {
+                      $scope.errors({ errors: [err.message] });
+                  })
+            };
+
             $scope.retrieveUsers = function () {
                 users.getUsers({page: $scope.page, query: $scope.users_filters}).success(function (data) {
                     $scope.users = data.data;
