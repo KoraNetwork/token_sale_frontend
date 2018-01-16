@@ -11,30 +11,30 @@
             table.table.table-striped.table-responsive
               thead
                 tr
-                  th tablesort=true ng-model="users_filters" tablesort-name="firstName" tablesort-title="First Name"
-                  th tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
-                  th tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
-                  th tablesort=true ng-model="users_filters" tablesort-name="countryName" tablesort-title="Country"
-                  th tablesort=true ng-model="users_filters" tablesort-name="verified" tablesort-title="KYC verification"
-                  th Actions
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="firstName" tablesort-title="First Name"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="countryName" tablesort-title="Country"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="verified" tablesort-title="KYC verification"
+                  th.text-center Actions
               tbody
                 tr ng-show="!count"
                   td.text-center colspan="6"
                     | No results found
                 tr ng-repeat="user in users"
-                  td
+                  td.text-center
                     | {{ user.firstName }}
-                  td
+                  td.text-center
                     | {{ user.lastName }}
-                  td
+                  td.text-center style="max-width: 150px"
                     | {{ user.email }}
-                  td
+                  td.text-center
                     | {{ user.countryName }}
-                  td
+                  td.text-center
                     | {{ user.verified ? 'Yes' : 'No' }}
-                  td.text-right style="max-width: 130px"
+                  td.text-right style="max-width: 200px"
                     a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser(user.id)" ng-show="!user.verified && user.needVerify"
-                      | Verified
+                      | Verify
                     a.btn-xs.btn.btn-danger.btn-outline.status ng-click="blockedUser(user.id, $index)" ng-show="user.enabled"
                       | Unblock
                     a.btn-xs.btn.btn-info.btn-outline.status ng-click="blockedUser(user.id, $index)" ng-show="!user.enabled"
