@@ -32,7 +32,7 @@
                     | {{ user.countryName }}
                   td.text-center
                     | {{ user.verified ? 'Yes' : 'No' }}
-                  td.text-right style="max-width: 200px"
+                  td.text-right style="max-width: 240px"
                     a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser(user.id)" ng-show="!user.verified && user.needVerify"
                       | Verify
                     a.btn-xs.btn.btn-danger.btn-outline.status ng-click="blockedUser(user.id, $index)" ng-show="user.enabled"
