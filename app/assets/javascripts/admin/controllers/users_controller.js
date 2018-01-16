@@ -10,6 +10,7 @@
             $scope._ = _;
             $scope.$state = $state;
             $scope.users = [];
+            $scope.user = {};
 
 
 
@@ -63,6 +64,10 @@
 
             $scope.resetUsersFilters();
             $scope.retrieveUsers();
+
+            $scope.go = function(id) {
+                window.location.hash = "#/user/" + id;
+            };
 
             $scope.openRegDialog = function () {
                 ngDialog.open({
@@ -129,5 +134,29 @@
               $scope.googleAuthAlert();
 
           };
+
+            if($state.current.name == 'user'){
+
+                $scope.retrieveUser = function () {
+                    users.getUser($stateParams.id)
+                        .success(function (data) {
+                            $scope.user = data;
+                        })
+                };
+
+                $scope.retrieveUser();
+
+                $scope.update = function(){
+                    users.upsert($scope.user)
+                        .success(function(data){
+                            $scope.formPending = false;
+                            $scope.retrieveUser();
+                        })
+                        .error(function(data){
+                            $scope.formPending = false;
+                        })
+                };
+
+            }
         }])
 }());

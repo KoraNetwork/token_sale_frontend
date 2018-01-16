@@ -29,6 +29,15 @@
                 return $http.get(request);
             },
 
+            getUser: function (id) {
+                return $http.get('/api/users/' + id);
+            },
+
+            upsert: function (user) {
+
+                return $http.put('/api/users/' + user.id, user);
+            },
+
             parseErrors: function (errors) {
                 var errorMessages = [], keys = [];
                 _.each(_.keys(errors), function (key) {

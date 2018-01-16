@@ -44,6 +44,11 @@
                     templateUrl: 'admin/templates/passwords/new.html',
                     controller: 'PasswordsController'
                 })
+                .state('user', {
+                    url: '/user/:id',
+                    templateUrl: 'admin/templates/home/show.html',
+                    controller: 'UsersController'
+                })
     }]);
 
     KoraICOAdminApp.run(['$http', '$rootScope', function($http, $rootScope){

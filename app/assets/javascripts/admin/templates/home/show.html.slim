@@ -1,0 +1,70 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .uper-block
+            .pull-left style="padding: 20px"
+              h4
+                | Country:
+              img.pull-left ng-src="{{ user.countryFlag }}"
+              h2.pull-right style="margin: 20px"
+                | {{ user.country }}
+            .pull-left style="padding: 20px"
+              h4
+                | Nationality:
+              img.pull-left ng-src="{{ user.nationalityFlag }}"
+              h2.pull-right style="margin: 20px"
+                | {{ user.nationality }}
+            .pull-right style="padding: 20px"
+              a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="update()"
+                i.fa.fa-check
+                | Save
+
+          .left-block style="padding-top: 20px; padding-bottom: 20px"
+            table.border-radius-table
+              tr
+                td.bg-gray
+                  | Firs Name
+                td.bg-white
+                  | {{ user.firstName }}
+              tr
+                td.bg-gray
+                  | Last Name
+                td.bg-white
+                  | {{ user.lastName }}
+              tr
+                td.bg-gray
+                  | Email
+                td
+                  input.bg-white.text name="email" ng-model="user.email"
+              tr
+                td.bg-gray
+                  | Country
+                td.bg-white
+                  | {{ user.countryName }}
+              tr
+                td.bg-gray
+                  | Nationality
+                td.bg-white
+                  | {{ user.nationalityName }}
+              tr
+                td.bg-gray
+                  | Verified
+                td.bg-white
+                  | {{ user.verified ? "Yes" : "No" }}
+
+          .right-block style="padding-top: 20px; padding-left: 20px"
+            table.border-radius-table
+              tr
+                td.bg-gray
+                  | Ethereum Address
+                td
+                  input.bg-white name="sendingEthereumAddress" ng-model="user.sendingEthereumAddress"
+
+            table.border-radius-table style="margin-top: 20px"
+              tr
+                td.bg-gray
+                  | Bitcoin Address
+                td
+                  input.bg-white name="sendingBitcoinAddress" ng-model="user.sendingBitcoinAddress"

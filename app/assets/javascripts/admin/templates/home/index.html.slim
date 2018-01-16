@@ -20,7 +20,7 @@
                 tr ng-show="!count"
                   td.text-center colspan="6"
                     | No results found
-                tr ng-repeat="user in users"
+                tr ng-repeat="user in users" ng-click="go(user.id)"
                   td
                     | {{ user.firstName }}
                   td
