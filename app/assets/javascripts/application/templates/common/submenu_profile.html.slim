@@ -4,7 +4,7 @@ ul.nav.activ_li_profile.nav-pills
   li.nav-item.activ_link_profile ng-class=("{active: $state.current.name.includes('change_password')}")
     a.nav-link href = "#/profile/change_password"  Change Password
   li.nav-item
-    a.nav-link ng-click="openRegDialog()"  Reset Authenticator
+    a.nav-link ng-click="regenerateDialog()"  Reset Authenticator
   li.nav-item.activ_link_profile ng-class=("{active: $state.current.name.includes('verify_id')}")
     a.nav-link href="#/profile/verify_id"
       | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}

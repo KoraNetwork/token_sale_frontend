@@ -48,6 +48,18 @@
                   })
             };
 
+            var timer = false;
+
+            $scope.$watch('users_filters', function () {
+                if (timer) {
+                    $scope.page = 1;
+                    $timeout.cancel(timer)
+                }
+                timer = $timeout(function () {
+                    $scope.retrieveUsers();
+                }, 500)
+            }, true);
+
             $scope.retrieveUsers = function () {
                 users.getUsers({page: $scope.page, query: $scope.users_filters}).success(function (data) {
                     $scope.users = data.data;
