@@ -19,7 +19,7 @@
             },
 
             blockChange: function (id) {
-              return $http.put('api/users/blockChange/' + id);
+              return $http.put('/api/users/blockChange/' + id);
             },
 
             getUsers: function (options) {
