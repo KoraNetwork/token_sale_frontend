@@ -426,7 +426,7 @@
                   })
                   .error(function(data){
                     $scope.processing = false;
-                    $scope.validation_errors = data.validation_errors
+                    $scope.errors({ errors: [data.message] })
                   })
             };
 
