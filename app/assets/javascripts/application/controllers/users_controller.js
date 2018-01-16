@@ -305,10 +305,6 @@
                 };
             }
 
-            $scope.openRegDialog = function () {
-                $scope.regenerateDialog()
-            };
-
             $scope.sendToken = function () {
                 users.getRegenerate($scope.user)
                   .success(function(data) {
