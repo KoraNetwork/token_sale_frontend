@@ -18,7 +18,7 @@
                 $scope.$parent.checkSession();
 
                 if($scope.$parent.user){
-                    $state.go('dashboard');
+                    $state.go('users');
                 }
 
                 if($state.current.name == 'login'){
