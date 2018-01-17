@@ -251,9 +251,10 @@
                     users.confirm($scope.user)
                         .success(function(data){
                             $scope.formPending = true;
+                            $scope.checkSession();
                             $scope.$parent.current_user = data;
                             $scope.checkValues();
-                            location.replace('#/')
+                            location.replace('#/');
                         })
                         .error(function(data){
                             $scope.formPending = false;

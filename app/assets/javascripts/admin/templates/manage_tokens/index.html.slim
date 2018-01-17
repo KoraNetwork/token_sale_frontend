@@ -1,0 +1,54 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+              span
+                | Manage Tokens
+            .dashboard-body
+              div.manage
+                div.manage-balances
+                  div.manage-balances-block
+                    span.manage-balances-title
+                      | Current discount level
+                      span
+                        | 90%
+                  div.manage-balances-block
+                    span.manage-balances-title
+                      | Raised Balance
+                      span
+                        | USD KNT
+                  div.manage-balances-block
+                    span.manage-balances-title
+                      | Expected balance
+                      span
+                        | USD KNT
+                  div.manage-balances-block
+                    span.manage-balances-title
+                      | Admin Balance
+                      span
+                        | KNT
+                / div.manage-sum
+                /   div
+                /     span.manage-balances-title
+                /       | # of Tokens per Dollar at retail
+                /       span
+                /         | 10
+            table.table.table-striped.table-responsive
+              thead
+                tr
+                  th.text-center Discount
+                  th.text-center Expected amount
+              tbody
+                tr
+                  td.text-center
+                    | 50%
+                  td.text-center
+                    | 500 000
+
+            br
+            .row style="margin-top: 10px; padding-left: 15px"
+              .pagination#tokens-pagination.inline-block.middle.pull-right

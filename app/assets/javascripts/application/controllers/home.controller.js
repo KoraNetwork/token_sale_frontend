@@ -45,18 +45,6 @@
 
               $scope.resetTransactionsFilters();
 
-              // var timer = false;
-
-              // $scope.$watch('transactions_filters', function () {
-              //   if (timer) {
-              //     $scope.page = 1;
-              //     $timeout.cancel(timer)
-              //   }
-              //   timer = $timeout(function () {
-              //     $scope.retrieveTransactions();
-              //   }, 500)
-              // }, true);
-
               $scope.retrieveTransactions = function () {
                 transactions.all({page: $scope.page, query: $scope.transactions_filters}).success(function (data) {
                   $scope.transactions = data.data;

@@ -5,8 +5,13 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
         li
           .logo
             img ng-src="/images/kora_logo.svg"
-        li ng-class=("{active: $state.current.name.includes('user')}")
-          a href="#/users"
+        li ng-class=("{active: $state.current.name.includes('users')}")
+          a href="#/"
             i.fa.fa-users
             span.nav-label.ng-binding
               | Users
+        li ng-class=("{active: $state.current.name.includes('tokens')}")
+          a href="#/tokens"
+            i.fa.fa-bar-chart
+            span.nav-label.ng-binding
+              | Manage Tokens

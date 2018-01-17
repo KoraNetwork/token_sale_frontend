@@ -49,6 +49,11 @@
                     templateUrl: 'admin/templates/home/show.html',
                     controller: 'UsersController'
                 })
+                .state('tokens', {
+                    url: '/tokens',
+                    templateUrl: 'admin/templates/manage_tokens/index.html',
+                    controller: 'TokensController'
+                })
     }]);
 
     KoraICOAdminApp.run(['$http', '$rootScope', function($http, $rootScope){
