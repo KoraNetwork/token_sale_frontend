@@ -22,65 +22,59 @@
         .col-md-4
           .form-group
             label.star for="idnt" Identification Type
-            ui-select.form-control-profile_style_input-dd ng-model="current_user.identificationType"
+            ui-select.form-control-profile_style_input-dd ng-model="current_user.identificationTypeObj"
               ui-select-match#idnt
-                span.selected ng-bind="$select.selected"
+                span.selected ng-bind="$select.selected.name || current_user.identificationTypeObj.name"
               ui-select-choices repeat="i in identificationTypes track by $index"
-                span.choices ng-bind="i"
-
+                span.choices ng-bind="i.name"
       .col-md-12
         .col-md-4
-          .form-group
-            label.star for="phn"  Phone Number
-            input#phn.form-control-profile_style_input type="text" ng-model="current_user.phone"
+          .form-group style="display: grid"
+            label.star for="country"  Country
+            input#country.form-control-profile_style_input type="text" ng-model="current_user.countryName"
         .col-md-4
           .form-group
-            label.star for="email"  Email
-            input#email.form-control-profile_style_input type="text" ng-model="current_user.email"
+            label.star for="city"  City
+            input#city.form-control-profile_style_input type="text" ng-model="current_user.city"
         .col-md-4
           .form-group
             label.star for="docc" Document Country
-            ui-select.form-control-profile_style_input-dd ng-model="current_user.documentCountry"
+            ui-select.form-control-profile_style_input-dd ng-model="current_user.documentCountryObj"
               ui-select-match#docc
-                img.country-img ng-src="{{ $select.selected.flag }}"
-                span.selected ng-bind="$select.selected.name"
+                img.country-img ng-src="{{ $select.selected.flag || current_user.documentCountryObj.flag}}"
+                span.selected ng-bind="$select.selected.name || current_user.documentCountryObj.name"
               ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
                 img.country-img ng-src="{{ country.flag }}"
                 span.choices ng-bind="country.name"
       .col-md-8
         .col-md-4 style="width: 253.33px"
           .form-group
-            label.star for="bd" Birthday
-            div ng-click="date_opened = true"
-              input#bd.form-control-profile_style_input type="text" uib-datepicker-popup="{{ 'dd MMM yyyy' }}" ng-model="current_user.dateOfBirth" is-open="date_opened" close-text="Close" readonly="readonly" datepicker-options="options" show-button-bar="false"
+            label.star for="state"  State
+            input#state.form-control-profile_style_input type="text" ng-model="current_user.state"
         .col-md-4
           .form-group
-            label for="apt"  Apt/Ste
-            input#apt.form-control-profile_style_input type="text"
-      .col-md-8
-        .col-md-12
-          .form-group style="display: grid"
-            label.star for="country"  Country
-            input#country.form-control-profile_style_input-large type="text" ng-model="current_user.countryName"
+            label.star for="phn"  Phone Number
+            input#phn.form-control-profile_style_input type="text" ng-model="current_user.phone"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"
             label.star for="street"  Street Address
-            input#street.form-control-profile_style_input-large type="text"
+            input#street.form-control-profile_style_input-large type="text" ng-model="current_user.streetAddress"
       .col-md-8
         .col-md-4
           .form-group
-            label.star for="city"  City
-            input#city.form-control-profile_style_input-small type="text"
+            label.star for="bd" Birthday
+            input.form-control-profile_style_input-small type="text" ng-model="dateOfBirth" ng-click="date_opened = true" readonly="readonly"
+              input#bd type="text" uib-datepicker-popup="{{ 'dd MMM yyyy' }}" ng-model="current_user.dateOfBirth" is-open="date_opened" readonly="readonly" datepicker-options="options" show-button-bar="false" style="display: none"
         .col-md-4
           .form-group
-            label.star for="state"  State
-            input#state.form-control-profile_style_input-small type="text"
+            label for="apt"  Apt/Ste
+            input#apt.form-control-profile_style_input-small type="text" ng-model="current_user.aptSte"
         .col-md-4
           .form-group
             label.star for="zip"  ZIP
-            input#zip.form-control-profile_style_input-small type="text"
-      div image=true ng-model="image"
+            input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip"
+      div image=true ng-model="current_user.document"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left
           button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit"

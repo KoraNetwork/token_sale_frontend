@@ -406,7 +406,8 @@
 
             $scope.verifyID = function(){
                 $scope.processing = true;
-                $scope.current_user.documentCountry = $scope.current_user.documentCountry.countryCode;
+                $scope.current_user.documentCountry = $scope.current_user.documentCountryObj.countryCode;
+                $scope.current_user.identificationType = $scope.current_user.identificationTypeObj.id;
                 users.verifyID($scope.current_user)
                   .success(function(){
                     $scope.processing = false;
@@ -439,9 +440,22 @@
                 })
             };
 
-            users.getCountry()
+            users.getSelect()
                 .success(function (data) {
-                    $scope.countries = data;
+                    $scope.countries = data.country;
+                    _.map( $scope.countries, function(el) {
+                        if (el.countryCode == $scope.current_user.documentCountry){
+                            $scope.current_user.documentCountryObj = el
+                        }
+                    });
+                    $scope.identificationTypes = data.identificationType;
+                    _.map( $scope.identificationTypes, function(el) {
+                        if (el.id == $scope.current_user.identificationType){
+                            $scope.current_user.identificationTypeObj = el
+                        }
+                    });
+                    $scope.current_user.document = $scope.current_user.documentUrl;
+                    $scope.dateOfBirth = moment($scope.current_user.dateOfBirth).format('DD MMM YYYY')
                 });
 
             $scope.updateProfile = function(){
@@ -465,16 +479,5 @@
                 maxDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000),
                 initDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000)
             };
-
-            // $scope.identificationTypes = [ {identification: 'Driver\'s License'},
-            //     {identification: 'Non-driver Government ID'},
-            //     {identification: 'Passport'},
-            //     {identification: 'Other'}];
-
-            $scope.identificationTypes = [ 'Driver\'s License',
-                'Non-driver Government ID',
-                'Passport',
-                'Other'];
-
         }])
 }());

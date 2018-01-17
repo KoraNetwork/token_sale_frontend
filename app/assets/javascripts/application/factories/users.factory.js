@@ -26,6 +26,10 @@
             getCountry: function () {
               return $http.get('/api/countries')
             },
+            
+            getSelect: function () {
+                return $http.get('/api/profile/selects')
+            },
 
             verifyReCaptcha: function (value) {
               return $http.put('/api/registration/validateCaptcha?response=' + value );
@@ -112,7 +116,29 @@
             },
 
             verifyID: function (user) {
-                return $http.put('/api/profile/verify', user || {});
+
+                var fd = new FormData();
+
+                fd.append('firstName', user.firstName || '');
+                fd.append('lastName', user.lastName || '');
+                fd.append('phone', user.phone || '');
+                fd.append('country', user.country || '');
+                fd.append('dateOfBirth', user.dateOfBirth || '');
+                fd.append('streetAddress', user.streetAddress || '');
+                fd.append('aptSte', user.aptSte || '');
+                fd.append('city', user.city || '');
+                fd.append('state', user.state || '');
+                fd.append('zip', user.zip || '');
+                fd.append('identificationType', user.identificationType || '');
+                fd.append('documentCountry', user.documentCountry || '');
+
+                if(user.document && user.document.file){
+                    fd.append('document', user.document.file);
+                }
+                console.log(user);
+                return $http.put('/api/profile/verify', fd, {
+                    headers: { 'Content-Type': undefined }
+                })
             },
 
             upsert: function (user) {

@@ -3,10 +3,6 @@
     .div.container
       .navbar-header.position
         a.kora-logo.white ng-click="$state.go('dashboard')"
-        a.refresh ng-click="refreshValues()"
-          img.refresh-icon src="/images/ic-reload@2x.png"
-          span.refresh-text
-            | Refresh
       ul.main_nav.nav.nav-display.col-md-8
         li
           a.nav-menu-text href="#/" ng-class=("{customactive: $state.current.name.includes('dashboard')}")
@@ -20,6 +16,12 @@
         li
           a.nav-menu-text href="/docs/Kora_Vision_Paper.pdf" target="blank"
             | Kora Vision Paper
+        li.sign-out-position style="top: 17px; right: 120px"
+          .navbar-header.position
+            a.refresh ng-click="refreshValues()"
+              img.refresh-icon src="/images/ic-reload@2x.png"
+              span.refresh-text
+                | Refresh
         li.sign-out-position
           a.nav-menu-text ng-click="logout()" href="#"
             | Sign Out

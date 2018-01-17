@@ -104,7 +104,7 @@
                   .success(function(data, status){
                       $scope.current_user = data;
                       $scope.checkValues();
-                      $state.go('dashboard');
+                      // $state.go('dashboard');
                   })
                   .error(function(data){
                       $scope.current_user = false;
