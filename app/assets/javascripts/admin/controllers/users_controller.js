@@ -12,22 +12,6 @@
             $scope.users = [];
             $scope.user = {};
 
-
-
-            $scope.errors = function(data) {
-                if(data.errors){
-                    for(var i = 0; i < data.errors.length; ++i) {
-                        toaster.pop('error', "", data.errors[i]);
-                    }
-                }
-            };
-
-            $scope.message = function(data) {
-                if(data.message){
-                    toaster.pop('success', "", data.message);
-                }
-            };
-
             $scope.verifyUser = function (id) {
                 users.verify(id)
                     .success(function () {

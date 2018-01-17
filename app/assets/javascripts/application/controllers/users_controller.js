@@ -10,19 +10,6 @@
             $scope._ = _;
             $scope.$state = $state;
 
-            $scope.errors = function(data) {
-                if(data.errors){
-                    for(var i = 0; i < data.errors.length; ++i) {
-                        toaster.pop('error', "", data.errors[i]);
-                    }
-                }
-            };
-
-            $scope.message = function(data) {
-                if(data.message){
-                    toaster.pop('success', "", data.message);
-                }
-            };
 
             if ($state.current.name == 'register') {
                 $('body').css({ minWidth: "400px" });
@@ -460,12 +447,14 @@
             $scope.updateProfile = function(){
                 $scope.processing = true;
                 users.upsert(_.pick($scope.current_user, 'email', 'sendingEthereumAddress', 'bitcoinAddress'))
-                  .success(function(){
+                  .success(function(resp){
                     $scope.processing = false;
+                    $scope.message({ message: ["Your profile has been successfully updated"] });
+                    $state.go('dashboard');
                   })
                   .error(function(data){
                     $scope.processing = false;
-                    $scope.validation_errors = data.validation_errors
+                    $scope.errors({ errors: [data.message] });
                   })
             };
 

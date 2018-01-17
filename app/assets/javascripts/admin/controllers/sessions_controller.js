@@ -8,6 +8,7 @@
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
+                var validate_email = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
                 $('body').css({ minWidth: "400px" });
 
@@ -48,7 +49,15 @@
                           $scope.uploadImageDialog();
                         })
                         .error(function(resp) {
-                          $scope.errors({ errors: [resp.message] });
+                            if (!$scope.session.email) {
+                                $scope.errors({ errors: ["Email field cannot be empty"] })
+                            }
+                            else if (!$scope.session.email.match(validate_email)) {
+                                $scope.errors({ errors: ["The email address you entered is not valid"] });
+                            }
+                            else {
+                                $scope.errors({ errors: [resp.message] })
+                            }
                         })
                     };
 
