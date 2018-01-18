@@ -30,7 +30,6 @@
                         $scope.publicSales = data.sale.publicSale;
                         $scope.sumTokens = data.sale;
                         $scope.total = data.total;
-                        console.log();
                         $scope.count = data.count;
                         var pagination = $('#tokens-pagination');
                         pagination.empty();
