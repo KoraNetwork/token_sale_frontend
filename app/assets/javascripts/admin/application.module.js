@@ -54,6 +54,11 @@
                     templateUrl: 'admin/templates/manage_tokens/index.html',
                     controller: 'TokensController'
                 })
+                .state('ga_requests', {
+                    url: '/ga_requests',
+                    templateUrl: 'admin/templates/ga_requests/index.html',
+                    controller: 'GARequestsController'
+                })
     }]);
 
     KoraICOAdminApp.run(['$http', '$rootScope', function($http, $rootScope){

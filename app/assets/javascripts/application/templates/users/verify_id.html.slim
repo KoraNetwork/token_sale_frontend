@@ -54,7 +54,7 @@
         .col-md-4
           .form-group
             label.star for="phn"  Phone Number
-            input#phn.form-control-profile_style_input type="text" ng-model="current_user.phone"
+            input#phn.form-control-profile_style_input type="text" maxlength="14" ng-model="current_user.phone"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"
@@ -64,8 +64,8 @@
         .col-md-4
           .form-group
             label.star for="bd" Birthday
-            input.form-control-profile_style_input-small type="text" ng-model="dateOfBirth" ng-click="date_opened = true" readonly="readonly"
-              input#bd type="text" uib-datepicker-popup="{{ 'dd MMM yyyy' }}" ng-model="current_user.dateOfBirth" is-open="date_opened" readonly="readonly" datepicker-options="options" show-button-bar="false" style="display: none"
+            input.form-control-profile_style_input-small type="text" value="{{dateOfBirth()}}" ng-click="date_opened = true" readonly="readonly"
+              input#bd type="text" uib-datepicker-popup="{{ 'dd MMM yyyy' }}" ng-model="current_user.dateOfBirth" ng-chenge="dateOfBirth()" is-open="date_opened" readonly="readonly" datepicker-options="options" show-button-bar="false" style="display: none"
         .col-md-4
           .form-group
             label for="apt"  Apt/Ste

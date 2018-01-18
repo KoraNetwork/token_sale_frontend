@@ -15,3 +15,8 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             i.fa.fa-bar-chart
             span.nav-label.ng-binding
               | Manage Tokens
+        li ng-class=("{active: $state.current.name.includes('ga_requests')}")
+          a href="#/ga_requests"
+            i.fa.fa-arrows-h
+            span.nav-label.ng-binding
+              | GA Requests

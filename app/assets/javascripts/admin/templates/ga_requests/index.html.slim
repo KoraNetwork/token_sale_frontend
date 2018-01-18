@@ -1,0 +1,36 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+                span
+                  | GA Requests
+            table.table.table-striped.table-responsive
+              thead
+                tr
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
+                  th.text-center Image1
+                  th.text-center Image2
+                  th.text-center Actions
+              tbody
+                tr ng-show="!count"
+                  td.text-center colspan="4"
+                    | No results found
+                tr ng-repeat="ga_request in ga_requests"
+                  td.text-center
+                    | {{ ga_request.email }}
+                  td.text-center
+                    img.document_foto.circle.pointer ng-src="{{ga_request.user.documentUrl}}" ng-click="openImage(ga_request.user.documentUrl)"
+                  td.text-center style="max-width: 150px"
+                    img.document_foto.circle.pointer ng-src="{{ga_request.photoUrl}}" ng-click="openImage(ga_request.photoUrl)"
+                  td.text-right style="max-width: 240px"
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click=""
+                      | Reset
+                    a.btn-xs.btn.btn-danger.btn-outline.status ng-click=""
+                      | Delete
+            br
+              .row style="margin-top: 10px; padding-left: 15px"
+                .pagination#ga_requests-pagination.inline-block.middle.pull-right

@@ -1,0 +1,5 @@
+.gallery
+  div uib-carousel=true interval="0" active="true" no-wrap="false"
+    div.slide uib-slide=true ng-repeat="q in image" index="$index"
+      img.gallery-item ng-src="{{ q }}"
+      .height.inline-block

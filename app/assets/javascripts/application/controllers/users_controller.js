@@ -416,8 +416,18 @@
                   })
                   .error(function(data){
                     $scope.processing = false;
-                    $scope.errors({ errors: [data.message] })
+                    if(data.Errors){
+                        $scope.validateError(data)
+                    }else{
+                        $scope.errors({ errors: [data.message] });
+                    }
                   })
+            };
+
+            $scope.validateError = function (data) {
+                for(var prop in data.Errors){
+                    $scope.errors({ errors: [data.Errors[prop][0].message] });
+                }
             };
 
             $scope.verifiedID = function () {
@@ -456,8 +466,12 @@
                         }
                     });
                     $scope.current_user.document = $scope.current_user.documentUrl;
-                    $scope.dateOfBirth = moment($scope.current_user.dateOfBirth).format('DD MMM YYYY')
                 });
+
+            $scope.dateOfBirth = function () {
+                return $scope.current_user.dateOfBirth ?
+                    moment($scope.current_user.dateOfBirth).format('DD MMM YYYY') : ''
+            };
 
             $scope.updateProfile = function(){
                 $scope.processing = true;
