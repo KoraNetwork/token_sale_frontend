@@ -59,19 +59,21 @@
   align-items: center
 
 .refresh
-  border: solid 1px #4894ca
   padding: 5px 10px 5px
   color: white
-  background-color: #3284bd
   font-size: 14px
   opacity: 0.75
-  &:hover
-    background-color: #628dab
-    color: #fff
   &-icon
     width: 14px
   &-text
+    border-bottom: solid 2px #4894ca
     padding: 6px
+    &:hover
+      color: #fff
+      
+.pulse:active
+  animation: pulse 0.9s infinite ease-out
+  font-size: 16px
 
 .dashboard
   .dashboard-header
