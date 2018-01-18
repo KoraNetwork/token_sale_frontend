@@ -70,7 +70,7 @@
     padding: 6px
     &:hover
       color: #fff
-      
+
 .pulse:active
   animation: pulse 0.9s infinite ease-out
   font-size: 16px
@@ -281,11 +281,10 @@ body
   width: calc(100% - 30px)
   height: 98%
   overflow: auto
-  background-color: white
+  background-color: #f6f6f6
   background-position: center
   background-size: cover
   background-repeat: no-repeat
-  background-image: url(/images/word_map.png)
 
 body.user-page
   .content-container
@@ -337,13 +336,60 @@ body.user-page
   &-balances
     display: flex
     justify-content: center
+    background-color: #f4f4f4
     &-block
-      padding: 50px
-      margin: 10px
+      padding: 30px 50px
       text-align: center
-      background-color: #f4f4f4
     &-title
       display: flex
       flex-direction: column
       color: #2b74a5
       font-size: 16px
+      &-data
+        padding: 5px
+        font-size: 24px
+        color: #2b74a5
+
+.middle
+  display: flex
+  justify-content: center
+  &-block
+    display: flex
+    flex-direction: column
+    min-width: 700px
+    &-title
+      padding: 10px
+    &-first
+      padding: 5px
+      margin: 5px
+      display: inherit
+      justify-content: space-between
+    &-second
+      display: inherit
+      justify-content: space-between
+      padding: 5px
+      margin: 5px
+.pretty
+  font-size: 20px
+  font-weight: 300
+  color: #7ca4d7
+  border: 0.5px solid #7ca4d7
+  border-radius: 7px
+.editable
+  padding: 10px 30px
+
+.table-header
+  font-size: 18px
+  color: #2e2e2e
+  vert-align: middle
+  padding: 10px
+
+.vertical-line
+  width: 1px
+  height: 7%
+  margin-top: 35px 
+  border: 0.5px solid
+  background-color: #7ca4d7
+.small-line
+  border-left: thin solid #7ca4d7
+  margin: 20px

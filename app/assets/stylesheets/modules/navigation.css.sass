@@ -130,6 +130,44 @@ ul#side-menu.nav.metismenu
       *
         color: darkgrey
 
+.custom-nav
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  background-image: linear-gradient(to top, #56acd1, #2b74a5)
+  position: relative
+  width: 270px
+  height: 100%
+  &-block
+    display: block
+    padding: 0
+    &-text
+      padding: 10px
+      color: #ffff
+  &-logout
+    font-size: 20px
+    color: #ffff
+    padding: 30px
+    cursor: pointer
+  li
+    list-style: none
+    color: white
+    padding: 15px 54px
+    .logo
+      height: 60px
+      padding-top: 20px
+      text-align: center
+      img
+        width: 100px
+        height: 38px
+        margin: auto
+        display: block
+        z-index: 1
+    a
+      color: #ffff
+.tabActive
+  background-color: #e8e9ea4f
+
 .navbar-fixed-top, .navbar-static-top
   background: #2b74a5
 
@@ -153,3 +191,9 @@ nav.navbar.navbar-fixed-top
   background-repeat: no-repeat
   margin: auto
   margin-bottom: 5px
+
+.admin-page #page-wrapper
+  margin-left: 270px!important
+.navbar-static-side, body.fixed-nav #wrapper #page-wrapper
+  margin-top: 0!important
+

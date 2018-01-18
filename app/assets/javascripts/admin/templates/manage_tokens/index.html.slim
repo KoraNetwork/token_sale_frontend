@@ -10,44 +10,100 @@
                 | Manage Tokens
             .dashboard-body
               div.manage
-                div.manage-balances
+                div.manage-balances.pretty
                   div.manage-balances-block
                     span.manage-balances-title
-                      | Current discount level
+                      | Current discount
                       span
-                        | 90%
+                        | level
+                      span.manage-balances-title-data
+                        | {{ total.discount }}%
+                  span.vertical-line
                   div.manage-balances-block
                     span.manage-balances-title
                       | Raised Balance
                       span
                         | USD KNT
+                      span.manage-balances-title-data
+                        | {{ (total.currentAmountKNT).toFixed(2) }}
+                  span.vertical-line
                   div.manage-balances-block
                     span.manage-balances-title
                       | Expected balance
                       span
                         | USD KNT
+                      span.manage-balances-title-data
+                        | {{ (total.expectedAmountKNT).toFixed(2) }}
+                  span.vertical-line
                   div.manage-balances-block
                     span.manage-balances-title
                       | Admin Balance
                       span
                         | KNT
-                / div.manage-sum
-                /   div
-                /     span.manage-balances-title
-                /       | # of Tokens per Dollar at retail
-                /       span
-                /         | 10
+                      span.manage-balances-title-data
+                        | {{ (total.currentAmountUSD).toFixed(2) }}
+            hr
+            div.middle
+            div.middle-block
+              span.middle-block-first.pretty
+                span.middle-block-title
+                  | # of Tokens per Dollar at retail
+                span.editable
+                  / span.small-line
+                  | {{ sumTokens.USD_KNT }}
+              span.middle-block-second.pretty
+                span.middle-block-title
+                  | Current discount for Kora MVP users
+                span.editable
+                  / span.small-line
+                  | {{ sumTokens.discountMVP }}%
+            hr
             table.table.table-striped.table-responsive
+              div.table-header
+                | Pre Sale
               thead
                 tr
-                  th.text-center Discount
-                  th.text-center Expected amount
+                  th.text-center tablesort=true ng-model="tokens_filters" tablesort-name="discount" tablesort-title="Discount"
+                  th.text-center Amount KNT
+                  th.text-center Amount USD
+                  th.text-center KNT USD
+                  th.text-center USD KNT
               tbody
+                tr ng-repeat="sale in preSales"
+                  td.text-center
+                    | {{ sale.discount }}
+                  td.text-center
+                    | {{ sale.amountKNT }}
+                  td.text-center
+                    | {{ sale.amountUSD }}
+                  td.text-center
+                    | {{ sale.KNT_USD }}
+                  td.text-center
+                    | {{ sale.USD_KNT }}
+            hr
+            table.table.table-striped.table-responsive
+              div.table-header
+                | Public Sale
+              thead
                 tr
+                  th.text-center tablesort=true ng-model="tokens_filters" tablesort-name="discount" tablesort-title="Discount"
+                  th.text-center Amount KNT
+                  th.text-center Amount USD
+                  th.text-center KNT USD
+                  th.text-center USD KNT
+              tbody
+                tr ng-repeat="public in publicSales"
                   td.text-center
-                    | 50%
+                    | {{ public.discount }}
                   td.text-center
-                    | 500 000
+                    | {{ public.amountKNT }}
+                  td.text-center
+                    | {{ public.amountUSD }}
+                  td.text-center
+                    | {{ public.KNT_USD }}
+                  td.text-center
+                    | {{ public.USD_KNT }}
+            hr
 
             br
             .row style="margin-top: 10px; padding-left: 15px"

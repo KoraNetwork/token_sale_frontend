@@ -1,22 +1,28 @@
 nav.navbar-default.navbar-static-side.ng-scope role="navigation"
-  .slimScrollDiv style=("position: relative; width: auto; height: 100%;")
-    .sidebar-collapse style=("width: auto; height: 100%;")
-      ul#side-menu.nav.metismenu side-navigation=""
+  div.custom-nav
+    div
+      ul.custom-nav-block
         li
           .logo
-            img ng-src="/images/kora_logo.svg"
-        li ng-class=("{active: $state.current.name.includes('users')}")
+            img ng-src="/images/kora_logo_white.svg"
+        hr
+        li ng-class=("{tabActive: $state.current.name.includes('users')}")
           a href="#/"
             i.fa.fa-users
-            span.nav-label.ng-binding
+            span.custom-nav-block-text
               | Users
-        li ng-class=("{active: $state.current.name.includes('tokens')}")
+        li ng-class=("{tabActive: $state.current.name.includes('tokens')}")
           a href="#/tokens"
             i.fa.fa-bar-chart
-            span.nav-label.ng-binding
+            span.custom-nav-block-text
               | Manage Tokens
-        li ng-class=("{active: $state.current.name.includes('ga_requests')}")
+        li ng-class=("{tabActive: $state.current.name.includes('ga_requests')}")
           a href="#/ga_requests"
             i.fa.fa-arrows-h
-            span.nav-label.ng-binding
+            span.custom-nav-block-text
               | GA Requests
+    div.custom-nav-logout
+      hr
+      i.fa.fa-sign-out style="padding: 10px"
+      span ng-click="logout()" href="#"
+        | Logout
