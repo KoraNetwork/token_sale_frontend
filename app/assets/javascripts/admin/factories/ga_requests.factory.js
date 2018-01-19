@@ -16,6 +16,14 @@
                 });
 
                 return $http.get(request);
+            },
+
+            reset: function (id) {
+                return $http.get('/api/authenticatorRecovery/' + id);
+            },
+
+            destroy: function (id) {
+                return $http.delete('/api/authenticatorRecovery/' + id)
             }
         }
     }])

@@ -12,8 +12,8 @@
               thead
                 tr
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
-                  th.text-center Image1
-                  th.text-center Image2
+                  th.text-center User Document
+                  th.text-center Uploaded Foto
                   th.text-center Actions
               tbody
                 tr ng-show="!count"
@@ -27,9 +27,9 @@
                   td.text-center style="max-width: 150px"
                     img.document_foto.circle.pointer ng-src="{{ga_request.photoUrl}}" ng-click="openImage(ga_request.photoUrl)"
                   td.text-right style="max-width: 240px"
-                    a.btn-xs.btn.btn-info.btn-outline.status ng-click=""
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="resetGARequests(ga_request.id)"
                       | Reset
-                    a.btn-xs.btn.btn-danger.btn-outline.status ng-click=""
+                    a.btn-xs.btn.btn-danger.btn-outline.status ng-click="deleteGARequests(ga_request.id)"
                       | Delete
             br
               .row style="margin-top: 10px; padding-left: 15px"

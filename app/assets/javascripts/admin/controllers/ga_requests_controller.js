@@ -49,6 +49,20 @@
                     $scope.resetFilters();
                     $scope.retriveGARequests();
 
+                    $scope.resetGARequests = function (id) {
+                        ga_requests.reset(id)
+                            .success(function(data) {
+                                $scope.retriveGARequests();
+                            })
+                    };
+
+                    $scope.deleteGARequests = function (id) {
+                        ga_requests.destroy(id)
+                            .success(function(data) {
+                                $scope.retriveGARequests();
+                            })
+                    };
+
                     $scope.openImage = function(image){
                         $scope.image = [image];
                         ngDialog.closeAll();
