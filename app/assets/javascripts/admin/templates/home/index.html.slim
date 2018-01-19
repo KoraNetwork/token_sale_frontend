@@ -7,7 +7,21 @@
             .dashboard-header
               img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
               span
-                | Users
+                | User
+              .col-sm-2.pull-right
+                input.form-control.search-input type="text" ng-model="users_filters.search" placeholder="Search"
+              .col-sm-3.pull-right
+                .checkbox-cms.circle
+                  input type="checkbox" name="verify" id="verify" ng-click="filterUser('verify')"
+                  label for="verify" style="font-size: 15px"
+                    span
+                    | Need To Verify
+                .checkbox-cms.circle
+                  input type="checkbox" name="blocked" id="blocked" ng-click="filterUser('blocked')"
+                  label for="blocked" style="font-size: 15px"
+                    span
+                    | Blocked
+
             table.table.table-striped.table-responsive
               thead
                 tr

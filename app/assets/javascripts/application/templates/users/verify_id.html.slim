@@ -74,7 +74,7 @@
           .form-group
             label.star for="zip"  ZIP
             input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip"
-      div image=true ng-model="current_user.document"
+      div image=true ng-model="current_user.documentUrl"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left
           button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit"

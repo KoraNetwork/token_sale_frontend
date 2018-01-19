@@ -219,6 +219,34 @@ h1, h2
       color: $green
       font-size: 17px
 
+.checkbox-cms
+  display: inline-block
+  padding-left: 35px
+  padding-top: 10px
+  label
+    font-size: 16px
+  input[type="checkbox"], input[type="radio"]
+    display: none
+  input[type="checkbox"] + label span, input[type="radio"] + label span
+    display: inline-block
+    margin: -1px 4px 0 0
+    vertical-align: middle
+    cursor: pointer
+    width: 15px
+    height: 15px
+    border-radius: 4px
+    border: solid 1px darkgrey
+  input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span
+    border-radius: 4px
+    border: solid 1px $dark-blue
+    text-align: center !important
+    &:before
+      font-family: FontAwesome
+      content: "\f00c"
+      color: $dark-blue
+      font-size: 10px
+      margin-left: 1px
+
 .ui-select-choices
   border-radius: 14px
   color: darkgrey

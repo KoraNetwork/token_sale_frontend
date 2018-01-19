@@ -43,7 +43,6 @@
                       }
                       else {
                           $scope.current_user = data;
-                          $state.go('users');
                       }
                   })
                   .error(function(data){

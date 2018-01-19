@@ -88,7 +88,7 @@ angular.module('formInput.image').directive('image', ['$filter', function($filte
         },
         template: "<div class='droppable-area'>" +
         "<ul class='images-list' >" +
-        '<li class="plus" style="{{ \'background-image: url(\' + (image.base64 || image.url) + \')\' }}">' +
+        '<li class="plus" style="{{ \'background-image: url(\' + (image.base64 || image) + \')\' }}">' +
         "<label>" +
         '<i class="fa fa-plus" ng-show="image.removed"/>' +
         '<input type="file" class="file-select" />' +

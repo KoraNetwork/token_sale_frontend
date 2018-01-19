@@ -30,7 +30,7 @@
                 }
 
                 _.each(Object.keys(options.query), function(key){
-                    if(options.query[key])
+                    if(options.query[key] || (key == 'enabled' && options.query[key] != undefined))
                         request += key + '=' + options.query[key] + '&';
                 });
 

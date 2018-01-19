@@ -85,6 +85,16 @@
                 window.location.hash = "#/user/" + id;
             };
 
+            $scope.filterUser = function (type) {
+                if(type == 'blocked'){
+                    $scope.users_filters.enabled == undefined ? $scope.users_filters.enabled = false :
+                        $scope.users_filters.enabled = undefined
+                }else if(type == 'verify'){
+                    $scope.users_filters.needVerify == undefined ? $scope.users_filters.needVerify = true :
+                        $scope.users_filters.needVerify = undefined
+                }
+            };
+
             $scope.openRegDialog = function () {
                 ngDialog.open({
                     templateUrl: 'application/templates/common/regenerate_dialog.html',
@@ -129,27 +139,24 @@
                 });
             };
 
-          $scope.openAuthAlert = function () {
-              var error = false;
+            $scope.openAuthAlert = function () {
+                var error = false;
 
-              if(!$scope.current_user.oldPassword) {
-                  $scope.errors({errors: ["Old password required"]});
-                  error = true
-              }
-              if(!$scope.current_user.newPassword) {
-                  $scope.errors({errors: ["New Password cannot be empty"]});
-                  error = true
-              }
-              if(!$scope.current_user.newPasswordConfirm) {
-                  $scope.errors({errors: ["New Password Confirm cannot be empty"]});
-                  error = true
-              }
-
-              if (error) return;
-
-              $scope.googleAuthAlert();
-
-          };
+                if(!$scope.current_user.oldPassword) {
+                    $scope.errors({errors: ["Old password required"]});
+                    error = true
+                }
+                if(!$scope.current_user.newPassword) {
+                    $scope.errors({errors: ["New Password cannot be empty"]});
+                    error = true
+                }
+                if(!$scope.current_user.newPasswordConfirm) {
+                    $scope.errors({errors: ["New Password Confirm cannot be empty"]});
+                    error = true
+                }
+                if (error) return;
+                $scope.googleAuthAlert();
+            };
 
             if($state.current.name == 'user'){
 
