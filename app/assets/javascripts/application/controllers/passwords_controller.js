@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('PasswordsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'PasswordFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, passwords) {
+        .controller('PasswordsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'PasswordsFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, passwords) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -36,15 +36,20 @@
                     $scope.submitted = true;
 
                     $scope.formPending = true;
-                    passwords.reset($scope.password, $scope.password_confirmation, $state)
-                        .success(function(data){
-                            $scope.formPending = false;
-                            message(data.message);
-                            $state.go('login');
-                        })
-                        .error(function(data){
-                            $scope.formPending = false;
-                        })
+                    if($scope.password == $scope.password_confirmation){
+                        passwords.reset($scope.password, $state)
+                            .success(function(data){
+                                $scope.formPending = false;
+                                message(data.message);
+                                $state.go('login');
+                            })
+                            .error(function(data){
+                                $scope.formPending = false;
+                            })
+                    }else{
+                        message('');
+                    }
+
                 };
 
             }])

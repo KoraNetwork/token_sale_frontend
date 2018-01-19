@@ -26,10 +26,10 @@
                     img.document_foto.circle.pointer ng-src="{{ga_request.user.documentUrl}}" ng-click="openImage(ga_request.user.documentUrl)"
                   td.text-center style="max-width: 150px"
                     img.document_foto.circle.pointer ng-src="{{ga_request.photoUrl}}" ng-click="openImage(ga_request.photoUrl)"
-                  td.text-right style="max-width: 240px"
-                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="resetGARequests(ga_request.id)"
+                  td.pull-right style="max-width: 240px"
+                    a.btn-xs.btn.btn-info.btn-outline.status.pull-right ng-click="resetGARequests(ga_request.id)"
                       | Reset
-                    a.btn-xs.btn.btn-danger.btn-outline.status ng-click="deleteGARequests(ga_request.id)"
+                    a.btn-xs.btn.btn-danger.btn-outline.status.pull-right ng-click="deleteGARequests(ga_request.id)"
                       | Delete
             br
               .row style="margin-top: 10px; padding-left: 15px"
