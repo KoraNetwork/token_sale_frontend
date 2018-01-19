@@ -10,7 +10,7 @@
                 $scope._ = _;
                 $scope.$state = $state;
                 $scope.tokens = [];
-
+                $scope.selected = null;
 
                 var timer = false;
 
@@ -29,6 +29,7 @@
                         $scope.preSales = data.sale.preSale;
                         $scope.publicSales = data.sale.publicSale;
                         $scope.sumTokens = data.sale;
+                        $scope.sale = data.sale;
                         $scope.total = data.total;
                         $scope.count = data.count;
                         var pagination = $('#tokens-pagination');
@@ -51,6 +52,7 @@
                             })
                         }
                     }).error(function (data) {
+                        $scope.errors({ errors: [data.message] })
                     });
                 };
 
@@ -62,7 +64,33 @@
                 };
 
                 $scope.resetTokensFilters();
-                $scope.retrieveTokens();
+                // $scope.retrieveTokens();
+
+                $scope.sendTokens = function () {
+                  tokens.sendTokens($scope.sale)
+                      .success(function() {
+                          $scope.message({ message: ["Succesfully updated"] });
+                          $scope.selected = null;
+                      })
+                      .error(function(resp) {
+                          $scope.errors({ errors: [resp.message] })
+                      })
+                };
+                
+                $scope.toggleShow = function (showBlock) {
+                    $scope[showBlock] = !$scope[showBlock]
+                };
+
+                $scope.selectSale = function (index, actions) {
+                    $scope.selected = index;
+                    $scope[actions] = !$scope[actions]
+                };
+
+                $scope.cancel = function () {
+                    $scope.selected = null;
+                    $scope.retrieveTokens()
+                };
+
 
 
             }])

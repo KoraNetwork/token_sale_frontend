@@ -48,15 +48,22 @@
               span.middle-block-first.pretty
                 span.middle-block-title
                   | # of Tokens per Dollar at retail
-                span.editable
-                  / span.small-line
+                input.editable-input type="number" ng-model="sumTokens.USD_KNT" ng-show="showTokens"
+                span.editable ng-show="!showTokens"
                   | {{ sumTokens.USD_KNT }}
+                  / span ng-click="toggleShow('showTokens')"
+                  /   i.fa.fa-pencil
+                / div.editable-button ng-show="showTokens && tokens"
+                /   a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                /     | Cancel
+                /   a.btn-xs.btn.btn-info.btn-outline.status ng-click=""
+                /     | Save
               span.middle-block-second.pretty
                 span.middle-block-title
                   | Current discount for Kora MVP users
                 span.editable
-                  / span.small-line
                   | {{ sumTokens.discountMVP }}%
+
             hr
             table.table.table-striped.table-responsive
               div.table-header
@@ -71,15 +78,26 @@
               tbody
                 tr ng-repeat="sale in preSales"
                   td.text-center
-                    | {{ sale.discount }}
+                    | {{ sale.discount }}%
                   td.text-center
-                    | {{ sale.amountKNT }}
+                    | {{ (sale.amountKNT).toFixed(2) }}
                   td.text-center
-                    | {{ sale.amountUSD }}
+                    span ng-click="selectSale($index, 'actions')" ng-hide="$index == selected" style="cursor: pointer"
+                      | {{ sale.amountUSD }}
+                      span style="padding: 10px"
+                        i.fa.fa-pencil
+                    span.text-center
+                      input type="number" ng-model="sale.amountUSD" ng-show="$index == selected"
+                    span.editable-button ng-show="$index == selected"
+                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                        | Cancel
+                        a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                          | Save
                   td.text-center
-                    | {{ sale.KNT_USD }}
+                    | {{ (sale.KNT_USD).toFixed(2) }}
                   td.text-center
-                    | {{ sale.USD_KNT }}
+                    | {{ (sale.USD_KNT).toFixed(2) }}
+
             hr
             table.table.table-striped.table-responsive
               div.table-header
@@ -94,15 +112,15 @@
               tbody
                 tr ng-repeat="public in publicSales"
                   td.text-center
-                    | {{ public.discount }}
+                    | {{ public.discount }}%
                   td.text-center
-                    | {{ public.amountKNT }}
+                    | {{ (public.amountKNT).toFixed(2) }}
                   td.text-center
                     | {{ public.amountUSD }}
                   td.text-center
-                    | {{ public.KNT_USD }}
+                    | {{ (public.KNT_USD).toFixed(2)}}
                   td.text-center
-                    | {{ public.USD_KNT }}
+                    | {{ (public.USD_KNT).toFixed(2) }}
             hr
 
             br

@@ -79,7 +79,7 @@
             };
 
             $scope.resetUsersFilters();
-            $scope.retrieveUsers();
+            // $scope.retrieveUsers();
 
             $scope.go = function(id) {
                 window.location.hash = "#/user/" + id;

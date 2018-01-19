@@ -28,7 +28,9 @@
 
             $scope.message = function(data) {
                 if(data.message){
-                    toaster.pop('success', "", data.message);
+                    for(var i = 0; i < data.message.length; ++i) {
+                        toaster.pop('success', "", data.message[i]);
+                    }
                 }
             };
 

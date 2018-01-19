@@ -11,43 +11,38 @@
 
                 $('body').css({ minWidth: "400px" });
 
-                var message = function(data) {
-                    if(data.message){
-                        toaster.pop('success', "", data.message);
-                    }
-                };
-
                 $scope.submitForgotPassword = function(){
                     $scope.submitted = true;
                     $scope.formPending = true;
                     passwords.forgot($scope.email)
-                        .then(function(response){
+                        .success(function(response){
                                 $scope.formPending = false;
-                                message(response.data.message);
+                                $scope.message({ message: [response.message] });
                                 $state.go('login');
-                            },
-                            function(response){
-                                $scope.formPending = false;
-                                errors(response.data);
                             })
+                        .error(function(resp) {
+                            $scope.formPending = false;
+                            $scope.errors({ errors: [resp.message] })
+                        })
                 };
 
                 $scope.submitResetPassword = function(){
                     $scope.submitted = true;
 
                     $scope.formPending = true;
-                    if($scope.password == $scope.password_confirmation){
+                    if($scope.password === $scope.password_confirmation){
                         passwords.reset($scope.password, $state)
                             .success(function(data){
                                 $scope.formPending = false;
-                                message(data.message);
+                                $scope.message({ message: [data.message] });
                                 $state.go('login');
                             })
-                            .error(function(data){
+                            .error(function(resp){
                                 $scope.formPending = false;
+                                $scope.errors({ errors: [resp.message] })
                             })
                     }else{
-                        message('');
+                        $scope.errors({ errors: ["Passwords does not match!"] });
                     }
 
                 };

@@ -377,7 +377,18 @@ body.user-page
   border: 0.5px solid #7ca4d7
   border-radius: 7px
 .editable
+  display: flex
+  flex-direction: row
   padding: 10px 30px
+  cursor: pointer
+  &-button
+    display: flex
+    flex-direction: row
+    justify-content: center
+  &-input
+    width: 70px
+    text-align: center
+    margin: 0 0 0 360px
 
 .table-header
   font-size: 18px

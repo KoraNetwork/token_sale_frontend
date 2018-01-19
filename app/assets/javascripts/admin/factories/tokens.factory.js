@@ -5,6 +5,13 @@
 
             getTokens: function () {
                 return $http.get('/api/manageTokens')
+            },
+
+            sendTokens: function (data) {
+                delete data.id;
+                delete data.updatedAt;
+                delete data.createdAt;
+                return $http.post('/api/manageTokens/sale', data || {})
             }
 
         }
