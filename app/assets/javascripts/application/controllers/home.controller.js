@@ -36,6 +36,16 @@
                 }
             };
 
+            $scope.parseErrors = function (resp) {
+                $scope.errors({errors: _.flatten(
+                    _.map(resp.Errors, function (errs) {
+                        return _.map(errs, function(err) {
+                            return err.message
+                        })
+                    })
+                )})
+            };
+
               $scope.resetTransactionsFilters = function(){
                 $scope.transactions_filters = {
                   limit: 10

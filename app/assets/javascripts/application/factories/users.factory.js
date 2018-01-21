@@ -135,7 +135,7 @@
                 if(user.document && user.document.file){
                     fd.append('document', user.document.file);
                 }
-                console.log(user);
+
                 return $http.put('/api/profile/verify', fd, {
                     headers: { 'Content-Type': undefined }
                 })

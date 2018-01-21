@@ -3,7 +3,7 @@
   .col-md-12.change_password-text
     i.fa.fa-user-o
     | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}
-  .col-md-12.textBox
+  .col-md-12.textBox ng-hide="current_user.verified"
     ul
       li - To contribute to Kora Token Sale and withdraw KNT, upload a valid, government issued photo ID.
       li - Your ID will not be verified immediately upon upload.
@@ -31,7 +31,7 @@
         .col-md-4
           .form-group style="display: grid"
             label.star for="country"  Country
-            input#country.form-control-profile_style_input type="text" ng-model="current_user.countryName"
+            input#country.form-control-profile_style_input type="text" ng-model="current_user.country"
         .col-md-4
           .form-group
             label.star for="city"  City
@@ -74,7 +74,7 @@
           .form-group
             label.star for="zip"  ZIP
             input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip"
-      div image=true ng-model="current_user.documentUrl"
+      div image=true ng-model="current_user.document"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left
           button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit"

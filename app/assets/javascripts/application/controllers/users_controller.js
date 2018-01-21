@@ -414,20 +414,15 @@
                     $scope.processing = false;
                     $scope.verifiedID();
                   })
-                  .error(function(data){
+                  .error(function(resp){
                     $scope.processing = false;
-                    if(data.Errors){
-                        $scope.validateError(data)
-                    }else{
-                        $scope.errors({ errors: [data.message] });
+                    if(resp.Errors) {
+                        $scope.parseErrors(resp);
+                    }
+                    else {
+                        $scope.errors({ errors: [resp.message] })
                     }
                   })
-            };
-
-            $scope.validateError = function (data) {
-                for(var prop in data.Errors){
-                    $scope.errors({ errors: [data.Errors[prop][0].message] });
-                }
             };
 
             $scope.verifiedID = function () {
@@ -451,22 +446,35 @@
                 })
             };
 
-            users.getSelect()
-                .success(function (data) {
-                    $scope.countries = data.country;
-                    _.map( $scope.countries, function(el) {
-                        if (el.countryCode == $scope.current_user.documentCountry){
-                            $scope.current_user.documentCountryObj = el
-                        }
-                    });
-                    $scope.identificationTypes = data.identificationType;
-                    _.map( $scope.identificationTypes, function(el) {
-                        if (el.id == $scope.current_user.identificationType){
-                            $scope.current_user.identificationTypeObj = el
-                        }
-                    });
-                    $scope.current_user.document = $scope.current_user.documentUrl;
-                });
+
+            $scope.$watch('$state.current.name', function(state){
+                if(state === 'verify_id') {
+                    $scope.selects();
+                }
+            });
+
+            $scope.selects = function () {
+                users.getSelect()
+                    .success(function (data) {
+                        $scope.countries = data.country;
+                        _.map( $scope.countries, function(el) {
+                            if (el.countryCode == $scope.current_user.documentCountry){
+                                $scope.current_user.documentCountryObj = el
+                            }
+                        });
+                        $scope.identificationTypes = data.identificationType;
+                        _.map( $scope.identificationTypes, function(el) {
+                            if (el.id == $scope.current_user.identificationType){
+                                $scope.current_user.identificationTypeObj = el
+                            }
+                        });
+                    })
+                    .error(function (err) {
+                        console.log(err)
+                    })
+            };
+
+            $scope.current_user.document = $scope.current_user.documentUrl;
 
             $scope.dateOfBirth = function () {
                 return $scope.current_user.dateOfBirth ?

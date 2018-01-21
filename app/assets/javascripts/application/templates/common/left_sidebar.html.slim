@@ -3,9 +3,10 @@
     li.left-nav-username
       | {{ !current_user.userName ? current_user.firstName + ' ' +  current_user.lastName : current_user.userName }}
     li.align-center-nav-text
-      i.fa.fa-times-circle-o.left-nav-icon.fa-lg
+      i.fa.fa-times-circle-o.left-nav-icon.fa-lg ng-hide="current_user.verified"
+      i.fa.fa-star style="color: #a4edca; font-size: 14px" ng-show="current_user.verified"
       a.left-nav-unverified-id href="/#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}"
-        | {{ current_user.verified ? 'Verified ID' : 'Unverified ID' }}
+        | {{ current_user.verified ? 'ID Verified' : 'Unverified ID' }}
     hr
     li.align-center-nav-text.left-nav-balance-position
       span.left-nav-unverified-id-knt
