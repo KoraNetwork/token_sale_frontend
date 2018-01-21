@@ -258,7 +258,12 @@
                         })
                         .error(function(data){
                             $scope.formPending = false;
-                            $scope.errors({ errors: [data.message] });
+                            if(data.Errors) {
+                                $scope.parseErrors();
+                            }
+                            else {
+                                $scope.errors({ errors: [data.message] });
+                            }
                         })
                 };
 
@@ -410,9 +415,11 @@
                 $scope.current_user.documentCountry = $scope.current_user.documentCountryObj.countryCode;
                 $scope.current_user.identificationType = $scope.current_user.identificationTypeObj.id;
                 users.verifyID($scope.current_user)
-                  .success(function(){
+                  .success(function(resp){
                     $scope.processing = false;
+                    // console.log(resp);
                     $scope.verifiedID();
+                    // console.log($scope.current_user)
                   })
                   .error(function(resp){
                     $scope.processing = false;
@@ -454,6 +461,7 @@
             });
 
             $scope.selects = function () {
+                $scope.current_user.document = $scope.current_user.documentUrl;
                 users.getSelect()
                     .success(function (data) {
                         $scope.countries = data.country;
@@ -474,7 +482,6 @@
                     })
             };
 
-            $scope.current_user.document = $scope.current_user.documentUrl;
 
             $scope.dateOfBirth = function () {
                 return $scope.current_user.dateOfBirth ?
