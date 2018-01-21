@@ -48,20 +48,21 @@
               span.middle-block-first.pretty
                 span.middle-block-title
                   | # of Tokens per Dollar at retail
-                input.editable-input type="number" ng-model="sumTokens.USD_KNT" ng-show="showTokens"
-                span.editable ng-show="!showTokens"
+                span.middle-block-data.editable ng-click="selectSale(-1, 'actions')" ng-hide="-1 == selected"
                   | {{ sumTokens.USD_KNT }}
-                  / span ng-click="toggleShow('showTokens')"
-                  /   i.fa.fa-pencil
-                / div.editable-button ng-show="showTokens && tokens"
-                /   a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
-                /     | Cancel
-                /   a.btn-xs.btn.btn-info.btn-outline.status ng-click=""
-                /     | Save
+                  span style="padding: 2px 10px"
+                    i.fa.fa-pencil
+                span.text-center
+                  input.editable-input type="number" ng-model="sumTokens.USD_KNT" ng-show="-1 == selected"
+                div.editable-button ng-show="-1 == selected"
+                  a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                    | Cancel
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                      | Save
               span.middle-block-second.pretty
                 span.middle-block-title
                   | Current discount for Kora MVP users
-                span.editable
+                span.editable-second
                   | {{ sumTokens.discountMVP }}%
 
             hr

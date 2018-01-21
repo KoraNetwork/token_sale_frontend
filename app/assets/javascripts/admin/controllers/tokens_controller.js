@@ -76,10 +76,6 @@
                           $scope.errors({ errors: [resp.message] })
                       })
                 };
-                
-                $scope.toggleShow = function (showBlock) {
-                    $scope[showBlock] = !$scope[showBlock]
-                };
 
                 $scope.selectSale = function (index, actions) {
                     $scope.selected = index;

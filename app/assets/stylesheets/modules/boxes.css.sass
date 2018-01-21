@@ -359,16 +359,18 @@ body.user-page
     flex-direction: column
     min-width: 700px
     &-title
-      padding: 10px
+      padding: 0
+    &-data
+      margin: 0 0 0 auto
     &-first
-      padding: 5px
+      padding: 10px 30px
       margin: 5px
       display: inherit
       justify-content: space-between
     &-second
+      padding: 10px 30px
       display: inherit
       justify-content: space-between
-      padding: 5px
       margin: 5px
 .pretty
   font-size: 20px
@@ -379,8 +381,9 @@ body.user-page
 .editable
   display: flex
   flex-direction: row
-  padding: 10px 30px
   cursor: pointer
+  &-second
+    padding: 0 30px
   &-button
     display: flex
     flex-direction: row
@@ -388,7 +391,7 @@ body.user-page
   &-input
     width: 70px
     text-align: center
-    margin: 0 0 0 360px
+    margin: 0 0 0 300px
 
 .table-header
   font-size: 18px
