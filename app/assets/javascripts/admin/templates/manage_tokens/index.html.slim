@@ -79,7 +79,17 @@
               tbody
                 tr ng-repeat="sale in preSales"
                   td.text-center
-                    | {{ sale.discount }}%
+                    span ng-click="selectSale($index+'discount', 'actions')" ng-hide="$index+'discount' == selected" style="cursor: pointer"
+                      | {{ sale.discount }}%
+                      span style="padding: 10px"
+                        i.fa.fa-pencil
+                    span.text-center
+                      input type="number" ng-model="sale.discount" ng-show="$index+'discount' == selected"
+                    span.editable-button ng-show="$index+'discount' == selected"
+                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                        | Cancel
+                        a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                          | Save
                   td.text-center
                     | {{ (sale.amountKNT).toFixed(2) }}
                   td.text-center

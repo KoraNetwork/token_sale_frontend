@@ -22,8 +22,18 @@
 
 @import "modules/variables";
 
+@font-face {
+  font-family: Muli;
+  src: url(/fonts/muli/Muli.ttf);
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url(/fonts/proxima/Proxima_Nova_Light.otf);
+}
+
 body{
-  font-family: Muli
+
 }
 
 form{
