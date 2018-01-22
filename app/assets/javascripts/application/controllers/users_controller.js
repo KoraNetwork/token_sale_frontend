@@ -373,7 +373,8 @@
                       inputPlaceholder: "Google Authenticator",
                       confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
                       closeOnConfirm: false,
-                      closeOnCancel: true},
+                      closeOnCancel: true,
+                      customClass: "confirm-only" },
                   function(inputValue) {
                       if (inputValue) {
                           $scope.current_user.token = inputValue;

@@ -120,7 +120,7 @@
 
             $scope.logout = function(){
                 session.logout().success(function(){
-                    window.location = '/'
+                    window.location = '/';
                 })
             };
 

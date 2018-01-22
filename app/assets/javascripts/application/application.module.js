@@ -30,7 +30,7 @@
 
             $stateProvider
                 .state('dashboard',{
-                  url: '/',
+                  url: '/?emailVerified?emailUnverified',
                   templateUrl: 'application/templates/home/index.html',
                   controller: 'DashboardController'
                 })
