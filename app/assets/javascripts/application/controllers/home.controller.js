@@ -101,6 +101,7 @@
                 session.profile()
                   .success(function(data, status){
                       $scope.current_user = data;
+                      $scope.current_user.document = $scope.current_user.documentUrl;
                       $scope.checkValues();
                       $state.go('dashboard');
                   })

@@ -122,7 +122,7 @@
                 fd.append('firstName', user.firstName || '');
                 fd.append('lastName', user.lastName || '');
                 fd.append('phone', user.phone || '');
-                fd.append('country', user.country || '');
+                fd.append('country', user.countryObj ? user.countryObj.countryCode : '');
                 fd.append('dateOfBirth', user.dateOfBirth || '');
                 fd.append('streetAddress', user.streetAddress || '');
                 fd.append('aptSte', user.aptSte || '');
@@ -130,7 +130,7 @@
                 fd.append('state', user.state || '');
                 fd.append('zip', user.zip || '');
                 fd.append('identificationType', user.identificationType || '');
-                fd.append('documentCountry', user.documentCountry || '');
+                fd.append('documentCountry', user.documentCountryObj ? user.documentCountryObj.countryCode : '');
 
                 if(user.document && user.document.file){
                     fd.append('document', user.document.file);
