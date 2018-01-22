@@ -31,7 +31,7 @@
 
                     $scope.formPending = true;
                     if($scope.password === $scope.password_confirmation){
-                        passwords.reset($scope.password, $state)
+                        passwords.reset($scope.password, $state.params.token)
                             .success(function(data){
                                 $scope.formPending = false;
                                 $scope.message({ message: [data.message] });
