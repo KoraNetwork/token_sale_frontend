@@ -505,7 +505,11 @@
                   })
                   .error(function(data){
                     $scope.processing = false;
-                    $scope.errors({ errors: [data.message] });
+                    if (data.Errors) {
+                        $scope.parseErrors(data);
+                    } else {
+                        $scope.errors({ errors: [data.message] });
+                    }
                   })
             };
 
