@@ -66,6 +66,10 @@
               return $http.put('/api/password/change', value)
             },
 
+            getHistory: function () {
+              return $http.get('/api/addressHistory')
+            },
+
             validate: function (user) {
                 var invalidFields = [],
                     messages = [],

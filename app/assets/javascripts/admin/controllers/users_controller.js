@@ -174,7 +174,7 @@
                         .success(function(data){
                             $scope.formPending = false;
                             $scope.retrieveUser();
-                            $scope.message({ message: "User has been succesfully updated" });
+                            $scope.message({ message: ["User has been succesfully updated"] });
                             $state.go('users');
                         })
                         .error(function(data){

@@ -192,24 +192,15 @@
                             $scope.getQR();
                             $scope.next();
                           })
-                          .error(function(data){
-                            $scope.resp = data;
-                            $scope.errors({errors: _.flatten(
-                              _.map($scope.resp.Errors, function (errs) {
-                                return _.map(errs, function (err) {
-                                  return err.message;
-                                })
-                              })
-                            )})
+                          .error(function(resp){
+                              if (resp.Errors) {
+                                  $scope.parseErrors(resp);
+                              }
+                              else {
+                                  $scope.errors({ errors: [resp.message] })
+                              }
                           })
                     }
-                    // if (!$scope.user.receivingEthereumAddress) {
-                    //   $scope.$parent.errors({ errors: ["Receiving Ethereum Address must be present!"] });
-                    //   return;
-                    // }
-                    // else{
-                    //   users.checkUserInfo(_.pick($scope.user, 'receivingEthereumAddress'))
-                    // }
                     $scope.processing = false;
                 };
 
@@ -477,11 +468,6 @@
                                 $scope.current_user.countryObj = el
                             }
                         });
-                        _.map( $scope.countries, function(el) {
-                            if (el.countryCode == $scope.current_user.country){
-                                $scope.current_user.countryObj = el
-                            }
-                        });
                         $scope.identificationTypes = data.identificationType;
                         _.map( $scope.identificationTypes, function(el) {
                             if (el.id === $scope.current_user.identificationType){
@@ -493,6 +479,16 @@
                         console.log(err)
                     })
             };
+
+            $scope.checkHistory = function () {
+              users.getHistory()
+                  .success(function(resp) {
+                      $scope.ethereums = resp.sendingEthereumAddress;
+                      $scope.bitcoins = resp.bitcoinAddress;
+                  })
+            };
+
+            $scope.checkHistory();
 
 
             $scope.dateOfBirth = function () {

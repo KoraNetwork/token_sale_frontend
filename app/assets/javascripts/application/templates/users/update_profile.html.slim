@@ -11,11 +11,23 @@
             .form-group
               label Change ethereum sending address
               input.form-control-profile_style_input-large type="text" ng-model="current_user.sendingEthereumAddress"
+              span.history ng-click="historyEther = !historyEther"
+                | Show History
+              span ng-show="historyEther"
+                ul
+                  li ng-repeat="eth in ethereums"
+                    | {{ eth.address }}
         .row
           .col-md-4
             .form-group
               label  Change bitcoin sending address
               input.form-control-profile_style_input-large type="text" ng-model="current_user.bitcoinAddress"
+              span.history ng-click="historyBtc = !historyBtc"
+                | Show History
+              span ng-show="historyBtc"
+                ul
+                  li ng-repeat="btc in bitcoins"
+                    | {{ btc.address }}
         .row
           .col-md-4
             .form-group

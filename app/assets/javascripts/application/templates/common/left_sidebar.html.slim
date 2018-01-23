@@ -25,13 +25,13 @@
     ul
       li.align-center-nav-text
         span.left-nav-unverified-id-course
-          | 1 KNT = ${{ balance.KNT_USD }}
+          | 1 KNT = ${{ (balance.KNT_USD).toFixed(2) }}
       li.align-center-nav-text
         span.left-nav-unverified-id-knt
-          | 1 ETH = ${{ balance.ETH_USD }}USD
+          | 1 ETH = ${{ (balance.ETH_USD).toFixed(2) }}USD
       li.align-center-nav-text
         span.left-nav-unverified-id-knt
-          | 1 BTC = ${{ balance.BTC_USD }}USD
+          | 1 BTC = ${{ (balance.BTC_USD).toFixed(2) }}USD
   hr
 
   .left-bottom-nav

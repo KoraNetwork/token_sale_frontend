@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster','TransactionsFactory',
-            function ($scope, $state, ngDialog, session, $timeout, toaster, transactions) {
+        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster','TransactionsFactory', '$q',
+            function ($scope, $state, ngDialog, session, $timeout, toaster, transactions, $q) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -93,8 +93,15 @@
             };
 
             $scope.refreshValues = function () {
-              $scope.retrieveTransactions();
-              $scope.checkValues();
+                $scope.spin = true;
+                $q(function (resolve) {
+                    resolve($scope.retrieveTransactions())
+                }).then(function (a) {
+                    $scope.checkValues()
+                }).then(function() {
+                    $scope.spin = false;
+                });
+
             };
 
             $scope.checkSession = function(){
