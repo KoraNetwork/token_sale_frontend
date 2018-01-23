@@ -477,6 +477,11 @@
                                 $scope.current_user.countryObj = el
                             }
                         });
+                        _.map( $scope.countries, function(el) {
+                            if (el.countryCode == $scope.current_user.country){
+                                $scope.current_user.countryObj = el
+                            }
+                        });
                         $scope.identificationTypes = data.identificationType;
                         _.map( $scope.identificationTypes, function(el) {
                             if (el.id === $scope.current_user.identificationType){
