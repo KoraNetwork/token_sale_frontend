@@ -1,0 +1,36 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+              span
+                | Admins
+              .div.pull-right style= "margin: -10px"
+                a.ladda-button.btn.btn-confirm style="background-image: linear-gradient(to top, #56acd1, #2b74a5); "
+                  i.fa.fa-plus
+                  | Add Admin
+
+            table.table.table-striped.table-responsive
+              thead
+                tr
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="firstName" tablesort-title="First Name"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
+                  th.text-center tablesort=true ng-model="users_filters" tablesort-name="mobile" tablesort-title="Phone"
+
+              tbody
+                tr ng-show="!count"
+                  td.text-center colspan="4"
+                    | No results found
+                tr ng-repeat="admin in admins"
+                  td.text-center
+                    | {{ admin.firstName }}
+                    td.text-center
+                      | {{ admin.lastName }}
+                  td.text-center style="max-width: 150px"
+                    | {{ admin.email }}
+                  td.text-center
+                    | {{ admin.phone }}

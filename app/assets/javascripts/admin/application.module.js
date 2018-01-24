@@ -59,6 +59,11 @@
                     templateUrl: 'admin/templates/ga_requests/index.html',
                     controller: 'GARequestsController'
                 })
+                .state('admins', {
+                    url: '/admins',
+                    templateUrl: 'admin/templates/admins/index.html',
+                    controller: 'AdminsController'
+                })
     }]);
 
     KoraICOAdminApp.run(['$http', '$rootScope', function($http, $rootScope){

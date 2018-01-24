@@ -19,7 +19,7 @@
             },
 
             reset: function (id) {
-                return $http.get('/api/authenticatorRecovery/' + id);
+                return $http.post('/api/authenticatorRecovery/' + id);
             },
 
             destroy: function (id) {
