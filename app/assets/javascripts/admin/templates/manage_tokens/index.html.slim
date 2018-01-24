@@ -84,7 +84,7 @@
               tbody
                 tr ng-repeat="sale in preSales"
                   td.text-center
-                    span ng-click="selectSale($index+'discount', 'actions')" ng-hide="$index+'discount' == selected" style="cursor: pointer"
+                    span ng-click="sale.disabled ? selectSale($index+'discount', 'actions') : true" ng-hide="$index+'discount' == selected" style="cursor: pointer"
                       | {{ sale.discount }}%
                       span style="padding: 10px" ng-hide="sale.disabled"
                         i.fa.fa-pencil
@@ -98,13 +98,13 @@
                   td.text-center
                     | {{ (sale.amountKNT).toFixed(2) }}
                   td.text-center
-                    span ng-click="selectSale($index, 'actions')" ng-hide="$index == selected" style="cursor: pointer"
+                    span ng-click="sale.disabled ? selectSale($index, 'actions') : true" ng-hide="$index == selected && !sale.disabled" style="cursor: pointer"
                       | {{ sale.amountUSD }}
                       span style="padding: 10px" ng-hide="sale.disabled"
                         i.fa.fa-pencil
-                    span.text-center
-                      input type="number" ng-model="sale.amountUSD" ng-show="$index == selected"
-                    span.editable-button ng-show="$index == selected"
+                    span.text-center ng-show="$index == selected && !sale.disabled"
+                      input type="number" ng-model="sale.amountUSD"
+                    span.editable-button ng-show="$index == selected && !sale.disabled"
                       a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
                         | Cancel
                         a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
