@@ -76,7 +76,8 @@
 
                 $scope.resetUsersFilters = function(){
                     $scope.users_filters = {
-                        limit: 10
+                        limit: 10,
+                        role: 'user'
                     };
                     $scope.page = 1;
                 };
