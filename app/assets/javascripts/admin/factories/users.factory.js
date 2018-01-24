@@ -42,7 +42,6 @@
             },
 
             upsert: function (user) {
-
                 return $http.put('/api/users/' + user.id, user);
             },
 
@@ -58,6 +57,14 @@
                     messages: errorMessages,
                     invalidFields: keys
                 };
+            },
+
+            allocate: function (id, knt) {
+                return $http.put('/api/users/allocate/' + id, { KNT: knt });
+            },
+
+            allocateHistory: function (id) {
+                return $http.get('/api/users/allocate/' + id);
             }
         }
     }])

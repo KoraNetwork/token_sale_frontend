@@ -13,19 +13,19 @@
                 | Country:
               img.pull-left ng-src="{{ user.countryFlag }}"
               h2.pull-right style="margin: 20px"
-                | {{ user.country }}
+                | {{ user.countryName }}
             .pull-left style="padding: 20px"
               h4
                 | Nationality:
               img.pull-left ng-src="{{ user.nationalityFlag }}"
               h2.pull-right style="margin: 20px"
-                | {{ user.nationality }}
+                | {{ user.nationalityName }}
             .pull-right style="padding: 20px"
               a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="update()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
                 i.fa.fa-check
                 | Save
 
-          .left-block style="padding-top: 20px; padding-bottom: 20px"
+          .left-block style="padding: 20px 20px 20px 0;"
             table.border-radius-table
               tr
                 td.bg-gray
@@ -58,7 +58,7 @@
                 td.bg-white.disabledInput
                   | {{ user.verified ? "Yes" : "No" }}
 
-          .right-block style="padding-top: 20px; padding-left: 20px"
+          .right-block style="padding-top: 20px;"
             table.border-radius-table
               tr
                 td.bg-gray
@@ -72,3 +72,24 @@
                   | Bitcoin Address
                 td
                   input.bg-white name="sendingBitcoinAddress" ng-model="user.sendingBitcoinAddress"
+
+            table.border-radius-table style="margin-top: 20px"
+              tr
+                td
+                  input.bg-white ng-model="knt" type="number"
+                td
+                  a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="allocate()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                    i.fa.fa-check
+                    | Allocate KNT
+
+            div.history ng-click="history = true; allocateHistory()" ng-hide="history" style="margin: 10px 0 0 20px"
+              | Show History
+            span ng-show="history"
+              table.history-table style="margin: 10px 0 0 20px"
+                tr ng-repeat="knt in knts"
+                  td
+                    | {{ knt.admin.firstName }} {{ knt.admin.lastName }}
+                  td
+                    | {{ moment(knt.date).format("LLL") }}
+                  td
+                    | {{ knt.KNT }} KNT

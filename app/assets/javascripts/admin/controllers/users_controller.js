@@ -8,92 +8,96 @@
         function ($scope, $state, ngDialog, toaster, $stateParams, $timeout, SweetAlert, $sce, users) {
             $scope.I18n = I18n;
             $scope._ = _;
+            $scope.moment = moment;
             $scope.$state = $state;
             $scope.users = [];
             $scope.user = {};
+            $scope.knts = [];
 
-            $scope.verifyUser = function (id) {
-                users.verify(id)
-                    .success(function () {
-                        $state.reload();
-                    })
-                    .error(function (resp) {
-                        $scope.errors({ errors: [resp.message] });
-                    })
-            };
-
-            $scope.blockedUser = function (id, index) {
-              users.blockChange(id)
-                  .success(function (resp) {
-                      $scope.users[index] = resp[0]
-                  })
-                  .error(function (err) {
-                      $scope.errors({ errors: [err.message] });
-                  })
-            };
-
-            var timer = false;
-
-            $scope.$watch('users_filters', function () {
-                if (timer) {
-                    $scope.page = 1;
-                    $timeout.cancel(timer)
-                }
-                timer = $timeout(function () {
-                    $scope.retrieveUsers();
-                }, 500)
-            }, true);
-
-            $scope.retrieveUsers = function () {
-                users.getUsers({page: $scope.page, query: $scope.users_filters}).success(function (data) {
-                    $scope.users = data.data;
-                    $scope.count = data.count;
-                    var pagination = $('#users-pagination');
-                    pagination.empty();
-                    pagination.removeData('twbs-pagination');
-                    pagination.unbind('page');
-                    if ($scope.count > 0) {
-                        pagination.twbsPagination({
-                            totalPages: Math.ceil($scope.count / $scope.users_filters.limit),
-                            startPage: $scope.page,
-                            prev: '<',
-                            next: '>',
-                            first: false,
-                            last: false,
-                            visiblePages: 9,
-                            onPageClick: function (event, page) {
-                                $scope.page = page;
-                                $scope.retrieveUsers();
-                            }
+            if ($state.current.name == 'users') {
+                $scope.verifyUser = function (id) {
+                    users.verify(id)
+                        .success(function () {
+                            $state.reload();
                         })
-                    }
-                }).error(function (data) {
-                });
-            };
-
-            $scope.resetUsersFilters = function(){
-                $scope.users_filters = {
-                    limit: 10
+                        .error(function (resp) {
+                            $scope.errors({ errors: [resp.message] });
+                        })
                 };
-                $scope.page = 1;
-            };
 
-            $scope.resetUsersFilters();
-            // $scope.retrieveUsers();
+                $scope.blockedUser = function (id, index) {
+                    users.blockChange(id)
+                        .success(function (resp) {
+                            $scope.users[index] = resp[0]
+                        })
+                        .error(function (err) {
+                            $scope.errors({ errors: [err.message] });
+                        })
+                };
 
-            $scope.go = function(id) {
-                window.location.hash = "#/user/" + id;
-            };
+                var timer = false;
 
-            $scope.filterUser = function (type) {
-                if(type == 'blocked'){
-                    $scope.users_filters.enabled == undefined ? $scope.users_filters.enabled = false :
-                        $scope.users_filters.enabled = undefined
-                }else if(type == 'verify'){
-                    $scope.users_filters.needVerify == undefined ? $scope.users_filters.needVerify = true :
-                        $scope.users_filters.needVerify = undefined
-                }
-            };
+                $scope.$watch('users_filters', function () {
+                    if (timer) {
+                        $scope.page = 1;
+                        $timeout.cancel(timer)
+                    }
+                    timer = $timeout(function () {
+                        $scope.retrieveUsers();
+                    }, 500)
+                }, true);
+
+                $scope.retrieveUsers = function () {
+                    users.getUsers({page: $scope.page, query: $scope.users_filters}).success(function (data) {
+                        $scope.users = data.data;
+                        $scope.count = data.count;
+                        var pagination = $('#users-pagination');
+                        pagination.empty();
+                        pagination.removeData('twbs-pagination');
+                        pagination.unbind('page');
+                        if ($scope.count > 0) {
+                            pagination.twbsPagination({
+                                totalPages: Math.ceil($scope.count / $scope.users_filters.limit),
+                                startPage: $scope.page,
+                                prev: '<',
+                                next: '>',
+                                first: false,
+                                last: false,
+                                visiblePages: 9,
+                                onPageClick: function (event, page) {
+                                    $scope.page = page;
+                                    $scope.retrieveUsers();
+                                }
+                            })
+                        }
+                    }).error(function (data) {
+                    });
+                };
+
+                $scope.resetUsersFilters = function(){
+                    $scope.users_filters = {
+                        limit: 10
+                    };
+                    $scope.page = 1;
+                };
+
+                $scope.resetUsersFilters();
+                // $scope.retrieveUsers();
+
+                $scope.go = function(id) {
+                    window.location.hash = "#/user/" + id;
+                };
+
+                $scope.filterUser = function (type) {
+                    if(type == 'blocked'){
+                        $scope.users_filters.enabled == undefined ? $scope.users_filters.enabled = false :
+                            $scope.users_filters.enabled = undefined
+                    }else if(type == 'verify'){
+                        $scope.users_filters.needVerify == undefined ? $scope.users_filters.needVerify = true :
+                            $scope.users_filters.needVerify = undefined
+                    }
+                };
+            }
 
             $scope.openRegDialog = function () {
                 ngDialog.open({
@@ -182,6 +186,29 @@
                             $scope.errors({ errors: [data]})
                         })
                 };
+
+                $scope.allocate = function () {
+                    $scope.formPending = true;
+                    users.allocate($stateParams.id, $scope.knt)
+                        .success(function(data){
+                            $scope.formPending = false;
+                            $scope.knt = undefined;
+                            $scope.allocateHistory();
+                        })
+                        .error(function(data){
+                            $scope.formPending = false;
+                        })
+                };
+
+                $scope.allocateHistory = function () {
+                    users.allocateHistory($stateParams.id)
+                        .success(function(data){
+                            $scope.knts = data.data;
+                        })
+                        .error(function(data){
+
+                        })
+                }
 
             }
         }])
