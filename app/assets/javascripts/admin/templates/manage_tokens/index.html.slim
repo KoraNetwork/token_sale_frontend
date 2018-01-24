@@ -86,7 +86,7 @@
                   td.text-center
                     span ng-click="selectSale($index+'discount', 'actions')" ng-hide="$index+'discount' == selected" style="cursor: pointer"
                       | {{ sale.discount }}%
-                      span style="padding: 10px"
+                      span style="padding: 10px" ng-hide="sale.disabled"
                         i.fa.fa-pencil
                     span.text-center
                       input type="number" ng-model="sale.discount" ng-show="$index+'discount' == selected"
@@ -100,7 +100,7 @@
                   td.text-center
                     span ng-click="selectSale($index, 'actions')" ng-hide="$index == selected" style="cursor: pointer"
                       | {{ sale.amountUSD }}
-                      span style="padding: 10px"
+                      span style="padding: 10px" ng-hide="sale.disabled"
                         i.fa.fa-pencil
                     span.text-center
                       input type="number" ng-model="sale.amountUSD" ng-show="$index == selected"
