@@ -71,50 +71,62 @@
                   | {{ total.nextDiscount }}%
 
             hr
-            table.table.table-striped.table-responsive
-              div.table-header
-                | Pre Sale
-              thead
-                tr
-                  th.text-center tablesort=true ng-model="tokens_filters" tablesort-name="discount" tablesort-title="Discount"
-                  th.text-center Amount KNT
-                  th.text-center Amount USD
-                  th.text-center KNT USD
-                  th.text-center USD KNT
-              tbody
-                tr ng-repeat="sale in preSales"
-                  td.text-center
-                    span ng-click="sale.disabled ? selectSale($index+'discount', 'actions') : true" ng-hide="$index+'discount' == selected" style="cursor: pointer"
-                      | {{ sale.discount }}%
-                      span style="padding: 10px" ng-hide="sale.disabled"
-                        i.fa.fa-pencil
-                    span.text-center
-                      input type="number" ng-model="sale.discount" ng-show="$index+'discount' == selected"
-                    span.editable-button ng-show="$index+'discount' == selected"
-                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
-                        | Cancel
-                        a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
-                          | Save
-                  td.text-center
-                    | {{ (sale.amountKNT).toFixed(2) }}
-                  td.text-center
-                    span ng-click="sale.disabled ? selectSale($index, 'actions') : true" ng-hide="$index == selected && !sale.disabled" style="cursor: pointer"
-                      | {{ sale.amountUSD }}
-                      span style="padding: 10px" ng-hide="sale.disabled"
-                        i.fa.fa-pencil
-                    span.text-center ng-show="$index == selected && !sale.disabled"
-                      input type="number" ng-model="sale.amountUSD"
-                    span.editable-button ng-show="$index == selected && !sale.disabled"
-                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
-                        | Cancel
-                        a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
-                          | Save
-                  td.text-center
-                    | {{ (sale.KNT_USD).toFixed(2) }}
-                  td.text-center
-                    | {{ (sale.USD_KNT).toFixed(2) }}
+            div ng-class="{ 'disabledTable' : checkSale }"
+              table.table.table-striped.table-responsive
+                div.table-header
+                  | Pre Sale
+                thead
+                  tr
+                    th.text-center tablesort=true ng-model="tokens_filters" tablesort-name="discount" tablesort-title="Discount"
+                    th.text-center Amount KNT
+                    th.text-center Amount USD
+                    th.text-center KNT USD
+                    th.text-center USD KNT
+                tbody
+                  tr ng-repeat="sale in preSales"
+                    td.text-center
+                      span ng-click="!sale.disabled ? selectSale($index+'discount', 'actions') : true" ng-hide="$index+'discount' == selected && !checkSale" style="cursor: pointer"
+                        | {{ sale.discount }}%
+                        span style="padding: 10px" ng-hide="sale.disabled || checkSale"
+                          i.fa.fa-pencil
+                      span.text-center
+                        input type="number" ng-model="sale.discount" ng-show="$index+'discount' == selected && !checkSale"
+                      span.editable-button ng-show="$index+'discount' == selected && !checkSale"
+                        a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                          | Cancel
+                          a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                            | Save
+                    td.text-center
+                      | {{ (sale.amountKNT).toFixed(2) }}
+                    td.text-center
+                      span ng-click="!sale.disabled ? selectSale($index+'amount', 'actions') : true" ng-hide="$index+'amount' == selected && !sale.disabled && !checkSale" style="cursor: pointer"
+                        | {{ sale.amountUSD }}
+                        span style="padding: 10px" ng-hide="sale.disabled || checkSale"
+                          i.fa.fa-pencil
+                      span.text-center ng-show="$index+'amount' == selected && !sale.disabled || !checkSale"
+                        input type="number" ng-model="sale.amountUSD" ng-show="$index+'amount' == selected && !checkSale"
+                      span.editable-button ng-show="$index+'amount' == selected && !sale.disabled"
+                        a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                          | Cancel
+                          a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                            | Save
+                    td.text-center
+                      | {{ (sale.KNT_USD).toFixed(2) }}
+                    td.text-center
+                      | {{ (sale.USD_KNT).toFixed(2) }}
 
-            hr
+        hr
+        div.switchSale
+          div.switchSale-text Switch to public sale
+          div
+            .onoffswitch.text-right class="{{ isPublicSale ? 'active' : '' }}" ng-click="passwordAlert()"
+              input.onoffswitch-checkbox type="checkbox" id="sale-on-off-switch" ng-model="checkSale" ng-disabled="true"
+              label.onoffswitch-label for="sale-on-off-switch"
+                span.onoffswitch-inner
+                span.onoffswitch-switch
+
+        hr
+          div ng-class="{ 'disabledTable' : !checkSale }"
             table.table.table-striped.table-responsive
               div.table-header
                 | Public Sale
@@ -128,11 +140,31 @@
               tbody
                 tr ng-repeat="public in publicSales"
                   td.text-center
-                    | {{ public.discount }}%
+                    span ng-click="!public.disabled ? selectSale($index+'public-discount', 'actions') : true" ng-hide="$index+'public-discount' == selected && checkSale" style="cursor: pointer"
+                      | {{ public.discount }}%
+                      span style="padding: 10px" ng-hide="sale.disabled || !checkSale"
+                        i.fa.fa-pencil
+                    span.text-center
+                      input type="number" ng-model="public.discount" ng-show="$index+'public-discount' == selected && checkSale"
+                    span.editable-button ng-show="$index+'public-discount' == selected && checkSale"
+                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                        | Cancel
+                        a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                          | Save
                   td.text-center
                     | {{ (public.amountKNT).toFixed(2) }}
                   td.text-center
-                    | {{ public.amountUSD }}
+                    span ng-click="!public.disabled ? selectSale($index+'public-amount', 'actions') : true" ng-hide="$index+'public-amount' == selected && checkSale" style="cursor: pointer"
+                      | {{ public.amountUSD }}
+                      span style="padding: 10px" ng-hide="sale.disabled || !checkSale"
+                        i.fa.fa-pencil
+                    span.text-center
+                      input type="number" ng-model="public.amountUSD" ng-show="$index+'public-amount' == selected && checkSale"
+                    span.editable-button ng-show="$index+'public-amount' == selected && checkSale"
+                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
+                        | Cancel
+                        a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
+                          | Save
                   td.text-center
                     | {{ (public.KNT_USD).toFixed(2)}}
                   td.text-center

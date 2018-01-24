@@ -67,13 +67,6 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
               | Send
         span ng-show="status < 300"
           | Verified
-      /.form-group ng-show="checked"
-      /  span.placeholder
-      /    | Code
-        /div.hiddenBtn
-        /  input.form-control ng-model="user.code" type="text"
-        /    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="verifyCode()" ng-disabled="formPending"
-        /      | Verify
       .form-group
         span.placeholder
           | Select your nationality

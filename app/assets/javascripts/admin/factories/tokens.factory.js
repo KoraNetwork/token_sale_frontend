@@ -12,6 +12,10 @@
                 delete data.updatedAt;
                 delete data.createdAt;
                 return $http.post('/api/manageTokens/sale', data || {})
+            },
+
+            switchSale: function (password) {
+                return $http.post('/api/manageTokens/switchToPublicSale?password=' + password)
             }
 
         }

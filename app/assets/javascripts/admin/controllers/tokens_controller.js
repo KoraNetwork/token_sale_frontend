@@ -11,6 +11,8 @@
                 $scope.$state = $state;
                 $scope.tokens = [];
                 $scope.selected = null;
+                $scope.isPublicSale = false;
+                $scope.checkSale = false;
 
                 var timer = false;
 
@@ -30,6 +32,7 @@
                         $scope.publicSales = data.sale.publicSale;
                         $scope.sumTokens = data.sale;
                         $scope.sale = data.sale;
+                        $scope.checkSale = data.sale.isPublicSale;
                         $scope.total = data.total;
                         $scope.count = data.count;
                         var pagination = $('#tokens-pagination');
@@ -64,7 +67,6 @@
                 };
 
                 $scope.resetTokensFilters();
-                // $scope.retrieveTokens();
 
                 $scope.sendTokens = function () {
                   tokens.sendTokens($scope.sale)
@@ -86,6 +88,39 @@
                     $scope.selected = null;
                     $scope.retrieveTokens()
                 };
+
+                $scope.switchPublic = function () {
+                  tokens.switchSale($scope.password)
+                      .success(function(resp) {
+                          $scope.isPublicSale = resp.isPublicSale;
+                          $scope.checkSale = resp.isPublicSale;
+                          $scope.message({ message: ["Successfully switched"] });
+                      })
+                      .error(function(err) {
+                          $scope.errors({ errors: [err.message] });
+                      })
+                };
+                
+                $scope.passwordAlert = function () {
+                    SweetAlert.swal({
+                        title: "Please enter your password",
+                        text: "",
+                        type: "input",
+                        inputType: "password",
+                        showCancelButton: true,
+                        inputPlaceholder: "Password",
+                        confirmButtonColor: "#DD6B55",confirmButtonText: "Send",
+                        closeOnConfirm: false,
+                        closeOnCancel: true,
+                        customClass: "confirm-only"},
+                    function(value) {
+                        if (value) {
+                            $scope.password = value;
+                            $scope.switchPublic();
+                            SweetAlert.close();
+                        }
+                    })
+                }
 
 
 
