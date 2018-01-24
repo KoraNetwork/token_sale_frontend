@@ -208,8 +208,16 @@
                         .error(function(data){
 
                         })
-                }
+                };
 
+                $scope.openDocumentCountry = function(){
+                    ngDialog.closeAll();
+                    ngDialog.open({
+                        templateUrl: 'admin/templates/home/document.html',
+                        scope: $scope,
+                        className: 'gallery-dialog'
+                    });
+                };
             }
         }])
 }());
