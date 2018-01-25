@@ -9,6 +9,8 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
 
+            $('body').css({ minWidth: "1200px" });
+
             $timeout(function(){
                 if($scope.flash.error.length > 0){
                     toaster.pop('error', "", $scope.flash.error);
