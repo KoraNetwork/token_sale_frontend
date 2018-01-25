@@ -24,6 +24,13 @@
                         }, 500)
                     }, true);
 
+                    transactions.filters()
+                        .success(function(data){
+                            $scope.filters = data;
+                        })
+                        .error(function(data){
+
+                        });
 
                     $scope.retriveTransactions = function () {
                         transactions.all({page: $scope.page, query: $scope.transactions_filters}).success(function (data) {

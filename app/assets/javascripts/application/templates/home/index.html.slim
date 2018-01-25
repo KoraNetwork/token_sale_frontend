@@ -43,11 +43,11 @@
             thead
               tr
                 th tablesort=true ng-model="transactions_filters" tablesort-name="date"   tablesort-title="Data Received"
-                th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Type"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="type"   tablesort-title="Type"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="value"  tablesort-title="Amount (Crypto)"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="USD"    tablesort-title="Amount (USD)"
                 th tablesort=true ng-model="transactions_filters" tablesort-name="KNT"    tablesort-title="Amount (KNT)"
-                th tablesort=true ng-model="transactions_filters" tablesort-name=""       tablesort-title="Status"
+                th tablesort=true ng-model="transactions_filters" tablesort-name="status" tablesort-title="Status"
             tbody
               tr ng-show="!count"
                 td.text-center colspan="6"

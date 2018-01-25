@@ -15,6 +15,10 @@
                 });
 
                 return $http.get(request);
+            },
+
+            filters: function () {
+                return $http.get('/api/transactions/filters');
             }
         }
     }])
