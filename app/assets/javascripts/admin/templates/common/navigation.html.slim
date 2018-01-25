@@ -26,6 +26,11 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             i.fa.fa-bar-chart
             span.custom-nav-block-text
               | Manage Tokens
+        li ng-class=("{tabActive: $state.current.name.includes('transact')}")
+          a href="#/transactions"
+            i.fa.fa-list-alt
+            span.custom-nav-block-text
+              | Transactions list
 
     .custom-nav-logout
       a ng-click="openChangePasswordDialog()"

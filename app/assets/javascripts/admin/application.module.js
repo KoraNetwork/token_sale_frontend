@@ -69,6 +69,11 @@
                     templateUrl: 'admin/templates/admins/create_password.html',
                     controller: 'AdminsController'
                 })
+                .state('transactions', {
+                    url: '/transactions',
+                    templateUrl: 'admin/templates/transactions/index.html',
+                    controller: 'TransactionsController'
+                });
     }]);
 
     KoraICOAdminApp.run(['$http', '$rootScope', function($http, $rootScope){
