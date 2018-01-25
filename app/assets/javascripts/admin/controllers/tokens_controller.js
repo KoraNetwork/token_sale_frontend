@@ -92,6 +92,8 @@
                 $scope.switchPublic = function () {
                   tokens.switchSale($scope.password)
                       .success(function(resp) {
+                          $scope.preSales = resp.preSale;
+                          $scope.publicSales = resp.publicSale;
                           $scope.isPublicSale = resp.isPublicSale;
                           $scope.checkSale = resp.isPublicSale;
                           $scope.message({ message: ["Successfully switched"] });
