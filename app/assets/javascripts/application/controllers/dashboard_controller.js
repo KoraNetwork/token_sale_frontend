@@ -25,14 +25,14 @@
 
             if ($stateParams.emailVerified || $stateParams.emailUnverified) {
                 SweetAlert.swal({
-                        title: "Email verification",
-                        text: $stateParams.emailVerified ? "Thank you for verifying your email." : "User have not verified his email",
+                        title: $stateParams.emailVerified ? "Successful email verification" : "Email verification failed",
+                        text: $stateParams.emailVerified ? "Congratulation, your email was verified." : "Seems that something went wrong. Please try ti verify again",
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "OK",
                         width: 600,
                         padding: 100,
                         closeOnConfirm: true,
-                        customClass: "confirm-only" },
+                        customClass: "confirm-only" + ($stateParams.emailUnverified ? " text-error" : "") },
                     function(inputValue) {
                         if (inputValue) {
                             window.location.hash = '#/';
