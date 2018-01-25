@@ -79,6 +79,21 @@
                       })
                 };
 
+                $scope.newSale = function () {
+                    $scope.selected = $scope.preSales.length;
+                    $scope.preSales.push({})
+                };
+
+                $scope.newPublic = function () {
+                    $scope.selected = $scope.publicSales.length;
+                    $scope.publicSales.push({})
+                };
+
+                $scope.cancelNewSale = function () {
+                  $scope.newSaleRow = false;
+                  $scope.retrieveTokens();
+                };
+
                 $scope.selectSale = function (index, actions) {
                     $scope.selected = index;
                     $scope[actions] = !$scope[actions]
