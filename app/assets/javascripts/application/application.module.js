@@ -87,7 +87,7 @@
                             getCSRF();
                         }
                     })
-                    .errors(function() {
+                    .error(function() {
                         getCSRF();
                     });
             }
