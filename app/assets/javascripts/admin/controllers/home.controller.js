@@ -69,5 +69,43 @@
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;
             };
+
+            $scope.openChangePasswordDialog = function () {
+                ngDialog.closeAll();
+                $scope.passwordOptions = {};
+                ngDialog.open({
+                    templateUrl: 'admin/templates/users/change_password.html',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default ng-dialog-medium'
+                });
+            };
+
+            $scope.changePassword = function () {
+
+                var allFields = true;
+                var keys = [
+                    'oldPassword',
+                    'newPassword',
+                    'newPasswordConfirm',
+                    'token'
+                ];
+
+                for(var i = 0; i < keys.length; i++) {
+                    if(!$scope.passwordOptions[keys[i]]) allFields = false;
+                }
+
+                if(allFields) {
+                    session.changePassword($scope.passwordOptions)
+                        .success(function(data){
+                            $scope.passwordOptions = {};
+                            $scope.message({ message: [data.message] });
+                        })
+                        .error(function(data){
+                            $scope.errors({ errors: [data.message] })
+                        });
+                } else {
+                    $scope.errors({ errors: ['All fields are required.'] })
+                }
+            }
         }])
 }());

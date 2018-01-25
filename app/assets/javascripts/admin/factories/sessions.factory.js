@@ -32,6 +32,12 @@
                 return $http.put('/api/authenticator/recovery/' + data.id, body, {
                     headers: { 'Content-Type': undefined }
                 })
+            },
+            
+            changePassword: function (options) {
+                return $http.put('api/password/change', options, {
+                    headers: { 'Content-Type': undefined }
+                })
             }
         }
     }])

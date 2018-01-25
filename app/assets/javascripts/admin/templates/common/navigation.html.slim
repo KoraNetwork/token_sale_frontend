@@ -6,27 +6,31 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           .logo
             img ng-src="/images/kora_logo_white.svg"
         hr
-        li ng-class=("{tabActive: $state.current.name.includes('users')}")
-          a href="#/"
-            i.fa.fa-users
-            span.custom-nav-block-text
-              | Users
-        li ng-class=("{tabActive: $state.current.name.includes('tokens')}")
-          a href="#/tokens"
-            i.fa.fa-bar-chart
-            span.custom-nav-block-text
-              | Manage Tokens
-        li ng-class=("{tabActive: $state.current.name.includes('ga_requests')}")
-          a href="#/ga_requests"
-            i.fa.fa-arrows-h
-            span.custom-nav-block-text
-              | GA Requests
         li ng-class=("{tabActive: $state.current.name.includes('admins')}")
           a href="#/admins"
             i.fa.fa-user-circle-o
             span.custom-nav-block-text
               | Admins
-    div.custom-nav-logout
+        li ng-class=("{tabActive: $state.current.name.includes('users')}")
+          a href="#/"
+            i.fa.fa-users
+            span.custom-nav-block-text
+              | Users
+        li ng-class=("{tabActive: $state.current.name.includes('ga_requests')}")
+          a href="#/ga_requests"
+            i.fa.fa-arrows-h
+            span.custom-nav-block-text
+              | GA Requests
+        li ng-class=("{tabActive: $state.current.name.includes('tokens')}")
+          a href="#/tokens"
+            i.fa.fa-bar-chart
+            span.custom-nav-block-text
+              | Manage Tokens
+
+    .custom-nav-logout
+      a ng-click="openChangePasswordDialog()"
+        i.fa.fa-key
+        | Change password
       hr
       i.fa.fa-sign-out style="padding: 10px"
       span ng-click="logout()" href="#"
