@@ -110,8 +110,10 @@
                       span ng-hide="$index != selected"
                         a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
                           | Save
-                        a.btn-xs.btn.btn-danger.btn-outline.status ng-click="cancel()"
+                        a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
                           | Cancel
+                        a.btn-xs.btn.btn-danger.btn-outline.status ng-click="destroyPreSale($index+'pre')"
+                          | Delete
 
         hr
         div.switchSale
@@ -158,13 +160,15 @@
                   td.text-center
                     | {{ (public.USD_KNT).toFixed(2) }}
                   td.text-center
-                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="!sale.disabled ? selectSale($index, 'actions') : true" ng-hide="$index == selected && !sale.disabled && !checkSale"
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="!sale.disabled ? selectSale($index, 'actions') : true" ng-hide="$index == selected"
                       | Edit
                     span ng-hide="$index != selected"
                       a.btn-xs.btn.btn-info.btn-outline.status ng-click="sendTokens()"
                         | Save
-                      a.btn-xs.btn.btn-danger.btn-outline.status ng-click="cancel()"
+                      a.btn-xs.btn.btn-warning.btn-outline.status ng-click="cancel()"
                         | Cancel
+                      a.btn-xs.btn.btn-danger.btn-outline.status ng-click="destroyPublicSale($index)"
+                        | Delete
             hr
 
             br

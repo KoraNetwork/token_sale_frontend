@@ -104,6 +104,30 @@
                     $scope.retrieveTokens()
                 };
 
+                $scope.destroyPublicSale = function ($index) {
+                    $scope.deleted = $scope.publicSales.splice($index, 1);
+                    tokens.sendTokens($scope.deleted)
+                        .success(function() {
+                            $scope.message({ message: ["Item successfully deleted"] });
+                            $scope.retrieveTokens()
+                        })
+                        .error(function (resp) {
+                            console.log(resp)
+                        })
+                };
+
+                $scope.destroyPreSale = function ($index) {
+                    $scope.deleted = $scope.preSales.splice($index, 1);
+                    tokens.sendTokens($scope.deleted)
+                        .success(function() {
+                            $scope.message({ message: ["Item successfully deleted"] });
+                            $scope.retrieveTokens()
+                        })
+                        .error(function (resp) {
+                            console.log(resp)
+                        })
+                };
+
                 $scope.switchPublic = function () {
                   tokens.switchSale($scope.password)
                       .success(function(resp) {
