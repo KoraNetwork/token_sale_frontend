@@ -13,8 +13,11 @@
                 var url = '/api/admin/confirm';
                 var body = {newPassword: password, token: token, code: code};
                 return $http.put(url, body);
-            }
+            },
 
+            editAdmin: function(admin, id){
+                return $http.put('/api/users/' + id, admin);
+            }
         }
     }])
 }());

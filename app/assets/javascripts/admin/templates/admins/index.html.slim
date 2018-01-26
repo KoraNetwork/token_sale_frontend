@@ -20,17 +20,44 @@
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="mobile" tablesort-title="Phone"
+                  th.text-right.mw-150px
+                    | Actions
 
               tbody
                 tr ng-show="!count"
-                  td.text-center colspan="4"
+                  td.text-center colspan="5"
                     | No results found
                 tr ng-repeat="admin in admins"
                   td.text-center
-                    | {{ admin.firstName }}
-                    td.text-center
-                      | {{ admin.lastName }}
-                  td.text-center style="max-width: 150px"
-                    | {{ admin.email }}
+                    span ng-hide="$index == current"
+                      | {{ admin.firstName }}
+                    span.text-center ng-show="$index == current"
+                      input type="text" ng-model="admin.firstName"
                   td.text-center
-                    | {{ admin.phone }}
+                    span ng-hide="$index == current"
+                      | {{ admin.lastName }}
+                    span.text-center ng-show="$index == current"
+                      input type="text" ng-model="admin.lastName"
+                  td.text-center style="max-width: 150px"
+                    span ng-hide="$index == current"
+                      | {{ admin.email }}
+                    span.text-center ng-show="$index == current"
+                      input type="text" ng-model="admin.email"
+                  td.text-center style="max-width: 150px"
+                    span ng-hide="$index == current"
+                      | {{ admin.phone }}
+                    span.text-center ng-show="$index == current"
+                      input type="text" ng-model="admin.phone"
+                  td.text-right
+                    a.btn-xs.btn.btn-danger.btn-outline.status ng-click="blockedAdmin(admin.id, $index)" ng-hide="admin.enabled"
+                      | Unblock
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="blockedAdmin(admin.id, $index)" ng-show="admin.enabled"
+                      | Block
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="select($index)" ng-hide="$index == current"
+                      | Edit
+                    span ng-show="$index == current"
+                      a.btn-xs.btn.btn-info.btn-outline.status ng-click="editAdmin(admin)"
+                        | Save
+                      a.btn-xs.btn.btn-danger.btn-outline.status ng-click="cancelEdit()"
+                        | Cancel
+                    

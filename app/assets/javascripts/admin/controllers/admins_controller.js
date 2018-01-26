@@ -8,7 +8,16 @@
 
                 $scope.I18n = I18n;
                 $scope.$state = $state;
+                $scope._ = _;
                 $scope.filters = {role: "admin"};
+
+                $scope.errors = function(data) {
+                    if(data.errors){
+                        for(var i = 0; i < data.errors.length; ++i) {
+                            toaster.pop('error', "", data.errors[i]);
+                        }
+                    }
+                };
 
                 var timer = false;
 
@@ -72,6 +81,37 @@
                         scope: $scope,
                         controller: 'AdminsController'
                     });
+                };
+
+                $scope.select = function (index) {
+                    $scope.current = index;
+                };
+
+                $scope.cancelEdit = function (index) {
+                    $scope.current = undefined;
+                    $scope.retrieveAdmins();
+                };
+                
+                $scope.editAdmin = function (admin) {
+                    admins.editAdmin(_.pick(admin, 'firstName', 'lastName', 'email', 'phone'), admin.id)
+                        .success(function(data){
+                            $scope.current = undefined;
+                            $scope.tmpAdmin = undefined;
+                        })
+                        .error(function(data){
+                            console.log(users.parseErrors(data.Errors).messages);
+                            $scope.errors({ errors: users.parseErrors(data.Errors).messages });
+                        })
+                };
+
+                $scope.blockedAdmin = function (id, index) {
+                    users.blockChange(id)
+                        .success(function (resp) {
+                            $scope.admins[index] = resp[0]
+                        })
+                        .error(function (err) {
+                            $scope.errors({ errors: [err.message] });
+                        })
                 };
 
             }])
