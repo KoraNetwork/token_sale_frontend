@@ -45,6 +45,17 @@
                 return $http.put('/api/users/' + user.id, user);
             },
 
+            regenerate: function (value) {
+                return $http.put('/api/authenticator/regenerate', value)
+            },
+
+            reenable: function (value) {
+                if(value.reToken){
+                    user.reToken = user.reToken.replace(/\s/g,'');
+                }
+                return $http.put('/api/authenticator/reEnable?token=' + value)
+            },
+
             parseErrors: function (errors) {
                 var errorMessages = [], keys = [];
                 _.each(_.keys(errors), function (key) {

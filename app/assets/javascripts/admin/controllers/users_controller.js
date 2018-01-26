@@ -102,7 +102,7 @@
 
             $scope.openRegDialog = function () {
                 ngDialog.open({
-                    templateUrl: 'application/templates/common/regenerate_dialog.html',
+                    templateUrl: 'admin/templates/common/regenerate_dialog.html',
                     className: 'ngdialog-theme-default regenerate-width',
                     animation: "slide-from-top",
                     closeOnConfirm: true,
@@ -112,7 +112,7 @@
             };
 
             $scope.sendToken = function () {
-                users.getRegenerate($scope.user.token)
+                users.regenerate($scope.user.token)
                   .success(function(data) {
                     $scope.regenerate = data;
                     $scope.reenableDialog()
@@ -123,7 +123,7 @@
             };
 
             $scope.checkReEnable = function () {
-                users.getRegenable($scope.user.reToken)
+                users.reenable($scope.user.reToken)
                   .success(function(resp) {
                     $scope.message({ message: [resp.message] });
                     ngDialog.closeAll();
@@ -135,7 +135,7 @@
 
             $scope.reenableDialog = function () {
                 ngDialog.open({
-                  templateUrl: 'application/templates/common/reenable_dialog.html',
+                  templateUrl: 'admin/templates/common/reenable_dialog.html',
                   className: 'ngdialog-theme-default reenable-width',
                   animation: "slide-from-top",
                   closeOnConfirm: true,

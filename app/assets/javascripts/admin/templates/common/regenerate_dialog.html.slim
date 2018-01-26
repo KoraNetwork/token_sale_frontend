@@ -1,0 +1,30 @@
+.header
+  .title.text-center
+    | Regenerate Authenticator Secret Key
+  hr style="margin: 10px 0 10px"
+.ng-dialog-page.p-lr-20px.p-tb-10-5px
+  div.dialogText
+    span
+      |  Authenticator support is enable.
+      br
+    span
+      br
+      |  To regenerate your authenticator secret key, please enter a two factor token from your app.
+      br
+    span
+      br
+      |  Enter the 2-step verification code provided by your authentication app.
+hr
+  div.smallInput
+    form-group
+      span.placeholder
+        | Code
+      input.form-control required="" type="text" ng-model="user.token"
+    form-group
+      span.placeholder.text-center
+        | Password
+      input.form-control required="" type="password" ng-model="user.password"
+    .form-group.text-center
+      button.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="sendToken()" ng-controller="UsersController"
+        | Next
+  hr

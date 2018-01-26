@@ -33,10 +33,14 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
               | Transactions list
 
     .custom-nav-logout
-      a ng-click="openChangePasswordDialog()"
-        i.fa.fa-key
-        | Change password
+      span
+        i.fa.fa-key.custom-nav-logout-icon
+          span.custom-nav-logout-text ng-click="openChangePasswordDialog()"
+            | Change password
+        i.fa.fa-user-secret.custom-nav-logout-icon
+          span.custom-nav-logout-text ng-click="openRegDialog()" ng-controller="UsersController"
+            | Reset Authenticator
       hr
-      i.fa.fa-sign-out style="padding: 10px"
+      i.fa.fa-sign-out.custom-nav-logout-icon
       span ng-click="logout()" href="#"
         | Logout
