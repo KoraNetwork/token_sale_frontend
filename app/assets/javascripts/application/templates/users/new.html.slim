@@ -20,7 +20,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         .form-group
           span.placeholder
             | Email
-          input.form-control type="text" ng-model="user.email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')"
+          input.form-control type="text" ng-model="user.email" class="{{ _.contains(invalid_fields, 'email') ? 'error' : '' }}" ng-change="removeError('email')" ng-disabled="user.inviteToken"
         .form-group
           span.placeholder
             | Password
@@ -105,13 +105,13 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
               | Privacy Policy
             span<
               | documents.
-      .form-group.text-left
+      .form-group.text-left ng-hide="$state.current.name == 'us_register'"
         .checkbox
           input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
           label for="agree2"
             span.check
             | I declare that I am not a US citizen
-      .form-group.text-left
+      .form-group.text-left ng-hide="$state.current.name == 'us_register'"
         .description
           | Are you a US-based Accredited Investor interested in our Token Sale?
         span.description Contact us at

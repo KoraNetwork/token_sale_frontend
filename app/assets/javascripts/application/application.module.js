@@ -59,6 +59,11 @@
                     templateUrl: 'application/templates/users/new.html',
                     controller: 'UsersController'
                 })
+                .state('us_register',{
+                    url: '/register/:token?email',
+                    templateUrl: 'application/templates/users/new.html',
+                    controller: 'UsersController'
+                })
                 .state('change_password',{
                   url: '/profile/change_password',
                   templateUrl: 'application/templates/users/change_password.html',

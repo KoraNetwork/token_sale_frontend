@@ -9,19 +9,28 @@
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
+            $scope.$stateParams = $stateParams;
             $scope.countries = [];
 
             if (!$scope.current_user) {
                 $scope.current_user = {};
             }
 
-            if ($state.current.name == 'register') {
+            if ($state.current.name == 'register' || $state.current.name == 'us_register') {
                 $('body').css({ minWidth: "400px" });
 
                 $scope.user = {};
                 $scope.slide = 0;
                 $scope.invalid_fields = [];
                 $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+                if ($stateParams.email) {
+                    $scope.user.email = $stateParams.email;
+                }
+
+                if ($stateParams.token) {
+                    $scope.user.inviteToken = $stateParams.token;
+                }
 
                 $scope.validate = function() {
                     var validation = users.validate($scope.user);
@@ -147,10 +156,6 @@
                         $scope.errors({ errors: ["Please click I have read and agree with the Whitepaper"] });
                         error = true;
                     }
-                    if(!$scope.user.agree2) {
-                      $scope.errors({ errors: ["Please click I am not a US citizen"] });
-                      error = true;
-                    }
                     if(!$scope.user.nationalityObj) {
                         $scope.errors({ errors: ["Please select Your Nationality"] });
                         $scope.invalid_fields.push('nationality');
@@ -166,13 +171,15 @@
                         $scope.invalid_fields.push('captcha');
                         error = true;
                     }
-                    if($scope.user.nationalityObj.countryCode === 'USA') {
-                        $scope.usaCountryDialog();
-                        error = true;
-                    }
-                    if($scope.user.countryObj.countryCode === 'USA') {
-                        $scope.usaCountryDialog();
-                        error = true
+                    if ($state.current.name != 'us_register') {
+                        if(!$scope.user.agree2) {
+                            $scope.errors({ errors: ["Please click I am not a US citizen"] });
+                            error = true;
+                        }
+                        if ($scope.user.nationalityObj.countryCode === 'USA' || $scope.user.countryObj.countryCode === 'USA') {
+                            $scope.usaCountryDialog();
+                            error = true;
+                        }
                     }
 
                     if (error) return;
@@ -215,13 +222,15 @@
                 };
 
                 $scope.isUsaIp = function (response) {
-                    users.verifyIp(response)
-                        .success(function (data) {
-                            if(data.hasUSIP === true){
-                                $scope.openUsaIpDialog();
-                                return false
-                            }
-                        });
+                    if ($state.$current.name != 'us_register') {
+                        users.verifyIp(response)
+                            .success(function (data) {
+                                if(data.hasUSIP === true){
+                                    $scope.openUsaIpDialog();
+                                    return false
+                                }
+                            });
+                    }
                 };
 
                 $scope.openUsaIpDialog = function () {
