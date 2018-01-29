@@ -16,7 +16,7 @@
 
             $scope.inviteUserDialog = function() {
                 SweetAlert.swal({
-                        title: "",
+                        title: "Invite User",
                         text: "Please enter email",
                         type: "input",
                         showCancelButton: true,
@@ -29,12 +29,10 @@
                         if (inputValue) {
                             users.inviteUS({ email: inputValue })
                                 .success(function (data) {
-                                    $scope.formPending = false;
                                     $scope.message({ message: ["Email successfully send."] });
                                     SweetAlert.close();
                                 })
                                 .error(function (data) {
-                                    $scope.formPending = false;
                                     $scope.errors({ errors: users.parseErrors(data.Errors).messages });
                                 });
                         } else {

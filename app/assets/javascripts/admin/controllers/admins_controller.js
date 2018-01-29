@@ -3,8 +3,9 @@
     "use strict";
 
     angular.module('KoraICOAdminApp')
-        .controller('AdminsController', ['$scope', '$state', 'ngDialog', 'UsersFactory', 'AdminsFactory', '$timeout', 'toaster',
-            function ($scope, $state, ngDialog, users, admins, $timeout, toaster) {
+        .controller('AdminsController', ['$scope', '$state', 'ngDialog', 'UsersFactory', 'AdminsFactory',
+            '$timeout', 'toaster', 'SweetAlert',
+            function ($scope, $state, ngDialog, users, admins, $timeout, toaster, SweetAlert) {
 
                 $scope.I18n = I18n;
                 $scope.$state = $state;
@@ -39,20 +40,6 @@
                     });
                 };
 
-                $scope.createAdmin = function(){
-                    $scope.submitted = true;
-                    $scope.formPending = true;
-                    admins.postEmail($scope.email)
-                        .success(function(response){
-                            $scope.formPending = false;
-                            $scope.message({ message: [response.message] });
-                        })
-                        .error(function(resp) {
-                            $scope.formPending = false;
-                            $scope.errors({ errors: [resp.message] })
-                        })
-                };
-
                 $scope.createPassword = function(){
                     $scope.submitted = true;
                     $scope.formPending = true;
@@ -73,14 +60,31 @@
 
                 };
 
-                $scope.createAdminDialog = function () {
-                    ngDialog.closeAll();
-                    ngDialog.open({
-                        templateUrl: 'admin/templates/admins/create_admin_dialog.html',
-                        className: 'ngdialog-theme-default regenerate-width',
-                        scope: $scope,
-                        controller: 'AdminsController'
-                    });
+                $scope.createAdminDialog = function() {
+                    SweetAlert.swal({
+                            title: "Create Admin",
+                            text: "Please enter email",
+                            type: "input",
+                            showCancelButton: true,
+                            inputPlaceholder: "Email",
+                            confirmButtonColor: "#DD6B55",confirmButtonText: "Create Admin",
+                            closeOnConfirm: false,
+                            closeOnCancel: true,
+                            customClass: "show-input" },
+                        function(inputValue) {
+                            if (inputValue) {
+                                admins.postEmail(inputValue)
+                                    .success(function(data){
+                                        $scope.message({ message: ["Email successfully send."] });
+                                        SweetAlert.close();
+                                    })
+                                    .error(function(data) {
+                                        $scope.errors({ errors: users.parseErrors(data.Errors).messages });
+                                    })
+                            } else {
+                                $scope.errors({ errors: ["Please enter Email !"] });
+                            }
+                        });
                 };
 
                 $scope.select = function (index) {
