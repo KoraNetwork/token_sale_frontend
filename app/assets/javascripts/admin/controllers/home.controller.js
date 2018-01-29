@@ -51,7 +51,7 @@
                   .error(function(data){
                       $scope.current_user = false;
                       if(['login', 'register', 'forgot_password', 'create_password'].indexOf($state.current.name) < 0){
-                          $state.go('#/login');
+                          $state.go('login');
                       }
                   });
             };
