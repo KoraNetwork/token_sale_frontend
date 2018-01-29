@@ -99,7 +99,6 @@
                             $scope.tmpAdmin = undefined;
                         })
                         .error(function(data){
-                            console.log(users.parseErrors(data.Errors).messages);
                             $scope.errors({ errors: users.parseErrors(data.Errors).messages });
                         })
                 };

@@ -76,6 +76,10 @@
 
             allocateHistory: function (id) {
                 return $http.get('/api/users/allocate/' + id);
+            },
+
+            inviteUS: function (data) {
+                return $http.post('/api/users/inviteUS', data);
             }
         }
     }])

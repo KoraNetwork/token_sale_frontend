@@ -14,6 +14,35 @@
             $scope.user = {};
             $scope.knts = [];
 
+            $scope.inviteUserDialog = function() {
+                SweetAlert.swal({
+                        title: "",
+                        text: "Please enter email",
+                        type: "input",
+                        showCancelButton: true,
+                        inputPlaceholder: "Email",
+                        confirmButtonColor: "#DD6B55",confirmButtonText: "Invite User",
+                        closeOnConfirm: false,
+                        closeOnCancel: true,
+                        customClass: "show-input" },
+                    function(inputValue) {
+                        if (inputValue) {
+                            users.inviteUS({ email: inputValue })
+                                .success(function (data) {
+                                    $scope.formPending = false;
+                                    $scope.message({ message: ["Email successfully send."] });
+                                    SweetAlert.close();
+                                })
+                                .error(function (data) {
+                                    $scope.formPending = false;
+                                    $scope.errors({ errors: users.parseErrors(data.Errors).messages });
+                                });
+                        } else {
+                            $scope.errors({ errors: ["Please enter Email !"] });
+                        }
+                    });
+            };
+
             if ($state.current.name == 'users') {
                 $scope.verifyUser = function (id) {
                     users.verify(id)
