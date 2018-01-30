@@ -36,6 +36,16 @@
                 }
             };
 
+            $scope.parseErrors = function (resp) {
+                $scope.errors({errors: _.flatten(
+                    _.map(resp.Errors, function (errs) {
+                        return _.map(errs, function(err) {
+                            return err.message
+                        })
+                    })
+                )})
+            };
+
             $scope.checkSession = function(){
                 session.profile()
                   .success(function(data, status){
@@ -56,7 +66,7 @@
                   });
             };
 
-            if($state.current.name != 'login'){
+            if($state.current.name != 'login' && 'admins_password'){
                 $scope.checkSession();
             }
 
