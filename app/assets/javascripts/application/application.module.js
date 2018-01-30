@@ -54,6 +54,11 @@
                     templateUrl: 'application/templates/passwords/restore.html',
                     controller: 'PasswordsController'
                 })
+                .state('create_password',{
+                    url: '/create_password/:token',
+                    templateUrl: 'application/templates/passwords/create.html',
+                    controller: 'PasswordsController'
+                })
                 .state('register',{
                     url: '/register',
                     templateUrl: 'application/templates/users/new.html',

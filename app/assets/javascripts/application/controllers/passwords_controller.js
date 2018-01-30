@@ -11,6 +11,8 @@
 
                 $('body').css({ minWidth: "400px" });
 
+                $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
                 $scope.submitForgotPassword = function(){
                     $scope.submitted = true;
                     $scope.formPending = true;
@@ -47,5 +49,29 @@
 
                 };
 
+                if ($state.current.name == 'create_password') {
+
+                    $scope.passOptions = {
+                        token: $stateParams.token
+                    };
+
+                    $scope.createPassword = function () {
+                        if ($scope.passOptions.password === $scope.passOptions.passwordConfirmation) {
+                            $scope.formPending = true;
+                            passwords.create($scope.passOptions)
+                                .success(function(data){
+                                    $scope.formPending = false;
+                                    $scope.message({ message: [data.message] });
+                                    $state.go('login');
+                                })
+                                .error(function(resp){
+                                    $scope.formPending = false;
+                                    $scope.errors({ errors: [resp.message] })
+                                })
+                        } else {
+                            $scope.errors({ errors: ["Passwords do not match !"] })
+                        }
+                    };
+                }
             }])
 }());

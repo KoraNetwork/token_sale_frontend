@@ -1,0 +1,34 @@
+.form-page
+  .login-alert.animated.fadeInDown
+    .logo-container
+      h2.site-title
+        | Kora
+    .form-block
+      form role="form" novalidate=true ng-submit="createPassword()" name="createPasswordForm"
+        .form-group.text-center.welcome-text
+          h3
+            | Please enter your new password
+        .form-group
+          input.form-control placeholder="Password" type="password" ng-model="passOptions.password" name='password'
+          i.fa.password-icon
+          span ng-show="createPasswordForm.password.$error.pattern"
+            | Password must be over 8 characters, have at least 1 uppercase English letter, 1 lowercase English letter and 1 number
+
+        .form-group
+          input.form-control placeholder="Password Confirmation" type="password" ng-model="passOptions.passwordConfirmation" name='password_confirmation' ng-pattern="passwordStrength"
+          i.fa.password-icon
+          span ng-show="createPasswordForm.password_confirmation.$error.pattern"
+            | Password must be over 8 characters, have at least 1 uppercase English letter, 1 lowercase English letter and 1 number
+
+        .form-group
+          input.form-control placeholder="Google Authenticator" type="number" ng-model="passOptions.code" name='google_authenticator'
+          i.fa.password-icon
+
+        .form-group.text-center
+          button.btn.btn-primary.ladda-button.m-b data-style="expand-left" ladda="formPending" type="submit"
+            i.fa.fa-check
+            | Save
+
+        .form-group.text-center
+          a href="#login"
+            | Back to login
