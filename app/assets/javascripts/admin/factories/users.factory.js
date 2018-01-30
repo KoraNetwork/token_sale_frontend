@@ -80,6 +80,21 @@
 
             inviteUS: function (data) {
                 return $http.post('/api/users/inviteUS', data);
+            },
+
+            getCountry: function () {
+                return $http.get('/api/countries')
+            },
+
+            createUser: function (user) {
+                if (user.nationalityObj) {
+                    user.nationality = user.nationalityObj.countryCode;
+                }
+                if (user.countryObj) {
+                    user.country = user.countryObj.countryCode;
+                }
+
+                return $http.post('/api/users', user);
             }
         }
     }])

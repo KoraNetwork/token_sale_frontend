@@ -1,0 +1,49 @@
+.header
+  .title.text-center
+    | Create Usesr
+.ng-dialog-page.p-lr-20px.p-tb-10-5px
+  form ng-submit="createUser()" name="newUserForm" novalidate=true
+    .form-group
+      .control-label.text-center
+        | First Name:
+      input.form-control type="text" ng-model="new_user.firstName"
+    .form-group
+      .control-label.text-center
+        | Last Name:
+      input.form-control type="text" ng-model="new_user.lastName"
+    .form-group
+      .control-label.text-center
+        | Email:
+      input.form-control type="text" ng-model="new_user.email"
+    .form-group
+      .control-label.text-center
+        | Select user nationality
+      ui-select ng-model="new_user.nationalityObj"
+        ui-select-match
+          img.country-img ng-src="{{ $select.selected.flag }}"
+          span.selected ng-bind="$select.selected.name"
+        ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+          img.country-img ng-src="{{ country.flag }}"
+          span.choices ng-bind="country.name"
+    .form-group
+      .control-label.text-center
+        | Select user country of residence
+      ui-select ng-model="new_user.countryObj"
+        ui-select-match
+          img.country-img ng-src="{{ $select.selected.flag }}"
+          span.selected ng-bind="$select.selected.name"
+        ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+          img.country-img ng-src="{{ country.flag }}"
+          span.choices ng-bind="country.name"
+    .form-group
+      .control-label.text-center
+        | Ethereum address:
+      input.form-control type="text" ng-model="new_user.sendingEthereumAddress"
+    .form-group
+      .control-label.text-center
+        | Bitcoin address:
+      input.form-control type="text" ng-model="new_user.bitcoinAddress"
+    .form-group.text-center
+      button.ladda-button.btn.btn-confirm data-style="expand-left" ladda="formPending" type="submit" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+        i.fa.fa-check
+        | Create User

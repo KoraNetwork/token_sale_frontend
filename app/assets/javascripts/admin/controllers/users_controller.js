@@ -42,6 +42,46 @@
             };
 
             if ($state.current.name == 'users') {
+
+                $scope.openCreateUserDialog = function () {
+
+                    $scope.filterCountries = function (q) {
+                        $scope.filteredCountries = $scope.countries.filter(function (item) {
+                            return item.name.toLocaleLowerCase().includes((q || '').toLocaleLowerCase())
+                        })
+                    };
+
+                    users.getCountry()
+                        .success(function (data) {
+                            $scope.countries = data;
+                        });
+
+                    $scope.new_user = {};
+                    ngDialog.open({
+                        templateUrl: 'admin/templates/users/create_user.html',
+                        className: 'ngdialog-theme-default',
+                        animation: "slide-from-top",
+                        closeOnConfirm: true,
+                        scope: $scope
+                    });
+                };
+
+                $scope.createUser = function () {
+                    users.createUser($scope.new_user)
+                        .success(function (data) {
+                            $scope.message({ message: ["User successfully created."] });
+                            ngDialog.closeAll();
+                            $scope.retrieveUsers()
+                        })
+                        .error(function (data) {
+                            if (!data.Errors) {
+                                $scope.errors({ errors: [data.message] });
+                            } else {
+                                $scope.errors({ errors: users.parseErrors(data.Errors).messages });
+                            }
+                        });
+                };
+
                 $scope.verifyUser = function (id) {
                     users.verify(id)
                         .success(function () {

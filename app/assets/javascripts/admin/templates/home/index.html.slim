@@ -12,6 +12,9 @@
                 a.ladda-button.btn.btn-confirm ng-click="inviteUserDialog()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
                   i.fa.fa-plus
                   | Invite User
+                a.ladda-button.btn.btn-confirm ng-click="openCreateUserDialog()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                  i.fa.fa-plus
+                  | Create User
               .col-sm-2.pull-right
                 input.form-control.search-input type="text" ng-model="users_filters.search" placeholder="Search"
               .div.pull-right
@@ -38,7 +41,7 @@
                   th.text-center Actions
               tbody
                 tr ng-show="!count"
-                  td.text-center colspan="6"
+                  td.text-center colspan="7"
                     | No results found
                 tr ng-repeat="user in users"
                   td.text-center
