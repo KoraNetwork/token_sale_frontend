@@ -9,25 +9,23 @@
               span
                 | User
               .pull-right style="margin: -10px -20px 0 20px;"
+                .checkbox-cms.circle
+                  input type="checkbox" name="verify" id="verify" ng-click="filterUser('verify')"
+                  label for="verify" style="font-size: 15px"
+                    span
+                    | Need To Verify
+                .checkbox-cms.circle style="margin-right: 10px"
+                  input type="checkbox" name="blocked" id="blocked" ng-click="filterUser('blocked')"
+                  label for="blocked" style="font-size: 15px"
+                    span
+                    | Blocked
+                input.form-control.search-input type="text" ng-model="users_filters.search" placeholder="Search"
                 a.ladda-button.btn.btn-confirm ng-click="inviteUserDialog()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
                   i.fa.fa-plus
                   | Invite User
                 a.ladda-button.btn.btn-confirm ng-click="openCreateUserDialog()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
                   i.fa.fa-plus
                   | Create User
-              .col-sm-2.pull-right
-                input.form-control.search-input type="text" ng-model="users_filters.search" placeholder="Search"
-              .div.pull-right
-                .checkbox-cms.circle
-                  input type="checkbox" name="verify" id="verify" ng-click="filterUser('verify')"
-                  label for="verify" style="font-size: 15px"
-                    span
-                    | Need To Verify
-                .checkbox-cms.circle
-                  input type="checkbox" name="blocked" id="blocked" ng-click="filterUser('blocked')"
-                  label for="blocked" style="font-size: 15px"
-                    span
-                    | Blocked
 
             table.table.table-striped.table-responsive
               thead

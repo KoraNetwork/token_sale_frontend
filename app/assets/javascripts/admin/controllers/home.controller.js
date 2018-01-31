@@ -9,7 +9,7 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
 
-            $('body').css({ minWidth: "1200px" });
+            $('body').css({ minWidth: "1300px" });
 
             $timeout(function(){
                 if($scope.flash.error.length > 0){
