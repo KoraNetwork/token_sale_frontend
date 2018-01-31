@@ -11,7 +11,7 @@
 
             createPassword: function(password, token, code){
                 var url = '/api/admin/confirm';
-                var body = {newPassword: password, token: token, code: code};
+                var body = { password: password, token: token, code: code };
                 return $http.put(url, body);
             },
 
