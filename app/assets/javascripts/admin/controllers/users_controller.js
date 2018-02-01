@@ -36,7 +36,9 @@
                                     $scope.errors({ errors: users.parseErrors(data.Errors).messages });
                                 });
                         } else {
-                            $scope.errors({ errors: ["Please enter Email !"] });
+                            if (inputValue !== false) {
+                                $scope.errors({ errors: ["Please enter Email !"] });
+                            }
                         }
                     });
             };
