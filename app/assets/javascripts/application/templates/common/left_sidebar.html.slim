@@ -3,26 +3,26 @@
     li.left-nav-username
       | {{ !current_user.userName ? current_user.firstName + ' ' +  current_user.lastName : current_user.userName }}
     li.align-center-nav-text
-      i.fa.fa-times-circle-o.left-nav-icon.fa-lg ng-hide="current_user.verified"
+      img src="/images/group-7@3x.png" ng-hide="current_user.verified" style="width: 16px; margin-top: -3px"
       i.fa.fa-star style="color: #a4edca; font-size: 14px" ng-show="current_user.verified"
-      a.left-nav-unverified-id href="/#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}"
+      a.left-nav-unverified-id.regular href="/#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}" class="{{ current_user.verified ? '' : 'white' }}"
         | {{ current_user.verified ? 'ID Verified' : 'Unverified ID' }}
     hr
     li.align-center-nav-text.left-nav-balance-position
-      span.left-nav-unverified-id-knt
+      span.left-nav-unverified-id-knt.white
         | My KNT Balance
     li.align-center-nav-text
       span.left-nav-balance
         img.left-nav-logo src="/images/ic-kora-o@2x.png"
         | {{ (balance.KNTBalance).toFixed(2) }}
     li.align-center-nav-text.left-nav-price-position
-      span.left-nav-unverified-id-knt
+      span.left-nav-unverified-id-knt.white
         | KNT Discount: {{ balance.discount }}%
     li.align-center-nav-text.left-nav-price-position
-      span.left-nav-unverified-id-knt
+      span.left-nav-unverified-id-knt.white
         | Next Discount: {{ balance.nextDiscount }}%
   hr
-    ul
+    ul style="line-height: 2"
       li.align-center-nav-text
         span.left-nav-unverified-id-course
           | 1 KNT = ${{ (balance.KNT_USD).toFixed(2) }}
