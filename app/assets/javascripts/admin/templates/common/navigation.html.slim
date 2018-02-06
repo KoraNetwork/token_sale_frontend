@@ -41,6 +41,8 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           span.custom-nav-logout-text ng-click="openRegDialog()" ng-controller="UsersController"
             | Reset Authenticator
       hr
-      i.fa.fa-sign-out.custom-nav-logout-icon
-      span ng-click="logout()" href="#"
-        | Logout
+
+      span.pointer ng-click="logout()"
+        i.fa.fa-sign-out.custom-nav-logout-icon
+        span
+          | Logout
