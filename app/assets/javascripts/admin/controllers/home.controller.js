@@ -55,14 +55,19 @@
                       }
                       else {
                           $scope.current_user = data;
-                          $state.go('users')
+                          if(['forgot_password', 'admins_password'].indexOf($state.current.name) < 0){
+                              $state.go('users');
+                          } else {
+                              session.logout().success(function(){
+                                  window.location.reload();
+                              })
+                          }
                       }
                   })
                   .error(function(data){
                       $scope.current_user = false;
                       if([
                               'login',
-                              'register',
                               'forgot_password',
                               'admins_password'].indexOf($state.current.name) < 0){
                           $state.go('login');

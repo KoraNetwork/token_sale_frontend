@@ -110,7 +110,17 @@
                       $scope.current_user = data;
                       $scope.current_user.document = $scope.current_user.documentUrl;
                       $scope.checkValues();
-                      $state.go('dashboard');
+                      if([
+                              'us_register',
+                              'forgot_password',
+                              'restore_password',
+                              'create_password'].indexOf($state.current.name) < 0){
+                          $state.go('dashboard');
+                      } else {
+                          session.logout().success(function(){
+                              window.location.reload();
+                          })
+                      }
                   })
                   .error(function(data){
                       $scope.current_user = false;

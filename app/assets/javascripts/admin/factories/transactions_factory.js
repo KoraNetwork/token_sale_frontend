@@ -3,7 +3,7 @@
     angular.module('KoraICOAdminApp').factory('TransactionsFactory', ['$http', function($http){
         return {
             all: function(options){
-                var request = 'api/transactions/findAll?';
+                var request = '/api/transactions/findAll?';
 
                 if (options.page) {
                     request += 'page=' + options.page + '&';
