@@ -415,6 +415,10 @@
             };
 
             $scope.verifyID = function(){
+                if (!/^(?:[a-zA-Z]+(?:[.'\-,])?\s?)+$/.test($scope.current_user.city)) {
+                    $scope.errors({ errors: ["Invalid City"] });
+                    return;
+                }
                 $scope.processing = true;
                 $scope.current_user.documentCountry = $scope.current_user.documentCountryObj.countryCode;
                 $scope.current_user.country = $scope.current_user.countryObj.countryCode;
