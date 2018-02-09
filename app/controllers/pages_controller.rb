@@ -11,7 +11,7 @@ class PagesController < ActionController::Base
   end
 
   def proxy
-    reverse_proxy "http://ec2-13-59-231-138.us-east-2.compute.amazonaws.com:82" do |config|
+    reverse_proxy "http://ec2-34-201-216-112.compute-1.amazonaws.com:82" do |config|
 
       config.on_complete do |code, response|
         render json: response.body, status: code

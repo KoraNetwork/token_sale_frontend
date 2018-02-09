@@ -136,6 +136,18 @@
                   });
             };
 
+            $scope.deleteAllCookies = function () {
+                document.cookie.split(';').forEach(function(c) {
+                    document.cookie = c.trim().split('=')[0] + '=;' + 'expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+                });
+            };
+
+            $scope.$watch('$state.current.name', function (state) {
+                if (!state.includes('login') && !$scope.current_user) {
+                    $state.go('login');
+                }
+            });
+
             if($state.current.name != 'login'){
                 $scope.checkSession();
             }
@@ -143,9 +155,12 @@
             $scope.$state = $state;
 
             $scope.logout = function(){
-                session.logout().success(function(){
-                    window.location = '/';
-                })
+                session.logout()
+                    .success(function(){
+                        $scope.deleteAllCookies();
+                        $scope.current_user = null;
+                        $state.go('login')
+                    })
             };
 
             $scope.changeLanguage = function(locale){
