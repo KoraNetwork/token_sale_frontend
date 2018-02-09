@@ -143,7 +143,7 @@
             };
 
             $scope.$watch('$state.current.name', function (state) {
-                if (!state.includes('login') && !$scope.current_user) {
+                if (!$scope.current_user && (['login', 'register', 'forgot_password'].indexOf(state) < 0)) {
                     $state.go('login');
                 }
             });
@@ -158,7 +158,7 @@
                 session.logout()
                     .success(function(){
                         $scope.deleteAllCookies();
-                        $scope.current_user = null;
+                        $scope.current_user = false;
                         $state.go('login')
                     })
             };
