@@ -107,7 +107,7 @@
             $scope.checkSession = function(){
                 session.profile()
                   .success(function(data, status){
-                      if (data && data.role === 'admin') return;
+                      // if (data && data.role === 'admin') return;
                       $scope.current_user = data;
                       $scope.current_user.document = $scope.current_user.documentUrl;
                       $scope.checkValues();

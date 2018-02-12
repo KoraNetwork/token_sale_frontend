@@ -2,7 +2,7 @@
 
 angular.module('formInput.image', []);
 
-angular.module('formInput.image').directive('image', ['$filter', function($filter) {
+angular.module('formInput.image').directive('image', ['$filter', 'toaster', 'SweetAlert', function($filter, toaster, SweetAlert) {
 
     function link(scope, element, attributes, ctrl) {
 
@@ -26,16 +26,25 @@ angular.module('formInput.image').directive('image', ['$filter', function($filte
 
         var addImage = function(image){
             var base64 ='';
-            if(image.type.indexOf("image") > -1) {
+            if (image.type.indexOf("image") >= 0) {
                 var reader = new FileReader();
                 reader.onload = function(e){
                     scope.$apply(function(){
-                        scope.image = {file: image, base64: e.target.result, removed: false };
+                        scope.image = { file: image, base64: e.target.result, removed: false };
                     });
                 };
                 reader.readAsDataURL(image);
-            }else{
+            } else {
+                toaster.pop('error', "", "Please Upload image!");
 
+                // SweetAlert.swal({
+                //     title: "File type Error",
+                //     text: "Please upload image.",
+                //     confirmButtonColor: "#DD6B55",
+                //     confirmButtonText: "Close",
+                //     closeOnConfirm: true,
+                //     customClass: "confirm-only" }
+                // );
             }
         };
 

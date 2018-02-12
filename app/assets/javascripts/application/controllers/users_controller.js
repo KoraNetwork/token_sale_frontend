@@ -445,7 +445,8 @@
                 SweetAlert.swal({
                         title: "Thank you for verifying your ID",
                         text: "After admins approval, you will see your status in the side bar.",
-                        confirmButtonColor: "#DD6B55",confirmButtonText: "Close",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Close",
                         closeOnConfirm: true},
                     function(confirm){
                         if (confirm) {
