@@ -77,25 +77,24 @@
     }]);
 
     KoraICOAdminApp.run(['$http', '$rootScope', function($http, $rootScope){
-        // $(document).ready(function () {
-        //
-        //     function getCSRF () {
-        //         $http.get('/csrfToken')
-        //             .success(function (data) {
-        //                 if (data && data._csrf) {
-        //                     $http.defaults.headers.common['X-CSRF-Token'] = data ? data._csrf : null;
-        //                 } else {
-        //                     getCSRF();
-        //                 }
-        //             })
-        //             .error(function() {
-        //                 getCSRF();
-        //             });
-        //     }
-        //
-        //     getCSRF();
-        //
-        // });
+        $(document).ready(function () {
+
+            function getCSRF () {
+                $http.get('/csrfToken')
+                    .success(function (data) {
+                        if (data && data._csrf) {
+                            $http.defaults.headers.common['X-CSRF-Token'] = data ? data._csrf : null;
+                        } else {
+                            getCSRF();
+                        }
+                    })
+                    .error(function() {
+                        getCSRF();
+                    });
+            }
+            getCSRF();
+
+        });
         $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     }]);
 
