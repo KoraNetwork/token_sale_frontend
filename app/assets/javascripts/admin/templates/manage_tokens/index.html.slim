@@ -22,18 +22,18 @@
                   div.manage-balances-block
                     span.manage-balances-title
                       | Raised Balance
-                      span
-                        | USD KNT
                       span.manage-balances-title-data
-                        | {{ (total.currentAmountKNT).toFixed(2) }}
+                        | {{ (total.currentAmountKNT).toFixed(2) }} KNT
+                      span.manage-balances-title-data
+                        | {{ (total.currentAmountUSD).toFixed(2) }} USD
                   span.vertical-line
                   div.manage-balances-block
                     span.manage-balances-title
                       | Expected balance
-                      span
-                        | USD KNT
                       span.manage-balances-title-data
-                        | {{ (total.expectedAmountKNT).toFixed(2) }}
+                        | {{ (total.expectedAmountKNT).toFixed(2) }} KNT
+                      span.manage-balances-title-data
+                        | {{ (total.expectedAmountUSD).toFixed(2) }} USD
                   span.vertical-line
                   div.manage-balances-block
                     span.manage-balances-title
@@ -41,7 +41,7 @@
                       span
                         | KNT
                       span.manage-balances-title-data
-                        | {{ (total.currentAmountUSD).toFixed(2) }}
+                        | {{ (total.adminAmountKNT).toFixed(2) }}
             hr
             div.middle
             div.middle-block

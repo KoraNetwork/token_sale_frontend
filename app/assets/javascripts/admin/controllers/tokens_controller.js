@@ -16,6 +16,8 @@
 
                 var timer = false;
 
+                $('body').css({ minWidth: "1400px" });
+
                 $scope.$watch('tokens_filters', function () {
                     if (timer) {
                         $scope.page = 1;

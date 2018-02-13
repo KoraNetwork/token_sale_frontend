@@ -88,17 +88,18 @@
 
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){
         $(document).ready(function () {
+            var count = 0;
             function getCSRF () {
                 $http.get('/csrfToken')
                     .success(function (data) {
                         if (data && data._csrf) {
                             $http.defaults.headers.common['X-CSRF-Token'] = data ? data._csrf : null;
                         } else {
-                            getCSRF();
+                            if (count++ < 4) getCSRF();
                         }
                     })
                     .error(function() {
-                        getCSRF();
+                        if (count++ < 4)  getCSRF();
                     });
             }
             getCSRF();
