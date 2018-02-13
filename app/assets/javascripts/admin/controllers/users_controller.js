@@ -3,10 +3,11 @@
     "use strict";
 
     angular.module('KoraICOAdminApp')
-        .controller('UsersController', ['$scope', '$state', 'ngDialog', 'toaster', '$stateParams', '$timeout', 'SweetAlert',
-            '$sce', 'UsersFactory',
-        function ($scope, $state, ngDialog, toaster, $stateParams, $timeout, SweetAlert, $sce, users) {
+        .controller('UsersController', ['$scope', '$state', 'ngDialog', 'UsersFactory', 'toaster', '$stateParams',
+            '$timeout', 'SweetAlert',
+        function ($scope, $state, ngDialog, users, toaster, $stateParams, $timeout, SweetAlert) {
             $scope.I18n = I18n;
+            $scope.$state = $state;
             $scope._ = _;
             $scope.moment = moment;
             $scope.$state = $state;
@@ -44,6 +45,69 @@
             };
 
             if ($state.current.name == 'users') {
+
+                var timer = false;
+
+                $scope.$watch('users_filters', function () {
+                    if (timer) {
+                        $scope.page = 1;
+                        $timeout.cancel(timer)
+                    }
+                    timer = $timeout(function () {
+                        $scope.retrieveUsers();
+                    }, 500)
+                }, true);
+
+                $scope.retrieveUsers = function () {
+                    users.getUsers({page: $scope.page, query: $scope.users_filters}).success(function (data) {
+                        $scope.users = data.data;
+                        $scope.count = data.count;
+                        var pagination = $('#users-pagination');
+                        pagination.empty();
+                        pagination.removeData('twbs-pagination');
+                        pagination.unbind('page');
+                        if ($scope.count > 0) {
+                            pagination.twbsPagination({
+                                totalPages: Math.ceil($scope.count / $scope.users_filters.limit),
+                                startPage: $scope.page,
+                                prev: '<',
+                                next: '>',
+                                first: false,
+                                last: false,
+                                visiblePages: 9,
+                                onPageClick: function (event, page) {
+                                    $scope.page = page;
+                                    $scope.retrieveUsers();
+                                }
+                            })
+                        }
+                    }).error(function (data) {
+                    });
+                };
+
+                $scope.resetUsersFilters = function(){
+                    $scope.users_filters = {
+                        limit: 10,
+                        role: 'user'
+                    };
+                    $scope.page = 1;
+                };
+
+                $scope.resetUsersFilters();
+
+                $scope.go = function(id) {
+                    window.location.hash = "#/user/" + id;
+                };
+
+                $scope.filterUser = function (type) {
+                    if(type == 'blocked'){
+                        $scope.users_filters.enabled == undefined ? $scope.users_filters.enabled = false :
+                            $scope.users_filters.enabled = undefined
+                    }else if(type == 'verify'){
+                        $scope.users_filters.needVerify == undefined ? $scope.users_filters.needVerify = true :
+                            $scope.users_filters.needVerify = undefined
+                    }
+                };
 
                 $scope.openCreateUserDialog = function () {
 
@@ -102,70 +166,6 @@
                         .error(function (err) {
                             $scope.errors({ errors: [err.message] });
                         })
-                };
-
-                var timer = false;
-
-                $scope.$watch('users_filters', function () {
-                    if (timer) {
-                        $scope.page = 1;
-                        $timeout.cancel(timer)
-                    }
-                    timer = $timeout(function () {
-                        $scope.retrieveUsers();
-                    }, 500)
-                }, true);
-
-                $scope.retrieveUsers = function () {
-                    users.getUsers({page: $scope.page, query: $scope.users_filters}).success(function (data) {
-                        $scope.users = data.data;
-                        $scope.count = data.count;
-                        var pagination = $('#users-pagination');
-                        pagination.empty();
-                        pagination.removeData('twbs-pagination');
-                        pagination.unbind('page');
-                        if ($scope.count > 0) {
-                            pagination.twbsPagination({
-                                totalPages: Math.ceil($scope.count / $scope.users_filters.limit),
-                                startPage: $scope.page,
-                                prev: '<',
-                                next: '>',
-                                first: false,
-                                last: false,
-                                visiblePages: 9,
-                                onPageClick: function (event, page) {
-                                    $scope.page = page;
-                                    $scope.retrieveUsers();
-                                }
-                            })
-                        }
-                    }).error(function (data) {
-                    });
-                };
-
-                $scope.resetUsersFilters = function(){
-                    $scope.users_filters = {
-                        limit: 10,
-                        role: 'user'
-                    };
-                    $scope.page = 1;
-                };
-
-                $scope.resetUsersFilters();
-                // $scope.retrieveUsers();
-
-                $scope.go = function(id) {
-                    window.location.hash = "#/user/" + id;
-                };
-
-                $scope.filterUser = function (type) {
-                    if(type == 'blocked'){
-                        $scope.users_filters.enabled == undefined ? $scope.users_filters.enabled = false :
-                            $scope.users_filters.enabled = undefined
-                    }else if(type == 'verify'){
-                        $scope.users_filters.needVerify == undefined ? $scope.users_filters.needVerify = true :
-                            $scope.users_filters.needVerify = undefined
-                    }
                 };
             }
 

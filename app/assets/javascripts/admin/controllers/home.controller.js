@@ -56,7 +56,7 @@
                       else {
                           $scope.current_user = data;
                           if(['forgot_password', 'admins_password'].indexOf($state.current.name) < 0){
-                              $state.go('users');
+                              $state.go('admins');
                           } else {
                               session.logout().success(function(){
                                   window.location.reload();
@@ -66,10 +66,9 @@
                   })
                   .error(function(data){
                       $scope.current_user = false;
-                      if([
-                              'login',
-                              'forgot_password',
-                              'admins_password'].indexOf($state.current.name) < 0){
+                      if(['login',
+                          'forgot_password',
+                          'admins_password'].indexOf($state.current.name) < 0){
                           $state.go('login');
                       }
                   });
