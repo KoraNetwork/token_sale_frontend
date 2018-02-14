@@ -52,13 +52,14 @@
             },
 
             getRegenerate: function (value) {
+                if(value.token){
+                    value.token = value.token.replace(/\s/g,'');
+                }
               return $http.put('/api/authenticator/regenerate', value)
             },
 
             getRegenable: function (value) {
-                if(value.reToken){
-                    user.reToken = user.reToken.replace(/\s/g,'');
-                }
+                value = value.replace(/\s/g,'');
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 
