@@ -87,23 +87,23 @@
     }]);
 
     KoraICOFrontendApp.run(['$http', '$rootScope', function($http, $rootScope){
-        $(document).ready(function () {
-            var count = 0;
-            function getCSRF () {
-                $http.get('/csrfToken')
-                    .success(function (data) {
-                        if (data && data._csrf) {
-                            $http.defaults.headers.common['X-CSRF-Token'] = data ? data._csrf : null;
-                        } else {
-                            if (count++ < 4) getCSRF();
-                        }
-                    })
-                    .error(function() {
-                        if (count++ < 4)  getCSRF();
-                    });
-            }
-            getCSRF();
-        });
+        // $(document).ready(function () {
+        //     var count = 0;
+        //     function getCSRF () {
+        //         $http.get('/csrfToken')
+        //             .success(function (data) {
+        //                 if (data && data._csrf) {
+        //                     $http.defaults.headers.common['X-CSRF-Token'] = data ? data._csrf : null;
+        //                 } else {
+        //                     if (count++ < 4) getCSRF();
+        //                 }
+        //             })
+        //             .error(function() {
+        //                 if (count++ < 4)  getCSRF();
+        //             });
+        //     }
+        //     getCSRF();
+        // });
         $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     }]);
 

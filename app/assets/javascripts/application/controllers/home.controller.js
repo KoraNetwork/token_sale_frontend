@@ -3,8 +3,9 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster','TransactionsFactory', '$q',
-            function ($scope, $state, ngDialog, session, $timeout, toaster, transactions, $q) {
+        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster',
+            'TransactionsFactory', '$q', '$interval',
+            function ($scope, $state, ngDialog, session, $timeout, toaster, transactions, $q, $interval) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -106,7 +107,8 @@
             $scope.checkSession = function(){
                 session.profile()
                   .success(function(data, status){
-                      // if (data && data.role === 'admin') return;
+                      $scope.status = status;
+                      if (data && data.role === 'admin') return;
                       $scope.current_user = data;
                       $scope.current_user.document = $scope.current_user.documentUrl;
                       $scope.checkValues();
@@ -119,7 +121,8 @@
                           $state.go('dashboard');
                       }
                   })
-                  .error(function(data){
+                  .error(function(data, status){
+                      $scope.status = status;
                       $scope.current_user = false;
                       if([
                               'login',
@@ -132,6 +135,16 @@
                       }
                   });
             };
+
+            $scope.watchState = function () {
+                if (($scope.status === 401) && (['login', 'register', 'forgot_password'].indexOf($state.current.name) < 0)) {
+                    $state.go('login');
+                }
+            };
+
+            $interval(function(){
+                $scope.watchState();
+            }, 2000);
 
             $scope.deleteAllCookies = function () {
                 document.cookie.split(';').forEach(function(c) {
@@ -147,7 +160,8 @@
 
             $scope.logout = function(){
                 session.logout()
-                    .success(function(){
+                    .success(function(data, status){
+                        console.log(status);
                         $scope.deleteAllCookies();
                         $scope.current_user = false;
                         $state.go('login')
