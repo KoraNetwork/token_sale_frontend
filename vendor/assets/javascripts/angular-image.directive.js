@@ -26,7 +26,7 @@ angular.module('formInput.image').directive('image', ['$filter', 'toaster', 'Swe
 
         var addImage = function(image){
             var base64 ='';
-            if (image.type.indexOf("image") >= 0) {
+            if (['image/jpeg', 'image/pjpeg', 'image/png', 'image/tiff'].indexOf(image.type) >= 0) {
                 var reader = new FileReader();
                 reader.onload = function(e){
                     scope.$apply(function(){
@@ -35,16 +35,16 @@ angular.module('formInput.image').directive('image', ['$filter', 'toaster', 'Swe
                 };
                 reader.readAsDataURL(image);
             } else {
-                toaster.pop('error', "", "Please Upload image!");
+                // toaster.pop('error', "", "Please Upload image!");
 
-                // SweetAlert.swal({
-                //     title: "File type Error",
-                //     text: "Please upload image.",
-                //     confirmButtonColor: "#DD6B55",
-                //     confirmButtonText: "Close",
-                //     closeOnConfirm: true,
-                //     customClass: "confirm-only" }
-                // );
+                SweetAlert.swal({
+                    title: "File type Error",
+                    text: "Please upload image.",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Close",
+                    closeOnConfirm: true,
+                    customClass: "confirm-only" }
+                );
             }
         };
 
@@ -102,7 +102,6 @@ angular.module('formInput.image').directive('image', ['$filter', 'toaster', 'Swe
         '<i class="fa fa-plus" ng-show="image.removed"/>' +
         '<input type="file" class="file-select" />' +
         "</label>" +
-        '<i class="fa fa-close" ng-click="removeImage($event)" ng-hide="image.removed"/>' +
         "</li>" +
         "<ul>" +
         "</div>"

@@ -101,26 +101,22 @@
                 }).then(function() {
                     $scope.spin = false;
                 });
-
             };
 
             $scope.checkSession = function(){
                 session.profile()
                   .success(function(data, status){
-                      if (data && data.role === 'admin') return;
+                      // if (data && data.role === 'admin') return;
                       $scope.current_user = data;
                       $scope.current_user.document = $scope.current_user.documentUrl;
                       $scope.checkValues();
                       if([
-                              'us_register',
+                              'login',
+                              'register',
                               'forgot_password',
                               'restore_password',
-                              'create_password'].indexOf($state.current.name) < 0){
+                              'create_password'].indexOf($state.current.name) >= 0){
                           $state.go('dashboard');
-                      } else {
-                          session.logout().success(function(){
-                              window.location.reload();
-                          })
                       }
                   })
                   .error(function(data){
@@ -143,12 +139,6 @@
                 });
             };
 
-            $scope.$watch('$state.current.name', function (state) {
-                if (!$scope.current_user && (['login', 'register', 'forgot_password'].indexOf(state) < 0)) {
-                    $state.go('login');
-                }
-            });
-
             if($state.current.name != 'login'){
                 $scope.checkSession();
             }
@@ -167,5 +157,7 @@
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;
             };
+
+
         }])
 }());
