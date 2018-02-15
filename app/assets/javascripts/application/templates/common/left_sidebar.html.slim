@@ -1,4 +1,4 @@
-.col-md-3.left-nav-block
+.col-md-3.left-nav-block style="background-image: linear-gradient(transparent 50%, #579bc9 45%)"
   ul
     li.left-nav-username
       | {{ !current_user.userName ? current_user.firstName + ' ' +  current_user.lastName : current_user.userName }}
@@ -20,9 +20,12 @@
         | KNT Discount: {{ balance.discount }}%
     li.align-center-nav-text.left-nav-price-position
       span.left-nav-unverified-id-knt.white
-        | Next Discount: {{ balance.nextDiscount }}%
+        | Next Discount: {{ balance.nextDiscount }}%"
   hr
-    ul style="line-height: 2"
+    ul style="line-height: 2; padding-top: 15px"
+      li.align-center-nav-text
+        span.left-nav-unverified-id-knt.white
+          | Cost of Membership
       li.align-center-nav-text
         span.left-nav-unverified-id-course
           | 1 KNT = ${{ (balance.KNT_USD).toFixed(2) }}

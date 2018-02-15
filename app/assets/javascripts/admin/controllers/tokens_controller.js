@@ -16,7 +16,7 @@
 
                 var timer = false;
 
-                $('body').css({ minWidth: "1400px" });
+                $('body').css({ minWidth: "1360px" });
 
                 $scope.$watch('tokens_filters', function () {
                     if (timer) {

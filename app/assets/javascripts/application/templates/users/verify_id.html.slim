@@ -56,7 +56,7 @@
         .col-md-4 style="width: 253.33px"
           .form-group
             label.star for="state"  State
-            input#state.form-control-profile_style_input type="text" ng-model="current_user.state"
+            input#state.form-control-profile_style_input type="text" ng-model="current_user.state" maxlength="64"
         .col-md-4
           .form-group
             label.star for="phn"  Phone Number
@@ -75,11 +75,11 @@
         .col-md-4
           .form-group
             label for="apt"  Apt/Ste
-            input#apt.form-control-profile_style_input-small type="text" ng-model="current_user.aptSte"
+            input#apt.form-control-profile_style_input-small type="text" ng-model="current_user.aptSte" maxlength="15"
         .col-md-4
           .form-group
             label.star for="zip"  ZIP
-            input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip"
+            input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip" maxlength="12"
       div image=true ng-model="current_user.document"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left

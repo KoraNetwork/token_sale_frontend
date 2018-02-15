@@ -15,6 +15,8 @@
             $scope.user = {};
             $scope.knts = [];
 
+            $('body').css({ minWidth: "1260px" });
+
             $scope.inviteUserDialog = function() {
                 SweetAlert.swal({
                         title: "Invite User",
