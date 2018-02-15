@@ -114,7 +114,7 @@
                             $scope.retrieveTokens()
                         })
                         .error(function (resp) {
-                            console.log(resp)
+
                         })
                 };
 
@@ -126,7 +126,7 @@
                             $scope.retrieveTokens()
                         })
                         .error(function (resp) {
-                            console.log(resp)
+
                         })
                 };
 

@@ -64,7 +64,6 @@
                     };
 
                     $scope.sendImage = function () {
-                        console.log($scope.session);
                         sessions.sendImage($scope.session)
                             .success(function() {
                                 $scope.recomendAlert();
