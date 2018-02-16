@@ -140,7 +140,7 @@
             };
 
             $scope.watchState = function () {
-                if (($scope.status === 401) && (['login', 'register', 'forgot_password', 'restore_password'].indexOf($state.current.name) < 0)) {
+                if (($scope.status === 401) && (['login', 'register', 'forgot_password', 'restore_password', 'us_register'].indexOf($state.current.name) < 0)) {
                     $state.go('login');
                 }
             };
@@ -163,7 +163,7 @@
 
             $scope.logout = function(){
                 session.logout()
-                    .success(function(data, status){
+                    .success(function(){
                         $scope.deleteAllCookies();
                         $scope.current_user = false;
                         $state.go('login')

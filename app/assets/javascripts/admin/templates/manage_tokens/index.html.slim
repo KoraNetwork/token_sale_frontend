@@ -77,7 +77,7 @@
                   | Pre Sale
                 div
                   a.btn-xs.btn.btn-info.btn-outline.status ng-click="newSale()"
-                    | Add Sale
+                    | Add Discount
                 thead
                   tr
                     th.text-center tablesort=true ng-model="tokens_filters" tablesort-name="discount" tablesort-title="Discount"
@@ -132,7 +132,7 @@
                 | Public Sale
               div
                 a.btn-xs.btn.btn-info.btn-outline.status ng-click="newPublic()"
-                  | Add Sale
+                  | Add Discount'
               thead
                 tr
                   th.text-center tablesort=true ng-model="tokens_filters" tablesort-name="discount" tablesort-title="Discount"
@@ -159,7 +159,7 @@
                     | {{ (public.KNT_USD).toFixed(2)}}
                   td.text-center
                     | {{ (public.USD_KNT).toFixed(2) }}
-                  td.text-center
+                  td.text-center ng-hide="public.disabled"
                     a.btn-xs.btn.btn-info.btn-outline.status ng-click="!sale.disabled ? selectSale($index, 'actions') : true" ng-hide="$index == selected"
                       | Edit
                     span ng-hide="$index != selected"
