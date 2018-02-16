@@ -146,21 +146,22 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
     div.slide.slide-3.animated.fadeInRight uib-slide=true index="3"
       div.text-center.step
         | Step 4: 2-Factor Confirmation
-      .step-4 style="width: 400px; margin: auto"
-        .description.text-center
-          | Please scan QR code into Google Authenticator App
-        img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
-        div
+      .step-4
+        div style="width: 400px; margin: auto"
+          .description.text-center
+            | Please scan QR code into Google Authenticator App
+          img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
+          .form-group style="margin-top: 30px"
+            span.placeholder
+              | Your Verification Pin
+            input.form-control type="number" ng-model="user.token"
+        div.text-left style="width: 700px; margin-left: -120px"
           ul.dialogText
             li 1. Install an authenticatir app on your mobile device if you dont’t already have one. We support these options
             li 2. Scan QR code with the authenticator (or tap it in mobile browser)
             li 3. Please write down or print a copy of the 20-digit secret code and it in a safe place
             li 4. If your phone gets lost, stolen or erased, you will need this code to link Kora to a new authenticator app install once again
             li 5. Do not share it with anyone. Be aware of phishing scams. We will never ask you for this key.
-        .form-group style="margin-top: 30px"
-          span.placeholder
-            | Your Verification Pin
-          input.form-control type="text" ng-model="user.token"
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back

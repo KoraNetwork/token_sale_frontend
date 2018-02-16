@@ -255,17 +255,25 @@
                         })
                         .error(function(data){
                             $scope.formPending = false;
-                            $scope.errors({ errors: [data]})
+                            $scope.errors({ errors: users.parseErrors(data.Errors).messages });
                         })
                 };
 
                 $scope.allocate = function () {
                     $scope.formPending = true;
+
+                    if (!$scope.knt) {
+                        $scope.formPending = false;
+                        $scope.errors({ errors: ["Please enter amount!"] });
+                        return;
+                    }
+
                     users.allocate($stateParams.id, $scope.knt)
                         .success(function(data){
                             $scope.formPending = false;
                             $scope.knt = undefined;
                             $scope.allocateHistory();
+                            $scope.message({ message: ["KNT successfully sent"] })
                         })
                         .error(function(data){
                             $scope.formPending = false;
