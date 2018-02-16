@@ -74,7 +74,7 @@
                   });
             };
 
-            if($state.current.name != 'login' && 'admins_password'){
+            if($state.current.name != ('login' && 'admins_password')){
                 $scope.checkSession();
             }
 
@@ -87,7 +87,7 @@
             };
 
             $scope.$watch('$state.current.name', function (state) {
-                if (!$scope.current_user && (['login', 'forgot_password'].indexOf(state) < 0)) {
+                if (!$scope.current_user && (['login', 'forgot_password', 'admins_password'].indexOf(state) < 0)) {
                     $state.go('login');
                 }
             });

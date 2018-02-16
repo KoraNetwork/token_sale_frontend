@@ -137,7 +137,7 @@
             };
 
             $scope.watchState = function () {
-                if (($scope.status === 401) && (['login', 'register', 'forgot_password'].indexOf($state.current.name) < 0)) {
+                if (($scope.status === 401) && (['login', 'register', 'forgot_password', 'restore_password'].indexOf($state.current.name) < 0)) {
                     $state.go('login');
                 }
             };
