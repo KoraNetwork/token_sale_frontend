@@ -50,8 +50,8 @@
                 session.profile()
                   .success(function(data, status){
                       if (data.role != 'admin') {
-                          $scope.errors({ errors: ["You are not admin!"] });
-                          $scope.logout();
+                          $state.go('login');
+                          return;
                       }
                       else {
                           $scope.current_user = data;

@@ -17,7 +17,7 @@
         .form-group.text-center
           span.placeholder
             | Google Authenticator Code
-          input.form-control required="" type="text" ng-model="session.token"
+          input.form-control required="" type="number" ng-model="session.token"
         .form-group.text-center.lostAndFound
           span.placeholder ng-click="showBlock = !showBlock"
             | Unable to submit a one-time code?
