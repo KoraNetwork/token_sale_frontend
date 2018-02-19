@@ -18,7 +18,7 @@
                 user.country = user.countryObj.countryCode
               }
               if(user.token){
-                user.token = user.token.replace(/\s/g,'');
+                user.token = user.token.toString().replace(/\s/g,'');
               }
                 return $http.post('/api/registration/confirm', user || {});
             },
@@ -53,13 +53,13 @@
 
             getRegenerate: function (value) {
                 if(value.token){
-                    value.token = value.token.replace(/\s/g,'');
+                    value.token = value.token.toString().replace(/\s/g,'');
                 }
               return $http.put('/api/authenticator/regenerate', value)
             },
 
             getRegenable: function (value) {
-                value = value.replace(/\s/g,'');
+                value = value.toString().replace(/\s/g,'');
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 

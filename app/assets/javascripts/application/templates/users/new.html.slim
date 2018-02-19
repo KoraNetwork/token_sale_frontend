@@ -150,6 +150,11 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         div style="width: 400px; margin: auto"
           .description.text-center
             | Please scan QR code into Google Authenticator App
+          div.step-four
+            span.text-center.placeholder style="padding: 15px"
+              | Secret Seed
+            span.text-center.step-four-qrcode
+              | {{ qr.key }}
           img style="margin-top: 20px" ng-src="{{ qr.qrcode }}"
           .form-group style="margin-top: 30px"
             span.placeholder
