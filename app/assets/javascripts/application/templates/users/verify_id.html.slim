@@ -60,7 +60,7 @@
         .col-md-4
           .form-group
             label.star for="phn"  Phone Number
-            input#phn.form-control-profile_style_input type="text" maxlength="14" ng-model="current_user.phone"
+            input#phn.form-control-profile_style_input type="text" maxlength="14" ng-model="current_user.phone" ng-change="CheckNumber(current_user)"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"
@@ -79,7 +79,7 @@
         .col-md-4
           .form-group
             label.star for="zip"  ZIP
-            input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip" maxlength="12"
+            input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip" ng-change="CheckNumber(current_user)" maxlength="12"
       div image=true ng-model="current_user.document"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left

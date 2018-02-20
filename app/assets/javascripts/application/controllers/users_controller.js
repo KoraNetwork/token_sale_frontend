@@ -236,7 +236,7 @@
                 $scope.openUsaIpDialog = function () {
                     SweetAlert.swal({
                             title: "<span>You are used ip from USA</span>",
-                            text: "<span>We have detected you have a US IP, Please contact us at <a href='mailto:investors@kora.network'> investors@kora.network <a>.</span>",
+                            text: "<span>We have detected you have a US IP, Please contact us at <a href='mailto:contributors@kora.network'> investors@kora.network <a>.</span>",
                             html: true,
                             confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
                             closeOnConfirm: true},
@@ -262,7 +262,7 @@
                         .error(function(data){
                             $scope.formPending = false;
                             if(data.Errors) {
-                                $scope.parseErrors();
+                                $scope.parseErrors(data);
                             }
                             else {
                                 $scope.errors({ errors: [data.message] });
@@ -534,6 +534,11 @@
                 show_button_bar: false,
                 maxDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000),
                 initDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000)
+            };
+            
+            $scope.CheckNumber = function (val) {
+                val.zip = val.zip.replace(/[^\d\.]+/g,'');
+                val.phone = val.phone.replace(/[^\d\.]+/g,'')
             };
         }])
 }());
