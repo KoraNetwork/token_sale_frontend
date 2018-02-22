@@ -148,6 +148,14 @@
 
             upsert: function (user) {
                 return $http.put('/api/profile', user || {});
+            },
+
+            checkOnfido: function () {
+                return $http.post('/api/onfido/sdkToken')
+            },
+
+            completeOnfido: function () {
+                return $http.post('/api/onfido/createCheck')
             }
         }
     }])

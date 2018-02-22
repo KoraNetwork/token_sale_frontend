@@ -3,14 +3,74 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('UsersController', ['$scope', '$state', 'ngDialog', 'toaster', '$stateParams', '$timeout', 'SweetAlert',
+        .controller('UsersController', ['$scope', '$state', 'ngDialog', 'toaster', '$stateParams', '$q', '$timeout', 'SweetAlert',
             '$sce', 'UsersFactory',
-        function ($scope, $state, ngDialog, toaster, $stateParams, $timeout, SweetAlert, $sce, users) {
+        function ($scope, $state, ngDialog, toaster, $stateParams, $q, $timeout, SweetAlert, $sce, users) {
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
             $scope.$stateParams = $stateParams;
             $scope.countries = [];
+
+            $scope.generateOnfido = function () {
+                users.checkOnfido()
+                    .success(function(resp){
+                        Onfido.init({
+                            token: resp.token,
+                            containerId: 'onfido-mount',
+                            onComplete: function() {
+                                console.log("complete");
+                                $scope.createOnfido()
+                            },
+                            language: {
+                                locale: 'us'
+                            },
+                            steps: [
+                                // {
+                            //     type: 'document',
+                            //     options: {
+                            //         useWebcam: true
+                            //     }
+                            // },
+                                'document',
+                                'face',
+                                'complete'
+                            ]
+                        });
+                    })
+                    .error(function(){
+
+                    })
+            };
+
+            $scope.onfidoDialog = function () {
+                ngDialog.open({
+                    templateUrl: 'application/templates/users/onfido_dialog.html',
+                    className: 'ngdialog-theme-default onfido-width',
+                    animation: "slide-from-top",
+                    closeOnConfirm: true,
+                    scope: $scope,
+                    controller: 'UsersController'
+                });
+            };
+
+            $scope.createOnfido = function () {
+              users.completeOnfido()
+                  .success(function(resp) {
+                      console.log(resp)
+                  })
+                  .error(function(err) {
+                      console.log(err)
+                  })
+            };
+
+            $scope.renderOnfido = function () {
+                $q(function (resolve) {
+                    resolve($scope.onfidoDialog())
+                }).then(function (el) {
+                    $scope.generateOnfido()
+                })
+            };
 
             if (!$scope.current_user) {
                 $scope.current_user = {};

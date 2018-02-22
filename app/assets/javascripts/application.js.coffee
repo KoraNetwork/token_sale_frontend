@@ -39,6 +39,7 @@
 #= require sweetalert/dist/sweetalert.min
 #= require angular-sweetalert/SweetAlert
 #= require moment/min/moment.min.js
+#= require onfido-sdk-ui/dist/onfido.min.js
 # load angular modules
 #= require ./application/application.module.js
 #= require_tree ./application/factories
