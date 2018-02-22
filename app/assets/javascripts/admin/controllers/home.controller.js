@@ -105,6 +105,16 @@
                 I18n.locale = locale;
             };
 
+            $scope.openRegDialog = function () {
+                ngDialog.open({
+                    templateUrl: 'admin/templates/common/regenerate_dialog.html',
+                    className: 'ngdialog-theme-default regenerate-width',
+                    animation: "slide-from-top",
+                    closeOnConfirm: true,
+                    controller: 'UsersController'
+                });
+            };
+
             $scope.openChangePasswordDialog = function () {
                 ngDialog.closeAll();
                 $scope.passwordOptions = {};

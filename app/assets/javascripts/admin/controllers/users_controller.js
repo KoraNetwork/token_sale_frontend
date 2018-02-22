@@ -15,6 +15,22 @@
             $scope.user = {};
             $scope.knts = [];
 
+            $scope.errors = function(data) {
+                if(data.errors){
+                    for(var i = 0; i < data.errors.length; ++i) {
+                        toaster.pop('error', "", data.errors[i]);
+                    }
+                }
+            };
+
+            $scope.message = function(data) {
+                if(data.message){
+                    for(var i = 0; i < data.message.length; ++i) {
+                        toaster.pop('success', "", data.message[i]);
+                    }
+                }
+            };
+
             $('body').css({ minWidth: "1260px" });
 
             $scope.inviteUserDialog = function() {
@@ -183,10 +199,12 @@
             };
 
             $scope.sendToken = function () {
-                users.regenerate($scope.user.token)
+                users.regenerate(_.pick($scope.user, 'token', 'password'))
                   .success(function(data) {
-                    $scope.regenerate = data;
-                    $scope.reenableDialog()
+                      $scope.user.token = undefined;
+                      $scope.user.password = undefined;
+                      $scope.regenerate = data;
+                      $scope.reenableDialog()
                   })
                   .error(function(resp) {
                     $scope.errors({ errors: [resp.message] })

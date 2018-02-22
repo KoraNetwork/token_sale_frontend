@@ -46,6 +46,7 @@
             },
 
             regenerate: function (value) {
+                console.log(value);
                 return $http.put('/api/authenticator/regenerate', value)
             },
 

@@ -3,9 +3,12 @@
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button
   -webkit-appearance: none
-  -moz-appearance: none
+  -moz-appearance: none !important
   appearance: none
   margin: 0
+
+input[type=number]
+  -moz-appearance: textfield
 
 .form-control
   border-radius: 25px
