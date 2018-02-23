@@ -72,6 +72,16 @@
                 })
             };
 
+            $scope.zoomImage = function(image){
+                $scope.image = [image];
+                ngDialog.closeAll();
+                ngDialog.open({
+                    templateUrl: 'application/templates/users/preview_document.html',
+                    scope: $scope,
+                    className: 'gallery-dialog'
+                });
+            };
+
             if (!$scope.current_user) {
                 $scope.current_user = {};
             }
