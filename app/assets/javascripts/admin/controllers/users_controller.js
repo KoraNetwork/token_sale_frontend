@@ -316,6 +316,17 @@
                         className: 'gallery-dialog'
                     });
                 };
+
+                $scope.openReport = function () {
+                    ngDialog.open({
+                        templateUrl: 'admin/templates/home/report.html',
+                        className: 'ngdialog-theme-default report-width',
+                        animation: "slide-from-top",
+                        closeOnConfirm: true,
+                        scope: $scope,
+                        controller: 'UsersController'
+                    });
+                }
             }
         }])
 }());
