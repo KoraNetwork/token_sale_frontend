@@ -1,4 +1,4 @@
 .gallery
   div uib-carousel=true interval="0" active="true" no-wrap="false"
     div.slide uib-slide=true ng-repeat="q in image" index="$index"
-      img.gallery-item ng-src="{{ current_user.document }}" style="width: 600px"
+      img.gallery-item ng-src="{{ current_user.document || current_user.onfidoImage }}" style="width: 600px"

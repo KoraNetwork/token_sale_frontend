@@ -80,12 +80,12 @@
           .form-group
             label.star for="zip"  ZIP
             input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip" maxlength="12"
-      div.onfido ng-click="renderOnfido()" ng-hide="current_user.document"
+      div.onfido ng-click="renderOnfido()" ng-hide="current_user.document || current_user.onfidoImage"
         .form-group
           label Upload photo
       div.uploaded
         .form-group
-          img.onfido-image id="view" src="{{current_user.document}}" ng-click="zoomImage()"
+          img.onfido-image id="view" src="{{current_user.document || current_user.onfidoImage}}" ng-click="zoomImage()"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left
           button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit"

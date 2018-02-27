@@ -11,30 +11,26 @@
             $scope.$state = $state;
             $scope.$stateParams = $stateParams;
             $scope.countries = [];
+            $scope.onfidoImage = {};
 
             $scope.generateOnfido = function () {
                 users.checkOnfido()
                     .success(function(resp){
-                        Onfido.init({
+                        var onfidoOut = Onfido.init({
                             token: resp.token,
                             containerId: 'onfido-mount',
                             onComplete: function() {
-                                console.log("complete");
-                                $scope.createOnfido()
+                                $scope.createOnfido();
+                                onfidoOut.tearDown();
+                                ngDialog.closeAll();
+                                $scope.closeOnComplete();
                             },
                             language: {
                                 locale: 'us'
                             },
                             steps: [
-                                // {
-                            //     type: 'document',
-                            //     options: {
-                            //         useWebcam: true
-                            //     }
-                            // },
                                 'document',
-                                'face',
-                                'complete'
+                                'face'
                             ]
                         });
                     })
@@ -57,7 +53,7 @@
             $scope.createOnfido = function () {
               users.completeOnfido()
                   .success(function(resp) {
-                      console.log(resp)
+                      $scope.current_user.onfidoImage = resp.documentUrl;
                   })
                   .error(function(err) {
                       console.log(err)
@@ -70,6 +66,19 @@
                 }).then(function (el) {
                     $scope.generateOnfido()
                 })
+            };
+
+            $scope.closeOnComplete = function () {
+                SweetAlert.swal({
+                        title: "Verification Submitted",
+                        confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
+                        closeOnConfirm: true},
+                    function(confirm){
+                        if (confirm) {
+                            $state.go('verify_id');
+                        }
+                    }
+                );
             };
 
             $scope.zoomImage = function(image){
