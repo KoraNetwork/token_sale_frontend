@@ -2,7 +2,7 @@ div style="height: calc(45vh - {{ (slideHeight('div.slide.slide-' + slide) + 100
 a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
 .animated.fadeInDown
   .text-center.register-title
-    | Welcome to the Kora token sale
+    | Welcome to the Kora Token Sale
   #register-carousel uib-carousel=true interval="0" active="slide" no-wrap="false"
     .slide.slide-0 uib-slide=true index="0" style="min-height: {{ slideHeight('table.step-1') }}px"
       .text-center.step
@@ -40,22 +40,22 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         | Step 2: Agreement
       .text-center.step
         span.step
-          | Download the Kora app, register your username and link it with the token sale to receive a 2% bonus.
+          | Download the Kora app, register your username and link it with the token sale to receive a 5% bonus on number of tokens.
       .step-2.text-left
-        span.font-bold
+        span
           | To be able to contribute to the token sale
         span
           | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
-        span.font-bold<
+        span<
           | you’ll be required to make proof of your nationality during the KYC process and you will
-        span.font-bold<
+        span<
           | NOT be able to withdraw your tokens if the KYC isn’t successful.
       div.checking
         span.checking-text
           | Are you registered with the Kora app?
         .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
           input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="checked"
-          label.onoffswitch-label for="username-on-off-switch" ng-click="disableUserName()"
+          label.onoffswitch-label for="username-on-off-switch"
             span.onoffswitch-inner
             span.onoffswitch-switch
       .form-group
@@ -63,10 +63,10 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           | Kora Username
         div.hiddenBtn
           input.form-control ng-disabled="!checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
-            a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkUserName()" ng-show="checked" ng-disabled="formPending"
-              | Send
-        span ng-show="status < 300"
-          | Verified
+        /     a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkUserName()" ng-show="checked" ng-disabled="formPending"
+        /       | Send
+        / span ng-show="status < 300"
+        /   | Verified
       .form-group
         span.placeholder
           | Select your nationality
@@ -98,7 +98,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             span
               | , the
             a< href="/docs/Kora_Terms_and_Conditions.pdf" target="blank"
-              | Terms and Conditions for Participants
+              | Simple Agreement for Future Tokens
             span
               | , and the
             a< href="/docs/Kora_Privacy_Policy.pdf" target="blank"
@@ -106,16 +106,16 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             span<
               | documents.
       .form-group.text-left ng-hide="$state.current.name == 'us_register'"
-        .checkbox
-          input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
-          label for="agree2"
-            span.check
-            | I declare that I am not a US citizen
+        / .checkbox
+        /   input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
+        /   label for="agree2"
+        /     span.check
+        /     | I declare that I am not a US citizen
       .form-group.text-left ng-hide="$state.current.name == 'us_register'"
         .description
-          | Are you a US-based Accredited Investor interested in our Token Sale?
+          | Are you a US-based Accredited Investor, or a non-individual entity interested in our Token Sale?
         span.description Contact us at
-        a< href="mailto:vlad@htmlbook.ru" investors@kora.network.
+        a< href="mailto:contributors@kora.network" contributors@kora.network.
       .form-group.center ng-if="!$parent.current_user"
         div#reCaptcha
       div style="padding-top: 30px"

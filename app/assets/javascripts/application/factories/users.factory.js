@@ -156,6 +156,18 @@
 
             completeOnfido: function () {
                 return $http.post('/api/onfido/createCheck')
+            },
+
+            whitelist: function (data) {
+                console.log('scope users =>', data);
+                if(data.nationalityObj){
+                    data.nationality = data.nationalityObj.countryCode
+                }
+                return $http.post('/api/whitelist', data || {})
+            },
+
+            isRegisteredMVPUser: function (value) {
+                return $http.put('/api/registration/isRegisteredMVPUser?userName=' + value)
             }
         }
     }])

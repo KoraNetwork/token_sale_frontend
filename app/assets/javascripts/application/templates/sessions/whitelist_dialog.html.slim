@@ -1,0 +1,44 @@
+.header
+  div.text-center
+    span.whitelist-title
+      | Join Whitelist
+  hr
+  .form-block.whitelist
+    form role="form" novalidate=true
+    .text-center.whitelist-form
+      .form-group.customList
+        span.placeholder
+          | First Name
+        input.form-control type="text" ng-model="user.firstName"
+      .form-group.customList
+        span.placeholder
+          | Last Name
+        input.form-control.customList-size type="text" ng-model="user.lastName"
+      .form-group.customList
+        span.placeholder
+          | Email address
+        input.form-control.customList-size type="text" ng-model="user.email"
+      .form-group.customList
+        span.placeholder
+          | Nationality
+        ui-select ng-model="user.nationalityObj"
+          ui-select-match
+            img.country-img ng-src="{{ $select.selected.flag }}"
+            span.selected ng-bind="$select.selected.name"
+          ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+            img.country-img ng-src="{{ country.flag }}"
+            span.choices ng-bind="country.name"
+    .text-center.whitelist-form
+      .form-group.customList
+        span.placeholder
+          | Your Ethereum address
+        textarea.form-control.customList-size ng-model="user.receivingEthereumAddress"
+      .form-group.customList
+        span.placeholder
+          | Contribution
+        input.form-control.customList-size type="number" ng-model="user.contribution"
+      .form-group.customList
+        button.btn.btn-primary.ladda-button ng-click="sendWhitelist()"
+          | SUBMIT
+  hr
+  div style="padding: 15px"

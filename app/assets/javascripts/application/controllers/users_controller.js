@@ -251,10 +251,10 @@
                         error = true;
                     }
                     if ($state.current.name != 'us_register') {
-                        if(!$scope.user.agree2) {
-                            $scope.errors({ errors: ["Please click I am not a US citizen"] });
-                            error = true;
-                        }
+                        // if(!$scope.user.agree2) {
+                        //     $scope.errors({ errors: ["Please click I am not a US citizen"] });
+                        //     error = true;
+                        // }
                         if ($scope.user.nationalityObj.countryCode === 'USA' || $scope.user.countryObj.countryCode === 'USA') {
                             $scope.usaCountryDialog();
                             error = true;
@@ -263,7 +263,14 @@
 
                     if (error) return;
 
-                    $scope.next();
+                    users.isRegisteredMVPUser($scope.user.userName)
+                        .success(function (resp) {
+                            $scope.message({ message: [resp.message] });
+                            $scope.next();
+                        })
+                        .error(function (resp) {
+                            $scope.errors({ errors: [resp.message] })
+                        })
                 };
 
                 $scope.ethereum = function(){
@@ -300,17 +307,17 @@
                         })
                 };
 
-                $scope.isUsaIp = function (response) {
-                    if ($state.$current.name != 'us_register') {
-                        users.verifyIp(response)
-                            .success(function (data) {
-                                if(data.hasUSIP === true){
-                                    $scope.openUsaIpDialog();
-                                    return false
-                                }
-                            });
-                    }
-                };
+                // $scope.isUsaIp = function (response) {
+                //     if ($state.$current.name != 'us_register') {
+                //         users.verifyIp(response)
+                //             .success(function (data) {
+                //                 if(data.hasUSIP === true){
+                //                     $scope.openUsaIpDialog();
+                //                     return false
+                //                 }
+                //             });
+                //     }
+                // };
 
                 $scope.openUsaIpDialog = function () {
                     SweetAlert.swal({
@@ -379,6 +386,38 @@
                     }
                 };
             }
+
+            // if ($state.current.name === 'login') {
+            //     $scope.user = {};
+            //
+            //     $scope.takeCountries = function () {
+            //         users.getCountry()
+            //             .success(function (data) {
+            //                 $scope.countries = data;
+            //             });
+            //     };
+            //
+            //     $scope.whiteList = function () {
+            //         $scope.takeCountries();
+            //         ngDialog.open({
+            //             templateUrl: 'application/templates/sessions/whitelist_dialog.html',
+            //             className: 'ngdialog-theme-default whitelist-width',
+            //             animation: "slide-from-top",
+            //             closeOnConfirm: true,
+            //             scope: $scope
+            //         });
+            //     };
+            //
+            //     $scope.sendWhitelist = function () {
+            //         users.whitelist($scope.user)
+            //             .success(function (resp) {
+            //                 console.log(resp)
+            //             })
+            //             .error(function (err) {
+            //                 console.log(err)
+            //             })
+            //     }
+            // }
 
             $scope.sendToken = function () {
                 users.getRegenerate($scope.user)
