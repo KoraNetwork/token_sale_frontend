@@ -103,10 +103,10 @@
                 $scope.invalid_fields = [];
                 $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
-                users.checkInwite($stateParams.token)
-                    .error(function () {
-                        $state.go('login')
-                    });
+                // users.checkInwite($stateParams.token)
+                //     .error(function () {
+                //         $state.go('login')
+                //     });
 
                 if ($stateParams.email) {
                     $scope.user.email = $stateParams.email;
