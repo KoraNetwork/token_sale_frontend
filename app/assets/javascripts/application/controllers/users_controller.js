@@ -580,8 +580,8 @@
 
             $scope.verifiedID = function () {
                 SweetAlert.swal({
-                        title: "Thank you for verifying your ID",
-                        text: "After admins approval, you will see your status in the side bar.",
+                        title: "Thank you for submitting your ID.",
+                        text: "After it has been verified, you will see a change in status in the sidebar.",
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "Close",
                         closeOnConfirm: true},

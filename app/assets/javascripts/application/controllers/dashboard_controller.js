@@ -92,7 +92,6 @@
                 if ($scope.current_user.ethEmpty == null) {
                     SweetAlert.swal({
                             title: "It seems like you don't have Ethereum adress in your profile.",
-                            text: "Add Ethereum adress.",
                             html: true,
                             confirmButtonColor: "#DD6B55",
                             confirmButtonText: "OK",
@@ -111,7 +110,6 @@
                 if ($scope.current_user.btcEmpty == null) {
                   SweetAlert.swal({
                           title: "It seems like you don't have Bitcoin adress in your profile.",
-                          text: "Add Bitcoin adress.",
                           html: true,
                           confirmButtonColor: "#DD6B55",
                           confirmButtonText: "OK",
