@@ -340,6 +340,9 @@
                 };
 
                 $scope.confirm = function(){
+                    if ($scope.user == undefined) {
+                        return $scope.errors({ errors: ['Please provide GA code'] });
+                    }
                     $scope.submitted = true;
                     $scope.formPending = false;
                     users.confirm($scope.user)
@@ -515,6 +518,9 @@
               users.updatePassword($scope.current_user)
                 .success(function(resp) {
                   $scope.processing = false;
+                  $scope.current_user.oldPassword = undefined;
+                  $scope.current_user.newPassword = undefined;
+                  $scope.current_user.newPasswordConfirm = undefined;
                   $scope.passwordChanged();
                 })
                 .error(function(resp) {
