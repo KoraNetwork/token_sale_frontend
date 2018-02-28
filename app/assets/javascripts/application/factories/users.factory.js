@@ -167,6 +167,10 @@
 
             isRegisteredMVPUser: function (value) {
                 return $http.put('/api/registration/isRegisteredMVPUser?userName=' + value)
+            },
+
+            checkInwite: function (value) {
+                return $http.put('/api/registration/checkInviteToken?inviteToken=' + value)
             }
         }
     }])

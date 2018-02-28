@@ -120,6 +120,7 @@
                               'register',
                               'forgot_password',
                               'restore_password',
+                              'us_register',
                               'create_password'].indexOf($state.current.name) >= 0){
                           $state.go('dashboard');
                       }
