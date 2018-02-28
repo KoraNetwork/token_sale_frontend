@@ -1,12 +1,11 @@
 .form-page
   .login-alert.animated.fadeInDown
     .logo-container
-      h2.site-title
-        | Kora
+      .kora-logo
     .form-block
       form role="form" novalidate=true ng-submit="createPassword()" name="createPasswordForm"
         .form-group.text-center.welcome-text
-          h3
+          h3 style="color: #4a46d7"
             | Please enter your new password
         .form-group
           input.form-control placeholder="Password" type="password" ng-model="passOptions.password" name='password'
