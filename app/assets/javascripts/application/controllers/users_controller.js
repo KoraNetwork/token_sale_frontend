@@ -630,6 +630,11 @@
 
             $scope.updateProfile = function(){
                 $scope.processing = true;
+
+                if(!$scope.current_user.sendingEthereumAddress) {
+                    $scope.errors({ errors: ['Sending ethereum address cannot be empty'] });
+                    return
+                }
                 users.upsert(_.pick($scope.current_user, 'email', 'sendingEthereumAddress', 'bitcoinAddress'))
                   .success(function(resp){
                     $scope.processing = false;

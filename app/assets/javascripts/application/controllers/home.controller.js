@@ -163,7 +163,8 @@
 
             $scope.logout = function(){
                 session.logout()
-                    .success(function(){
+                    .success(function(resp, status){
+                        $scope.status = status;
                         $scope.deleteAllCookies();
                         $scope.current_user = false;
                         $state.go('login')

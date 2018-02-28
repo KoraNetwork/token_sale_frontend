@@ -55,7 +55,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           | Are you registered with the Kora app?
         .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
           input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="checked"
-          label.onoffswitch-label for="username-on-off-switch"
+          label.onoffswitch-label for="username-on-off-switch" ng-click="disableUserName()"
             span.onoffswitch-inner
             span.onoffswitch-switch
       .form-group
@@ -162,11 +162,11 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             input.form-control type="number" ng-model="user.token"
         div.text-left style="width: 700px; margin-left: -120px"
           ul.dialogText
-            li 1. Install an authenticatir app on your mobile device if you dont’t already have one. We support these options
-            li 2. Scan QR code with the authenticator (or tap it in mobile browser)
-            li 3. Please write down or print a copy of the 20-digit secret code and it in a safe place
+            li 1. Install the Google Authenticator app on your mobile device if you haven't already installed it.
+            li 2. Scan the QR code with the app, or enter the provided key (secret seed) directly.
+            li 3. Please write down or print a copy of the 20-digit secret code and it in a safe place. If your phone gets lost, stolen or erased, you will need this code to link the Kora Token Sale Portal again.
             li 4. If your phone gets lost, stolen or erased, you will need this code to link Kora to a new authenticator app install once again
-            li 5. Do not share it with anyone. Be aware of phishing scams. We will never ask you for this key.
+            li.font-bold 5. Do not share the secret seed with anyone. Be aware of phishing scams. We will never ask you for this key.
         div style="padding-top: 30px"
           a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
             | Back

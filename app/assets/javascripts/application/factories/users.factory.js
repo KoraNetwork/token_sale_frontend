@@ -40,7 +40,7 @@
             },
 
             disableMVPCode: function () {
-              return $http.put('/api/registration/disableMVPCode')
+              return $http.put('/api/registration/disableMVPCheck')
             },
 
             sendMVPCode: function (value) {
@@ -159,7 +159,6 @@
             },
 
             whitelist: function (data) {
-                console.log('scope users =>', data);
                 if(data.nationalityObj){
                     data.nationality = data.nationalityObj.countryCode
                 }
