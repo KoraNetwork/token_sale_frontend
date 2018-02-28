@@ -54,7 +54,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         span.checking-text
           | Are you registered with the Kora app?
         .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
-          input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="checked"
+          input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="user.checked"
           label.onoffswitch-label for="username-on-off-switch" ng-click="disableUserName()"
             span.onoffswitch-inner
             span.onoffswitch-switch
@@ -62,7 +62,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         span.placeholder
           | Kora Username
         div.hiddenBtn
-          input.form-control ng-disabled="!checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+          input.form-control ng-disabled="!user.checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
         /     a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkUserName()" ng-show="checked" ng-disabled="formPending"
         /       | Send
         / span ng-show="status < 300"
@@ -111,7 +111,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         /   label for="agree2"
         /     span.check
         /     | I declare that I am not a US citizen
-      .form-group.text-left ng-hide="$state.current.name == 'us_register'"
+      .form-group.text-left
         .description
           | Are you a US-based Accredited Investor, or a non-individual entity interested in our Token Sale?
         span.description Contact us at

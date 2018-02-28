@@ -267,7 +267,15 @@
                     }
 
                     if (error) return;
+                    if ($scope.user.checked) {
+                        $scope.withUserName();
+                    }
+                    else{
+                        $scope.next();
+                    }
+                };
 
+                $scope.withUserName = function () {
                     users.isRegisteredMVPUser($scope.user.userName)
                         .success(function (resp) {
                             $scope.message({ message: [resp.message] });

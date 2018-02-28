@@ -5,12 +5,12 @@
     | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}
   .col-md-12.textBox ng-hide="current_user.verified"
     ul
-      li - To contribute to the Kora Token Sale and withdraw KNT, you need to upload a valid, government issued photo ID.
+      li To contribute to the Kora Token Sale and withdraw KNT, you need to upload a valid, government issued photo ID.
       li
-        | - For contributions via entities instead of individuals, email us at
+        | For contributions via entities instead of individuals, email us at
         a< style="font-size: 13px" href="mailto:contributors@kora.network" contributors@kora.network.
-      li - Your ID will be reviewed within 3-5 days, although we cannot guarantee processing time.
-      li - Once ID is verified you will receive a confirmation. ID verification is required to contribute to the Token Sale.
+      li Your ID will be reviewed within 3-5 days, although we cannot guarantee processing time.
+      li Once ID is verified you will receive a confirmation. ID verification is required to contribute to the Token Sale.
   form novalidate=true ng-submit="verifyID()" name="verifyIDForm"
     .col-md-12.change_password-update_form
       .col-md-12
