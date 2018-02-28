@@ -199,6 +199,11 @@
             };
 
             $scope.sendToken = function () {
+                if ($scope.user.token == undefined) {
+                    return $scope.errors({ errors: ['Please provide Code'] })
+                } else if ($scope.user.password == undefined) {
+                    return $scope.errors({ errors: ['Please provide Password'] })
+                }
                 users.regenerate(_.pick($scope.user, 'token', 'password'))
                   .success(function(data) {
                       $scope.user.token = undefined;
@@ -207,7 +212,11 @@
                       $scope.reenableDialog()
                   })
                   .error(function(resp) {
-                    $scope.errors({ errors: [resp.message] })
+                      if (resp.message == 'Password is invalid') {
+                          $scope.errors({ errors: [resp.message] })
+                      } else {
+                          $scope.errors({ errors: ['Code is Invalid'] })
+                      }
                   })
             };
 
