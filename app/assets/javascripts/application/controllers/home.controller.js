@@ -87,6 +87,8 @@
               transactions.getValues()
                 .success(function (data) {
                   $scope.balance = data;
+                  $scope.current_user.btcEmpty = data.BTCWallet.address;
+                  $scope.current_user.ethEmpty = data.ETHWallet.address;
                 })
                 .error(function (data) {
 

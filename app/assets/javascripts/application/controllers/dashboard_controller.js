@@ -43,7 +43,7 @@
 
             $scope.$parent.retrieveTransactions();
 
-            $scope.ethDialog = function () {
+            $scope.ethVerified = function () {
               if ($scope.$parent.current_user.verified) {
                   ngDialog.open({
                       templateUrl: 'application/templates/home/eth_dialog.html',
@@ -65,18 +65,54 @@
               }
             };
 
+            $scope.btcVerified = function () {
+                if ($scope.$parent.current_user.verified) {
+                    ngDialog.open({
+                        templateUrl: 'application/templates/home/btc_dialog.html',
+                        className: 'ngdialog-theme-default buy-width',
+                        scope: $scope,
+                        controller: 'DashboardController'
+                    });
+                }
+                else {
+                    SweetAlert.swal({
+                            title: "Verify your ID",
+                            text: "Please verify your ID firstly.",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "OK",
+                            width: 600,
+                            padding: 100,
+                            closeOnConfirm: true
+                        }
+                    );
+                }
+            };
+
+            $scope.ethDialog = function () {
+                if ($scope.current_user.ethEmpty == null) {
+                    SweetAlert.swal({
+                            title: "It seems like you don't have Ethereum adress in your profile.",
+                            text: "Add Ethereum adress.",
+                            html: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "OK",
+                            width: 600,
+                            padding: 100,
+                            closeOnConfirm: true
+                        }
+                    );
+                }
+                else {
+                    $scope.ethVerified();
+                }
+            };
+
             $scope.btcDialog = function () {
-              if ($scope.$parent.current_user.verified) {
-                  ngDialog.open({
-                      templateUrl: 'application/templates/home/btc_dialog.html',
-                      className: 'ngdialog-theme-default buy-width',
-                      scope: $scope,
-                      controller: 'DashboardController'
-                  });
-              } else {
+                if ($scope.current_user.btcEmpty == null) {
                   SweetAlert.swal({
-                          title: "Verify your ID",
-                          text: "Please verify your ID firstly.",
+                          title: "It seems like you don't have Bitcoin adress in your profile.",
+                          text: "Add Bitcoin adress.",
+                          html: true,
                           confirmButtonColor: "#DD6B55",
                           confirmButtonText: "OK",
                           width: 600,
@@ -85,6 +121,9 @@
                       }
                   );
               }
+              else {
+                    $scope.btcVerified();
+                }
             };
         }])
 }());
