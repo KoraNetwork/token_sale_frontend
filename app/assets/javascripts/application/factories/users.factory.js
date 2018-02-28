@@ -170,7 +170,7 @@
             },
 
             checkInwite: function (value) {
-                return $http.put('/api/registration/checkInviteToken?inviteToken=' + value)
+                return $http.get('/api/registration/checkInviteToken?inviteToken=' + value)
             }
         }
     }])

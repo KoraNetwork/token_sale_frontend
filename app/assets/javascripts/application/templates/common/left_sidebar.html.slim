@@ -6,7 +6,7 @@
       img src="/images/group-7@3x.png" ng-hide="current_user.verified" style="width: 16px; margin-top: -3px"
       i.fa.fa-star style="color: #a4edca; font-size: 14px" ng-show="current_user.verified"
       a.left-nav-unverified-id.regular href="/#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}" style="color: {{ current_user.verified ? '#a4edca' : 'white' }}"
-        | {{ current_user.verified ? 'ID Verified' : 'Unverified ID' }}
+        | {{ current_user.verified ? 'ID Verified' : 'Verify Now' }}
     hr
     li.align-center-nav-text.left-nav-balance-position
       span.left-nav-unverified-id-knt.white
@@ -25,7 +25,7 @@
     ul style="line-height: 2; padding-top: 15px"
       li.align-center-nav-text
         span.left-nav-unverified-id-knt.white
-          | Cost of Membership
+          | Price of Utility Token
       li.align-center-nav-text
         span.left-nav-unverified-id-course
           | 1 KNT = ${{ (balance.KNT_USD).toFixed(2) }}
@@ -52,6 +52,6 @@
           span
             | Update Profile
       li
-        a href="/docs/Kora_Terms_and_Conditions.pdf" target="blank"
+        a href="/docs/Simple_Agreement_for_Future_Tokens.pdf" target="blank"
           span
             | Terms
