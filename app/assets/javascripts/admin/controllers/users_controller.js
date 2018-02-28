@@ -52,7 +52,7 @@
                                     SweetAlert.close();
                                 })
                                 .error(function (data) {
-                                    $scope.errors({ errors: users.parseErrors(data.Errors).messages });
+                                    $scope.errors({ errors: [data.message] });
                                 });
                         } else {
                             if (inputValue !== false) {
