@@ -104,10 +104,10 @@
                 $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
                 $scope.onlyLetters = /^[A-Za-z]+$/;
 
-                // users.checkInwite($stateParams.token)
-                //     .error(function () {
-                //         $state.go('login')
-                //     });
+                users.checkInwite($stateParams.token)
+                    .error(function () {
+                        $state.go('login')
+                    });
 
                 if ($stateParams.email) {
                     $scope.user.email = $stateParams.email;
