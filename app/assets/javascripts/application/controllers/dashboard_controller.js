@@ -44,28 +44,64 @@
             $scope.$parent.retrieveTransactions();
 
             $scope.ethVerified = function () {
-              if ($scope.$parent.current_user.verified) {
-                  ngDialog.open({
-                      templateUrl: 'application/templates/home/eth_dialog.html',
-                      className: 'ngdialog-theme-default buy-width',
-                      scope: $scope,
-                      controller: 'DashboardController'
-                  });
-              } else {
+              if (!$scope.current_user.ethWallet) {
                   SweetAlert.swal({
                           title: "Verify your ID",
                           text: "Please verify your ID firstly.",
                           confirmButtonColor: "#DD6B55",
                           confirmButtonText: "OK",
+                          showCancelButton: true,
                           width: 600,
                           padding: 100,
                           closeOnConfirm: true
+                      }, function(confirm) {
+                          if(confirm) {
+                              window.location.hash = '#/profile/verify_id';
+                              SweetAlert.close();
+                          }
                       }
                   );
+              } else {
+                  $scope.ether();
               }
             };
 
+            $scope.ether = function () {
+                if ($scope.$parent.current_user.verified) {
+                    ngDialog.open({
+                        templateUrl: 'application/templates/home/eth_dialog.html',
+                        className: 'ngdialog-theme-default buy-width',
+                        scope: $scope,
+                        controller: 'DashboardController'
+                    });
+                }
+            };
+
             $scope.btcVerified = function () {
+                if (!$scope.current_user.btcWallet) {
+                    SweetAlert.swal({
+                            title: "Verify your ID",
+                            text: "Please verify your ID firstly.",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "OK",
+                            showCancelButton: true,
+                            width: 600,
+                            padding: 100,
+                            closeOnConfirm: true
+                        }, function(confirm) {
+                            if(confirm) {
+                                window.location.hash = '#/profile/verify_id';
+                                SweetAlert.close();
+                            }
+                        }
+                    );
+                }
+                else {
+                    $scope.btc();
+                }
+            };
+
+            $scope.btc = function () {
                 if ($scope.$parent.current_user.verified) {
                     ngDialog.open({
                         templateUrl: 'application/templates/home/btc_dialog.html',
@@ -74,30 +110,24 @@
                         controller: 'DashboardController'
                     });
                 }
-                else {
-                    SweetAlert.swal({
-                            title: "Verify your ID",
-                            text: "Please verify your ID firstly.",
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "OK",
-                            width: 600,
-                            padding: 100,
-                            closeOnConfirm: true
-                        }
-                    );
-                }
             };
 
             $scope.ethDialog = function () {
-                if ($scope.current_user.ethEmpty == null) {
+                if ($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address) {
                     SweetAlert.swal({
-                            title: "It seems like you don't have Ethereum adress in your profile.",
-                            html: true,
+                            title: "It seems like you don't have Ethereum address in your profile.",
+                            text: "Please add your ETH sending address in the Profile tab, so we can track your contribution.",
                             confirmButtonColor: "#DD6B55",
                             confirmButtonText: "OK",
+                            showCancelButton: true,
                             width: 600,
                             padding: 100,
                             closeOnConfirm: true
+                        }, function(confirm) {
+                            if(confirm) {
+                                window.location.hash = '#/profile/update_profile';
+                                SweetAlert.close();
+                            }
                         }
                     );
                 }
@@ -107,16 +137,24 @@
             };
 
             $scope.btcDialog = function () {
-                if ($scope.current_user.btcEmpty == null) {
+                if ($scope.current_user.btcWallet && !$scope.current_user.btcWallet.address) {
                   SweetAlert.swal({
-                          title: "It seems like you don't have Bitcoin adress in your profile.",
+                          title: "It seems like you don't have Bitcoin address in your profile.",
+                          text: "Please add your BTC sending address in the Profile tab, so we can track your contribution.",
                           html: true,
+                          $scope: $scope,
+                          showCancelButton: true,
                           confirmButtonColor: "#DD6B55",
                           confirmButtonText: "OK",
                           width: 600,
                           padding: 100,
                           closeOnConfirm: true
-                      }
+                      }, function(confirm) {
+                        if(confirm) {
+                            window.location.hash = '#/profile/update_profile';
+                            SweetAlert.close();
+                        }
+                    }
                   );
               }
               else {
