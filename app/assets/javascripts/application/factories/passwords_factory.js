@@ -8,7 +8,7 @@
 
             reset: function(password, token){
                 var url = '/api/profile/restorePassword/' + token;
-                var body = {newPassword: password};
+                var body = {new_password: password};
                 return $http.put(url, body);
             },
 
