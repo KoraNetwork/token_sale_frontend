@@ -101,7 +101,7 @@
                       span.text-center ng-show="$index == selected && !sale.disabled || !checkSale"
                         input.text-center type="number" ng-model="sale.amountUSD" ng-show="$index == selected && !checkSale"
                     td.text-center
-                      | {{ (sale.KNT_USD).toFixed(2) }}
+                      | {{ (sale.KNT_USD).toFixed(4) }}
                     td.text-center
                       | {{ (sale.USD_KNT).toFixed(2) }}
                     td.text-center ng-hide="sale.disabled || checkSale"

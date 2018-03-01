@@ -85,7 +85,7 @@
                 $scope.createAdminDialog = function() {
                     SweetAlert.swal({
                             title: "Create Admin",
-                            text: "Please enter email",
+                            text: "Please enter emails",
                             type: "input",
                             showCancelButton: true,
                             inputPlaceholder: "Email",
@@ -102,7 +102,7 @@
                                         SweetAlert.close();
                                     })
                                     .error(function(data) {
-                                        $scope.errors({ errors: users.parseErrors(data.Errors).messages });
+                                        $scope.errors({ errors: [data.message] });
                                     })
                             } else {
                                 if (inputValue !== false) {

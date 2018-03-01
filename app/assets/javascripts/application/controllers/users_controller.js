@@ -237,7 +237,7 @@
                     var error = false;
 
                     if(!$scope.user.agree1) {
-                        $scope.errors({ errors: ["Please click I have read and agree with the Whitepaper"] });
+                        $scope.errors({ errors: ["Please,  read and agree with the Whitepaper, the Simple Agreement for Future Tokens, and the Privacy Policy documents."] });
                         error = true;
                     }
                     if(!$scope.user.nationalityObj) {
@@ -650,8 +650,8 @@
             $scope.updateProfile = function(){
                 $scope.processing = true;
 
-                if(!$scope.current_user.sendingEthereumAddress) {
-                    $scope.errors({ errors: ['Sending ethereum address cannot be empty'] });
+                if(!$scope.current_user.sendingEthereumAddress && !$scope.current_user.bitcoinAddress) {
+                    $scope.errors({ errors: ['Sending Ethereum or Bitcoin Address must be present!'] });
                     return
                 }
                 users.upsert(_.pick($scope.current_user, 'email', 'sendingEthereumAddress', 'bitcoinAddress'))
