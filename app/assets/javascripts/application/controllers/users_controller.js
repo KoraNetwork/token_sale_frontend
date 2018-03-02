@@ -288,6 +288,7 @@
                 };
 
                 $scope.withUserName = function () {
+                    if (!$scope.user.checked || !$scope.userNameAvailable) return;
                     users.isRegisteredMVPUser($scope.user.userName)
                         .success(function (resp) {
                             $scope.userNameAvailable = false;

@@ -143,7 +143,12 @@
             };
 
             $scope.watchState = function () {
-                if (($scope.status === 401) && (['login', 'register', 'forgot_password', 'restore_password', 'us_register'].indexOf($state.current.name) < 0)) {
+                if (($scope.status === 401) && (['login',
+                                                'register',
+                                                'forgot_password',
+                                                'restore_password',
+                                                'us_register',
+                                                'admins_password'].indexOf($state.current.name) < 0) && (!window.location.hash.includes('#/create_password'))) {
                     $state.go('login');
                 }
             };
