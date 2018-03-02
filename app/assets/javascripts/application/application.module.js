@@ -16,6 +16,7 @@
         'toaster',
         'angular-ladda',
         'oitozero.ngSweetAlert',
+        'ui.mask',
         'tablesort',
         'ui.select'
     ]);
