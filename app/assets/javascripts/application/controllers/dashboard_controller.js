@@ -47,7 +47,7 @@
               if (!$scope.current_user.ethWallet) {
                   SweetAlert.swal({
                           title: "Verify your ID",
-                          text: "Please verify your ID firstly.",
+                          text: "Please verify your ID first.",
                           confirmButtonColor: "#DD6B55",
                           confirmButtonText: "OK",
                           showCancelButton: true,
@@ -81,7 +81,7 @@
                 if (!$scope.current_user.btcWallet) {
                     SweetAlert.swal({
                             title: "Verify your ID",
-                            text: "Please verify your ID firstly.",
+                            text: "Please verify your ID first.",
                             confirmButtonColor: "#DD6B55",
                             confirmButtonText: "OK",
                             showCancelButton: true,
