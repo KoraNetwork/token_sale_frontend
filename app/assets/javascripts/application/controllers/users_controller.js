@@ -12,6 +12,7 @@
             $scope.$stateParams = $stateParams;
             $scope.countries = [];
             $scope.onfidoImage = {};
+            $scope.userNameAvailable = true;
 
             $scope.generateOnfido = function () {
                 users.checkOnfido()
@@ -129,7 +130,17 @@
                 };
 
                 $scope.disableUserName = function () {
-                  users.disableMVPCode()
+                    users.disableMVPCode()
+                        .success(function () {
+                            $scope.checked = $('#username-on-off-switch').is(':checked');
+                            if ($scope.checked) {
+                                $scope.userNameAvailable = true;
+                                $scope.user.userName = '';
+                            } else {
+                                $scope.userNameAvailable = false;
+                                $scope.user.userName = '';
+                            }
+                        })
                 };
 
                 $scope.checkUserName = function () {
@@ -220,7 +231,7 @@
                     if ($scope.$parent && !$scope.$parent.current_user) {
                         $scope.renderCaptcha();
                     }
-                }, 1000);
+                }, 1500);
 
                 $scope.usaCountryDialog = function () {
                     ngDialog.open({
@@ -266,24 +277,25 @@
                             error = true;
                         }
                     }
+                    if ($scope.checked && !$scope.user.userName) {
+                        $scope.errors({ errors: ["Please enter valid UserName"] });
+                        error = true;
+                    }
 
                     if (error) return;
-                    if ($scope.user.checked) {
-                        $scope.withUserName();
-                    }
-                    else{
-                        $scope.next();
-                    }
+
+                    $scope.next();
                 };
 
                 $scope.withUserName = function () {
                     users.isRegisteredMVPUser($scope.user.userName)
                         .success(function (resp) {
+                            $scope.userNameAvailable = false;
                             $scope.message({ message: [resp.message] });
-                            $scope.next();
                         })
                         .error(function (resp) {
-                            $scope.errors({ errors: [resp.message] })
+                            $scope.userNameAvailable = true;
+                            $scope.errors({ errors: [resp.message] });
                         })
                 };
 

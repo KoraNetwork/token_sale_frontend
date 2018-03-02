@@ -65,11 +65,12 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         span.placeholder
           | Kora Username
         div.hiddenBtn
-          input.form-control ng-disabled="!user.checked" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
-        /     a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="checkUserName()" ng-show="checked" ng-disabled="formPending"
-        /       | Send
-        / span ng-show="status < 300"
-        /   | Verified
+          input.form-control ng-disabled="!user.checked || !userNameAvailable" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+            a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="withUserName()" ng-show="user.checked" ng-disabled="!user.checked || !userNameAvailable"
+              span
+                | {{ !userNameAvailable ? 'Verified' : 'Verify' }}
+        span ng-show="userNameStatus < 300"
+          | Verified
       .form-group
         span.placeholder
           | Select your nationality
