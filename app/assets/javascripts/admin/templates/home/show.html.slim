@@ -7,7 +7,7 @@
             .pull-left style="padding: 20px"
               h4
                 | Document:
-              img.pull-left.pointer ng-src="{{ user.documentUrl }}" ng-click="openDocumentCountry()"
+              img.pull-left.pointer ng-src="{{ user.documentUrl || '/images/missing.png' }}" ng-click="openDocumentCountry()"
             .pull-left style="padding: 20px"
               h4
                 | Country:
@@ -60,6 +60,31 @@
                   | Verified
                 td.bg-white.disabledInput
                   | {{ user.verified ? "Yes" : "No" }}
+              tr
+                td.bg-gray
+                  | Phone Number
+                td.bg-white.disabledInput
+                  | {{ user.phone }}
+              tr
+                td.bg-gray
+                  | Birthday
+                td.bg-white.disabledInput
+                  | {{ user.dateOfBirth ? moment(user.dateOfBirth).format('YYYY-MM-DD') : '' }}
+              tr
+                td.bg-gray
+                  | Street Address
+                td.bg-white.disabledInput
+                  | {{ user.streetAddress }}
+              tr
+                td.bg-gray
+                  | State
+                td.bg-white.disabledInput
+                  | {{ user.state }}
+              tr
+                td.bg-gray
+                  | ZIP
+                td.bg-white.disabledInput
+                  | {{ user.state }}
 
           .right-block style="padding-top: 20px;"
             table.border-radius-table

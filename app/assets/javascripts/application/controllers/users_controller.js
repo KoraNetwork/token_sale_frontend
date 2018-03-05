@@ -687,7 +687,8 @@
             $scope.options = {
                 showWeeks: false,
                 formatMonth: 'MMM',
-                show_button_bar: false,
+                datepickerMode: 'year',
+                show_button_bar: true,
                 maxDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000),
                 initDate: new Date(new Date().getTime() - 4384 * 24 * 60 * 60 * 1000)
             };
