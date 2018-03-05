@@ -277,7 +277,7 @@
                             error = true;
                         }
                     }
-                    if ($scope.userNameAvailable) {
+                    if ($scope.userNameAvailable && $scope.checked) {
                         $scope.errors({ errors: ["Please click Verify"] });
                         error = true;
                     }
