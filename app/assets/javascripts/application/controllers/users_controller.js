@@ -277,6 +277,10 @@
                             error = true;
                         }
                     }
+                    if ($scope.userNameAvailable) {
+                        $scope.errors({ errors: ["Please click Verify"] });
+                        error = true;
+                    }
                     if ($scope.checked && !$scope.user.userName) {
                         $scope.errors({ errors: ["Please enter valid UserName"] });
                         error = true;
