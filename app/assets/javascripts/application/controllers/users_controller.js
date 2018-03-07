@@ -14,6 +14,14 @@
             $scope.onfidoImage = {};
             $scope.userNameAvailable = true;
 
+            $scope.check = function () {
+                users.profile()
+                    .success(function (resp) {
+                        $scope.current_user = resp;
+                        $scope.current_user.document = $scope.current_user.documentUrl;
+                    })
+            };
+
             $scope.generateOnfido = function () {
                 users.checkOnfido()
                     .success(function(resp){
@@ -575,9 +583,9 @@
                     return;
                 }
                 $scope.processing = true;
-                $scope.current_user.documentCountry = $scope.current_user.documentCountryObj.countryCode;
+                // $scope.current_user.documentCountry = $scope.current_user.documentCountryObj.countryCode;
                 $scope.current_user.country = $scope.current_user.countryObj.countryCode;
-                $scope.current_user.identificationType = $scope.current_user.identificationTypeObj.id;
+                // $scope.current_user.identificationType = $scope.current_user.identificationTypeObj.id;
                 users.verifyID($scope.current_user)
                   .success(function(resp){
                     $scope.processing = false;
@@ -622,6 +630,7 @@
             $scope.$watch('$state.current.name', function(state){
                 if(state === 'verify_id') {
                     $scope.selects();
+                    $scope.check();
                 }
             });
 

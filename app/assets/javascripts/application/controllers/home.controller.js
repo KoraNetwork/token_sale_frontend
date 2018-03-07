@@ -10,6 +10,7 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
             $scope.transactions = [];
+            $scope.isInitialized = false;
 
 
             $timeout(function(){
@@ -109,6 +110,7 @@
             $scope.checkSession = function(){
                 session.profile()
                   .success(function(data, status){
+                      $scope.isInitialized = true;
                       if (data && data.role === 'admin') {
                           $state.go('login');
                           return;
@@ -128,6 +130,7 @@
                       }
                   })
                   .error(function(data, status){
+                      $scope.isInitialized = true;
                       $scope.status = status;
                       $scope.current_user = false;
                       if([

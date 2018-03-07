@@ -71,6 +71,10 @@
               return $http.get('/api/addressHistory')
             },
 
+            profile: function(){
+                return $http.get('/api/profile');
+            },
+
             validate: function (user) {
                 var invalidFields = [],
                     messages = [],
@@ -134,8 +138,6 @@
                 fd.append('city', user.city || '');
                 fd.append('state', user.state || '');
                 fd.append('zip', user.zip || '');
-                fd.append('identificationType', user.identificationType || '');
-                fd.append('documentCountry', user.documentCountryObj ? user.documentCountryObj.countryCode : '');
 
                 if(user.document && user.document.file){
                     fd.append('document', user.document.file);

@@ -22,14 +22,6 @@
           .form-group
             label.star for="lstn"  Last Name
             input#lstn.form-control-profile_style_input type="text" ng-model="current_user.lastName"
-        .col-md-4
-          .form-group
-            label.star for="idnt" Identification Type
-            ui-select.form-control-profile_style_input-dd ng-model="current_user.identificationTypeObj"
-              ui-select-match#idnt
-                span.selected ng-bind="$select.selected.name || current_user.identificationTypeObj.name"
-              ui-select-choices repeat="i in identificationTypes track by $index"
-                span.choices ng-bind="i.name"
       .col-md-12
         .col-md-4
           .form-group style="display: grid"
@@ -45,16 +37,6 @@
           .form-group
             label.star for="city"  City
             input#city.form-control-profile_style_input type="text" ng-model="current_user.city" maxlength="64"
-        .col-md-4
-          .form-group
-            label.star for="docc" Document Country
-            ui-select.form-control-profile_style_input-dd ng-model="current_user.documentCountryObj"
-              ui-select-match#docc
-                img.country-img ng-src="{{ $select.selected.flag || current_user.documentCountryObj.flag}}"
-                span.selected ng-bind="$select.selected.name || current_user.documentCountryObj.name"
-              ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
-                img.country-img ng-src="{{ country.flag }}"
-                span.choices ng-bind="country.name"
       .col-md-8
         .col-md-4 style="width: 253.33px"
           .form-group

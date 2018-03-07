@@ -7,12 +7,11 @@ html(lang="en")
     = csrf_meta_tags
     script src='https://www.google.com/recaptcha/api.js'
   body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done style="font-family: Muli" class="{{ !current_user ? 'landing-page' : 'user-page' }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
-    .landing ng-if="!current_user"
-      div ui-view=""
-    .row ng-if="current_user"
-      div  ng-include="'application/templates/common/topnavbar.html'"
+    div ng-include="'application/templates/common/loading.html'" ng-hide="isInitialized"
+    .row
+      div ng-if="isInitialized && current_user" ng-include="'application/templates/common/topnavbar.html'"
       .content-container
-        .left-navbar ng-include="'application/templates/common/left_sidebar.html'"
-        .page-container ui-view=""
+        .left-navbar ng-if="current_user" ng-include="'application/templates/common/left_sidebar.html'"
+        .page-container ui-view="" ng-show="isInitialized"
 
     div toaster-container='' toaster-options="{'close-button': true}"
