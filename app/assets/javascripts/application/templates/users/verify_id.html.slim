@@ -17,16 +17,16 @@
         .col-md-4
           .form-group
             label.star for="fn"  First Name
-            input#fn.form-control-profile_style_input type="text" ng-model="current_user.firstName"
+            input#fn.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.firstName"
         .col-md-4
           .form-group
             label.star for="lstn"  Last Name
-            input#lstn.form-control-profile_style_input type="text" ng-model="current_user.lastName"
+            input#lstn.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.lastName"
       .col-md-12
         .col-md-4
           .form-group style="display: grid"
             label.star  Country
-            ui-select.form-control-profile_style_input-dd ng-model="current_user.countryObj"
+            ui-select.form-control-profile_style_input-dd ng-model="current_user.countryObj" ng-disabled="current_user.verified"
               ui-select-match#docc
                 img.country-img ng-src="{{ $select.selected.flag || current_user.country.flag}}"
                 span.selected ng-bind="$select.selected.name || current_user.country.name"
@@ -36,35 +36,35 @@
         .col-md-4
           .form-group
             label.star for="city"  City
-            input#city.form-control-profile_style_input type="text" ng-model="current_user.city" maxlength="64"
+            input#city.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.city" maxlength="64"
       .col-md-8
         .col-md-4 style="width: 253.33px"
           .form-group
             label.star for="state"  State
-            input#state.form-control-profile_style_input type="text" ng-model="current_user.state" maxlength="64"
+            input#state.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.state" maxlength="64"
         .col-md-4
           .form-group
             label.star for="phn"  Phone Number
-            input#phn.form-control-profile_style_input type="text" ng-model="current_user.phone" ui-mask='+99 (999) 999-99-99' ui-mask-use-viewvalue="true"
+            input#phn.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.phone" ui-mask='+99 (999) 999-99-99' ui-mask-use-viewvalue="true"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"
             label.star for="street"  Street Address
-            input#street.form-control-profile_style_input-large type="text" ng-model="current_user.streetAddress" maxlength="64"
+            input#street.form-control-profile_style_input-large type="text" ng-disabled="current_user.verified" ng-model="current_user.streetAddress" maxlength="64"
       .col-md-8
         .col-md-4
           .form-group
             label.star for="bd" Birthday
-            input.form-control-profile_style_input-small type="text" value="{{dateOfBirth()}}" ng-click="date_opened = true" readonly="readonly"
+            input.form-control-profile_style_input-small type="text" ng-disabled="current_user.verified" value="{{dateOfBirth()}}" ng-click="date_opened = true" readonly="readonly"
               input#bd type="text" uib-datepicker-popup="{{ 'dd MMM yyyy' }}" ng-model="current_user.dateOfBirth" ng-change="dateOfBirth()" is-open="date_opened" readonly="readonly" datepicker-options="options" show-button-bar="false" style="display: none"
         .col-md-4
           .form-group
             label for="apt"  Apt/Ste
-            input#apt.form-control-profile_style_input-small type="text" ng-model="current_user.aptSte" maxlength="15"
+            input#apt.form-control-profile_style_input-small type="text" ng-disabled="current_user.verified" ng-model="current_user.aptSte" maxlength="15"
         .col-md-4
           .form-group
             label.star for="zip"  ZIP
-            input#zip.form-control-profile_style_input-small type="text" ng-model="current_user.zip" maxlength="12"
+            input#zip.form-control-profile_style_input-small type="text" ng-disabled="current_user.verified" ng-model="current_user.zip" maxlength="12"
       div.onfido ng-click="renderOnfido()" ng-hide="current_user.document || current_user.onfidoImage"
         .form-group
           label Upload document
