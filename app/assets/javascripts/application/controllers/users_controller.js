@@ -77,6 +77,24 @@
                 })
             };
 
+            $scope.verificationStatus = function () {
+                $q(function (resolve){
+                    resolve($scope.current_user)
+                }).then(function () {
+                    if (!$scope.current_user.onfidoChecked && $scope.current_user.verified) {
+                        $scope.current_user.verStatus = 'Verified'
+                    }
+                    if ($scope.current_user.onfidoChecked && !$scope.current_user.verified) {
+                        $scope.current_user.verStatus = 'Submitted'
+                    }
+                    if (!$scope.current_user.onfidoChecked && !$scope.current_user.verified) {
+                        $scope.current_user.verStatus = 'Verify Now'
+                    }
+                });
+            };
+
+            $scope.verificationStatus();
+
             $scope.closeOnComplete = function () {
                 SweetAlert.swal({
                         title: "Verification Submitted",

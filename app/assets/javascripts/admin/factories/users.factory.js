@@ -14,8 +14,14 @@
               return $http.put('/api/authenticator/reEnable?token=' + value)
             },
 
-            verify: function (id) {
-              return $http.put('/api/users/verify/' + id);
+            verify: function (users) {
+                var ids = [];
+                for(var i = 0; i < users.length; i++) {
+                    if(users[i].Selected) {
+                        ids.push(users[i].id);
+                    }
+                }
+              return $http.put('/api/users/verify', {ids: ids});
             },
 
             blockChange: function (id) {
@@ -46,7 +52,6 @@
             },
 
             regenerate: function (value) {
-                console.log(value);
                 return $http.put('/api/authenticator/regenerate', value)
             },
 

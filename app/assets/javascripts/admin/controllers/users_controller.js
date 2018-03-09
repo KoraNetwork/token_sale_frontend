@@ -166,14 +166,26 @@
                         });
                 };
 
-                $scope.verifyUser = function (id) {
-                    users.verify(id)
+                $scope.verifyUser = function (user) {
+                    if(user) user.Selected = true;
+                    users.verify(user ? [user] : $scope.users)
                         .success(function () {
-                            $state.reload();
+                            $scope.retrieveUsers();
                         })
-                        .error(function (resp) {
-                            $scope.errors({ errors: [resp.message] });
+                        .error(function (err) {
+                            $scope.errors({ errors: [err.message] });
                         })
+                };
+
+                $scope.checkAll = function () {
+                    if ($scope.selectedAll) {
+                        $scope.selectedAll = true;
+                    } else {
+                        $scope.selectedAll = false;
+                    }
+                    angular.forEach($scope.users, function (item) {
+                        item.Selected = $scope.selectedAll;
+                    });
                 };
 
                 $scope.blockedUser = function (id, index) {

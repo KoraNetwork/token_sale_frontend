@@ -10,7 +10,7 @@
                 | User
               .pull-right style="margin: -10px -20px 0 20px;"
                 .checkbox-cms.circle
-                  input type="checkbox" name="verify" id="verify" ng-click="filterUser('verify')"
+                  input type="checkbox" ng-model="checked" name="verify" id="verify" ng-click="filterUser('verify')"
                   label for="verify" style="font-size: 15px"
                     span
                     | Need To Verify
@@ -30,6 +30,11 @@
             table.table.table-striped.table-responsive
               thead
                 tr
+                  th.text-center ng-show="checked" style="min-width: 220px; display: flex; align-items: center"
+                    input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" style="margin: 0 10px 0"
+                      | Select all
+                      a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser()" ng-show="selectedAll"
+                        | Verify
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="firstName" tablesort-title="First Name"
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="lastName" tablesort-title="Last Name"
                   th.text-center tablesort=true ng-model="users_filters" tablesort-name="email" tablesort-title="Email"
@@ -43,6 +48,8 @@
                   td.text-center colspan="7"
                     | No results found
                 tr ng-repeat="user in users"
+                  td.text-center ng-show="checked"
+                    input type="checkbox" ng-model="user.Selected"
                   td.text-center
                     | {{ user.firstName }}
                   td.text-center
@@ -58,7 +65,7 @@
                   td.text-center
                     | {{ user.emailVerified ? 'Yes' : 'No' }}
                   td.text-right style="max-width: 240px"
-                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser(user.id)" ng-show="!user.verified"
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser(user)" ng-show="!user.verified" ng-hide="selectedAll"
                       | Verify
                     a.btn-xs.btn.btn-danger.btn-outline.status ng-click="blockedUser(user.id, $index)" ng-show="!user.enabled"
                       | Unblock
