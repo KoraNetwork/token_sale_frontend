@@ -65,8 +65,10 @@
                   td.text-center
                     | {{ user.emailVerified ? 'Yes' : 'No' }}
                   td.text-right style="max-width: 240px"
-                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser(user)" ng-show="!user.verified" ng-hide="selectedAll"
+                    a.btn-xs.btn.btn-info.btn-outline.status ng-click="verifyUser(user)" ng-show="!user.verified && !selectedAll"
                       | Verify
+                    a.btn-xs.btn.btn-danger.btn-outline.status ng-click="verifyUser(user)" ng-show="user.verified"
+                      | Unverify
                     a.btn-xs.btn.btn-danger.btn-outline.status ng-click="blockedUser(user.id, $index)" ng-show="!user.enabled"
                       | Unblock
                     a.btn-xs.btn.btn-info.btn-outline.status ng-click="blockedUser(user.id, $index)" ng-show="user.enabled"

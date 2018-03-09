@@ -81,7 +81,7 @@
                 $q(function (resolve){
                     resolve($scope.current_user)
                 }).then(function () {
-                    if (!$scope.current_user.onfidoChecked && $scope.current_user.verified) {
+                    if ($scope.current_user.verified) {
                         $scope.current_user.verStatus = 'Verified'
                     }
                     if ($scope.current_user.onfidoChecked && !$scope.current_user.verified) {
