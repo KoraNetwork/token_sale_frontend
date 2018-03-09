@@ -43,8 +43,8 @@
                             ]
                         });
                     })
-                    .error(function(){
-
+                    .error(function(resp){
+                        console.log(resp)
                     })
             };
 
@@ -63,6 +63,7 @@
               users.completeOnfido()
                   .success(function(resp) {
                       $scope.current_user.onfidoImage = resp.documentUrl;
+                      window.location.reload();
                   })
                   .error(function(err) {
                       console.log(err)
@@ -84,10 +85,10 @@
                     if ($scope.current_user.verified) {
                         $scope.current_user.verStatus = 'Verified'
                     }
-                    if ($scope.current_user.onfidoChecked && !$scope.current_user.verified) {
+                    if ($scope.current_user.needVerify && !$scope.current_user.verified) {
                         $scope.current_user.verStatus = 'Submitted'
                     }
-                    if (!$scope.current_user.onfidoChecked && !$scope.current_user.verified) {
+                    if (!$scope.current_user.needVerify && !$scope.current_user.verified) {
                         $scope.current_user.verStatus = 'Verify Now'
                     }
                 });
