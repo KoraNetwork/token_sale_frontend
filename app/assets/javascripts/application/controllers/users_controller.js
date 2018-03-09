@@ -631,7 +631,7 @@
                         closeOnConfirm: true},
                     function(confirm){
                         if (confirm) {
-                            $state.go('dashboard');
+                            window.location.reload();
                             SweetAlert.close();
                         }
                     }
