@@ -26,6 +26,7 @@
     "angular-ui-mask": "^1.8.7",
     "angularjs-slider": "^6.0.0",
     "animate.css": "^3.5.2",
+    "intl-tel-input": "^12.1.11",
     "moment": "^2.19.4",
     "ng-dialog": "^0.6.4",
     "onfido-sdk-ui": "^2.2.0",

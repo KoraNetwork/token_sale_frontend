@@ -171,6 +171,7 @@
                     users.verify(user ? [user] : $scope.users)
                         .success(function () {
                             $scope.retrieveUsers();
+                            $scope.message({ message: ["Complete"] })
                         })
                         .error(function (err) {
                             $scope.errors({ errors: [err.message] });

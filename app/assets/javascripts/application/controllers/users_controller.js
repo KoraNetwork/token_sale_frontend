@@ -14,10 +14,32 @@
             $scope.onfidoImage = {};
             $scope.userNameAvailable = true;
 
+            $(document).ready($("#phone").intlTelInput({
+                nationalMode: false,
+                customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+                    $scope.dialCode = selectedCountryData.dialCode;
+                    return selectedCountryPlaceholder;
+                },
+                initialCountry: "auto",
+                geoIpLookup: function (callback) {
+                    $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                        var countryCode = (resp && resp.country) ? resp.country : "";
+                        callback(countryCode);
+                    });
+                }
+            }));
+
+            $("#phone").on("change", function() {
+                $scope.$apply(function () {
+                    $scope.current_user.phone = $("#phone").intlTelInput("getNumber");
+                })
+            });
+
             $scope.check = function () {
                 users.profile()
                     .success(function (resp) {
                         $scope.current_user = resp;
+                        $("#phone").intlTelInput("setNumber", '+' + resp.phone);
                         $scope.current_user.document = $scope.current_user.documentUrl;
                     })
             };

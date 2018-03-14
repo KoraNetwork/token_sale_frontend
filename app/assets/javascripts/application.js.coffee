@@ -39,6 +39,8 @@
 #= require sweetalert/dist/sweetalert.min
 #= require angular-sweetalert/SweetAlert
 #= require angular-ui-mask/dist/mask.js
+#= require intl-tel-input/build/js/intlTelInput.min.js
+#= require intl-tel-input/build/js/utils.js
 #= require moment/min/moment.min.js
 #= require onfido-sdk-ui/dist/onfido.min.js
 # load angular modules

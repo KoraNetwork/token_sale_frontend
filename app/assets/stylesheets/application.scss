@@ -18,6 +18,7 @@
 //= require angular-ui-bootstrap/dist/ui-bootstrap-csp.css
 //= require ui-select/dist/select.min.css
 //= require onfido-sdk-ui/dist/style.css
+//= require intl-tel-input/build/css/intlTelInput.css
 //= require_tree .
 //= require_tree ./modules
 
@@ -182,4 +183,10 @@ a:hover{
   100% {
     transform: rotate(360deg);
   }
+}
+
+.iti-flag {background-image: url("intl-tel-input/build/img/flags.png");}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .iti-flag {background-image: url("intl-tel-input/build/img/flags@2x.png");}
 }

@@ -44,8 +44,8 @@
             input#state.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.state" maxlength="64"
         .col-md-4
           .form-group
-            label.star for="phn"  Phone Number
-            input#phn.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.phone" ui-mask='+9 (999) 999-99-99' ui-mask-use-viewvalue="true"
+            label.star Phone Number
+            input.form-control-profile_style_input id="phone" type="text" ng-disabled="current_user.verified" ng-model="current_user.phone"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"

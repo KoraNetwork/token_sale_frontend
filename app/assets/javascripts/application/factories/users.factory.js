@@ -128,9 +128,15 @@
 
                 var fd = new FormData();
 
+                if(user.phone) {
+                    if(user.phone.includes('+')){
+                        user.phone = user.phone.slice(1)
+                    }
+                    fd.append('phone', user.phone || '');
+                }
+
                 fd.append('firstName', user.firstName || '');
                 fd.append('lastName', user.lastName || '');
-                fd.append('phone', user.phone || '');
                 fd.append('country', user.countryObj ? user.countryObj.countryCode : '');
                 fd.append('dateOfBirth', user.dateOfBirth || '');
                 fd.append('streetAddress', user.streetAddress || '');
