@@ -16,10 +16,6 @@
 
             $(document).ready($("#phone").intlTelInput({
                 nationalMode: false,
-                customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
-                    $scope.dialCode = selectedCountryData.dialCode;
-                    return selectedCountryPlaceholder;
-                },
                 initialCountry: "auto",
                 geoIpLookup: function (callback) {
                     $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
@@ -39,8 +35,17 @@
                 users.profile()
                     .success(function (resp) {
                         $scope.current_user = resp;
-                        $("#phone").intlTelInput("setNumber", '+' + resp.phone);
                         $scope.current_user.document = $scope.current_user.documentUrl;
+                        if(resp && !resp.phone) {
+                            $("#phone").intlTelInput({
+                                customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+                                    $scope.dialCode = selectedCountryData.dialCode;
+                                    return selectedCountryPlaceholder;
+                                }
+                            });
+                        } else {
+                            $("#phone").intlTelInput("setNumber", '+' + resp.phone);
+                        }
                     })
             };
 

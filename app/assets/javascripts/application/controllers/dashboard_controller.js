@@ -43,75 +43,6 @@
 
             $scope.$parent.retrieveTransactions();
 
-            $scope.ethVerified = function () {
-              if (!$scope.current_user.ethWallet) {
-                  SweetAlert.swal({
-                          title: "Verify your ID",
-                          text: "Please verify your ID first.",
-                          confirmButtonColor: "#DD6B55",
-                          confirmButtonText: "OK",
-                          showCancelButton: true,
-                          width: 600,
-                          padding: 100,
-                          closeOnConfirm: true
-                      }, function(confirm) {
-                          if(confirm) {
-                              window.location.hash = '#/profile/verify_id';
-                              SweetAlert.close();
-                          }
-                      }
-                  );
-              } else {
-                  $scope.ether();
-              }
-            };
-
-            $scope.ether = function () {
-                if ($scope.$parent.current_user.verified) {
-                    ngDialog.open({
-                        templateUrl: 'application/templates/home/eth_dialog.html',
-                        className: 'ngdialog-theme-default buy-width',
-                        scope: $scope,
-                        controller: 'DashboardController'
-                    });
-                }
-            };
-
-            $scope.btcVerified = function () {
-                if (!$scope.current_user.btcWallet) {
-                    SweetAlert.swal({
-                            title: "Verify your ID",
-                            text: "Please verify your ID first.",
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "OK",
-                            showCancelButton: true,
-                            width: 600,
-                            padding: 100,
-                            closeOnConfirm: true
-                        }, function(confirm) {
-                            if(confirm) {
-                                window.location.hash = '#/profile/verify_id';
-                                SweetAlert.close();
-                            }
-                        }
-                    );
-                }
-                else {
-                    $scope.btc();
-                }
-            };
-
-            $scope.btc = function () {
-                if ($scope.$parent.current_user.verified) {
-                    ngDialog.open({
-                        templateUrl: 'application/templates/home/btc_dialog.html',
-                        className: 'ngdialog-theme-default buy-width',
-                        scope: $scope,
-                        controller: 'DashboardController'
-                    });
-                }
-            };
-
             $scope.ethDialog = function () {
                 if ($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address) {
                     SweetAlert.swal({
@@ -131,8 +62,31 @@
                         }
                     );
                 }
-                else {
-                    $scope.ethVerified();
+                if (!$scope.current_user.ethWallet) {
+                    SweetAlert.swal({
+                            title: "Verify your ID",
+                            text: "Please verify your ID first.",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "OK",
+                            showCancelButton: true,
+                            width: 600,
+                            padding: 100,
+                            closeOnConfirm: true
+                        }, function(confirm) {
+                            if(confirm) {
+                                window.location.hash = '#/profile/verify_id';
+                                SweetAlert.close();
+                            }
+                        }
+                    );
+                }
+                if ($scope.$parent.current_user.verified) {
+                    ngDialog.open({
+                        templateUrl: 'application/templates/home/eth_dialog.html',
+                        className: 'ngdialog-theme-default buy-width',
+                        scope: $scope,
+                        controller: 'DashboardController'
+                    });
                 }
             };
 
@@ -157,9 +111,32 @@
                     }
                   );
               }
-              else {
-                    $scope.btcVerified();
-                }
+              if (!$scope.current_user.btcWallet) {
+                  SweetAlert.swal({
+                          title: "Verify your ID",
+                          text: "Please verify your ID first.",
+                          confirmButtonColor: "#DD6B55",
+                          confirmButtonText: "OK",
+                          showCancelButton: true,
+                          width: 600,
+                          padding: 100,
+                          closeOnConfirm: true
+                      }, function(confirm) {
+                          if(confirm) {
+                              window.location.hash = '#/profile/verify_id';
+                              SweetAlert.close();
+                          }
+                      }
+                  );
+              }
+              if ($scope.$parent.current_user.verified) {
+                  ngDialog.open({
+                      templateUrl: 'application/templates/home/btc_dialog.html',
+                      className: 'ngdialog-theme-default buy-width',
+                      scope: $scope,
+                      controller: 'DashboardController'
+                  });
+              }
             };
         }])
 }());
