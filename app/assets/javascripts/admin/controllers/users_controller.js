@@ -192,7 +192,8 @@
                 $scope.blockedUser = function (id, index) {
                     users.blockChange(id)
                         .success(function (resp) {
-                            $scope.users[index] = resp[0]
+                            $scope.users[index] = resp[0];
+                            $scope.retrieveUsers()
                         })
                         .error(function (err) {
                             $scope.errors({ errors: [err.message] });
