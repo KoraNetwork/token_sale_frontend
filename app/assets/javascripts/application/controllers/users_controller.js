@@ -14,16 +14,23 @@
             $scope.onfidoImage = {};
             $scope.userNameAvailable = true;
 
-            $(document).ready($("#phone").intlTelInput({
-                nationalMode: false,
-                initialCountry: "auto",
-                geoIpLookup: function (callback) {
-                    $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-                        var countryCode = (resp && resp.country) ? resp.country : "";
-                        callback(countryCode);
-                    });
-                }
-            }));
+            $(document).ready(
+                $q(function (resolve) {
+                    resolve($scope.current_user)
+                }).then(function (el) {
+                    $("#phone").intlTelInput({
+                        nationalMode: false,
+                        initialCountry: "auto",
+                        allowDropdown: $scope.current_user && $scope.current_user.verified ? false : true,
+                        geoIpLookup: function (callback) {
+                            $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                                var countryCode = (resp && resp.country) ? resp.country : "";
+                                callback(countryCode);
+                            });
+                        }
+                    })
+                })
+            );
 
             $("#phone").on("change", function() {
                 $scope.$apply(function () {
