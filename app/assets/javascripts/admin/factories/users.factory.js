@@ -80,6 +80,10 @@
                 return $http.put('/api/users/allocate/' + id, { KNT: knt });
             },
 
+            removeBonus: function (id, data) {
+                return $http.put('/api/users/allocate/' + id, { MVPKNT: data });
+            },
+
             allocateHistory: function (id) {
                 return $http.get('/api/users/allocate/' + id);
             },

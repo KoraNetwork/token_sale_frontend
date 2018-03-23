@@ -321,6 +321,26 @@
                         })
                 };
 
+                $scope.deleteKnt = function () {
+                    users.allocate($stateParams.id, '-' + $scope.removeKnt)
+                        .success(function (resp) {
+                            $scope.message({message: ["Successfully removed"]})
+                        })
+                        .error(function (err) {
+                            $scope.errors({errors: [err.message]})
+                        })
+                };
+
+                $scope.deleteBonusKnt = function () {
+                    users.removeBonus($stateParams.id, '-' + $scope.removeBonusKnt)
+                        .success(function (resp) {
+                            $scope.message({message: ["Successfully removed"]})
+                        })
+                        .error(function (err) {
+                            $scope.errors({errors: [err.message]})
+                        })
+                };
+
                 $scope.allocateHistory = function () {
                     users.allocateHistory($stateParams.id)
                         .success(function(data){

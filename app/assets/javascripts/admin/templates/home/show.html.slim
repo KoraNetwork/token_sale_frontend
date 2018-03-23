@@ -109,6 +109,22 @@
                   a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="allocate()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
                     i.fa.fa-check
                     | Allocate KNT
+            table.border-radius-table style="margin-top: 20px"
+              tr
+                td
+                  input.bg-white ng-model="removeKnt" type="number"
+                td
+                  a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="deleteKnt()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                    i.fa.fa-check
+                    | Remove KNT
+            table.border-radius-table style="margin-top: 20px"
+              tr
+                td
+                  input.bg-white ng-model="removeBonusKnt" type="number"
+                td
+                  a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="deleteBonusKnt()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                    i.fa.fa-check
+                    | Remove Bonus KNT
 
             div.history ng-click="history = true; allocateHistory()" ng-hide="history" style="margin: 10px 0 0 20px"
               | Show History
