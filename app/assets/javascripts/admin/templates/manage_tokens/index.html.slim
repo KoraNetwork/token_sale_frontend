@@ -26,6 +26,8 @@
                         | {{ (total.currentAmountKNT).toFixed(2) }} KNT
                       span.manage-balances-title-data
                         | {{ (total.currentAmountUSD).toFixed(2) }} USD
+                      span.manage-balances-title-data
+                        | {{ (total.currentAmountMVPKNT).toFixed(2) }} BonusKNT
                   span.vertical-line
                   div.manage-balances-block
                     span.manage-balances-title
@@ -38,10 +40,12 @@
                   div.manage-balances-block
                     span.manage-balances-title
                       | Admin Balance
-                      span
-                        | KNT
                       span.manage-balances-title-data
-                        | {{ (total.adminAmountKNT).toFixed(2) }}
+                        | {{ (total.adminAmountKNT).toFixed(2) }} KNT
+                      span.manage-balances-title-data
+                        | {{ (total.adminAmountUSD).toFixed(2) }} USD
+                      span.manage-balances-title-data
+                        | {{ (total.adminAmountMVPKNT).toFixed(2) }} KNT
             hr
             div.middle
             div.middle-block

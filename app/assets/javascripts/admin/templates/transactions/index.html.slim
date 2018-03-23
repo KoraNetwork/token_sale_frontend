@@ -17,6 +17,7 @@
                   th tablesort=true ng-model="transactions_filters" tablesort-name="value"  tablesort-title="Amount (Crypto)"
                   th tablesort=true ng-model="transactions_filters" tablesort-name="USD"    tablesort-title="Amount (USD)"
                   th tablesort=true ng-model="transactions_filters" tablesort-name="KNT"    tablesort-title="Amount (KNT)"
+                  th tablesort=true ng-model="transactions_filters" tablesort-name="KNT"    tablesort-title="Amount (BonusKNT)"
                   th tablesort=true ng-model="transactions_filters" tablesort-name="status" tablesort-title="Status"
                   th tablesort=true ng-model="transactions_filters" tablesort-name="email"  tablesort-title="Email"
               tbody
@@ -29,11 +30,13 @@
                   td
                     | {{ transaction.type }}
                   td
-                    | {{ transaction.value }}
+                    | {{ transaction.allKNT }}
                   td
                     | {{ transaction.USD }}
                   td
                     | {{ (transaction.KNT).toFixed(3) }}
+                  td
+                    | {{ (transaction.MVPKNT).toFixed(3) }}
                   td
                     | {{ transaction.status }}
                   td
