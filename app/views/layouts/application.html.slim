@@ -6,6 +6,12 @@ html(lang="en")
     = javascript_include_tag "application"
     = csrf_meta_tags
     script src='https://www.google.com/recaptcha/api.js'
+    script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112307648-1"
+      javascript:
+          | window.dataLayer = window.dataLayer || [];
+          | function gtag() {dataLayer.push(arguments);}
+          | gtag('js', new Date());
+          | gtag('config', 'UA-112307648-1');
   body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done style="font-family: Muli" class="{{ !current_user ? 'landing-page' : 'user-page' }}" landing-scrollspy="" ng-app="KoraICOFrontendApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
     div ng-include="'application/templates/common/loading.html'" ng-hide="isInitialized"
     .row

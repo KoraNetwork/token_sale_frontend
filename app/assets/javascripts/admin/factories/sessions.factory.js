@@ -35,7 +35,7 @@
             },
             
             changePassword: function (options) {
-                return $http.put('api/password/change', options, {
+                return $http.put('/api/password/change', options, {
                     headers: { 'Content-Type': undefined }
                 })
             }
