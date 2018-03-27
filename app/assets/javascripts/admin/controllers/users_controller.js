@@ -317,11 +317,18 @@
                             $scope.message({ message: ["KNT successfully sent"] })
                         })
                         .error(function(data){
+                            $scope.errors({ errors: [data.message] });
                             $scope.formPending = false;
                         })
                 };
 
                 $scope.deleteKnt = function () {
+
+                    if (!$scope.removeKnt) {
+                        $scope.errors({ errors: ["Please enter amount!"] });
+                        return;
+                    }
+
                     users.allocate($stateParams.id, '-' + $scope.removeKnt)
                         .success(function (resp) {
                             $scope.message({message: ["Successfully removed"]});
@@ -334,6 +341,12 @@
                 };
 
                 $scope.deleteBonusKnt = function () {
+
+                    if (!$scope.removeBonusKnt) {
+                        $scope.errors({ errors: ["Please enter amount!"] });
+                        return;
+                    }
+
                     users.removeBonus($stateParams.id, '-' + $scope.removeBonusKnt)
                         .success(function (resp) {
                             $scope.message({message: ["Successfully removed"]});
