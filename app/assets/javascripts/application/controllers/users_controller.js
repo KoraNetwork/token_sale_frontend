@@ -166,10 +166,10 @@
                 $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
                 $scope.onlyLetters = /^[A-Za-z]+$/;
 
-                users.checkInwite($stateParams.token)
-                    .error(function () {
-                        $state.go('login')
-                    });
+                // users.checkInwite($stateParams.token)
+                //     .error(function () {
+                //         $state.go('login')
+                //     });
 
                 if ($stateParams.email) {
                     $scope.user.email = $stateParams.email;
@@ -329,10 +329,10 @@
                         error = true;
                     }
                     if ($state.current.name != 'us_register') {
-                        // if(!$scope.user.agree2) {
-                        //     $scope.errors({ errors: ["Please click I am not a US citizen"] });
-                        //     error = true;
-                        // }
+                        if(!$scope.user.agree2) {
+                            $scope.errors({ errors: ["Please click I am not a US citizen"] });
+                            error = true;
+                        }
                         if ($scope.user.nationalityObj.countryCode === 'USA' || $scope.user.countryObj.countryCode === 'USA') {
                             $scope.usaCountryDialog();
                             error = true;
@@ -399,17 +399,17 @@
                         })
                 };
 
-                // $scope.isUsaIp = function (response) {
-                //     if ($state.$current.name != 'us_register') {
-                //         users.verifyIp(response)
-                //             .success(function (data) {
-                //                 if(data.hasUSIP === true){
-                //                     $scope.openUsaIpDialog();
-                //                     return false
-                //                 }
-                //             });
-                //     }
-                // };
+                $scope.isUsaIp = function (response) {
+                    if ($state.$current.name != 'us_register') {
+                        users.verifyIp(response)
+                            .success(function (data) {
+                                if(data.hasUSIP === true){
+                                    $scope.openUsaIpDialog();
+                                    return false
+                                }
+                            });
+                    }
+                };
 
                 $scope.openUsaIpDialog = function () {
                     SweetAlert.swal({

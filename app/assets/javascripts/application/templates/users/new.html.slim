@@ -110,11 +110,11 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             span<
               | documents.
       .form-group.text-left ng-hide="$state.current.name == 'us_register'"
-        / .checkbox
-        /   input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
-        /   label for="agree2"
-        /     span.check
-        /     | I declare that I am not a US citizen
+        .checkbox
+          input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
+          label for="agree2"
+            span.check
+            | I declare that I am not a US citizen
       .form-group.text-left
         .description
           | Are you a US-based Accredited Investor, or a non-individual entity interested in our Token Sale?
