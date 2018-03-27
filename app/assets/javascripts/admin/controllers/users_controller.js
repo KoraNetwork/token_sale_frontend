@@ -325,6 +325,7 @@
                     users.allocate($stateParams.id, '-' + $scope.removeKnt)
                         .success(function (resp) {
                             $scope.message({message: ["Successfully removed"]});
+                            $scope.allocateHistory();
                             $scope.removeKnt = undefined;
                         })
                         .error(function (err) {
@@ -336,6 +337,7 @@
                     users.removeBonus($stateParams.id, '-' + $scope.removeBonusKnt)
                         .success(function (resp) {
                             $scope.message({message: ["Successfully removed"]});
+                            $scope.allocateHistory();
                             $scope.removeBonusKnt = undefined;
                         })
                         .error(function (err) {
@@ -347,11 +349,14 @@
                     users.allocateHistory($stateParams.id)
                         .success(function(data){
                             $scope.knts = data.data;
+                            $scope.kntBalance = data.KNTBalance;
                         })
                         .error(function(data){
 
                         })
                 };
+
+                $scope.allocateHistory();
 
                 $scope.openDocumentCountry = function(){
                     ngDialog.closeAll();
