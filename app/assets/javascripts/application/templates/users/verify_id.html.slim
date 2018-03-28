@@ -22,10 +22,10 @@
           .form-group
             label.star for="lstn"  Last Name
             input#lstn.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.lastName"
-        .col-md-4 style="width: 253.33px"
+        .col-md-4
           .form-group
-            label.star for="state"  State
-            input#state.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.state" maxlength="64"
+            label.star Phone Number
+            input.form-control-profile_style_input id="phone" type="text" ng-disabled="current_user.verified" ng-model="current_user.phone"
         .col-md-4
           .form-group style="display: grid"
             label.star  Country
@@ -40,10 +40,10 @@
           .form-group
             label.star for="city"  City
             input#city.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.city" maxlength="64"
-        .col-md-4
+        .col-md-4 style="width: 253.33px"
           .form-group
-            label.star Phone Number
-            input.form-control-profile_style_input id="phone" type="text" ng-disabled="current_user.verified" ng-model="current_user.phone"
+            label.star for="state"  State
+            input#state.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.state" maxlength="64"
       .col-md-8
         .col-md-12
           .form-group style="display: grid"
