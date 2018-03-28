@@ -636,9 +636,7 @@
                     return;
                 }
                 $scope.processing = true;
-                // $scope.current_user.documentCountry = $scope.current_user.documentCountryObj.countryCode;
                 $scope.current_user.country = $scope.current_user.countryObj.countryCode;
-                // $scope.current_user.identificationType = $scope.current_user.identificationTypeObj.id;
                 users.verifyID($scope.current_user)
                   .success(function(resp){
                     $scope.processing = false;
@@ -666,7 +664,7 @@
                         closeOnConfirm: true},
                     function(confirm){
                         if (confirm) {
-                            window.location.reload();
+                            $scope.selects();
                             SweetAlert.close();
                         }
                     }

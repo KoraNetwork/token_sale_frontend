@@ -22,7 +22,10 @@
           .form-group
             label.star for="lstn"  Last Name
             input#lstn.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.lastName"
-      .col-md-12
+        .col-md-4 style="width: 253.33px"
+          .form-group
+            label.star for="state"  State
+            input#state.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.state" maxlength="64"
         .col-md-4
           .form-group style="display: grid"
             label.star  Country
@@ -37,11 +40,6 @@
           .form-group
             label.star for="city"  City
             input#city.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.city" maxlength="64"
-      .col-md-8
-        .col-md-4 style="width: 253.33px"
-          .form-group
-            label.star for="state"  State
-            input#state.form-control-profile_style_input type="text" ng-disabled="current_user.verified" ng-model="current_user.state" maxlength="64"
         .col-md-4
           .form-group
             label.star Phone Number
@@ -73,5 +71,5 @@
           img.onfido-image id="view" src="{{current_user.document || current_user.onfidoImage}}" ng-click="zoomImage()"
       .col-md-12 ng-hide="current_user.verified"
         .form-group_profile_button.text-left
-          button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit"
+          button.btn_profile_style data-style="expand-left" ladda="formPending" type="submit" style="padding: 0 0 0; margin-left: 15px"
             | SUBMIT

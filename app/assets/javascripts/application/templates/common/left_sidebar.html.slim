@@ -6,7 +6,7 @@
       img src="/images/group-7@3x.png" ng-hide="current_user.verified" style="width: 16px; margin-top: -3px"
       i.fa.fa-star style="color: #a4edca; font-size: 14px" ng-show="current_user.verified"
       a.left-nav-unverified-id.regular href="/#/profile/{{ current_user.verified ? 'update_profile' : 'verify_id' }}" style="color: {{ current_user.verified ? '#a4edca' : 'white' }}"
-        | {{ current_user.verStatus }}
+        | {{ current_user.verStatus || 'Verify Now'}}
     hr
     li.align-center-nav-text.left-nav-balance-position
       span.left-nav-unverified-id-knt.white

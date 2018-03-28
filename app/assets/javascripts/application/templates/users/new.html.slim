@@ -13,13 +13,13 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             | First Name
           input.form-control name="firstName" type="text" ng-pattern="onlyLetters" ng-model="user.firstName" class="{{ _.contains(invalid_fields, 'firstName') ? 'error' : '' }}" ng-change="removeError('firstName')"
             span ng-show="registrationForm.firstName.$error.pattern"
-              | First Name can not contain integer or special characters
+              | First Name can not contain digits or special characters
         .form-group
           span.placeholder
             | Last Name
           input.form-control name="lastName" type="text" ng-pattern="onlyLetters" ng-model="user.lastName" class="{{ _.contains(invalid_fields, 'lastName') ? 'error' : '' }}" ng-change="removeError('lastName')"
             span ng-show="registrationForm.lastName.$error.pattern"
-              | Last Name can not contain integer or special characters
+              | Last Name can not contain digits or special characters
         .form-group
           span.placeholder
             | Email
