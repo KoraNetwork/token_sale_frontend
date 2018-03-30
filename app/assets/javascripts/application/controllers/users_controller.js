@@ -665,6 +665,7 @@
                     function(confirm){
                         if (confirm) {
                             $scope.selects();
+                            $scope.check();
                             SweetAlert.close();
                         }
                     }
