@@ -41,6 +41,7 @@
             $scope.check = function () {
                 users.profile()
                     .success(function (resp) {
+                        $scope.selects();
                         $scope.current_user = resp;
                         $scope.current_user.document = $scope.current_user.documentUrl;
                         if(resp && !resp.phone) {
@@ -645,6 +646,7 @@
                     $scope.verifiedID();
                   })
                   .error(function(resp){
+                    $("#phone").intlTelInput("setNumber", '+' + $scope.current_user.phone);
                     $scope.processing = false;
                     if(resp.Errors) {
                         $scope.parseErrors(resp);
@@ -678,16 +680,10 @@
                 })
             };
 
-
-            $scope.$watch('$state.current.name', function(state){
-                if(state === 'verify_id') {
-                    $scope.selects();
-                    $scope.check();
-                }
-            });
-
             $scope.selects = function () {
-                users.getSelect()
+                $q(function (resolve) {
+                    resolve($scope.current_user)
+                }).then(users.getSelect()
                     .success(function (data) {
                         $scope.countries = data.country;
                         _.map( $scope.countries, function(el) {
@@ -707,8 +703,14 @@
                     })
                     .error(function (err) {
 
-                    })
+                    }))
             };
+
+            $scope.$watch('$state.current.name', function(state){
+                if(state === 'verify_id') {
+                    $scope.check()
+                }
+            });
 
             $scope.checkHistory = function () {
               users.getHistory()

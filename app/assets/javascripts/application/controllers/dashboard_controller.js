@@ -80,7 +80,7 @@
                         }
                     );
                 }
-                if ($scope.$parent.current_user.verified) {
+                if ($scope.$parent.current_user.verified && !($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address)) {
                     ngDialog.open({
                         templateUrl: 'application/templates/home/eth_dialog.html',
                         className: 'ngdialog-theme-default buy-width',
