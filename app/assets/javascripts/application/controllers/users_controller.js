@@ -165,7 +165,7 @@
                 $scope.slide = 0;
                 $scope.invalid_fields = [];
                 $scope.passwordStrength = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-                $scope.onlyLetters = /^[A-Za-z]+$/;
+                $scope.onlyLetters = /^[A-Za-z]+[A-Za-z\-\s]*[A-Za-z]$/;
 
                 // users.checkInwite($stateParams.token)
                 //     .error(function () {
