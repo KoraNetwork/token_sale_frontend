@@ -632,9 +632,17 @@
             };
 
             $scope.verifyID = function(){
-                if (!/^(?:[a-zA-Z]+(?:[.'\-,])?\s?)+$/.test($scope.current_user.city)) {
-                    $scope.errors({ errors: ["Invalid City"] });
+                if (!$scope.current_user.phone) {
+                    $scope.errors({ errors: ["Phone number must be set"] });
                     return;
+                }
+                if (!$scope.current_user.lastName) {
+                  $scope.errors({ errors: ["Last Name number must be set"] });
+                  return;
+                }
+                if (!$scope.current_user.firstName) {
+                  $scope.errors({ errors: ["First Name number must be set"] });
+                  return;
                 }
                 $scope.processing = true;
                 $scope.current_user.country = $scope.current_user.countryObj.countryCode;
