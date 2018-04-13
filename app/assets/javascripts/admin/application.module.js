@@ -73,6 +73,11 @@
                     url: '/transactions',
                     templateUrl: 'admin/templates/transactions/index.html',
                     controller: 'TransactionsController'
+                })
+                .state('wallets', {
+                    url: '/wallets',
+                    templateUrl: 'admin/templates/wallets/index.html',
+                    controller: 'TransactionsController'
                 });
     }]);
 

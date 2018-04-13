@@ -31,6 +31,11 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             i.fa.fa-list-alt
             span.custom-nav-block-text
               | Transactions list
+        li ng-class=("{tabActive: $state.current.name.includes('wallets')}")
+          a href="#/wallets"
+            i.fa.fa-list-alt
+            span.custom-nav-block-text
+              | Wallets
 
     .custom-nav-logout
       span

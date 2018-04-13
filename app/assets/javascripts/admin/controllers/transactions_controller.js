@@ -70,5 +70,24 @@
                     $scope.resetFilters();
                 }
 
+                $scope.getWallets = function () {
+                  transactions.getWallets()
+                    .success(function(resp) {
+                      $scope.wallet = resp;
+                    })
+                };
+
+                $scope.getWallets();
+
+                $scope.updateWallets = function () {
+                  transactions.updateWallets($scope.wallet)
+                    .success(function(resp) {
+                      $scope.message({ message: ["Successfully updated"] })
+                    })
+                    .error(function(err) {
+                      $scope.errors({ errors: [err.message] })
+                    })
+                }
+
             }])
 }());

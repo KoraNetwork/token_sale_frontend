@@ -1,0 +1,28 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+                span
+                  | Transactions list
+            .dashboard-body
+            .right-block style="padding-top: 20px; float: none"
+              table.border-radius-table
+                tr
+                  td.bg-gray
+                    | Bitcoin Address
+                  td
+                    input.bg-white name="sendingEthereumAddress" ng-model="wallet.bitcoinAddress"
+
+              table.border-radius-table style="margin-top: 20px"
+                tr
+                  td.bg-gray
+                    | Ethereum Address
+                  td
+                    input.bg-white name="sendingBitcoinAddress" ng-model="wallet.ethereumAddress"
+            div style="padding: 25px 0"
+              a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="updateWallets()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                | Update Wallets

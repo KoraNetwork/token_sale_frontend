@@ -19,6 +19,14 @@
 
             filters: function () {
                 return $http.get('/api/transactions/filters');
+            },
+
+            getWallets: function () {
+                return $http.get('/api/koraWallets');
+            },
+
+            updateWallets: function (data) {
+              return $http.put('/api/koraWallets', data);
             }
         }
     }])
