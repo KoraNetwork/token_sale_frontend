@@ -7,9 +7,9 @@
             .dashboard-header
               img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
                 span
-                  | Transactions list
+                  | Kora Wallets
             .dashboard-body
-            .right-block style="padding-top: 20px; float: none"
+            .right-block style="padding-top: 20px"
               table.border-radius-table
                 tr
                   td.bg-gray
@@ -23,6 +23,6 @@
                     | Ethereum Address
                   td
                     input.bg-white name="sendingBitcoinAddress" ng-model="wallet.ethereumAddress"
-            div style="padding: 25px 0"
-              a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="updateWallets()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
-                | Update Wallets
+              div style="padding: 25px 0"
+                a.ladda-button.btn.btn-confirm ladda="formPending" ng-click="updateWallets()" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                  | Update Wallets
