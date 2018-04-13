@@ -13,6 +13,7 @@
             $scope.countries = [];
             $scope.onfidoImage = {};
             $scope.userNameAvailable = true;
+            $scope.onfidoVerified = false;
 
             $(document).ready(
                 $q(function (resolve) {
@@ -64,10 +65,13 @@
                             token: resp.token,
                             containerId: 'onfido-mount',
                             onComplete: function() {
-                                $scope.createOnfido();
-                                onfidoOut.tearDown();
-                                ngDialog.closeAll();
-                                $scope.closeOnComplete();
+                                $scope.createOnfido()
+                                  .success(function () {
+                                    onfidoOut.tearDown();
+                                    ngDialog.closeAll();
+                                    $scope.closeOnComplete();
+                                    $scope.onfidoVerified = true;
+                                  });
                             },
                             language: {
                                 locale: 'us'
@@ -106,11 +110,13 @@
             };
 
             $scope.renderOnfido = function () {
+              if (!$scope.onfidoVerified) {
                 $q(function (resolve) {
-                    resolve($scope.onfidoDialog())
+                  resolve($scope.onfidoDialog())
                 }).then(function (el) {
-                    $scope.generateOnfido()
+                  $scope.generateOnfido()
                 })
+              }
             };
 
             $scope.verificationStatus = function () {

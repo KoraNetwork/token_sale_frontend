@@ -65,7 +65,9 @@
             input#zip.form-control-profile_style_input-small type="text" ng-disabled="current_user.verified" ng-model="current_user.zip" maxlength="12"
       div.onfido ng-click="renderOnfido()" ng-hide="current_user.document || current_user.onfidoImage"
         .form-group
-          label Upload document
+          label ng-hide="onfidoVerified"
+            | Upload document
+          div.lds-circle ng-hide="!onfidoVerified"
       div.uploaded
         .form-group
           img.onfido-image id="view" src="{{current_user.document || current_user.onfidoImage}}" ng-click="zoomImage()"
