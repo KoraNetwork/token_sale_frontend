@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('KoraICOAdminApp')
-        .controller('TransactionsController', ['$scope', '$state', 'ngDialog', '$timeout', 'toaster', 'TransactionsFactory',
-            function ($scope, $state, ngDialog, $timeout, toaster, transactions) {
+        .controller('TransactionsController', ['$scope', '$state', 'ngDialog', '$timeout', 'toaster', 'TransactionsFactory', 'SweetAlert',
+            function ($scope, $state, ngDialog, $timeout, toaster, transactions, SweetAlert) {
 
                 $scope.I18n = I18n;
                 $scope.$state = $state;
@@ -80,13 +80,45 @@
                 $scope.getWallets();
 
                 $scope.updateWallets = function () {
-                  transactions.updateWallets($scope.wallet)
-                    .success(function(resp) {
-                      $scope.message({ message: ["Successfully updated"] })
-                    })
-                    .error(function(err) {
-                      $scope.errors({ errors: [err.message] })
-                    })
+                  if (!$scope.wallet.bitcoinAddress) {
+                    $scope.errors({ errors: ["Bitcoin address must be set"] });
+                    return
+                  }
+                  if (!$scope.wallet.ethereumAddress) {
+                    $scope.errors({ errors: ["Ethereum address must be set"] });
+                    return
+                  }
+                  $scope.googleAuth();
+                };
+
+                $scope.googleAuth = function () {
+                  SweetAlert.swal({
+                      title: "Google Authenticator",
+                      type: "input",
+                      showCancelButton: true,
+                      inputPlaceholder: "Code",
+                      confirmButtonColor: "#DD6B55",confirmButtonText: "Send",
+                      closeOnConfirm: false,
+                      closeOnCancel: true,
+                      customClass: "show-input" },
+                    function(inputValue) {
+                      if (inputValue) {
+                        $scope.wallet.token = inputValue;
+                        transactions.updateWallets($scope.wallet)
+                          .success(function (data) {
+                            $scope.message({ message: ["Successfully updated."] });
+                            SweetAlert.close();
+                            $scope.getWallets();
+                          })
+                          .error(function (err) {
+                            $scope.errors({ errors: [err.message] });
+                          });
+                      } else {
+                        if (inputValue !== false) {
+                          $scope.errors({ errors: ["Please enter google authenticator"] });
+                        }
+                      }
+                    });
                 }
 
             }])
