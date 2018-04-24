@@ -14,7 +14,7 @@
                   | Purchase KNT with:
                 div.buy-area-right
                   span.buy
-                    a ng-click="ethDialog()"
+                    a ng-click="ethDialog($index+'eth')"
                       .blue-img
                         img.eth ng-src="/images/ic-ethereum.svg"
                       .text
@@ -23,7 +23,7 @@
                         .price
                           | 1 ETH = ${{ balance.ETH_USD }}
                   span.buy
-                    a ng-click="btcDialog()"
+                    a ng-click="btcDialog($index+'btc')"
                       .blue-img
                         img.btc ng-src="/images/ic-bitcoin.svg"
                       .text

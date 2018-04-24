@@ -11,6 +11,7 @@
             $scope.$state = $state;
             $scope.moment = moment;
             $scope.user = {};
+            $scope.ng_dialog = {};
 
             var timer = false;
 
@@ -48,29 +49,39 @@
               ngDialog.open({
                 templateUrl: 'application/templates/home/condition_dialog.html',
                 className: 'ngdialog-theme-default condition-width',
-                scope: $scope,
-                controller: 'DashboardController'
+                scope: $scope
               });
             };
 
             $scope.confirmCheckbox = function () {
-              if(!$scope.checked){
+              if(!$scope.ng_dialog.checked){
                 $scope.errors({ errors: ["Please confirm!"] });
                 return
               }
               $scope.current_user.confirmedReading = true;
               users.upsert($scope.current_user)
                 .success(function (resp) {
-                  $scope.current_user.confirmedReading = resp.confirmedReading;
+                  $scope.current_user = resp;
                   ngDialog.closeAll();
+                  if ($scope.enumDialog.includes('eth')) {
+                    ngDialog.open({
+                      templateUrl: 'application/templates/home/eth_dialog.html',
+                      className: 'ngdialog-theme-default buy-width',
+                      scope: $scope
+                    });
+                  }
+                  if ($scope.enumDialog.includes('btc') && !$scope.current_user.btcWallet) {
+                    ngDialog.open({
+                      templateUrl: 'application/templates/home/btc_dialog.html',
+                      className: 'ngdialog-theme-default buy-width',
+                      scope: $scope
+                    });
+                  }
                 })
             };
 
-            $scope.ethDialog = function () {
-                if (!$scope.current_user.confirmedReading) {
-                  $scope.conditionDialog();
-                  return
-                }
+            $scope.ethDialog = function ($index) {
+                $scope.enumDialog = $index;
                 if ($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address) {
                   SweetAlert.swal({
                       title: "It seems like you don't have Ethereum address in your profile.",
@@ -89,7 +100,7 @@
                     }
                   );
                 }
-                if (!$scope.current_user.ethWallet) {
+                if (!$scope.current_user.ethWallet && !$scope.current_user.verified) {
                   SweetAlert.swal({
                       title: "Verify your ID",
                       text: "Please verify your ID first.",
@@ -107,21 +118,21 @@
                     }
                   );
                 }
+                if (!$scope.current_user.confirmedReading && $scope.$parent.current_user.verified && $scope.current_user.ethWallet.address) {
+                    $scope.conditionDialog();
+                    return
+                }
                 if ($scope.$parent.current_user.verified && !($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address)) {
                   ngDialog.open({
                     templateUrl: 'application/templates/home/eth_dialog.html',
                     className: 'ngdialog-theme-default buy-width',
-                    scope: $scope,
-                    controller: 'DashboardController'
+                    scope: $scope
                   });
                 }
             };
 
-            $scope.btcDialog = function () {
-                if (!$scope.current_user.confirmedReading) {
-                  $scope.conditionDialog();
-                  return
-                }
+            $scope.btcDialog = function ($index) {
+                $scope.enumDialog = $index;
                 if ($scope.current_user.btcWallet && !$scope.current_user.btcWallet.address) {
                   SweetAlert.swal({
                           title: "It seems like you don't have Bitcoin address in your profile.",
@@ -142,7 +153,7 @@
                     }
                   );
               }
-              if (!$scope.current_user.btcWallet) {
+              if (!$scope.current_user.btcWallet && !$scope.current_user.verified) {
                   SweetAlert.swal({
                           title: "Verify your ID",
                           text: "Please verify your ID first.",
@@ -160,12 +171,15 @@
                       }
                   );
               }
+              if (!$scope.current_user.confirmedReading && $scope.$parent.current_user.verified && $scope.current_user.btcWallet.address) {
+                  $scope.conditionDialog();
+                  return
+              }
               if ($scope.$parent.current_user.verified) {
                   ngDialog.open({
                       templateUrl: 'application/templates/home/btc_dialog.html',
                       className: 'ngdialog-theme-default buy-width',
-                      scope: $scope,
-                      controller: 'DashboardController'
+                      scope: $scope
                   });
               }
             };

@@ -6,11 +6,11 @@
   iframe src="/docs/kora_technologies_limited_saft.pdf" style="width: 100%; height: 80%"
   .form-group.text-center
     .checkbox
-      input type="checkbox" id="checked" ng-model="checked"
+      input type="checkbox" id="checked" ng-model="ng_dialog.checked"
       label for="checked"
         span.check
-        | Check here to confirm that you have read. Understand and agree to Simple Agreement!
+        | Check here to confirm that you have read. Understand and agree <br> to Simple Agreement For Future Tokens!
   div.text-center
-    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirmCheckbox()" ng-disabled="!checked"
+    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirmCheckbox()" ng-disabled="!ng_dialog.checked"
       | Continue
   hr
