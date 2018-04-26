@@ -128,25 +128,25 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
         a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
           | Continue
       .tmp
-    .slide.slide-2.animated.fadeInRight uib-slide=true index="2"
-      div.text-center.step
-        | Step 3: Sending Wallet Address
-      .step-3 style="margin: auto"
-        .text-center.description
-          | If you entered a Bitcoin address and send from Ethereum, or entered an Ethereum address and send from Bitcoin, we won't be able to record your transaction. Make sure you contribute from the address you have entered with us. If it is a different address, please update it in your profile.
-        .form-group style="margin-top: 30px"
-          span.placeholder
-            | Sending Ethereum Address
-          input.form-control type="text" ng-model="user.sendingEthereumAddress"
-        .form-group style="margin-top: 30px"
-          span.placeholder
-            | Sending Bitcoin Address
-          input.form-control type="text" ng-model="user.bitcoinAddress"
-        div style="padding-top: 30px"
-          a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
-            | Back
-          a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="ethereum()" style="margin-left: 30px"
-            | Continue
+    / .slide.slide-2.animated.fadeInRight uib-slide=true index="2"
+    /   div.text-center.step
+    /     | Step 3: Sending Wallet Address
+    /   .step-3 style="margin: auto"
+    /     .text-center.description
+    /       | If you entered a Bitcoin address and send from Ethereum, or entered an Ethereum address and send from Bitcoin, we won't be able to record your transaction. Make sure you contribute from the address you have entered with us. If it is a different address, please update it in your profile.
+    /     .form-group style="margin-top: 30px"
+    /       span.placeholder
+    /         | Sending Ethereum Address
+    /       input.form-control type="text" ng-model="user.sendingEthereumAddress"
+    /     .form-group style="margin-top: 30px"
+    /       span.placeholder
+    /         | Sending Bitcoin Address
+    /       input.form-control type="text" ng-model="user.bitcoinAddress"
+    /     div style="padding-top: 30px"
+    /       a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+    /         | Back
+    /       a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="ethereum()" style="margin-left: 30px"
+    /         | Continue
     div.slide.slide-3.animated.fadeInRight uib-slide=true index="3"
       div.text-center.step
         | Step 4: 2-Factor Confirmation

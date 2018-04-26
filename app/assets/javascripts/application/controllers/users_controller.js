@@ -262,6 +262,7 @@
                             $scope.processing = false;
                             $scope.invalid_fields = [];
                             $scope.next();
+                            $scope.getQR();
                         })
                         .error(function (data) {
                             $scope.processing = false;
@@ -372,29 +373,29 @@
                         })
                 };
 
-                $scope.ethereum = function(){
-                    $scope.processing = true;
-                    if (!$scope.user.sendingEthereumAddress && !$scope.user.bitcoinAddress) {
-                        $scope.errors({ errors: ["Sending Ethereum or Bitcoin Address must be present!"] });
-                        return;
-                    }
-                    else{
-                        users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress' || $scope.user, 'bitcoinAddress'))
-                          .success(function(){
-                            $scope.getQR();
-                            $scope.next();
-                          })
-                          .error(function(resp){
-                              if (resp.Errors) {
-                                  $scope.parseErrors(resp);
-                              }
-                              else {
-                                  $scope.errors({ errors: [resp.message] })
-                              }
-                          })
-                    }
-                    $scope.processing = false;
-                };
+                // $scope.ethereum = function(){
+                //     $scope.processing = true;
+                //     if (!$scope.user.sendingEthereumAddress && !$scope.user.bitcoinAddress) {
+                //         $scope.errors({ errors: ["Sending Ethereum or Bitcoin Address must be present!"] });
+                //         return;
+                //     }
+                //     else{
+                //         users.checkUserInfo(_.pick($scope.user, 'sendingEthereumAddress' || $scope.user, 'bitcoinAddress'))
+                //           .success(function(){
+                //             $scope.getQR();
+                //             $scope.next();
+                //           })
+                //           .error(function(resp){
+                //               if (resp.Errors) {
+                //                   $scope.parseErrors(resp);
+                //               }
+                //               else {
+                //                   $scope.errors({ errors: [resp.message] })
+                //               }
+                //           })
+                //     }
+                //     $scope.processing = false;
+                // };
 
                 $scope.getQR = function(){
                     users.getQR()
@@ -745,11 +746,11 @@
             $scope.updateProfile = function(){
                 $scope.processing = true;
 
-                if(!$scope.current_user.sendingEthereumAddress && !$scope.current_user.bitcoinAddress) {
-                    $scope.errors({ errors: ['Sending Ethereum or Bitcoin Address must be present!'] });
-                    return
-                }
-                users.upsert(_.pick($scope.current_user, 'email', 'sendingEthereumAddress', 'bitcoinAddress'))
+                // if(!$scope.current_user.sendingEthereumAddress && !$scope.current_user.bitcoinAddress) {
+                //     $scope.errors({ errors: ['Sending Ethereum or Bitcoin Address must be present!'] });
+                //     return
+                // }
+                users.upsert(_.pick($scope.current_user, 'email'))
                   .success(function(resp){
                     $scope.processing = false;
                     $scope.message({ message: ["Your profile has been successfully updated"] });

@@ -82,24 +82,24 @@
 
             $scope.ethDialog = function ($index) {
                 $scope.enumDialog = $index;
-                if ($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address) {
-                  SweetAlert.swal({
-                      title: "It seems like you don't have Ethereum address in your profile.",
-                      text: "Please add your ETH sending address in the Profile tab, so we can track your contribution.",
-                      confirmButtonColor: "#DD6B55",
-                      confirmButtonText: "OK",
-                      showCancelButton: true,
-                      width: 600,
-                      padding: 100,
-                      closeOnConfirm: true
-                    }, function(confirm) {
-                      if(confirm) {
-                        window.location.hash = '#/profile/update_profile';
-                        SweetAlert.close();
-                      }
-                    }
-                  );
-                }
+                // if ($scope.current_user.ethWallet && !$scope.current_user.ethWallet.address) {
+                //   SweetAlert.swal({
+                //       title: "It seems like you don't have Ethereum address in your profile.",
+                //       text: "Please add your ETH sending address in the Profile tab, so we can track your contribution.",
+                //       confirmButtonColor: "#DD6B55",
+                //       confirmButtonText: "OK",
+                //       showCancelButton: true,
+                //       width: 600,
+                //       padding: 100,
+                //       closeOnConfirm: true
+                //     }, function(confirm) {
+                //       if(confirm) {
+                //         window.location.hash = '#/profile/update_profile';
+                //         SweetAlert.close();
+                //       }
+                //     }
+                //   );
+                // }
                 if (!$scope.current_user.ethWallet && !$scope.current_user.verified) {
                   SweetAlert.swal({
                       title: "Verify your ID",
@@ -133,26 +133,26 @@
 
             $scope.btcDialog = function ($index) {
                 $scope.enumDialog = $index;
-                if ($scope.current_user.btcWallet && !$scope.current_user.btcWallet.address) {
-                  SweetAlert.swal({
-                          title: "It seems like you don't have Bitcoin address in your profile.",
-                          text: "Please add your BTC sending address in the Profile tab, so we can track your contribution.",
-                          html: true,
-                          $scope: $scope,
-                          showCancelButton: true,
-                          confirmButtonColor: "#DD6B55",
-                          confirmButtonText: "OK",
-                          width: 600,
-                          padding: 100,
-                          closeOnConfirm: true
-                      }, function(confirm) {
-                        if(confirm) {
-                            window.location.hash = '#/profile/update_profile';
-                            SweetAlert.close();
-                        }
-                    }
-                  );
-              }
+              //   if ($scope.current_user.btcWallet && !$scope.current_user.btcWallet.address) {
+              //     SweetAlert.swal({
+              //             title: "It seems like you don't have Bitcoin address in your profile.",
+              //             text: "Please add your BTC sending address in the Profile tab, so we can track your contribution.",
+              //             html: true,
+              //             $scope: $scope,
+              //             showCancelButton: true,
+              //             confirmButtonColor: "#DD6B55",
+              //             confirmButtonText: "OK",
+              //             width: 600,
+              //             padding: 100,
+              //             closeOnConfirm: true
+              //         }, function(confirm) {
+              //           if(confirm) {
+              //               window.location.hash = '#/profile/update_profile';
+              //               SweetAlert.close();
+              //           }
+              //       }
+              //     );
+              // }
               if (!$scope.current_user.btcWallet && !$scope.current_user.verified) {
                   SweetAlert.swal({
                           title: "Verify your ID",
