@@ -34,6 +34,12 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
           span.placeholder
             | Password Confirmation
           input.form-control type="password" ng-model="user.passwordConfirmation" class="{{ _.contains(invalid_fields, 'passwordConfirmation') ? 'error' : '' }}" ng-change="removeError('passwordConfirmation')"
+        .form-group.text-center ng-hide="$state.current.name == 'us_register'"
+          .checkbox
+            input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
+            label for="agree2"
+              span.check
+              | I declare that I am not a US citizen
         .form-group.text-center colspan="2" style="padding-top: 10px"
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             | Continue
@@ -109,12 +115,12 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
               | Privacy Policy
             span<
               | documents.
-      .form-group.text-left ng-hide="$state.current.name == 'us_register'"
-        .checkbox
-          input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
-          label for="agree2"
-            span.check
-            | I declare that I am not a US citizen
+      / .form-group.text-left ng-hide="$state.current.name == 'us_register'"
+      /   .checkbox
+      /     input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
+      /     label for="agree2"
+      /       span.check
+      /       | I declare that I am not a US citizen
       .form-group.text-left
         .description
           | Are you a US-based Accredited Investor, or a non-individual entity interested in our Token Sale?

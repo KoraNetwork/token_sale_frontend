@@ -193,6 +193,10 @@
                         $scope.errors({ errors: validation.messages });
                         return;
                     }
+                    if(!$scope.user.agree2) {
+                      $scope.errors({ errors: ["Please click I am not a US citizen"] });
+                      return;
+                    }
                     $scope.processing = true;
                     $scope.checkUserInfo(_.pick($scope.user, 'email'));
                 };
@@ -337,10 +341,10 @@
                         error = true;
                     }
                     if ($state.current.name != 'us_register') {
-                        if(!$scope.user.agree2) {
-                            $scope.errors({ errors: ["Please click I am not a US citizen"] });
-                            error = true;
-                        }
+                        // if(!$scope.user.agree2) {
+                        //     $scope.errors({ errors: ["Please click I am not a US citizen"] });
+                        //     error = true;
+                        // }
                         if ($scope.user.nationalityObj.countryCode === 'USA' || $scope.user.countryObj.countryCode === 'USA') {
                             $scope.usaCountryDialog();
                             error = true;
@@ -421,7 +425,7 @@
 
                 $scope.openUsaIpDialog = function () {
                     SweetAlert.swal({
-                            title: "<span>You are used ip from USA</span>",
+                            title: "<span>You are using an IP from the USA</span>",
                             text: "<span>We have detected you have a US IP, Please contact us at <a href='mailto:contributors@kora.network'> investors@kora.network <a>.</span>",
                             html: true,
                             confirmButtonColor: "#DD6B55",confirmButtonText: "Confirm",
