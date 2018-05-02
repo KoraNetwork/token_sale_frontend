@@ -188,6 +188,8 @@
 
                 $scope.validate = function() {
                     var validation = users.validate($scope.user);
+                    var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
+
                     if (validation) {
                         $scope.invalid_fields = validation.invalidFields;
                         $scope.errors({ errors: validation.messages });
@@ -197,6 +199,11 @@
                       $scope.errors({ errors: ["Please click I am not a US citizen"] });
                       return;
                     }
+                    if(!isCaptchaChecked) {
+                      $scope.errors({ errors: ["You have to check the reCaptcha"] });
+                      return;
+                    }
+
                     $scope.processing = true;
                     $scope.checkUserInfo(_.pick($scope.user, 'email'));
                 };
@@ -318,7 +325,7 @@
                 };
 
                 $scope.agree = function() {
-                    var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
+                    // var isCaptchaChecked = (grecaptcha && grecaptcha.getResponse().length !== 0);
                     var error = false;
 
                     if(!$scope.user.agree1) {
@@ -335,11 +342,11 @@
                         $scope.invalid_fields.push('country');
                         error = true;
                     }
-                    if(!isCaptchaChecked) {
-                        $scope.errors({ errors: ["You have to check the reCaptcha"] });
-                        $scope.invalid_fields.push('captcha');
-                        error = true;
-                    }
+                    // if(!isCaptchaChecked) {
+                    //     $scope.errors({ errors: ["You have to check the reCaptcha"] });
+                    //     $scope.invalid_fields.push('captcha');
+                    //     error = true;
+                    // }
                     if ($state.current.name != 'us_register') {
                         // if(!$scope.user.agree2) {
                         //     $scope.errors({ errors: ["Please click I am not a US citizen"] });

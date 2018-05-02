@@ -40,100 +40,102 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             label for="agree2"
               span.check
               | I declare that I am not a US citizen
+        .form-group.center ng-if="!$parent.current_user"
+          div#reCaptcha
         .form-group.text-center colspan="2" style="padding-top: 10px"
           button.btn.btn-primary.ladda-button type="submit" data-style="expand-left" ladda="processing"
             | Continue
         .tmp
-    .slide.slide-1.animated.fadeInRight uib-slide=true index="1"
-      .text-center.step
-        | Step 2: Agreement
-      .text-center.step
-        span.step
-          | Download the Kora app, register your username and link it with the token sale to receive a 5% bonus on number of tokens.
-      .step-2.text-left
-        span
-          | To be able to contribute to the token sale
-        span
-          | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
-        span<
-          | you’ll be required to make proof of your nationality during the KYC process and you will
-        span<
-          | NOT be able to withdraw your tokens if the KYC isn’t successful.
-      div.checking
-        span.checking-text
-          | Are you registered with the Kora app?
-        .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
-          input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="user.checked"
-          label.onoffswitch-label for="username-on-off-switch" ng-click="disableUserName()"
-            span.onoffswitch-inner
-            span.onoffswitch-switch
-      .form-group
-        span.placeholder
-          | Kora Username
-        div.hiddenBtn
-          input.form-control ng-disabled="!user.checked || !userNameAvailable" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
-            a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="withUserName()" ng-show="user.checked" ng-disabled="!user.checked || !userNameAvailable"
-              span
-                | {{ !userNameAvailable ? 'Verified' : 'Verify' }}
-        span ng-show="userNameStatus < 300"
-          | Verified
-      .form-group
-        span.placeholder
-          | Select your nationality
-        ui-select ng-model="user.nationalityObj"
-          ui-select-match
-            img.country-img ng-src="{{ $select.selected.flag }}"
-            span.selected ng-bind="$select.selected.name"
-          ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
-            img.country-img ng-src="{{ country.flag }}"
-            span.choices ng-bind="country.name"
-      .form-group
-        span.placeholder
-          | Select your country of residence
-        ui-select ng-model="user.countryObj"
-          ui-select-match
-            img.country-img ng-src="{{ $select.selected.flag }}"
-            span.selected ng-bind="$select.selected.name"
-          ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
-            img.country-img ng-src="{{ country.flag }}"
-            span.choices ng-bind="country.name"
-      .form-group.text-left
-        .checkbox
-          input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
-          label for="agree1"
-            span.check
-            | I have read and agree with the
-            a< href="https://kora.network/downloads/Kora_Vision_Paper_International.pdf" target="blank"
-              | Kora Vision Paper
-            span
-              | , the
-            a< href="/docs/Simple_Agreement_for_Future_Tokens.pdf" target="blank"
-              | Simple Agreement for Future Tokens
-            span
-              | , and the
-            a< href="/docs/Kora_Privacy_Policy.pdf" target="blank"
-              | Privacy Policy
-            span<
-              | documents.
+    / .slide.slide-1.animated.fadeInRight uib-slide=true index="1"
+    /   .text-center.step
+    /     | Step 2: Agreement
+    /   .text-center.step
+    /     span.step
+    /       | Download the Kora app, register your username and link it with the token sale to receive a 5% bonus on number of tokens.
+    /   .step-2.text-left
+    /     span
+    /       | To be able to contribute to the token sale
+    /     span
+    /       | , you need to state your nationality and country of residence, as part of our KYC process. Please keep in mind that
+    /     span<
+    /       | you’ll be required to make proof of your nationality during the KYC process and you will
+    /     span<
+    /       | NOT be able to withdraw your tokens if the KYC isn’t successful.
+    /   div.checking
+    /     span.checking-text
+    /       | Are you registered with the Kora app?
+    /     .onoffswitch.text-right class="{{ checked ? 'active' : '' }}"
+    /       input.onoffswitch-checkbox type="checkbox" id="username-on-off-switch" ng-model="user.checked"
+    /       label.onoffswitch-label for="username-on-off-switch" ng-click="disableUserName()"
+    /         span.onoffswitch-inner
+    /         span.onoffswitch-switch
+    /   .form-group
+    /     span.placeholder
+    /       | Kora Username
+    /     div.hiddenBtn
+    /       input.form-control ng-disabled="!user.checked || !userNameAvailable" type="text" ng-model="user.userName" class="{{ _.contains(invalid_fields, 'userName') ? 'error' : '' }}" ng-change="removeError('userName')"
+    /         a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="withUserName()" ng-show="user.checked" ng-disabled="!user.checked || !userNameAvailable"
+    /           span
+    /             | {{ !userNameAvailable ? 'Verified' : 'Verify' }}
+    /     span ng-show="userNameStatus < 300"
+    /       | Verified
+    /   .form-group
+    /     span.placeholder
+    /       | Select your nationality
+    /     ui-select ng-model="user.nationalityObj"
+    /       ui-select-match
+    /         img.country-img ng-src="{{ $select.selected.flag }}"
+    /         span.selected ng-bind="$select.selected.name"
+    /       ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+    /         img.country-img ng-src="{{ country.flag }}"
+    /         span.choices ng-bind="country.name"
+    /   .form-group
+    /     span.placeholder
+    /       | Select your country of residence
+    /     ui-select ng-model="user.countryObj"
+    /       ui-select-match
+    /         img.country-img ng-src="{{ $select.selected.flag }}"
+    /         span.selected ng-bind="$select.selected.name"
+    /       ui-select-choices refresh="filterCountries($select.search)" repeat="country in filteredCountries track by $index"
+    /         img.country-img ng-src="{{ country.flag }}"
+    /         span.choices ng-bind="country.name"
+    /   .form-group.text-left
+    /     .checkbox
+    /       input type="checkbox" name="agree1" id="agree1" ng-model="user.agree1"
+    /       label for="agree1"
+    /         span.check
+    /         | I have read and agree with the
+    /         a< href="https://kora.network/downloads/Kora_Vision_Paper_International.pdf" target="blank"
+    /           | Kora Vision Paper
+    /         span
+    /           | , the
+    /         a< href="/docs/Simple_Agreement_for_Future_Tokens.pdf" target="blank"
+    /           | Simple Agreement for Future Tokens
+    /         span
+    /           | , and the
+    /         a< href="/docs/Kora_Privacy_Policy.pdf" target="blank"
+    /           | Privacy Policy
+    /         span<
+    /           | documents.
       / .form-group.text-left ng-hide="$state.current.name == 'us_register'"
       /   .checkbox
       /     input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
       /     label for="agree2"
       /       span.check
       /       | I declare that I am not a US citizen
-      .form-group.text-left
-        .description
-          | Are you a US-based Accredited Investor, or a non-individual entity interested in our Token Sale?
-        span.description Contact us at
-        a< href="mailto:contributors@kora.network" contributors@kora.network.
-      .form-group.center ng-if="!$parent.current_user"
-        div#reCaptcha
-      div style="padding-top: 30px"
-        a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
-          | Back
-        a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
-          | Continue
-      .tmp
+      / .form-group.text-left
+      /   .description
+      /     | Are you a US-based Accredited Investor, or a non-individual entity interested in our Token Sale?
+      /   span.description Contact us at
+      /   a< href="mailto:contributors@kora.network" contributors@kora.network.
+      / .form-group.center ng-if="!$parent.current_user"
+      /   div#reCaptcha
+      / div style="padding-top: 30px"
+      /   a.btn.btn-cancel.ladda-button data-style="expand-left" ladda="processing" ng-click="prev()"
+      /     | Back
+      /   a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="agree()" style="margin-left: 30px"
+      /     | Continue
+      / .tmp
     / .slide.slide-2.animated.fadeInRight uib-slide=true index="2"
     /   div.text-center.step
     /     | Step 3: Sending Wallet Address
@@ -155,7 +157,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
     /         | Continue
     div.slide.slide-3.animated.fadeInRight uib-slide=true index="3"
       div.text-center.step
-        | Step 4: 2-Factor Confirmation
+        | Step 2: 2-Factor Confirmation
       .step-4
         div style="width: 400px; margin: auto"
           .description.text-center
