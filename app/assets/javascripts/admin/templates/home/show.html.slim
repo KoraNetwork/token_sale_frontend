@@ -102,14 +102,14 @@
                 td.bg-gray
                   | Ethereum Address
                 td
-                  input.bg-white name="sendingEthereumAddress" ng-model="user.sendingEthereumAddress"
+                  input.bg-white name="sendingEthereumAddress" ng-model="user.ethereumWallet.address"
 
             table.border-radius-table style="margin-top: 20px"
               tr
                 td.bg-gray
                   | Bitcoin Address
                 td
-                  input.bg-white name="sendingBitcoinAddress" ng-model="user.bitcoinAddress"
+                  input.bg-white name="sendingBitcoinAddress" ng-model="user.bitcoinWallet.address"
 
             div.allocate
               table.border-radius-table style="margin-top: 20px"
