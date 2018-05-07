@@ -12,6 +12,7 @@
             $scope.moment = moment;
             $scope.user = {};
             $scope.ng_dialog = {};
+            $scope.initialized = false;
 
             var timer = false;
 
@@ -46,11 +47,15 @@
             $scope.$parent.retrieveTransactions();
 
             $scope.conditionDialog = function () {
+              $scope.initialized = true;
               ngDialog.open({
                 templateUrl: 'application/templates/home/condition_dialog.html',
                 className: 'ngdialog-theme-default condition-width',
                 scope: $scope
               });
+              $timeout(function() {
+                $scope.initialized = false;
+              }, 3000);
             };
 
             $scope.confirmCheckbox = function () {

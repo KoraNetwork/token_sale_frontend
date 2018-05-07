@@ -3,7 +3,8 @@
   div.text-center
     img src="/images/kora_logo.png"
   hr
-  iframe src="/docs/kora_technologies_limited_saft.pdf" style="width: 100%; height: 80%"
+  iframe src="/docs/kora_technologies_limited_saft.pdf#zoom=95" style="width: 100%; height: 80%" ng-hide="initialized"
+  div ng-include="'application/templates/home/wait.html'" ng-show="initialized"
   .form-group.text-center
     .checkbox
       input type="checkbox" id="checked" ng-model="ng_dialog.checked"
