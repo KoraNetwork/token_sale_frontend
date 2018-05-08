@@ -446,7 +446,7 @@
                 };
 
                 $scope.confirm = function(){
-                    if ($scope.user == undefined) {
+                    if (!$scope.user) {
                         return $scope.errors({ errors: ['Please provide GA code'] });
                     }
                     $scope.submitted = true;

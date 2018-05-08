@@ -55,7 +55,7 @@
               });
               $timeout(function() {
                 $scope.initialized = false;
-              }, 3000);
+              }, 1000);
             };
 
             $scope.confirmCheckbox = function () {

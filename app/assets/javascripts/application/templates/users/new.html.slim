@@ -39,7 +39,7 @@ a.kora-logo.kora-logo-top ng-click="$state.go('dashboard')"
             input type="checkbox" name="agree2" id="agree2" ng-model="user.agree2" ng-click="isUsaIp()"
             label for="agree2"
               span.check
-              | I declare that I am not a US citizen
+              | I declare that I am not a US or China citizen
         .form-group.center ng-if="!$parent.current_user"
           div#reCaptcha
         .form-group.text-center colspan="2" style="padding-top: 10px"
