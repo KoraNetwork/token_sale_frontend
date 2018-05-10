@@ -36,7 +36,7 @@
                   td
                     | {{ (transaction.KNT).toFixed(3) }}
                   td
-                    | {{ (transaction.MVPKNT).toFixed(3) }}
+                    | {{ transaction.discounts.join('% / ') }}%
                   td
                     | {{ transaction.status }}
                   td
