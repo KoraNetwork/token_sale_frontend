@@ -15,6 +15,7 @@
             $scope.initialized = false;
 
             var timer = false;
+            $scope.user.date = new Date();
 
             $scope.$watch('transactions_filters', function () {
                 if (timer) {
