@@ -126,7 +126,7 @@
                     }
                   );
                 }
-                if ($scope.current_user.confirmedReading && $scope.$parent.current_user.verified && $scope.current_user.ethWallet.address) {
+                if (!$scope.current_user.confirmedReading && $scope.$parent.current_user.verified && $scope.current_user.ethWallet.address) {
                     $scope.conditionDialog();
                     return
                 }
