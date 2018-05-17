@@ -10,12 +10,13 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
             $scope.moment = moment;
-            $scope.user = {};
+            $scope.document = {};
             $scope.ng_dialog = {};
             $scope.initialized = false;
 
             var timer = false;
-            $scope.user.date = new Date();
+            $scope.document.date = new Date();
+            $scope.document.confirmedReadingTimezoneOffset =  $scope.document.date.getTimezoneOffset();
 
             $scope.$watch('transactions_filters', function () {
                 if (timer) {
@@ -64,10 +65,11 @@
                 $scope.errors({ errors: ["Please confirm!"] });
                 return
               }
-              $scope.current_user.confirmedReading = true;
-              users.upsert($scope.current_user)
+              $scope.document.confirmedReading = true;
+              users.upsert($scope.document)
                 .success(function (resp) {
                   $scope.current_user = resp;
+                  $scope.document.confirmedReading = resp.confirmedReading;
                   ngDialog.closeAll();
                   if ($scope.enumDialog.includes('eth')) {
                     ngDialog.open({
@@ -124,7 +126,7 @@
                     }
                   );
                 }
-                if (!$scope.current_user.confirmedReading && $scope.$parent.current_user.verified && $scope.current_user.ethWallet.address) {
+                if ($scope.current_user.confirmedReading && $scope.$parent.current_user.verified && $scope.current_user.ethWallet.address) {
                     $scope.conditionDialog();
                     return
                 }
