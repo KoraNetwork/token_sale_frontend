@@ -3,9 +3,9 @@
     "use strict";
 
     angular.module('KoraICOFrontendApp')
-        .controller('DashboardController', ['$scope', '$state', '$stateParams', 'ngDialog', 'SessionsFactory', '$timeout', 'SweetAlert', 'toaster', 'UsersFactory',
-            'TransactionsFactory',
-            function ($scope, $state, $stateParams, ngDialog, session, $timeout, SweetAlert, toaster, users, transactions) {
+        .controller('DashboardController', ['$scope', '$state', '$stateParams', 'ngDialog', 'SessionsFactory', '$anchorScroll', '$timeout', 'SweetAlert', 'toaster', 'UsersFactory',
+            'TransactionsFactory', '$location',
+            function ($scope, $state, $stateParams, ngDialog, session, $anchorScroll, $timeout, SweetAlert, toaster, users, transactions, $location) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -17,6 +17,11 @@
             var timer = false;
             $scope.document.date = new Date();
             $scope.document.confirmedReadingTimezoneOffset =  $scope.document.date.getTimezoneOffset();
+
+            $scope.scrollTo = function(id) {
+              $location.hash(id);
+              $anchorScroll();
+            };
 
             $scope.$watch('transactions_filters', function () {
                 if (timer) {
