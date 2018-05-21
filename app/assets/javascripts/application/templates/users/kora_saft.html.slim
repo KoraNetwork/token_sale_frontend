@@ -1,0 +1,24 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .dashboard
+            .dashboard-header
+              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+                span
+                  | Kora SAFT Document list
+
+            table.table.table-striped.table-responsive
+              thead
+                tr
+                  th Name
+                  th Documents
+              tbody
+                tr ng-repeat="saftDoc in $parent.current_user.saftDocuments"
+                  td
+                    | Kora SAFT
+                  td
+                    a href="{{ saftDoc }}" target="_blank"
+                      | {{ saftDoc ? 'View Document' : 'Not Found' }}
+            br
