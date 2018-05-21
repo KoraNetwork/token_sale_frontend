@@ -7,12 +7,12 @@
   .form-group ng-hide="initialized"
     div.saft_doc ng-include="'application/templates/home/kora_salt_info.html'"
   .form-group.text-center
-    .checkbox
-      input type="checkbox" id="checked" ng-model="ng_dialog.checked"
-      label for="checked"
-        span.check
-        | Check here to confirm that you have read, understand and agree <br> to the SAFT(simple agreement for future tokens)
+    / .checkbox
+    /   input type="checkbox" id="checked" ng-model="ng_dialog.checked"
+    /   label for="checked"
+    /     span.check
+    /     | Check here to confirm that you have read, understand and agree <br> to the SAFT(simple agreement for future tokens)
   div.text-center
-    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirmCheckbox()" ng-disabled="!ng_dialog.checked"
+    a.btn.btn-primary.ladda-button data-style="expand-left" ladda="processing" ng-click="confirmCheckbox()"
       | Continue
   hr

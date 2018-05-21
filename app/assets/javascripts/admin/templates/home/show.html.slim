@@ -96,6 +96,15 @@
                 td.bg-gray.disabledInput
                   | {{ kntBalance.MVPKNT }}
 
+            .left-block style="padding: 20px 20px 20px 0;"
+              table.border-radius-table
+                tr ng-repeat="saftDoc in user.saftDocuments"
+                  td.bg-gray
+                    | Kora SAFT
+                  td.bg-gray.disabledInput
+                    a href="{{ saftDoc }}" target="_blank"
+                      | {{ saftDoc ? 'View document' : 'Not Found' }}
+
           .right-block style="padding-top: 20px;"
             table.border-radius-table
               tr

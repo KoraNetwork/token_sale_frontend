@@ -66,10 +66,10 @@
             };
 
             $scope.confirmCheckbox = function () {
-              if(!$scope.ng_dialog.checked){
-                $scope.errors({ errors: ["Please confirm!"] });
-                return
-              }
+              // if(!$scope.ng_dialog.checked){
+              //   $scope.errors({ errors: ["Please confirm!"] });
+              //   return
+              // }
               $scope.document.confirmedReading = true;
               users.upsert($scope.document)
                 .success(function (resp) {

@@ -30,9 +30,9 @@
                   td
                     | {{ transaction.type }}
                   td
-                    | {{ transaction.allKNT }}
+                    | {{ (transaction.value).toFixed(4) }}
                   td
-                    | {{ transaction.USD }}
+                    | {{ (transaction.USD).toFixed(4) }}
                   td
                     | {{ (transaction.KNT).toFixed(3) }}
                   td
