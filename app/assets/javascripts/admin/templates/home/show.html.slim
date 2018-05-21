@@ -102,7 +102,7 @@
                   td.bg-gray
                     | Kora SAFT
                   td.bg-gray.disabledInput
-                    a href="{{ saftDoc }}" target="_blank"
+                    a ng-click="readSaft(saftDoc)" target="_blank"
                       | {{ saftDoc ? 'View document' : 'Not Found' }}
 
           .right-block style="padding-top: 20px;"
