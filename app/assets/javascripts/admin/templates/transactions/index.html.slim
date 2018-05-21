@@ -8,6 +8,9 @@
               img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
                 span
                   | Transactions list
+              .pull-right style="margin: -10px -20px 0 20px;"
+                a.ladda-button.btn.btn-confirm href="{{window.location.origin}}/api/transactions_csv" style="background-image: linear-gradient(to top, #56acd1, #2b74a5);"
+                  | Import Transactions
 
             table.table.table-striped.table-responsive
               thead
