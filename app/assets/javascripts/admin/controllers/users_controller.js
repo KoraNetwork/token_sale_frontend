@@ -286,10 +286,6 @@
 
                 $scope.retrieveUser();
 
-                $scope.readSaft = function (id) {
-                  window.open("http://ec2-34-201-216-112.compute-1.amazonaws.com:82" + id);
-                };
-
                 $scope.update = function(){
                     users.upsert($scope.user)
                         .success(function(data){

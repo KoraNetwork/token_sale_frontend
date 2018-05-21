@@ -8,3 +8,6 @@ ul.nav.activ_li_profile.nav-pills
   li.nav-item.activ_link_profile ng-class=("{active: $state.current.name.includes('verify_id')}")
     a.nav-link href="#/profile/verify_id"
       | {{ current_user.verified ? 'Verified ID' : 'Verify ID' }}
+  li.nav-item.activ_link_profile ng-class=("{active: $state.current.name.includes('saft')}")
+    a.nav-link href="#/profile/saft"
+      | My SAFT

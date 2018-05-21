@@ -84,6 +84,11 @@
                     url: '/profile/verify_id',
                     templateUrl: 'application/templates/users/verify_id.html',
                     controller: 'UsersController'
+                })
+                .state('saft', {
+                  url: '/profile/saft',
+                  templateUrl: 'application/templates/users/kora_saft.html',
+                  controller: 'UsersController'
                 });
     }]);
 
