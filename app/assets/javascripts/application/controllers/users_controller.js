@@ -664,7 +664,14 @@
                 }
                 $scope.processing = true;
                 $scope.current_user.country = $scope.current_user.countryObj.countryCode;
-                users.verifyID($scope.current_user)
+
+              !function(a,e,d,m,t){a.adm={};a.adm.pixid=134763;
+                var o=e.getElementsByTagName("head")[0],c=e.createElement("script");
+                a.adm.json="//ps.l.admedo.com/43e28599-82f4-48de-a561-8e2848e0c76a.json",
+                  a.adm.pixurl="//pool.admedo.com",c.src="//pj.l.admedo.com/admtracker.lib.min.js",
+                    c.async=!0,o.appendChild(c)}(window,document);
+
+              users.verifyID($scope.current_user)
                   .success(function(resp){
                     $scope.processing = false;
                     $scope.current_user = resp;
