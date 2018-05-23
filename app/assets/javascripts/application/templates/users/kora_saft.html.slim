@@ -1,17 +1,21 @@
 .col-md-12
   div ng-include="'application/templates/common/submenu_profile.html'"
-.wrapper.wrapper-content
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
           .dashboard
             .dashboard-header
-              img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"
+              img ng-src="/images/ic-fingerprint@2x.png" style="width: 17px; height: 25px"
                 span
                   | Kora SAFT Document list
 
-            table.table.table-striped.table-responsive
+            div.text-center style="padding: 25px" ng-hide="$parent.current_user.saftDocuments"
+              img ng-src="/images/group@3x.png" style="width: 300px"
+              div style="padding: 30px; font-size: 20px; color: #6b66f4"
+                span
+                  | Document will be formed after<br> performig transaction
+            table.table.table-striped.table-responsive ng-show="$parent.current_user.saftDocuments"
               thead
                 tr
                   th Name
