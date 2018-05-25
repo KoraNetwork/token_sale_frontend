@@ -34,6 +34,21 @@
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th.text-center KNT Sold
+                th.text-center KNT Left
+            tbody
+              tr
+                td.text-center
+                  | {{ balance.amountKNT.sold }}
+                td.text-center
+                  | {{ balance.amountKNT.left }}
+
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
           .dashboard
             .dashboard-header
               img ng-src="/images/ic-transaction-history.svg" style="width: 17px; height: 20px"

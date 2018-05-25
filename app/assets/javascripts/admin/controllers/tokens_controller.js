@@ -13,6 +13,7 @@
                 $scope.selected = null;
                 $scope.isPublicSale = false;
                 $scope.checkSale = false;
+                $scope.knts = {};
 
                 var timer = false;
 
@@ -163,6 +164,31 @@
                             SweetAlert.close();
                         }
                     })
+                };
+
+                $scope.amountKnt = function () {
+                  tokens.getAmount()
+                    .success(function (res) {
+                      $scope.knts = res;
+                      $scope.selected = null;
+                    })
+                    .error(function (err) {
+                      console.log(err)
+                    })
+                };
+
+                $scope.amountKnt();
+
+                $scope.sendAmount = function () {
+                  tokens.sendAmount($scope.knts)
+                    .success(function () {
+                      $scope.selected = null;
+                      $scope.message({ message: ["Successfully saved"] });
+                    })
+                    .error(function (err) {
+                      console.log(err)
+                    })
+
                 }
 
 

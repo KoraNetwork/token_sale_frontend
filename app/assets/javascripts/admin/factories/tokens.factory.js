@@ -16,6 +16,14 @@
 
             switchSale: function (password) {
                 return $http.post('/api/manageTokens/switchToPublicSale?password=' + password)
+            },
+
+            getAmount: function () {
+              return $http.get('/api/amountKNT')
+            },
+
+            sendAmount: function (data) {
+              return $http.put('/api/amountKNT', data)
             }
 
         }
