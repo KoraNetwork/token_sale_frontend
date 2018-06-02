@@ -53,6 +53,23 @@
 
             $scope.$parent.retrieveTransactions();
 
+            $scope.withdraw = function () {
+              SweetAlert.swal({
+                  title: "Token sale is over.",
+                  text: "Withdrawal KNT cooming soon.",
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "OK",
+                  width: 600,
+                  padding: 100,
+                  closeOnConfirm: true
+                }, function(confirm) {
+                  if(confirm) {
+                    SweetAlert.close();
+                  }
+                }
+              );
+            };
+
             $scope.conditionDialog = function () {
               $scope.initialized = true;
               ngDialog.open({

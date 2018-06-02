@@ -7,30 +7,33 @@
             .dashboard-header
               img ng-src="/images/ic-purchase-knt.svg"
               span
-                | Purchase SAFT for KNT
-            .dashboard-body
-              div.buy-area-left
-                div.title
-                  | Purchase SAFT for KNT:
-                div.buy-area-right
-                  span.buy
-                    a ng-click="ethDialog($index+'eth')"
-                      .blue-img
-                        img.eth ng-src="/images/ic-ethereum.svg"
-                      .text
-                        .buy-with-ethereum
-                          | Buy with Ethereum
-                        .price
-                          | 1 ETH = ${{ balance.ETH_USD }}
-                  span.buy
-                    a ng-click="btcDialog($index+'btc')"
-                      .blue-img
-                        img.btc ng-src="/images/ic-bitcoin.svg"
-                      .text
-                        .buy-with-ethereum
-                          | Buy with Bitcoin
-                        .price
-                          | 1 BTC = ${{ balance.BTC_USD }}
+                | Withdraw KNT
+            .dashboard-body.text-center style="display: flex; justify-content: center"
+              div.buy ng-click="withdraw()"
+                .withdraw
+                  | Withdraw KNT
+              / div.buy-area-left
+              /   div.title
+              /     | Purchase SAFT for KNT:
+              /   div.buy-area-right
+              /     span.buy
+              /       a ng-click="ethDialog($index+'eth')"
+              /         .blue-img
+              /           img.eth ng-src="/images/ic-ethereum.svg"
+              /         .text
+              /           .buy-with-ethereum
+              /             | Buy with Ethereum
+              /           .price
+              /             | 1 ETH = ${{ balance.ETH_USD }}
+              /     span.buy
+              /       a ng-click="btcDialog($index+'btc')"
+              /         .blue-img
+              /           img.btc ng-src="/images/ic-bitcoin.svg"
+              /         .text
+              /           .buy-with-ethereum
+              /             | Buy with Bitcoin
+              /           .price
+              /             | 1 BTC = ${{ balance.BTC_USD }}
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
